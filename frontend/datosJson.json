@@ -1,0 +1,32 @@
+[
+  {
+    "red": "fa-facebook",
+    "estilo": "facebookColor",
+    "url": "http://facebook.com",
+    "activo": 1
+  },
+  {
+    "red": "fa-youtube",
+    "estilo": "youtubeColor",
+    "url": "http://youtube.com",
+    "activo": 1
+  },
+  {
+    "red": "fa-twitter",
+    "estilo": "twitterColor",
+    "url": "http://twitter.com",
+    "activo": 1
+  },
+  {
+    "red": "fa-google-plus",
+    "estilo": "google-plusColor",
+    "url": "http://google.com",
+    "activo": 1
+  },
+  {
+    "red": "fa-instagram",
+    "estilo": "instagramColor",
+    "url": "http://instagram.com",
+    "activo": 1
+  }
+]

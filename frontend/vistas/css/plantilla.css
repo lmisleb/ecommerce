@@ -1,0 +1,269 @@
+/*=============================================
+GLOBAL
+=============================================*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Ubunt', sans-serif;
+}
+
+body {
+    background: #CCD1D1;
+}
+
+ul, ol {
+    padding: 0px;
+}
+
+a:visited, a:link, a:focus, a:hover, a:active {
+    list-style: none;
+    text-decoration: none;
+}
+
+.barraSuperior {
+    /*background: black;*/
+    /*background: #47bac1;*/
+    /*background: #2980B9;*/
+    background: #1B4F72;
+}
+
+.barraSuperior a {
+    color: white;
+}
+
+.backColor, .backColor a {
+    /*background:#47bac1;*/
+    background: #2980B9;
+    color: white;
+}
+
+.buscar1 {
+    background: #D4E6F1;
+}
+
+.sumaCesta, .cantidadCesta {
+    color: green;
+    font-weight: bold;
+}
+
+.cantidadCesta {
+    margin-left: 15px;
+}
+
+.sumaCesta {
+    margin-left: 15px;
+}
+
+
+.fondoBreadcrumb {
+    margin-bottom: 5px;
+    background: rgba(0, 0, 0, 0);
+}
+
+/*=============================================
+REDES SOCIALES
+=============================================*/
+
+.redSocial {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    /*border:1px solid silver;*/
+    border-radius: 5px;
+}
+
+/*FACEBOOK*/
+
+.facebookBlanco{
+    color: white;
+    background: black;
+}
+
+.facebookNegro{
+    color: black;
+}
+
+.facebookColor{
+    color: white;
+    background: #46639f;
+}
+
+/*YOUTUBE*/
+
+.youtubeColor{
+    color: white;
+    background: #d6513e;
+}
+
+.youtubeBlanco{
+    color: white;
+    background: black;
+}
+
+.youtubeNegro{
+    color: black;
+}
+
+/*TWITTER*/
+
+.twitterColor{
+    color: white;
+    background: #0ab2e6;
+}
+
+.twitterBlanco{
+    color: white;
+    background: black;
+}
+
+.twitterNegro{
+    color: black;
+}
+
+/*GOOGLE PLUS*/
+
+.google-plusColor{
+    color: white;
+    background: #d71617;
+}
+
+.google-plusBlanco{
+    color: white;
+    background: black;
+}
+
+.google-plusNegro{
+    color: black;
+}
+
+/*INSTAGRAM*/
+
+.instagramColor{
+    color: white;
+    background: linear-gradient(45deg, #fca925, #ee1d5f, #6350a2);
+}
+
+.instagramBlanco{
+    color: white;
+    background: black;
+}
+
+.instagramNegro{
+    color: black;
+}
+
+/*=============================================
+ERROR 404, VERIFICAR
+=============================================*/
+
+.error404, .verificar {
+    color: #333;
+}
+
+/*=============================================
+SCROLL UP
+=============================================*/
+
+#scrollUp {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: url(../img/plantilla/flecha.jpg);
+}
+
+/*====================================================
+ESCRITORIO GRANDE (LG revisamos en 1366px en adelante)
+=====================================================*/
+
+@media (min-width:1200px) {
+
+    .col-lg-0{
+        display: none;
+    }
+
+    .error404 h1{
+        font-size: 300px;
+        text-shadow: 8px 8px 1px #dadada;
+    }
+
+    .verificar h3{
+        margin-top: 30px;
+        font-size: 100px;
+        text-shadow: 4px 4px 1px #dadada;
+    }
+
+}
+
+/*=============================================================
+ESCRITORIO MEDIANO O TABLET HORIZONTAL (MD revisamos en 1024px)
+==============================================================*/
+
+@media (max-width:1199px) and (min-width:992px) {
+
+    .col-md-0{
+        display: none;
+    }
+
+    .error404 h1{
+        font-size: 200px;
+        text-shadow: 6px 6px 1px #D4E6F1;
+    }
+
+    .verificar h3{
+        margin-top: 30px;
+        font-size: 100px;
+        text-shadow: 4px 4px 1px #dadada;
+    }
+
+}
+
+/*==========================================================
+ESCRITORIO PEQUEÑO O TABLET VERTICAL (SM revisamos en 768px)
+============================================================*/
+
+@media (max-width:991px) and (min-width:768px) {
+
+    .col-sm-0{
+        display: none;
+    }
+
+    .error404 h1{
+        font-size: 150px;
+        text-shadow: 4px 4px 1px #D4E6F1;
+    }
+
+    .verificar h3{
+        margin-top: 30px;
+        font-size: 100px;
+        text-shadow: 4px 4px 1px #dadada;
+    }
+
+}
+
+/*=============================================
+MOVIL (XS revisamos en 320px)
+=============================================*/
+
+@media (max-width:767px) {
+    
+    .col-xs-0{
+        display: none;
+    }
+
+    .error404 h1{
+        font-size: 75px;
+        text-shadow: 2px 2px 1px #dadada;
+    }
+
+    .verificar h3{
+        margin-top: 30px;
+        font-size: 50px;
+        text-shadow: 2px 2px 1px #dadada;
+    }
+
+}
