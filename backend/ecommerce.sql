@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-05-2021 a las 20:30:22
+-- Tiempo de generación: 07-05-2021 a las 07:50:14
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -95,7 +95,7 @@ CREATE TABLE `cabeceras` (
 INSERT INTO `cabeceras` (`id`, `ruta`, `titulo`, `descripcion`, `palabrasClaves`, `portada`, `fecha`) VALUES
 (1, 'inicio', 'Tienda Virtual', '', '', '', '2021-05-02 18:40:21'),
 (6, 'juegos', 'juegos', 'Los mejores juegos', 'pacman,space invader,combat', 'vistas/img/cabeceras/juegos.jpg', '2021-05-02 22:19:19'),
-(9, 'peliculas', 'PELICULAS', 'Las mejores películas.', 'et,mortal combat,titanic', 'vistas/img/cabeceras/peliculas.jpg', '2021-05-05 00:32:41');
+(10, 'peliculas', 'PELICULAS', 'Las mejores películas.', 'et,star wars,flash gordon', 'vistas/img/cabeceras/peliculas.jpg', '2021-05-07 05:47:36');
 
 -- --------------------------------------------------------
 
@@ -127,7 +127,7 @@ INSERT INTO `categorias` (`id`, `categoria`, `ruta`, `estado`, `oferta`, `precio
 (4, 'TECNOLOGIA', 'tecnologia', 1, 0, 0, 0, '', '0000-00-00 00:00:00', '2021-05-02 18:32:32'),
 (5, 'CURSOS', 'cursos', 1, 0, 0, 0, '', '0000-00-00 00:00:00', '2021-05-02 18:32:32'),
 (12, 'JUEGOS', 'juegos', 1, 0, 0, 0, '', '0000-00-00 00:00:00', '2021-05-02 22:19:19'),
-(15, 'PELICULAS', 'peliculas', 1, 0, 0, 0, 'vistas/img/ofertas/default/default.jpg', '0000-00-00 00:00:00', '2021-05-05 00:32:41');
+(16, 'PELICULAS', 'peliculas', 1, 1, 77, 0, 'vistas/img/ofertas/peliculas.jpg', '2021-05-17 23:59:59', '2021-05-07 05:47:36');
 
 -- --------------------------------------------------------
 
@@ -989,7 +989,7 @@ CREATE TABLE `visitaspaises` (
 --
 
 INSERT INTO `visitaspaises` (`id`, `pais`, `codigo`, `cantidad`, `fecha`) VALUES
-(35, 'Chile', 'CL', 24, '04-05-2021'),
+(35, 'Chile', 'CL', 25, '07-05-2021'),
 (36, 'Japan', 'JP', 4, '31-03-2021'),
 (37, 'United States', 'US', 6, '31-03-2021'),
 (38, 'China', 'CN', 1, '26-03-2021'),
@@ -1057,7 +1057,8 @@ INSERT INTO `visitaspersonas` (`id`, `ip`, `pais`, `visitas`, `fecha`) VALUES
 (206, '200.28.111.71', 'Chile', 1, '30-04-2021'),
 (207, '200.28.111.71', 'Chile', 1, '01-05-2021'),
 (208, '200.28.111.71', 'Chile', 1, '02-05-2021'),
-(209, '200.28.111.71', 'Chile', 1, '04-05-2021');
+(209, '200.28.111.71', 'Chile', 1, '04-05-2021'),
+(210, '200.28.111.71', 'Chile', 1, '07-05-2021');
 
 --
 -- Índices para tablas volcadas
@@ -1173,13 +1174,13 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT de la tabla `cabeceras`
 --
 ALTER TABLE `cabeceras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `comentarios`
@@ -1245,7 +1246,7 @@ ALTER TABLE `visitaspaises`
 -- AUTO_INCREMENT de la tabla `visitaspersonas`
 --
 ALTER TABLE `visitaspersonas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=211;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

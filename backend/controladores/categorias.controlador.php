@@ -309,7 +309,7 @@ class ControladorCategorias{
 							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
-						$rutaOferta = "vistas/img/oferta/".$_POST["rutaCategoria"].".jpg";
+						$rutaOferta = "vistas/img/ofertas/".$_POST["rutaCategoria"].".jpg";
 						$origen = imagecreatefromjpeg($_FILES["fotoOferta"]["tmp_name"]);
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
@@ -358,7 +358,7 @@ class ControladorCategorias{
 
 				}else{
 
-					if($_POST["antiguaFotoOferta"] != ""){
+					if($_POST["antiguaFotoOferta"] != "vistas/img/ofertas/default/default.jpg"){
 
 						unlink($_POST["antiguaFotoOferta"]);
 

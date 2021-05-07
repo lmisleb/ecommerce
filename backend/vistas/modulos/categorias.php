@@ -336,8 +336,8 @@
                                 <span class="input-group-addon"><i class="fa fa-th"></i></span>
                                 <input type="text" class="form-control input-lg validarCategoria tituloCategoria" placeholder="Ingresar Categoria" name="editarTituloCategoria" required>
                                 
-                                            <input type="text" class="editarIdCategoria" name="editarIdCategoria">
-                                            <input type="text" class="editarIdCabecera" name="editarIdCabecera">
+                                <input type="hidden" class="editarIdCategoria" name="editarIdCategoria">
+                                <input type="hidden" class="editarIdCabecera" name="editarIdCabecera">
 
                             </div> 
 
@@ -401,11 +401,9 @@
                         
                             <div class="panel">SUBIR FOTO PORTADA</div>
                             <input type="file" class="fotoPortada" name="fotoPortada">
-
                             
-                                                <input type="text" class="antiguaFotoPortada" name="antiguaFotoPortada">
+                            <input type="hidden" class="antiguaFotoPortada" name="antiguaFotoPortada">
 
-                            
                             <p class="help-block">Tamaño recomendado 1280px * 720px <br> Peso máximo de la foto 2MB</p>
                             <img src="vistas/img/cabeceras/default/default.jpg" class="img-thumbnail previsualizarPortada" width="100%">
 
@@ -489,7 +487,7 @@
                                 <div class="panel">SUBIR FOTO OFERTA</div>
                                 <input type="file" class="fotoOferta" name="fotoOferta">
 
-                                                    <input type="text" class="antiguaFotoOferta" name="antiguaFotoOferta">
+                                <input type="hidden" class="antiguaFotoOferta" name="antiguaFotoOferta">
 
                                 <p class="help-block">Tamaño recomendado 640px * 430px <br> Peso máximo de la foto 2MB</p>
                                 <img src="vistas/img/ofertas/default/default.jpg" class="img-thumbnail previsualizarOferta" width="100px">
