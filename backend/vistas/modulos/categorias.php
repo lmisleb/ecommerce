@@ -105,7 +105,7 @@
                                 
                                 <span class="input-group-addon"><i class="fa fa-th"></i></span>
 
-                                <input type="text" class="form-control input-lg validarCategoria tituloCategoria" placeholder="Ingresar Categoria" name="tituloCategoria" required> 
+                                <input type="text" class="form-control input-lg text-uppercase validarCategoria tituloCategoria" placeholder="Ingresar Categoria" name="tituloCategoria" required> 
 
                             </div> 
 
@@ -334,7 +334,7 @@
                             <div class="input-group">
                                 
                                 <span class="input-group-addon"><i class="fa fa-th"></i></span>
-                                <input type="text" class="form-control input-lg validarCategoria tituloCategoria" placeholder="Ingresar Categoria" name="editarTituloCategoria" required>
+                                <input type="text" class="form-control input-lg text-uppercase validarCategoria tituloCategoria" placeholder="Ingresar Categoria" name="editarTituloCategoria" required>
                                 
                                 <input type="hidden" class="editarIdCategoria" name="editarIdCategoria">
                                 <input type="hidden" class="editarIdCabecera" name="editarIdCabecera">

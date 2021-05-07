@@ -6,7 +6,7 @@
 
 // 	url:"ajax/tablaCategorias.ajax.php",
 // 	success:function(respuesta){
-	
+
 // 		console.log("respuesta", respuesta);
 
 // 	}
@@ -14,78 +14,78 @@
 // })
 
 $(".tablaCategorias").DataTable({
-	"ajax": "ajax/tablaCategorias.ajax.php",
-	"deferRender": true,
-	"retrieve": true,
-	"processing": true,
-	"language": {
-		"sProcessing":     "Procesando...",
-		"sLengthMenu":     "Mostrar _MENU_ registros",
-		"sZeroRecords":    "No se encontraron resultados",
-		"sEmptyTable":     "Ningún dato disponible en esta tabla",
-		"sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
-		"sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0",
-		"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-		"sInfoPostFix":    "",
-		"sSearch":         "Buscar:",
-		"sUrl":            "",
-		"sInfoThousands":  ",",
-		"sLoadingRecords": "Cargando...",
-		"oPaginate": {
-			"sFirst":    "Primero",
-			"sLast":     "Último",
-			"sNext":     "Siguiente",
-			"sPrevious": "Anterior"
-		},
-		"oAria": {
-			"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-			"sSortDescending": ": Activar para ordenar la columna de manera descendente"
-		}
-	}
+    "ajax": "ajax/tablaCategorias.ajax.php",
+    "deferRender": true,
+    "retrieve": true,
+    "processing": true,
+    "language": {
+        "sProcessing": "Procesando...",
+        "sLengthMenu": "Mostrar _MENU_ registros",
+        "sZeroRecords": "No se encontraron resultados",
+        "sEmptyTable": "Ningún dato disponible en esta tabla",
+        "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
+        "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0",
+        "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix": "",
+        "sSearch": "Buscar:",
+        "sUrl": "",
+        "sInfoThousands": ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+            "sFirst": "Primero",
+            "sLast": "Último",
+            "sNext": "Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+    }
 });
 
 /*=============================================
 	ACTIVAR CATEGORÍA
 =============================================*/
 
-$(".tablaCategorias tbody").on("click", ".btnActivar", function(){
+$(".tablaCategorias tbody").on("click", ".btnActivar", function() {
 
-	var idCategoria = $(this).attr("idCategoria");
-	var estadoCategoria = $(this).attr("estadoCategoria");
+    var idCategoria = $(this).attr("idCategoria");
+    var estadoCategoria = $(this).attr("estadoCategoria");
 
-	var datos = new FormData();
- 	datos.append("activarId", idCategoria);
-  	datos.append("activarCategoria", estadoCategoria);
+    var datos = new FormData();
+    datos.append("activarId", idCategoria);
+    datos.append("activarCategoria", estadoCategoria);
 
-  	$.ajax({
+    $.ajax({
 
-  		url:"ajax/categorias.ajax.php",
-  		method: "POST",
-	  	data: datos,
-	  	cache: false,
-      	contentType: false,
-      	processData: false,
-      	success: function(respuesta){ 
-      		//console.log("respuesta", respuesta);
-      	} 	 
+        url: "ajax/categorias.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(respuesta) {
+            //console.log("respuesta", respuesta);
+        }
 
-  	});
+    });
 
-  	if(estadoCategoria == 0){
+    if (estadoCategoria == 0) {
 
-  		$(this).removeClass('btn-success');
-  		$(this).addClass('btn-danger');
-  		$(this).html('Desactivado');
-  		$(this).attr('estadoCategoria',1);
-  	
-  	}else{
+        $(this).removeClass('btn-success');
+        $(this).addClass('btn-danger');
+        $(this).html('Desactivado');
+        $(this).attr('estadoCategoria', 1);
 
-  		$(this).addClass('btn-success');
-  		$(this).removeClass('btn-danger');
-  		$(this).html('Activado');
-  		$(this).attr('estadoCategoria',0);
+    } else {
 
-  	}
+        $(this).addClass('btn-success');
+        $(this).removeClass('btn-danger');
+        $(this).html('Activado');
+        $(this).attr('estadoCategoria', 0);
+
+    }
 
 })
 
@@ -93,35 +93,35 @@ $(".tablaCategorias tbody").on("click", ".btnActivar", function(){
 	VALIDAR SI LA CATEGORÍA YA EXISTE
 =============================================*/
 
-$(".validarCategoria").change(function(){
+$(".validarCategoria").change(function() {
 
-	$(".alert").remove();
+    $(".alert").remove();
 
-	var categoria = $(this).val();
-	// console.log("categoria", categoria);
+    var categoria = $(this).val();
+    // console.log("categoria", categoria);
 
-	var datos = new FormData();
-	datos.append("validarCategoria", categoria);
+    var datos = new FormData();
+    datos.append("validarCategoria", categoria);
 
-	$.ajax({
-	    url:"ajax/categorias.ajax.php",
-	    method:"POST",
-	    data: datos,
-	    cache: false,
-	    contentType: false,
-	    processData: false,
-	    dataType: "json",
-	    success:function(respuesta){
-	    	// console.log("respuesta", respuesta);
-	    	if(respuesta){
+    $.ajax({
+        url: "ajax/categorias.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta) {
+            // console.log("respuesta", respuesta);
+            if (respuesta) {
 
-	    		$(".validarCategoria").parent().after('<div class="alert alert-warning">Esta categoría ya existe en la base de datos</div>')
-	    		$(".validarCategoria").val("");
-	    	}   
+                $(".validarCategoria").parent().after('<div class="alert alert-warning">Esta categoría ya existe en la base de datos</div>')
+                $(".validarCategoria").val("");
+            }
 
-	    }
+        }
 
-	  })
+    })
 });
 
 
@@ -129,27 +129,27 @@ $(".validarCategoria").change(function(){
 	RUTA CATEGORÍA
 =============================================*/
 
-function limpiarUrl(texto){
+function limpiarUrl(texto) {
 
-	var texto = texto.toLowerCase();
-	texto = texto.replace(/[á]/, 'a');
-	texto = texto.replace(/[é]/, 'e');
-	texto = texto.replace(/[í]/, 'i');
-	texto = texto.replace(/[ó]/, 'o');
-	texto = texto.replace(/[ú]/, 'u');
-	texto = texto.replace(/[ñ]/, 'n');
-	texto = texto.replace(/ /g, '-');
-	return texto;
+    var texto = texto.toLowerCase();
+    texto = texto.replace(/[á]/, 'a');
+    texto = texto.replace(/[é]/, 'e');
+    texto = texto.replace(/[í]/, 'i');
+    texto = texto.replace(/[ó]/, 'o');
+    texto = texto.replace(/[ú]/, 'u');
+    texto = texto.replace(/[ñ]/, 'n');
+    texto = texto.replace(/ /g, '-');
+    return texto;
 
 }
 
-$(".tituloCategoria").change(function(){
+$(".tituloCategoria").change(function() {
 
-	$(".rutaCategoria").val(
+    $(".rutaCategoria").val(
 
-		limpiarUrl($(".tituloCategoria").val())
+        limpiarUrl($(".tituloCategoria").val())
 
-	);
+    );
 
 })
 
@@ -157,52 +157,52 @@ $(".tituloCategoria").change(function(){
 	SUBIENDO LA FOTO DE PORTADA
 =============================================*/
 
-$(".fotoPortada").change(function(){
+$(".fotoPortada").change(function() {
 
-	var imagen = this.files[0];
+    var imagen = this.files[0];
 
-	/*=======================================================
+    /*=======================================================
   		VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
   	========================================================*/
 
-  	if(imagen["type"] != "image/jpeg" && imagen["type"] != "image/png"){
+    if (imagen["type"] != "image/jpeg" && imagen["type"] != "image/png") {
 
-		$(".fotoPortada").val("");
+        $(".fotoPortada").val("");
 
-		swal({
-	      title: "Error al subir la imagen",
-	      text: "¡La imagen debe estar en formato JPG o PNG!",
-	      type: "error",
-	      confirmButtonText: "¡Cerrar!"
-	    });
+        swal({
+            title: "Error al subir la imagen",
+            text: "¡La imagen debe estar en formato JPG o PNG!",
+            type: "error",
+            confirmButtonText: "¡Cerrar!"
+        });
 
-		return;
+        return;
 
-  	}else if(imagen["size"] > 2000000){
+    } else if (imagen["size"] > 2000000) {
 
-  		$(".fotoPortada").val("");
+        $(".fotoPortada").val("");
 
-		swal({
-	      title: "Error al subir la imagen",
-	      text: "¡La imagen no debe pesar más de 2MB!",
-	      type: "error",
-	      confirmButtonText: "¡Cerrar!"
-	    });
+        swal({
+            title: "Error al subir la imagen",
+            text: "¡La imagen no debe pesar más de 2MB!",
+            type: "error",
+            confirmButtonText: "¡Cerrar!"
+        });
 
-		return;
+        return;
 
-  	}else{
+    } else {
 
-  		var datosImagen = new FileReader;
-  		datosImagen.readAsDataURL(imagen);
+        var datosImagen = new FileReader;
+        datosImagen.readAsDataURL(imagen);
 
-  		$(datosImagen).on("load", function(event){
-		
-  			var rutaImagen = event.target.result;
-  			$(".previsualizarPortada").attr("src", rutaImagen);
+        $(datosImagen).on("load", function(event) {
 
-		})
-  	}
+            var rutaImagen = event.target.result;
+            $(".previsualizarPortada").attr("src", rutaImagen);
+
+        })
+    }
 
 })
 
@@ -210,27 +210,27 @@ $(".fotoPortada").change(function(){
 	ACTIVAR OFERTA
 =============================================*/
 
-function activarOferta(evento){
+function activarOferta(evento) {
 
-	if(evento == "oferta"){
+    if (evento == "oferta") {
 
-		$(".datosOferta").show();
-		$(".valorOferta").prop("required",true);
-		$(".valorOferta").val("");
+        $(".datosOferta").show();
+        $(".valorOferta").prop("required", true);
+        $(".valorOferta").val("");
 
-	}else{
+    } else {
 
-		$(".datosOferta").hide();
-		$(".valorOferta").prop("required",false);
-		$(".valorOferta").val("");
+        $(".datosOferta").hide();
+        $(".valorOferta").prop("required", false);
+        $(".valorOferta").val("");
 
-	}
+    }
 
 }
 
-$(".selActivarOferta").change(function(){
+$(".selActivarOferta").change(function() {
 
-	activarOferta($(this).val());
+    activarOferta($(this).val());
 
 })
 
@@ -238,23 +238,23 @@ $(".selActivarOferta").change(function(){
 	VALOR OFERTA
 =============================================*/
 
-$(".valorOferta").change(function(){
+$(".valorOferta").change(function() {
 
-	if($(this).attr("id") == "idPrecioOferta"){
+    if ($(this).attr("id") == "idPrecioOferta") {
 
-		$("#idPrecioOferta").prop("readonly",true);
-		$("#idDescuentoOferta").prop("readonly",false);
-		$("#idDescuentoOferta").val(0);
+        $("#idPrecioOferta").prop("readonly", true);
+        $("#idDescuentoOferta").prop("readonly", false);
+        $("#idDescuentoOferta").val(0);
 
-	}
+    }
 
-	if($(this).attr("id") == "idDescuentoOferta"){
+    if ($(this).attr("id") == "idDescuentoOferta") {
 
-		$("#idDescuentoOferta").prop("readonly",true);
-		$("#idPrecioOferta").prop("readonly",false);
-		$("#idPrecioOferta").val(0);
+        $("#idDescuentoOferta").prop("readonly", true);
+        $("#idPrecioOferta").prop("readonly", false);
+        $("#idPrecioOferta").val(0);
 
-	}
+    }
 
 })
 
@@ -262,52 +262,52 @@ $(".valorOferta").change(function(){
 	SUBIENDO LA FOTO DE PORTADA
 =============================================*/
 
-$(".fotoOferta").change(function(){
+$(".fotoOferta").change(function() {
 
-	var imagen = this.files[0];
+    var imagen = this.files[0];
 
-	/*=====================================================
+    /*=====================================================
   		VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
   	======================================================*/
 
-  	if(imagen["type"] != "image/jpeg" && imagen["type"] != "image/png"){
+    if (imagen["type"] != "image/jpeg" && imagen["type"] != "image/png") {
 
-		$(".fotoOferta").val("");
+        $(".fotoOferta").val("");
 
-		swal({
-	      title: "Error al subir la imagen",
-	      text: "¡La imagen debe estar en formato JPG o PNG!",
-	      type: "error",
-	      confirmButtonText: "¡Cerrar!"
-	    });
+        swal({
+            title: "Error al subir la imagen",
+            text: "¡La imagen debe estar en formato JPG o PNG!",
+            type: "error",
+            confirmButtonText: "¡Cerrar!"
+        });
 
-		return;
+        return;
 
-  	}else if(imagen["size"] > 2000000){
+    } else if (imagen["size"] > 2000000) {
 
-  		$(".fotoOferta").val("");
+        $(".fotoOferta").val("");
 
-		swal({
-	      title: "Error al subir la imagen",
-	      text: "¡La imagen no debe pesar más de 2MB!",
-	      type: "error",
-	      confirmButtonText: "¡Cerrar!"
-	    });
+        swal({
+            title: "Error al subir la imagen",
+            text: "¡La imagen no debe pesar más de 2MB!",
+            type: "error",
+            confirmButtonText: "¡Cerrar!"
+        });
 
-		return;
+        return;
 
-  	}else{
+    } else {
 
-  		var datosImagen = new FileReader;
-  		datosImagen.readAsDataURL(imagen);
+        var datosImagen = new FileReader;
+        datosImagen.readAsDataURL(imagen);
 
-  		$(datosImagen).on("load", function(event){
-		
-  			var rutaImagen = event.target.result;
-  			$(".previsualizarOferta").attr("src", rutaImagen);
+        $(datosImagen).on("load", function(event) {
 
-		})
-  	}
+            var rutaImagen = event.target.result;
+            $(".previsualizarOferta").attr("src", rutaImagen);
+
+        })
+    }
 
 })
 
@@ -315,228 +315,233 @@ $(".fotoOferta").change(function(){
 	EDITAR CATEGORÍA
 =============================================*/
 
-$(".tablaCategorias tbody").on("click", ".btnEditarCategoria", function(){
+$(".tablaCategorias tbody").on("click", ".btnEditarCategoria", function() {
 
-	var idCategoria = $(this).attr("idCategoria");
-	var datos = new FormData();
-	datos.append("idCategoria", idCategoria);
+    var idCategoria = $(this).attr("idCategoria");
+    var datos = new FormData();
+    datos.append("idCategoria", idCategoria);
 
-	$.ajax({
+    $.ajax({
 
-		url:"ajax/categorias.ajax.php",
-		method: "POST",
-		data: datos,
-		cache: false,
-		contentType: false,
-		processData: false,
-		dataType: "json",
-		success: function(respuesta){
+        url: "ajax/categorias.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta) {
 
-			//console.log("respuesta categoria:", respuesta);
+            //console.log("respuesta categoria:", respuesta);
 
-			$("#modalEditarCategoria .editarIdCategoria").val(respuesta["id"]);
-			$("#modalEditarCategoria .tituloCategoria").val(respuesta["categoria"]);
-			$("#modalEditarCategoria .rutaCategoria").val(respuesta["ruta"]);
+            $("#modalEditarCategoria .editarIdCategoria").val(respuesta["id"]);
+            $("#modalEditarCategoria .tituloCategoria").val(respuesta["categoria"]);
+            $("#modalEditarCategoria .rutaCategoria").val(respuesta["ruta"]);
 
-			/*=============================================
-				EDITAR NOMBRE, CATEGORÍA Y RUTA
-			=============================================*/
+            /*=============================================
+            	EDITAR NOMBRE, CATEGORÍA Y RUTA
+            =============================================*/
 
-			$("#modalEditarCategoria .tituloCategoria").change(function(){
+            $("#modalEditarCategoria .tituloCategoria").change(function() {
 
-				$("#modalEditarCategoria .rutaCategoria").val(limpiarUrl($("#modalEditarCategoria .tituloCategoria").val()));
+                $("#modalEditarCategoria .rutaCategoria").val(limpiarUrl($("#modalEditarCategoria .tituloCategoria").val()));
 
-			})
+            })
 
-			/*=============================================
-				TRAEMOS DATOS DE CABECERA
-			=============================================*/
-					
-			var datosCabecera = new FormData();
-			datosCabecera.append("ruta", respuesta["ruta"]);
+            /*=============================================
+            	TRAEMOS DATOS DE CABECERA
+            =============================================*/
 
-			$.ajax({
+            var datosCabecera = new FormData();
+            datosCabecera.append("ruta", respuesta["ruta"]);
 
-				url:"ajax/cabeceras.ajax.php",
-				method: "POST",
-				data: datosCabecera,
-				cache: false,
-				contentType: false,
-				processData: false,
-				dataType: "json",
-				success: function(respuesta){
+            $.ajax({
 
-					//console.log("respuesta cabeceras:", respuesta);
+                url: "ajax/cabeceras.ajax.php",
+                method: "POST",
+                data: datosCabecera,
+                cache: false,
+                contentType: false,
+                processData: false,
+                dataType: "json",
+                success: function(respuesta) {
 
-					$("#modalEditarCategoria .editarIdCabecera").val(respuesta["id"]);
-					
-					/*=============================================
-						CARGAMOS LA DESCRIPCION
-					=============================================*/
+                    //console.log("respuesta cabeceras:", respuesta);
 
-					$("#modalEditarCategoria .descripcionCategoria").val(respuesta["descripcion"]);
+                    $("#modalEditarCategoria .editarIdCabecera").val(respuesta["id"]);
 
-					/*=============================================
-						CARGAMOS LAS PALABRAS CLAVES
-					=============================================*/
+                    /*=============================================
+                    	CARGAMOS LA DESCRIPCION
+                    =============================================*/
 
-					if(respuesta["palabrasClaves"] != null){
+                    $("#modalEditarCategoria .descripcionCategoria").val(respuesta["descripcion"]);
 
-						$(".editarPalabrasClaves").html(
+                    /*=============================================
+                    	CARGAMOS LAS PALABRAS CLAVES
+                    =============================================*/
 
-							'<div class="input-group">'+
-                
-			                	'<span class="input-group-addon"><i class="fa fa-key"></i></span>'+
+                    if (respuesta["palabrasClaves"] != null) {
 
-			                	'<input type="text" class="form-control input-lg pClavesCategoria tagsInput" data-role="tagsinput" value="'+respuesta["palabrasClaves"]+'" name="pClavesCategoria" required>'+
+                        $(".editarPalabrasClaves").html(
 
-			              	'</div>'
+                            '<div class="input-group">' +
 
-						);
+                            '<span class="input-group-addon"><i class="fa fa-key"></i></span>' +
 
-						$("#modalEditarCategoria .pClavesCategoria").tagsinput('items');
+                            '<input type="text" class="form-control input-lg pClavesCategoria tagsInput" data-role="tagsinput" value="' + respuesta["palabrasClaves"] + '" name="pClavesCategoria" required>' +
 
-						$(".bootstrap-tagsinput").css({"padding":"11px",
-							   						   "width":"100%",
- 							   						   "border-radius":"1px"})
+                            '</div>'
 
-					}else{
+                        );
 
-						$(".editarPalabrasClaves").html(
+                        $("#modalEditarCategoria .pClavesCategoria").tagsinput('items');
 
-							'<div class="input-group">'+
-                
-			                	'<span class="input-group-addon"><i class="fa fa-key"></i></span>'+
+                        $(".bootstrap-tagsinput").css({
+                            "padding": "11px",
+                            "width": "100%",
+                            "border-radius": "1px"
+                        })
 
-			                	'<input type="text" class="form-control input-lg pClavesCategoria tagsInput" data-role="tagsinput" value="" placeholder="Ingresar palabras claves" name="pClavesCategoria" required>'+
+                    } else {
 
-			              	'</div>'
+                        $(".editarPalabrasClaves").html(
 
-						);
+                            '<div class="input-group">' +
 
-						$("#modalEditarCategoria .pClavesCategoria").tagsinput('items');
+                            '<span class="input-group-addon"><i class="fa fa-key"></i></span>' +
 
-						$(".bootstrap-tagsinput").css({"padding":"11px",
-							   						   "width":"100%",
- 							   						   "border-radius":"1px"})
+                            '<input type="text" class="form-control input-lg pClavesCategoria tagsInput" data-role="tagsinput" value="" placeholder="Ingresar palabras claves" name="pClavesCategoria" required>' +
 
+                            '</div>'
 
-					}
+                        );
 
-					/*=============================================
-						CARGAMOS LA IMAGEN DE PORTADA
-					=============================================*/
+                        $("#modalEditarCategoria .pClavesCategoria").tagsinput('items');
 
-					$("#modalEditarCategoria .previsualizarPortada").attr("src", respuesta["portada"]);
-					$("#modalEditarCategoria .antiguaFotoPortada").val(respuesta["portada"]);
+                        $(".bootstrap-tagsinput").css({
+                            "padding": "11px",
+                            "width": "100%",
+                            "border-radius": "1px"
+                        })
 
-				}
 
-			})
+                    }
 
-			/*=============================================
-				PREGUNTAMOS SI EXITE OFERTA
-			=============================================*/
+                    /*=============================================
+                    	CARGAMOS LA IMAGEN DE PORTADA
+                    =============================================*/
 
-			if(respuesta["oferta"] != 0){
+                    $("#modalEditarCategoria .previsualizarPortada").attr("src", respuesta["portada"]);
+                    $("#modalEditarCategoria .antiguaFotoPortada").val(respuesta["portada"]);
 
-				$("#modalEditarCategoria .selActivarOferta").val("oferta");
-				$("#modalEditarCategoria .datosOferta").show();
-				$("#modalEditarCategoria .valorOferta").prop("required",true);
-				$("#modalEditarCategoria #precioOferta").val(respuesta["precioOferta"]);
-				$("#modalEditarCategoria #descuentoOferta").val(respuesta["descuentoOferta"]);
+                }
 
-				if(respuesta["precioOferta"] != 0){
+            })
 
-					$("#modalEditarCategoria #precioOferta").prop("readonly",true);
-					$("#modalEditarCategoria #descuentoOferta").prop("readonly",false);
+            /*=============================================
+            	PREGUNTAMOS SI EXITE OFERTA
+            =============================================*/
 
-				}
+            if (respuesta["oferta"] != 0) {
 
-				if(respuesta["descuentoOferta"] != 0){
+                $("#modalEditarCategoria .selActivarOferta").val("oferta");
+                $("#modalEditarCategoria .datosOferta").show();
+                $("#modalEditarCategoria .valorOferta").prop("required", true);
+                $("#modalEditarCategoria #precioOferta").val(respuesta["precioOferta"]);
+                $("#modalEditarCategoria #descuentoOferta").val(respuesta["descuentoOferta"]);
 
-					$("#modalEditarCategoria #precioOferta").prop("readonly",false);
-					$("#modalEditarCategoria #descuentoOferta").prop("readonly",true);
+                if (respuesta["precioOferta"] != 0) {
 
-				}
+                    $("#modalEditarCategoria #precioOferta").prop("readonly", true);
+                    $("#modalEditarCategoria #descuentoOferta").prop("readonly", false);
 
-				$("#modalEditarCategoria .previsualizarOferta").attr("src", respuesta["imgOferta"]);
-				$("#modalEditarCategoria .antiguaFotoOferta").val(respuesta["imgOferta"]);
-				$("#modalEditarCategoria .finOferta").val(respuesta["finOferta"]);		
+                }
 
-			}else{
+                if (respuesta["descuentoOferta"] != 0) {
 
-				$("#modalEditarCategoria .selActivarOferta").val("");
-				$("#modalEditarCategoria .datosOferta").hide();
-				$("#modalEditarCategoria .valorOferta").prop("required",false);
-				$("#modalEditarCategoria .previsualizarOferta").attr("src", "vistas/img/ofertas/default/default.jpg");
-				$("#modalEditarCategoria .antiguaFotoOferta").val(respuesta["imgOferta"]);
+                    $("#modalEditarCategoria #precioOferta").prop("readonly", false);
+                    $("#modalEditarCategoria #descuentoOferta").prop("readonly", true);
 
-			}
+                }
 
-			/*=============================================
-				CREAR NUEVA OFERTA AL EDITAR
-			=============================================*/
+                $("#modalEditarCategoria .previsualizarOferta").attr("src", respuesta["imgOferta"]);
+                $("#modalEditarCategoria .antiguaFotoOferta").val(respuesta["imgOferta"]);
+                $("#modalEditarCategoria .finOferta").val(respuesta["finOferta"]);
 
-			$("#modalEditarCategoria .selActivarOferta").change(function(){
+            } else {
 
-				activarOferta($(this).val());
+                $("#modalEditarCategoria .selActivarOferta").val("");
+                $("#modalEditarCategoria .datosOferta").hide();
+                $("#modalEditarCategoria .valorOferta").prop("required", false);
+                $("#modalEditarCategoria .previsualizarOferta").attr("src", "vistas/img/ofertas/default/default.jpg");
+                $("#modalEditarCategoria .antiguaFotoOferta").val(respuesta["imgOferta"]);
 
-			})
+            }
 
-			$("#modalEditarCategoria .valorOferta").change(function(){
+            /*=============================================
+            	CREAR NUEVA OFERTA AL EDITAR
+            =============================================*/
 
-				if($(this).attr("id") == "precioOferta"){
+            $("#modalEditarCategoria .selActivarOferta").change(function() {
 
-					$("#modalEditarCategoria #precioOferta").prop("readonly",true);
-					$("#modalEditarCategoria #descuentoOferta").prop("readonly",false);
-					$("#modalEditarCategoria #descuentoOferta").val(0);
+                activarOferta($(this).val());
 
-				}
+            })
 
-				if($(this).attr("id") == "descuentoOferta"){
+            $("#modalEditarCategoria .valorOferta").change(function() {
 
-					$("#modalEditarCategoria #descuentoOferta").prop("readonly",true);
-					$("#modalEditarCategoria #precioOferta").prop("readonly",false);
-					$("#modalEditarCategoria #precioOferta").val(0);
+                if ($(this).attr("id") == "precioOferta") {
 
-				}
+                    $("#modalEditarCategoria #precioOferta").prop("readonly", true);
+                    $("#modalEditarCategoria #descuentoOferta").prop("readonly", false);
+                    $("#modalEditarCategoria #descuentoOferta").val(0);
 
-			})
+                }
 
-		}
+                if ($(this).attr("id") == "descuentoOferta") {
 
-	})
+                    $("#modalEditarCategoria #descuentoOferta").prop("readonly", true);
+                    $("#modalEditarCategoria #precioOferta").prop("readonly", false);
+                    $("#modalEditarCategoria #precioOferta").val(0);
+
+                }
+
+            })
+
+        }
+
+    })
 
 })
 
 /*=============================================
-ELIMINAR CATEGORIA
+	ELIMINAR CATEGORIA
 =============================================*/
-$(".tablaCategorias tbody").on("click", ".btnEliminarCategoria", function(){
 
-	var idCategoria = $(this).attr("idCategoria");
-  	var imgOferta = $(this).attr("imgOferta");
-  	var rutaCabecera = $(this).attr("rutaCabecera");
-  	var imgPortada = $(this).attr("imgPortada");
+$(".tablaCategorias tbody").on("click", ".btnEliminarCategoria", function() {
 
-  	swal({
-    	title: '¿Está seguro de borrar la categoría?',
-    	text: "¡Si no lo está puede cancelar la accíón!",
-    	type: 'warning',
-    	showCancelButton: true,
-    	confirmButtonColor: '#3085d6',
-      	cancelButtonColor: '#d33',
-      	cancelButtonText: 'Cancelar',
-      	confirmButtonText: 'Si, borrar categoría!'
-	 }).then(function(result){
+    var idCategoria = $(this).attr("idCategoria");
+    var imgOferta = $(this).attr("imgOferta");
+    var rutaCabecera = $(this).attr("rutaCabecera");
+    var imgPortada = $(this).attr("imgPortada");
 
-    	if(result.value){
+    swal({
 
-      	window.location = "index.php?ruta=categorias&idCategoria="+idCategoria+"&imgOferta="+imgOferta+"&rutaCabecera="+rutaCabecera+"&imgPortada="+imgPortada;
+        title: '¿Está seguro de borrar la categoría?',
+        text: "¡Si no lo está puede cancelar la accíón!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Si, borrar categoría!'
 
-    	}
+    }).then(function(result) {
 
-  	})
+        if (result.value) {
+            window.location = "index.php?ruta=categorias&idCategoria=" + idCategoria + "&imgOferta=" + imgOferta + "&rutaCabecera=" + rutaCabecera + "&imgPortada=" + imgPortada;
+        }
+
+    })
 
 })

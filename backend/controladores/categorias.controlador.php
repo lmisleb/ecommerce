@@ -80,7 +80,7 @@ class ControladorCategorias{
 					VALIDAR IMAGEN OFERTA
 				=============================================*/
 
-				$rutaOferta = "";
+				$rutaOferta = "vistas/img/ofertas/default/default.jpg";
 
 				if(isset($_FILES["fotoOferta"]["tmp_name"]) && !empty($_FILES["fotoOferta"]["tmp_name"])){
 
@@ -137,7 +137,7 @@ class ControladorCategorias{
 					$datos = array("categoria"=>strtoupper($_POST["tituloCategoria"]),
 								   "ruta"=>$_POST["rutaCategoria"],
 								   "estado"=> 1,
-								   "titulo"=>$_POST["tituloCategoria"],
+								   "titulo"=>strtoupper($_POST["tituloCategoria"]),
 								   "descripcion"=> $_POST["descripcionCategoria"],
 								   "palabrasClaves"=>$_POST["pClavesCategoria"],
 								   "imgPortada"=>$rutaPortada,
@@ -152,17 +152,19 @@ class ControladorCategorias{
 					$datos = array("categoria"=>strtoupper($_POST["tituloCategoria"]),
 								   "ruta"=>$_POST["rutaCategoria"],
 								   "estado"=> 1,
-								   "titulo"=>$_POST["tituloCategoria"],
+								   "titulo"=>strtoupper($_POST["tituloCategoria"]),
 								   "descripcion"=> $_POST["descripcionCategoria"],
 								   "palabrasClaves"=>$_POST["pClavesCategoria"],
 								   "imgPortada"=>$rutaPortada,
 								   "oferta"=>0,
 								   "precioOferta"=>0,
 								   "descuentoOferta"=>0,
-								   "imgOferta"=>"",								   
+								   "imgOferta"=>"vistas/img/ofertas/default/default.jpg",								   
 								   "finOferta"=>"");
 
 				}
+
+				//print_r($datos); return;
 
 				ModeloCabeceras::mdlIngresarCabecera("cabeceras", $datos);
 				$respuesta = ModeloCategorias::mdlIngresarCategoria("categorias", $datos);
@@ -481,9 +483,9 @@ class ControladorCategorias{
 
 			/*=============================================
 				ELIMINAR IMAGEN OFERTA
-			=============================================*/
+			===============================================*/
 
-			if($_GET["imgOferta"] != ""){
+			if($_GET["imgOferta"] != "" && $_GET["imgOferta"] != "vistas/img/ofertas/default/default.jpg"){
 
 				unlink($_GET["imgOferta"]);		
 
@@ -491,19 +493,19 @@ class ControladorCategorias{
 
 			/*=============================================
 				ELIMINAR CABECERA
-			=============================================*/
+			===============================================*/
 
 			if($_GET["imgPortada"] != "" && $_GET["imgPortada"] != "vistas/img/cabeceras/default/default.jpg"){
 
 				unlink($_GET["imgPortada"]);		
 
 			}
-
+			
 			ModeloCabeceras::mdlEliminarCabecera("cabeceras", $_GET["rutaCabecera"]);
 
 			/*=================================================
 				QUITAR LAS CATEGORIAS DE LAS SUBCATEGORIAS
-			=================================================*/
+			===================================================*/
 
 			$traerSubCategorias = ModeloSubCategorias::mdlMostrarSubCategorias("subcategorias",  "id_categoria", $_GET["idCategoria"]);
 
@@ -523,7 +525,7 @@ class ControladorCategorias{
 
 			/*=============================================
 				QUITAR LAS CATEGORIAS DE LOS PRODUCTOS
-			=============================================*/
+			===============================================*/
 
 			$traerProductos = ModeloProductos::mdlMostrarProductos("productos", "id_categoria", $_GET["idCategoria"]);
 
@@ -547,17 +549,16 @@ class ControladorCategorias{
 
 				echo'<script>
 
-					swal({
-
+					swal({						
 						type: "success",
 						title: "La categoría ha sido borrada correctamente",
 						showConfirmButton: true,
 						confirmButtonText: "Cerrar"
 
 					}).then(function(result){
-							if (result.value) {
-								window.location = "categorias";
-							}
+						if (result.value) {
+							window.location = "categorias";
+						}
 					})
 
 				</script>';
