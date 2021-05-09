@@ -2,7 +2,7 @@
 
 class ControladorCategorias{
 
-	/*=============================================
+	/*============================================
 		MOSTRAR CATEGORIAS
 	=============================================*/
 
@@ -14,7 +14,7 @@ class ControladorCategorias{
 
 	}
 
-	/*=============================================
+	/*============================================
 		CREAR CATEGORIAS
 	=============================================*/
 
@@ -24,7 +24,7 @@ class ControladorCategorias{
 
 			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["tituloCategoria"]) && preg_match('/^[,\\.\\a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["descripcionCategoria"]) ){
 
-				/*=============================================
+				/*============================================
 					VALIDAR IMAGEN PORTADA
 				=============================================*/
 
@@ -32,7 +32,7 @@ class ControladorCategorias{
 
 				if(isset($_FILES["fotoPortada"]["tmp_name"]) && !empty($_FILES["fotoPortada"]["tmp_name"])){
 
-					/*=============================================
+					/*============================================
 						DEFINIMOS LAS MEDIDAS
 					=============================================*/
 
@@ -40,13 +40,13 @@ class ControladorCategorias{
 					$nuevoAncho = 1280;
 					$nuevoAlto = 720;
 
-					/*=============================================================================
+					/*============================================================================
 						DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
 					=============================================================================*/	
 
 					if($_FILES["fotoPortada"]["type"] == "image/jpeg"){
 
-						/*=============================================
+						/*============================================
 							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
@@ -60,7 +60,7 @@ class ControladorCategorias{
 
 					if($_FILES["fotoPortada"]["type"] == "image/png"){
 
-						/*=============================================
+						/*============================================
 							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
@@ -76,7 +76,7 @@ class ControladorCategorias{
 
 				}
 
-				/*=============================================
+				/*============================================
 					VALIDAR IMAGEN OFERTA
 				=============================================*/
 
@@ -84,7 +84,7 @@ class ControladorCategorias{
 
 				if(isset($_FILES["fotoOferta"]["tmp_name"]) && !empty($_FILES["fotoOferta"]["tmp_name"])){
 
-					/*=============================================
+					/*============================================
 						DEFINIMOS LAS MEDIDAS
 					=============================================*/
 
@@ -92,13 +92,13 @@ class ControladorCategorias{
 					$nuevoAncho = 640;
 					$nuevoAlto = 430;
 
-					/*=============================================================================
+					/*============================================================================
 						DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
 					=============================================================================*/	
 
 					if($_FILES["fotoOferta"]["type"] == "image/jpeg"){
 
-						/*=============================================
+						/*============================================
 							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
@@ -181,9 +181,11 @@ class ControladorCategorias{
 							confirmButtonText: "Cerrar"
 
 						}).then(function(result){
+							
 							if (result.value) {
 								window.location = "categorias";
 							}
+							
 						})
 
 					</script>';
@@ -497,7 +499,7 @@ class ControladorCategorias{
 
 			if($_GET["imgPortada"] != "" && $_GET["imgPortada"] != "vistas/img/cabeceras/default/default.jpg"){
 
-				unlink($_GET["imgPortada"]);		
+				unlink($_GET["imgPortada"]);
 
 			}
 			

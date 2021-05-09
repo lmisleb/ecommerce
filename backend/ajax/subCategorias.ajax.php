@@ -1,19 +1,16 @@
 <?php
 
-
 require_once "../controladores/subcategorias.controlador.php";
 require_once "../modelos/subcategorias.modelo.php";
-
 require_once "../controladores/categorias.controlador.php";
 require_once "../modelos/categorias.modelo.php";
-
 require_once "../controladores/productos.controlador.php";
 require_once "../modelos/productos.modelo.php";
 
 class AjaxSubCategorias{
 
 	/*=============================================
-  	ACTIVAR SUBCATEGORIA
+  		ACTIVAR SUBCATEGORIA
  	=============================================*/	
 
 	public $activarSubCategoria;
@@ -22,17 +19,13 @@ class AjaxSubCategorias{
 	public function ajaxActivarSubCategoria(){
 
 		$tabla = "subcategorias";
-
 		$item1 = "estado";
 		$valor1 = $this->activarSubCategoria;
-
 		$item2 = "id";
 		$valor2 = $this->activarId;	
 
 		ModeloProductos::mdlActualizarProductos("productos", $item1, $valor1, "id_subcategoria", $valor2);
-
 		$respuesta = ModeloSubCategorias::mdlActualizarSubCategorias($tabla, $item1, $valor1, $item2, $valor2);
-
 		echo $respuesta;
 
 	}

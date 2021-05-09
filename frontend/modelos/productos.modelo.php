@@ -12,7 +12,7 @@ class ModeloProductos{
 
 		if($item != null){
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item AND estado = 1");
 			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
 			$stmt -> execute();
 			return $stmt -> fetch();
@@ -38,7 +38,7 @@ class ModeloProductos{
 
 		if($item != null){
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item AND estado = 1");
 			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR); // enlazar parámetros
 			$stmt -> execute();
 			return $stmt -> fetchAll();

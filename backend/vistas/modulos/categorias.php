@@ -415,7 +415,7 @@
 
                         <div class="form-group">
                         
-                            <select name="selActivarOferta" class="form-control input-lg selActivarOferta">
+                            <select class="form-control input-lg selActivarOferta" name="selActivarOferta">
                                 
                                 <option value="">No tiene oferta</option>
                                 <option value="oferta">Activar oferta</option>

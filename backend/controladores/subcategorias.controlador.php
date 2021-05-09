@@ -3,21 +3,19 @@
 class ControladorSubCategorias{
 
 	/*=============================================
-	MOSTRAR SUBCATEGORIAS
+		MOSTRAR SUBCATEGORIAS
 	=============================================*/
 
 	static public function ctrMostrarSubCategorias($item, $valor){
 
 		$tabla = "subcategorias";
-
 		$respuesta = ModeloSubCategorias::mdlMostrarSubCategorias($tabla, $item, $valor);
-
 		return $respuesta;
 	
 	}
 
 	/*=============================================
-	CREAR SUBCATEGORIA
+		CREAR SUBCATEGORIA
 	=============================================*/
 
 	static public function ctrCrearSubCategoria(){
@@ -27,7 +25,7 @@ class ControladorSubCategorias{
 			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["tituloSubCategoria"]) && preg_match('/^[,\\.\\a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["descripcionSubCategoria"])){
 
 				/*=============================================
-				VALIDAR IMAGEN PORTADA
+					VALIDAR IMAGEN PORTADA
 				=============================================*/
 
 				$rutaPortada = "vistas/img/cabeceras/default/default.jpg";
@@ -35,7 +33,7 @@ class ControladorSubCategorias{
 				if(isset($_FILES["fotoPortada"]["tmp_name"]) && !empty($_FILES["fotoPortada"]["tmp_name"])){
 
 					/*=============================================
-					DEFINIMOS LAS MEDIDAS
+						DEFINIMOS LAS MEDIDAS
 					=============================================*/
 
 					list($ancho, $alto) = getimagesize($_FILES["fotoPortada"]["tmp_name"]);	
@@ -44,24 +42,20 @@ class ControladorSubCategorias{
 					$nuevoAlto = 720;
 
 
-					/*=============================================
-					DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
-					=============================================*/
+					/*============================================================================
+						DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
+					==============================================================================*/
 
 					if($_FILES["fotoPortada"]["type"] == "image/jpeg"){
 
 						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
 						$rutaPortada = "vistas/img/cabeceras/".$_POST["rutaSubCategoria"].".jpg";
-
-						$origen = imagecreatefromjpeg($_FILES["fotoPortada"]["tmp_name"]);						
-
+						$origen = imagecreatefromjpeg($_FILES["fotoPortada"]["tmp_name"]);
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
 						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
 						imagejpeg($destino, $rutaPortada);
 
 					}
@@ -69,21 +63,15 @@ class ControladorSubCategorias{
 					if($_FILES["fotoPortada"]["type"] == "image/png"){
 
 						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
 						$rutaPortada = "vistas/img/cabeceras/".$_POST["rutaSubCategoria"].".png";
-
-						$origen = imagecreatefrompng($_FILES["fotoPortada"]["tmp_name"]);						
-
+						$origen = imagecreatefrompng($_FILES["fotoPortada"]["tmp_name"]);
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
 						imagealphablending($destino, FALSE);
-    			
     					imagesavealpha($destino, TRUE);
-
 						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
 						imagepng($destino, $rutaPortada);
 
 					}
@@ -91,42 +79,36 @@ class ControladorSubCategorias{
 				}
 
 				/*=============================================
-				VALIDAR IMAGEN OFERTA
+					VALIDAR IMAGEN OFERTA
 				=============================================*/
 
-				$rutaOferta = "";
+				$rutaOferta = "vistas/img/ofertas/default/default.jpg";
 
 				if(isset($_FILES["fotoOferta"]["tmp_name"]) && !empty($_FILES["fotoOferta"]["tmp_name"])){
 
 					/*=============================================
-					DEFINIMOS LAS MEDIDAS
+						DEFINIMOS LAS MEDIDAS
 					=============================================*/
 
 					list($ancho, $alto) = getimagesize($_FILES["fotoOferta"]["tmp_name"]);
-
 					$nuevoAncho = 640;
 					$nuevoAlto = 430;
 
-
-					/*=============================================
-					DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
-					=============================================*/
+					/*=============================================================================
+						DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
+					===============================================================================*/
 
 					if($_FILES["fotoOferta"]["type"] == "image/jpeg"){
 
 						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
 						$aleatorio = mt_rand(100,999);
-
 						$rutaOferta = "vistas/img/ofertas/".$_POST["rutaSubCategoria"].".jpg";
-
 						$origen = imagecreatefromjpeg($_FILES["fotoOferta"]["tmp_name"]);						
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
 						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
 						imagejpeg($destino, $rutaOferta);
 
 					}
@@ -134,22 +116,16 @@ class ControladorSubCategorias{
 					if($_FILES["fotoOferta"]["type"] == "image/png"){
 
 						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
 						$aleatorio = mt_rand(100,999);
-
 						$rutaOferta = "vistas/img/ofertas/".$_POST["rutaSubCategoria"].".png";
-
 						$origen = imagecreatefrompng($_FILES["fotoOferta"]["tmp_name"]);						
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
 						imagealphablending($destino, FALSE);
-    			
     					imagesavealpha($destino, TRUE);
-
 						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
 						imagepng($destino, $rutaOferta);
 
 					}
@@ -189,31 +165,34 @@ class ControladorSubCategorias{
 								   "oferta"=>0,
 								   "precioOferta"=>0,
 								   "descuentoOferta"=>0,
-								   "imgOferta"=>"",								   
+								   "imgOferta"=>"vistas/img/ofertas/default/default.jpg",								   
 								   "finOferta"=>"");
 
 				}
+
+				//print_r($datos); return;
 	
 				ModeloCabeceras::mdlIngresarCabecera("cabeceras", $datos);
-
 				$respuesta = ModeloSubCategorias::mdlIngresarSubCategoria("subcategorias", $datos);
 
 				if($respuesta == "ok"){
 
 					echo'<script>
 
-					swal({
-						  type: "success",
-						  title: "La subcategoría ha sido guardada correctamente",
-						  showConfirmButton: true,
-						  confirmButtonText: "Cerrar"
-						  }).then(function(result){
-									if (result.value) {
+						swal({
 
-									window.location = "subcategorias";
+							type: "success",
+							title: "La subcategoría ha sido guardada correctamente",
+							showConfirmButton: true,
+							confirmButtonText: "Cerrar"
 
-									}
-								})
+						}).then(function(result){
+
+							if (result.value) {
+								window.location = "subcategorias";
+							}
+							
+						})
 
 					</script>';
 
@@ -224,17 +203,19 @@ class ControladorSubCategorias{
 
 				echo'<script>
 
-					swal({
-						  type: "error",
-						  title: "¡La subcategoría no puede ir vacía o llevar caracteres especiales!",
-						  showConfirmButton: true,
-						  confirmButtonText: "Cerrar"
-						  }).then(function(result){
+						swal({
+
+							type: "error",
+							title: "¡La subcategoría no puede ir vacía o llevar caracteres especiales!",
+							showConfirmButton: true,
+							confirmButtonText: "Cerrar"
+
+						}).then(function(result){
+
 							if (result.value) {
-
-							window.location = "subcategorias";
-
+								window.location = "subcategorias";
 							}
+
 						})
 
 			  	</script>';
@@ -246,7 +227,7 @@ class ControladorSubCategorias{
 	}
 
 	/*=============================================
-	EDITAR SUBCATEGORIA
+		EDITAR SUBCATEGORIA
 	=============================================*/
 
 	static public function ctreditarSubCategoria(){
@@ -256,7 +237,7 @@ class ControladorSubCategorias{
 			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarTituloSubCategoria"])&& preg_match('/^[,\\.\\a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["descripcionSubCategoria"]) ){
 
 				/*=============================================
-				VALIDAR IMAGEN PORTADA
+					VALIDAR IMAGEN PORTADA
 				=============================================*/
 
 				$rutaPortada = $_POST["antiguaFotoPortada"];
@@ -264,41 +245,34 @@ class ControladorSubCategorias{
 				if(isset($_FILES["fotoPortada"]["tmp_name"]) && !empty($_FILES["fotoPortada"]["tmp_name"])){
 
 					/*=============================================
-					BORRAMOS ANTIGUA FOTO PORTADA
+						BORRAMOS ANTIGUA FOTO PORTADA
 					=============================================*/
 
 					unlink($_POST["antiguaFotoPortada"]);
 
 					/*=============================================
-					DEFINIMOS LAS MEDIDAS
+						DEFINIMOS LAS MEDIDAS
 					=============================================*/
 
-					list($ancho, $alto) = getimagesize($_FILES["fotoPortada"]["tmp_name"]);	
-
+					list($ancho, $alto) = getimagesize($_FILES["fotoPortada"]["tmp_name"]);
 					$nuevoAncho = 1280;
 					$nuevoAlto = 720;
 
-
-					/*=============================================
-					DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
-					=============================================*/
+					/*============================================================================
+						DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
+					=============================================================================*/
 
 					if($_FILES["fotoPortada"]["type"] == "image/jpeg"){
 
 						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
 						$aleatorio = mt_rand(100,999);
-
 						$rutaPortada = "vistas/img/cabeceras/".$_POST["rutaSubCategoria"].".jpg";
-
-						$origen = imagecreatefromjpeg($_FILES["fotoPortada"]["tmp_name"]);						
-
+						$origen = imagecreatefromjpeg($_FILES["fotoPortada"]["tmp_name"]);
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
 						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
 						imagejpeg($destino, $rutaPortada);
 
 					}
@@ -306,23 +280,16 @@ class ControladorSubCategorias{
 					if($_FILES["fotoPortada"]["type"] == "image/png"){
 
 						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
 						$aleatorio = mt_rand(100,999);
-
 						$rutaPortada = "vistas/img/cabeceras/".$_POST["rutaSubCategoria"].".png";
-
-						$origen = imagecreatefrompng($_FILES["fotoPortada"]["tmp_name"]);						
-
+						$origen = imagecreatefrompng($_FILES["fotoPortada"]["tmp_name"]);
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
 						imagealphablending($destino, FALSE);
-    			
     					imagesavealpha($destino, TRUE);
-
 						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
 						imagepng($destino, $rutaPortada);
 
 					}
@@ -330,7 +297,7 @@ class ControladorSubCategorias{
 				}
 
 				/*=============================================
-				VALIDAR IMAGEN OFERTA
+					VALIDAR IMAGEN OFERTA
 				=============================================*/
 
 				$rutaOferta = $_POST["antiguaFotoOferta"];
@@ -338,40 +305,34 @@ class ControladorSubCategorias{
 				if(isset($_FILES["fotoOferta"]["tmp_name"]) && !empty($_FILES["fotoOferta"]["tmp_name"])){
 
 					/*=============================================
-					BORRAMOS ANTIGUA FOTO OFERTA
+						BORRAMOS ANTIGUA FOTO OFERTA
 					=============================================*/
 
 					unlink($_POST["antiguaFotoOferta"]);
 
 					/*=============================================
-					DEFINIMOS LAS MEDIDAS
+						DEFINIMOS LAS MEDIDAS
 					=============================================*/
 
 					list($ancho, $alto) = getimagesize($_FILES["fotoOferta"]["tmp_name"]);
-
 					$nuevoAncho = 640;
 					$nuevoAlto = 430;
 
-
-					/*=============================================
-					DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
-					=============================================*/
+					/*============================================================================
+						DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
+					=============================================================================*/
 
 					if($_FILES["fotoOferta"]["type"] == "image/jpeg"){
 
 						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
 						$aleatorio = mt_rand(100,999);
-
 						$rutaOferta = "vistas/img/ofertas/".$_POST["rutaSubCategoria"].".jpg";
-
 						$origen = imagecreatefromjpeg($_FILES["fotoOferta"]["tmp_name"]);						
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
 						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
 						imagejpeg($destino, $rutaOferta);
 
 					}
@@ -379,22 +340,16 @@ class ControladorSubCategorias{
 					if($_FILES["fotoOferta"]["type"] == "image/png"){
 
 						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
 						$aleatorio = mt_rand(100,999);
-
 						$rutaOferta = "vistas/img/ofertas/".$_POST["rutaSubCategoria"].".png";
-
 						$origen = imagecreatefrompng($_FILES["fotoOferta"]["tmp_name"]);						
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
 						imagealphablending($destino, FALSE);
-    			
     					imagesavealpha($destino, TRUE);
-
 						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
 						imagepng($destino, $rutaOferta);
 
 					}
@@ -402,7 +357,7 @@ class ControladorSubCategorias{
 				}			
 
 				/*=============================================
-				PREGUNTAMOS SI VIENE OFERTE EN CAMINO
+					PREGUNTAMOS SI VIENE OFERTE EN CAMINO
 				=============================================*/
 
 				if($_POST["selActivarOferta"] == "oferta"){
@@ -425,6 +380,12 @@ class ControladorSubCategorias{
 
 				}else{
 
+					if($_POST["antiguaFotoOferta"] != "vistas/img/ofertas/default/default.jpg"){
+
+						unlink($_POST["antiguaFotoOferta"]);
+
+					}
+
 					$datos = array("id"=>$_POST["editarIdSubCategoria"],
 								   "subcategoria"=>$_POST["editarTituloSubCategoria"],
 								   "idCategoria"=>$_POST["seleccionarCategoria"],
@@ -438,16 +399,12 @@ class ControladorSubCategorias{
 								   "oferta"=>0,
 								   "precioOferta"=>0,
 								   "descuentoOferta"=>0,
-								   "imgOferta"=>"",								   
-								   "finOferta"=>"");	
-
-					if($_POST["antiguaFotoOferta"] != ""){
-
-						unlink($_POST["antiguaFotoOferta"]);
-
-					}
+								   "imgOferta"=>"vistas/img/ofertas/default/default.jpg",								   
+								   "finOferta"=>"");
 
 				}
+
+				//print_r($datos); return;
 
 				$traerProductos = ModeloProductos::mdlMostrarProductos("productos", "id_subcategoria", $datos["id"]);
 
@@ -476,45 +433,45 @@ class ControladorSubCategorias{
 				}
 			
 				ModeloCabeceras::mdlEditarCabecera("cabeceras", $datos);
-
 				$respuesta = ModeloSubCategorias::mdleditarSubCategoria("subcategorias", $datos);
 
 				if($respuesta == "ok"){
 
 					echo'<script>
 
-					swal({
-						  type: "success",
-						  title: "La subcategoría ha sido editada correctamente",
-						  showConfirmButton: true,
-						  confirmButtonText: "Cerrar"
-						  }).then(function(result){
-									if (result.value) {
+						swal({
 
-									window.location = "subcategorias";
+							type: "success",
+							title: "La subcategoría ha sido editada correctamente",
+							showConfirmButton: true,
+							confirmButtonText: "Cerrar"
 
-									}
-								})
+						}).then(function(result){
+
+							if (result.value) {
+								window.location = "subcategorias";
+							}
+							
+						})
 
 					</script>';
 
 				}
 
-
 			}else{
 
 				echo'<script>
 
-					swal({
-						  type: "error",
-						  title: "¡La subcategoría no puede ir vacía o llevar caracteres especiales!",
-						  showConfirmButton: true,
-						  confirmButtonText: "Cerrar"
-						  }).then(function(result){
+						swal({
+
+							type: "error",
+							title: "¡La subcategoría no puede ir vacía o llevar caracteres especiales!",
+							showConfirmButton: true,
+							confirmButtonText: "Cerrar"
+
+						}).then(function(result){
 							if (result.value) {
-
-							window.location = "subcategorias";
-
+								window.location = "subcategorias";
 							}
 						})
 
@@ -527,7 +484,7 @@ class ControladorSubCategorias{
 	}
 
 	/*=============================================
-	ELIMINAR SUBCATEGORIA
+		ELIMINAR SUBCATEGORIA
 	=============================================*/
 
 	static public function ctrEliminarSubCategoria(){
@@ -537,10 +494,10 @@ class ControladorSubCategorias{
 			$datos = $_GET["idSubCategoria"];
 
 			/*=============================================
-			ELIMINAR IMAGEN OFERTA
+				ELIMINAR IMAGEN OFERTA
 			=============================================*/
 
-			if($_GET["imgOferta"] != ""){
+			if($_GET["imgOferta"] != "" && $_GET["imgOferta"] != "vistas/img/ofertas/default/default.jpg"){
 
 				unlink($_GET["imgOferta"]);		
 
@@ -558,9 +515,9 @@ class ControladorSubCategorias{
 
 			ModeloCabeceras::mdlEliminarCabecera("cabeceras", $_GET["rutaCabecera"]);
 
-			/*=============================================
-			QUITAR LAS SUBATEGORIAS DE LOS PRODUCTOS
-			=============================================*/
+			/*==============================================
+				QUITAR LAS SUBATEGORIAS DE LOS PRODUCTOS
+			================================================*/
 
 			$traerProductos = ModeloProductos::mdlMostrarProductos("productos", "id_subcategoria", $_GET["idSubCategoria"]);
 
@@ -570,7 +527,6 @@ class ControladorSubCategorias{
 				$valor1 = 0;
 				$item2 = "id";
 				$valor2 = $value["id"];
-
 				ModeloProductos::mdlActualizarProductos("productos", $item1, $valor1, $item2, $valor2);	
 				
 			}
@@ -581,18 +537,18 @@ class ControladorSubCategorias{
 
 				echo'<script>
 
-				swal({
-					  type: "success",
-					  title: "La subcategoría ha sido borrada correctamente",
-					  showConfirmButton: true,
-					  confirmButtonText: "Cerrar"
-					  }).then(function(result){
-								if (result.value) {
+					swal({
 
-								window.location = "subcategorias";
+						type: "success",
+						title: "La subcategoría ha sido borrada correctamente",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
 
-								}
-							})
+					}).then(function(result){
+						if (result.value) {
+							window.location = "subcategorias";
+						}
+					})
 
 				</script>';
 

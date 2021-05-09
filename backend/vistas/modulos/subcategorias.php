@@ -82,7 +82,7 @@
 
                 <div class="modal-header" style="background:#3c8dbc; color:white">
 
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" data-dismiss="modal">&times; </button>
 
                     <h4 class="modal-title">Agregar subcategoría</h4>
 
@@ -106,7 +106,7 @@
                             
                                 <span class="input-group-addon"><i class="fa fa-th"></i></span> 
 
-                                <input type="text" class="form-control input-lg validarSubCategoria tituloSubCategoria" name="tituloSubCategoria" placeholder="Ingresar subcategoría" required>
+                                <input type="text" class="form-control input-lg text-capitalize validarSubCategoria tituloSubCategoria" name="tituloSubCategoria" placeholder="Ingresar subcategoría" required>
 
                             </div>
 
@@ -142,16 +142,18 @@
                                 
                                     <option value="">Selecionar categoría</option>
 
-                                    <?php
+                                        <?php
 
-                                        $item = null;
-                                        $valor = null;
-                                        $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
-                                        foreach ($categorias as $key => $value) {
-                                            echo '<option value="'.$value["id"].'">'.$value["categoria"].'</option>';
-                                        }
+                                            $item = null;
+                                            $valor = null;
+                                            $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
+                                            foreach ($categorias as $key => $value) {
 
-                                    ?>
+                                                echo '<option value="'.$value["id"].'">'.$value["categoria"].'</option>';
+
+                                            }
+
+                                        ?>
                 
                                 </select>
 
@@ -198,8 +200,11 @@
                         <div class="form-group">
                         
                             <div class="panel">SUBIR FOTO PORTADA</div>
+
                             <input type="file" class="fotoPortada" name="fotoPortada">
+
                             <p class="help-block">Tamaño recomendado 1280px * 720px <br> Peso máximo de la foto 2MB</p>
+
                             <img src="vistas/img/cabeceras/default/default.jpg" class="img-thumbnail previsualizarPortada" width="100%">
 
                         </div>
@@ -361,7 +366,8 @@
                             <div class="input-group">
                             
                                 <span class="input-group-addon"><i class="fa fa-th"></i></span> 
-                                <input type="text" class="form-control input-lg validarSubCategoria tituloSubCategoria"  name="editarTituloSubCategoria" required>
+                                <input type="text" class="form-control input-lg text-capitalize validarSubCategoria tituloSubCategoria"  name="editarTituloSubCategoria" required>
+
                                 <input type="hidden" class="editarIdSubCategoria" name="editarIdSubCategoria">
                                 <input type="hidden" class="editarIdCabecera" name="editarIdCabecera">
 
@@ -405,7 +411,9 @@
                                             $valor = null;
                                             $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
                                             foreach ($categorias as $key => $value) {
+
                                                 echo '<option value="'.$value["id"].'">'.$value["categoria"].'</option>';
+
                                             }
 
                                         ?>
@@ -446,7 +454,9 @@
                         
                             <div class="panel">SUBIR FOTO PORTADA</div>
                             <input type="file" class="fotoPortada" name="fotoPortada">
+
                             <input type="hidden" class="antiguaFotoPortada" name="antiguaFotoPortada">
+
                             <p class="help-block">Tamaño recomendado 1280px * 720px <br> Peso máximo de la foto 2MB</p>
                             <img src="vistas/img/cabeceras/default/default.jpg" class="img-thumbnail previsualizarPortada" width="100%">
 
@@ -479,7 +489,8 @@
 
                                     <div class="input-group">
                                     
-                                        <span class="input-group-addon"><i class="ion ion-social-usd"></i></span> 
+                                        <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
+
                                         <input class="form-control input-lg valorOferta" type="number" value="0" id="precioOferta" name="precioOferta" min="0" placeholder="Precio">
 
                                     </div>
@@ -528,7 +539,9 @@
                                 
                                 <div class="panel">SUBIR FOTO OFERTA</div>
                                 <input type="file" class="fotoOferta" name="fotoOferta">
+
                                 <input type="hidden" class="antiguaFotoOferta" name="antiguaFotoOferta">
+
                                 <p class="help-block">Tamaño recomendado 640px * 430px <br> Peso máximo de la foto 2MB</p>
                                 <img src="vistas/img/ofertas/default/default.jpg" class="img-thumbnail previsualizarOferta" width="100px">
 
@@ -569,8 +582,8 @@
 
 <?php
 
-  $eliminarCategoria = new ControladorSubCategorias();
-  $eliminarCategoria -> ctrEliminarSubCategoria();
+    $eliminarCategoria = new ControladorSubCategorias();
+    $eliminarCategoria -> ctrEliminarSubCategoria();
 
 ?>
 

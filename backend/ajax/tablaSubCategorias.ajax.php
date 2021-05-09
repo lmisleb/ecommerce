@@ -2,164 +2,195 @@
 
 require_once "../controladores/subcategorias.controlador.php";
 require_once "../modelos/subcategorias.modelo.php";
-
 require_once "../controladores/categorias.controlador.php";
 require_once "../modelos/categorias.modelo.php";
-
 require_once "../controladores/cabeceras.controlador.php";
 require_once "../modelos/cabeceras.modelo.php";
 
 class TablaSubCategorias{
 
-  /*=============================================
-  MOSTRAR LA TABLA DE SUBCATEGORÍAS
-  =============================================*/ 
+	/*=============================================
+  		MOSTRAR LA TABLA DE SUBCATEGORÍAS
+  	=============================================*/ 
 
-  public function mostrarTablaSubCategoria(){	
+	public function mostrarTablaSubCategoria(){	
 
-  	$item = null;
-  	$valor = null;
+		$categoria = null;
+		$imgPortada = null;
+		$item = null;
+		$valor = null;
+		$subcategorias = ControladorSubCategorias::ctrMostrarSubCategorias($item, $valor);
+		//echo json_encode($subcategorias);
+		//return;
 
-  	$subcategorias = ControladorSubCategorias::ctrMostrarSubCategorias($item, $valor);
+		$datosJson = '{
 
-  	$datosJson = '{
+			"data": [ ';
 
-      "data": [ ';
+				for($i = 0; $i < count($subcategorias); $i++){
 
-		for($i = 0; $i < count($subcategorias); $i++){
+					/*=============================================
+						TRAER LAS CATEGORÍAS
+					=============================================*/
 
-			/*=============================================
-  			TRAER LAS CATEGORÍAS
-  			=============================================*/
+					$item = "id";
+					$valor = $subcategorias[$i]["id_categoria"];
+					$categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
 
-			$item = "id";
-			$valor = $subcategorias[$i]["id_categoria"];
+					if(is_array($categoria) && $categoria == false){
 
-			$categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
+						$categoria = "SIN CATEGORÍA";
 
-			if($categorias["categoria"] == ""){
+					}else{
 
-				$categoria = "SIN CATEGORÍA";
-			
-			}else{
+						$categoria = $categorias["categoria"];
+						//$categoria = "CON CATEGORÍA";
 
-				$categoria = $categorias["categoria"];
-			}
+					}
 
-			/*=============================================
-  			REVISAR ESTADO
-  			=============================================*/
+					// if($categorias["categoria"] == ""){
 
-  			if( $subcategorias[$i]["estado"] == 0){
+					// 	$categoria = "SIN CATEGORÍA";
+					
+					// }else{
 
-  				$colorEstado = "btn-danger";
-  				$textoEstado = "Desactivado";
-  				$estadoSubCategoria = 1;
+					// 	$categoria = $categorias["categoria"];
 
-  			}else{
+					// }
 
-  				$colorEstado = "btn-success";
-  				$textoEstado = "Activado";
-  				$estadoSubCategoria = 0;
+					/*=============================================
+						REVISAR ESTADO
+					=============================================*/
 
-  			}
+					if( $subcategorias[$i]["estado"] == 0){
 
-  			$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idSubCategoria='". $subcategorias[$i]["id"]."' estadoSubCategoria='".$estadoSubCategoria."'>".$textoEstado."</button>";
+						$colorEstado = "btn-danger";
+						$textoEstado = "Desactivado";
+						$estadoSubCategoria = 1;
 
-  			/*=============================================
-  			REVISAR IMAGEN PORTADA
-  			=============================================*/
+					}else{
 
-			$item2 = "ruta";
-			$valor2 = $subcategorias[$i]["ruta"];
+						$colorEstado = "btn-success";
+						$textoEstado = "Activado";
+						$estadoSubCategoria = 0;
 
-			$cabeceras = ControladorCabeceras::ctrMostrarCabeceras($item2, $valor2);
+					}
 
-  			if($cabeceras["portada"] != ""){
+					$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idSubCategoria='". $subcategorias[$i]["id"]."' estadoSubCategoria='".$estadoSubCategoria."'>".$textoEstado."</button>";
 
-  				$imagenPortada = "<img src='".$cabeceras["portada"]."' class='img-thumbnail imgPortadaSubCategorias' width='100px'>";
+					/*=============================================
+						REVISAR IMAGEN PORTADA
+					=============================================*/
 
-  			}else{
+					$item2 = "ruta";
+					$valor2 = $subcategorias[$i]["ruta"];
+					$cabeceras = ControladorCabeceras::ctrMostrarCabeceras($item2, $valor2);
 
-  				$imagenPortada = "<img src='vistas/img/cabeceras/default/default.jpg' class='img-thumbnail imgPortadaSubCategorias' width='100px'>";
-  			}
+					if($cabeceras==false){
 
-			/*=============================================
-			REVISAR OFERTAS
-			=============================================*/
+						$cabeceras["portada"] = "";
+						$cabeceras["descripcion"] = "";
+						$cabeceras["palabrasClaves"] = "";
+						$imgPortada = "<img class='img-thumbnail imgPortadaCategorias' src='vistas/img/cabeceras/default/default.jpg' width='100px'>";
 
-			if($subcategorias[$i]["oferta"] != 0){
+					}else{
 
-				if($subcategorias[$i]["precioOferta"] != 0){	
+						if($cabeceras["portada"] != ""){
 
-					$tipoOferta = "PRECIO";
-					$valorOferta = "$ ".number_format($subcategorias[$i]["precioOferta"],2);
+							//$imgPortada = "<img class='img-thumbnail imgPortadaCategorias' src='".$cabeceras["portada"]."' width='100px'>";
+							$imgPortada = "<img src='".$cabeceras["portada"]."' class='img-thumbnail imgPortadaSubCategorias' width='100px'>";
 
-				}else{
+						}else{
 
-					$tipoOferta = "DESCUENTO";
-					$valorOferta = $subcategorias[$i]["descuentoOferta"]." %";	
+							//$imgPortada = "<img class='img-thumbnail imgPortadaCategorias' src='vistas/img/cabeceras/default/default.jpg' width='100px'>";
+							$imgPortada = "<img src='vistas/img/cabeceras/default/default.jpg' class='img-thumbnail imgPortadaSubCategorias' width='100px'>";
+						}
 
-				}	
+					}
 
-			}else{
+					// if($cabeceras["portada"] != ""){
 
-				$tipoOferta = "No tiene oferta";
-				$valorOferta = 0;
-				
-			}
+					// 	$imagenPortada = "<img src='".$cabeceras["portada"]."' class='img-thumbnail imgPortadaSubCategorias' width='100px'>";
 
-  			if($subcategorias[$i]["imgOferta"] != ""){
+					// }else{
 
-	  			$imgOferta = "<img src='".$subcategorias[$i]["imgOferta"]."' class='img-thumbnail imgTablaSubCategorias' width='100px'>";
+					// 	$imagenPortada = "<img src='vistas/img/cabeceras/default/default.jpg' class='img-thumbnail imgPortadaSubCategorias' width='100px'>";
+					// }
 
-	  		}else{
+					/*=============================================
+						REVISAR OFERTAS
+					=============================================*/
 
-	  			$imgOferta = "<img src='vistas/img/ofertas/default/default.jpg' class='img-thumbnail imgTablaSubCategorias' width='100px'>";
+					if($subcategorias[$i]["oferta"] != 0){
 
-	  		}
+						if($subcategorias[$i]["precioOferta"] != 0){	
 
-	  		/*=============================================
-  			CREAR LAS ACCIONES
-  			=============================================*/
+							$tipoOferta = "PRECIO";
+							$valorOferta = "$ ".number_format($subcategorias[$i]["precioOferta"],2);
 
-  			$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' data-toggle='modal' data-target='#modalEditarSubCategoria'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' imgOferta='".$subcategorias[$i]["imgOferta"]."' rutaCabecera='".$subcategorias[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."'><i class='fa fa-times'></i></button></div>";
+						}else{
 
+							$tipoOferta = "DESCUENTO";
+							$valorOferta = $subcategorias[$i]["descuentoOferta"]." %";	
 
-			 $datosJson .=  '
-			 [
-		      "'.($i+1).'",
-		      "'.$subcategorias[$i]["subcategoria"].'",
-		      "'.$categoria.'",
-		      "'.$subcategorias[$i]["ruta"].'",
-		      "'.$estado.'",
-		      "'.$cabeceras["descripcion"].'",
-		      "'.$cabeceras["palabrasClaves"].'",
-		      "'.$imagenPortada.'",
-			  "'.$tipoOferta.'",
-   	  		  "'.$valorOferta.'",
-              "'.$imgOferta.'",
-              "'.$subcategorias[$i]["finOferta"].'",			
-	          "'.$acciones.'"
-	    	],';
-									
-			}
+						}	
 
-	        $datosJson =  substr($datosJson, 0, -1);
-	        $datosJson .=  '
-            
-          ]
-        }';
+					}else{
 
-    echo $datosJson;    
-  	
-  }
+						$tipoOferta = "No tiene oferta";
+						$valorOferta = 0;
+						
+					}
+
+					if($subcategorias[$i]["imgOferta"] != ""){
+
+						$imgOferta = "<img src='".$subcategorias[$i]["imgOferta"]."' class='img-thumbnail imgTablaSubCategorias' width='100px'>";
+
+					}else{
+
+						$imgOferta = "<img src='vistas/img/ofertas/default/default.jpg' class='img-thumbnail imgTablaSubCategorias' width='100px'>";
+
+					}
+
+					/*=============================================
+						CREAR LAS ACCIONES
+					=============================================*/
+
+					$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' data-toggle='modal' data-target='#modalEditarSubCategoria'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' imgOferta='".$subcategorias[$i]["imgOferta"]."' rutaCabecera='".$subcategorias[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."'><i class='fa fa-times'></i></button></div>";
+
+					$datosJson .=  '[
+							"'.($i+1).'",
+							"'.$subcategorias[$i]["subcategoria"].'",
+							"'.$categoria.'",
+							"'.$subcategorias[$i]["ruta"].'",
+							"'.$estado.'",
+							"'.$cabeceras["descripcion"].'",
+							"'.$cabeceras["palabrasClaves"].'",
+							"'.$imgPortada.'",
+							"'.$tipoOferta.'",
+							"'.$valorOferta.'",
+							"'.$imgOferta.'",
+							"'.$subcategorias[$i]["finOferta"].'",			
+							"'.$acciones.'"
+							],';
+											
+				}
+
+				$datosJson =  substr($datosJson, 0, -1);
+
+			$datosJson .=  ']
+
+		}';
+
+		echo $datosJson;    
+		
+	}
 
 }
 
 /*=============================================
-ACTIVAR TABLA DE SUBCATEGORÍAS
-=============================================*/ 
+	ACTIVAR TABLA DE SUBCATEGORÍAS
+=============================================*/
+
 $activarSubcategoria = new TablaSubCategorias();
 $activarSubcategoria -> mostrarTablaSubCategoria();
-
