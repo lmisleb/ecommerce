@@ -18,8 +18,8 @@ class AjaxCategorias{
 
     public function ajaxActivarCategoria(){
 
-        ModeloSubCategorias::mdlActualizarSubCategorias("subcategorias", "estado", $this->activarCategoria, "id_categoria", $this->activarId);
-        ModeloProductos::mdlActualizarProductos("productos", "estado", $this->activarCategoria, "id_categoria", $this->activarId);
+        ModeloSubCategorias::mdlActivarDesactivarSubCategorias("subcategorias", "estado", $this->activarCategoria, "id_categoria", $this->activarId);
+        ModeloProductos::mdlActivarDesactivarProductos("productos", "estado", $this->activarCategoria, "id_categoria", $this->activarId);
         $respuesta = ModeloCategorias::mdlActualizarCategoria("categorias", "estado", $this->activarCategoria, "id", $this->activarId);
         echo $respuesta;
 

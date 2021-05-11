@@ -66,7 +66,9 @@ $(".tablaCategorias tbody").on("click", ".btnActivar", function() {
         contentType: false,
         processData: false,
         success: function(respuesta) {
+
             //console.log("respuesta", respuesta);
+
         }
 
     });
@@ -112,7 +114,9 @@ $(".validarCategoria").change(function() {
         processData: false,
         dataType: "json",
         success: function(respuesta) {
+
             // console.log("respuesta", respuesta);
+            
             if (respuesta) {
 
                 $(".validarCategoria").parent().after('<div class="alert alert-warning">Esta categoría ya existe en la base de datos</div>')

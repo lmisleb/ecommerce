@@ -236,8 +236,9 @@
 
                                     <div class="input-group">
                                     
-                                        <span class="input-group-addon"><i class="ion ion-social-usd"></i></span> 
-                                        <input class="form-control input-lg valorOferta" type="number" value="0" id="precioOferta" name="precioOferta" min="0" placeholder="Precio">
+                                        <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
+
+                                        <input class="form-control input-lg valorOferta" type="number" value="0" id="idPrecioOferta" name="precioOferta" min="0" placeholder="Precio">
 
                                     </div>
 
@@ -247,7 +248,8 @@
                                     
                                     <div class="input-group">
                                         
-                                        <input class="form-control input-lg valorOferta" type="number" value="0" id="descuentoOferta" name="descuentoOferta" min="0" placeholder="Descuento">
+                                        <input class="form-control input-lg valorOferta" type="number" value="0" id="idDescuentoOferta" name="descuentoOferta" min="0" placeholder="Descuento">
+
                                         <span class="input-group-addon"><i class="fa fa-percent"></i></span>
 
                                     </div>

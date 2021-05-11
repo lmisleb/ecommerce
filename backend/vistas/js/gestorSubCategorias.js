@@ -243,19 +243,19 @@ $(".selActivarOferta").change(function() {
 
 $(".valorOferta").change(function() {
 
-    if ($(this).attr("id") == "precioOferta") {
+    if ($(this).attr("id") == "idPrecioOferta") {
 
-        $("#precioOferta").prop("readonly", true);
-        $("#descuentoOferta").prop("readonly", false);
-        $("#descuentoOferta").val(0);
+        $("#idPrecioOferta").prop("readonly", true);
+        $("#idDescuentoOferta").prop("readonly", false);
+        $("#idDescuentoOferta").val(0);
 
     }
 
-    if ($(this).attr("id") == "descuentoOferta") {
+    if ($(this).attr("id") == "idDescuentoOferta") {
 
-        $("#descuentoOferta").prop("readonly", true);
-        $("#precioOferta").prop("readonly", false);
-        $("#precioOferta").val(0);
+        $("#idDescuentoOferta").prop("readonly", true);
+        $("#idPrecioOferta").prop("readonly", false);
+        $("#idPrecioOferta").val(0);
 
     }
 

@@ -293,7 +293,7 @@ class ControladorCategorias{
 						BORRAMOS ANTIGUA FOTO OFERTA
 					=============================================*/
 
-					unlink($_POST["antiguaFotoOferta"]);
+					//unlink($_POST["antiguaFotoOferta"]);
 
 					/*=============================================
 						DEFINIMOS LAS MEDIDAS
@@ -517,9 +517,10 @@ class ControladorCategorias{
 
 					$item1 = "id_categoria";
 					$valor1 = 0;
-					$item2 = "id";
-					$valor2 = $value["id"];
-					ModeloSubCategorias::mdlActualizarSubCategorias("subcategorias", $item1, $valor1, $item2, $valor2);
+					$item2 = "estado";
+					$item3 = "id";
+					$valor3 = $value["id"];
+					ModeloSubCategorias::mdlActualizarSubCategorias("subcategorias", $item1, $valor1, $item2, $item3, $valor3);
 
 				}
 
@@ -537,9 +538,10 @@ class ControladorCategorias{
 
 					$item1 = "id_categoria";
 					$valor1 = 0;
-					$item2 = "id";
-					$valor2 = $value["id"];
-					ModeloProductos::mdlActualizarProductos("productos", $item1, $valor1, $item2, $valor2);	
+					$item2 = "estado";
+					$item3 = "id";
+					$valor3 = $value["id"];
+					ModeloProductos::mdlActualizarProductos("productos", $item1, $valor1, $item2, $item3, $valor3);	
 				
 				}
 
