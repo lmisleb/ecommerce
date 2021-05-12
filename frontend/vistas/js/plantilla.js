@@ -141,6 +141,34 @@ $(".cerrarOfertas").click(function(){
 
 })
 
+if($("#moduloOfertas").children().length == 0){
+
+    $("#moduloOfertas").html(
+
+        '<br>'+
+        '<br>'+
+        '<br>'+
+        '<br>'+
+        '<br>'+
+
+        '<div class="jumbotron">'+
+
+            '<h1 class="text-center"> Lo sentimos </h1>'+
+
+            '<h3 class="text-center"> ! En estos momentos no tenemos ofertas disponibles ! </h3>'+
+
+        '</div>'+
+
+        '<br>'+
+        '<br>'+
+        '<br>'+
+        '<br>'+
+        '<br>'
+
+    );
+
+}
+
 /*=============================================
 CONTADOR DE TIEMPO
 =============================================*/

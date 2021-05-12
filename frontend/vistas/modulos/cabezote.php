@@ -319,9 +319,9 @@ HEADER
 
 		</div>
 
-		<!--=====================================
-		CATEGORÍAS
-		======================================-->
+		<!--======================================
+			CATEGORÍAS Y SUBCATEGORIAS ACTIVAS
+		==========================================-->
 
 		<div class="col-xs-12 backColor" id="categorias">
 
@@ -329,7 +329,7 @@ HEADER
 
 				$item = null;
 				$valor = null;
-				$categorias = ControladorProductos::ctrMostrarCategorias($item, $valor);
+				$categorias = ControladorProductos::ctrMostrarCategoriasActivas($item, $valor);
 
 				foreach ($categorias as $key => $value) {
 
@@ -345,7 +345,7 @@ HEADER
 
 						$item = "id_categoria";
 						$valor = $value["id"];
-						$subcategorias = ControladorProductos::ctrMostrarSubCategorias($item, $valor);
+						$subcategorias = ControladorProductos::ctrMostrarSubCategoriasActivas($item, $valor);
 					
 						foreach ($subcategorias as $key => $value) {
 								

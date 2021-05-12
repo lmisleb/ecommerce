@@ -100,8 +100,6 @@ $(".validarCategoria").change(function() {
     $(".alert").remove();
 
     var categoria = $(this).val();
-    // console.log("categoria", categoria);
-
     var datos = new FormData();
     datos.append("validarCategoria", categoria);
 

@@ -293,7 +293,11 @@ class ControladorCategorias{
 						BORRAMOS ANTIGUA FOTO OFERTA
 					=============================================*/
 
-					//unlink($_POST["antiguaFotoOferta"]);
+					if($_POST["antiguaFotoOferta"] != "vistas/img/ofertas/default/default.jpg"){
+
+						unlink($_POST["antiguaFotoOferta"]);
+
+					}
 
 					/*=============================================
 						DEFINIMOS LAS MEDIDAS

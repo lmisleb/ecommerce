@@ -55,9 +55,6 @@ class ModeloSubCategorias{
 		
 	}
 
-
-
-
 	/*=============================================
 		ACTUALIZAR OFERTA SUBCATEGORIAS
 	=============================================*/

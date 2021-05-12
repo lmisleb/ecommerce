@@ -67,16 +67,17 @@ class TablaSubCategorias{
 						$colorEstado = "btn-danger";
 						$textoEstado = "Desactivado";
 						$estadoSubCategoria = 1;
+						$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idSubCategoria='". $subcategorias[$i]["id"]."' estadoSubCategoria='".$estadoSubCategoria."' disabled>".$textoEstado."</button>";
 
 					}else{
 
 						$colorEstado = "btn-success";
 						$textoEstado = "Activado";
 						$estadoSubCategoria = 0;
+						$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idSubCategoria='". $subcategorias[$i]["id"]."' estadoSubCategoria='".$estadoSubCategoria."'>".$textoEstado."</button>";
 
 					}
 
-					$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idSubCategoria='". $subcategorias[$i]["id"]."' estadoSubCategoria='".$estadoSubCategoria."'>".$textoEstado."</button>";
 
 					/*=============================================
 						REVISAR IMAGEN PORTADA
@@ -97,25 +98,14 @@ class TablaSubCategorias{
 
 						if($cabeceras["portada"] != ""){
 
-							//$imgPortada = "<img class='img-thumbnail imgPortadaCategorias' src='".$cabeceras["portada"]."' width='100px'>";
 							$imgPortada = "<img src='".$cabeceras["portada"]."' class='img-thumbnail imgPortadaSubCategorias' width='100px'>";
 
 						}else{
 
-							//$imgPortada = "<img class='img-thumbnail imgPortadaCategorias' src='vistas/img/cabeceras/default/default.jpg' width='100px'>";
 							$imgPortada = "<img src='vistas/img/cabeceras/default/default.jpg' class='img-thumbnail imgPortadaSubCategorias' width='100px'>";
 						}
 
 					}
-
-					// if($cabeceras["portada"] != ""){
-
-					// 	$imagenPortada = "<img src='".$cabeceras["portada"]."' class='img-thumbnail imgPortadaSubCategorias' width='100px'>";
-
-					// }else{
-
-					// 	$imagenPortada = "<img src='vistas/img/cabeceras/default/default.jpg' class='img-thumbnail imgPortadaSubCategorias' width='100px'>";
-					// }
 
 					/*=============================================
 						REVISAR OFERTAS
@@ -156,12 +146,20 @@ class TablaSubCategorias{
 						CREAR LAS ACCIONES
 					=============================================*/
 
-					$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' data-toggle='modal' data-target='#modalEditarSubCategoria'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' imgOferta='".$subcategorias[$i]["imgOferta"]."' rutaCabecera='".$subcategorias[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."'><i class='fa fa-times'></i></button></div>";
+					if( $subcategorias[$i]["estado"] == 0){
+
+						$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' data-toggle='modal' data-target='#modalEditarSubCategoria' disabled><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' imgOferta='".$subcategorias[$i]["imgOferta"]."' rutaCabecera='".$subcategorias[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."'><i class='fa fa-times'></i></button></div>";
+
+					}else{
+
+						$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' data-toggle='modal' data-target='#modalEditarSubCategoria'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' imgOferta='".$subcategorias[$i]["imgOferta"]."' rutaCabecera='".$subcategorias[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."'><i class='fa fa-times'></i></button></div>";
+
+					}
 
 					$datosJson .=  '[
 							"'.($i+1).'",
-							"'.$subcategorias[$i]["subcategoria"].'",
 							"'.$categoria.'",
+							"'.$subcategorias[$i]["subcategoria"].'",
 							"'.$subcategorias[$i]["ruta"].'",
 							"'.$estado.'",
 							"'.$cabeceras["descripcion"].'",

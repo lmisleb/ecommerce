@@ -74,7 +74,7 @@ $('.tablaSubCategorias tbody').on("click", ".btnActivar", function() {
         processData: false,
         success: function(respuesta) {
 
-            //console.log("respuesta", respuesta);
+            console.log("respuesta", respuesta);
 
         }
 
@@ -269,9 +269,9 @@ $(".fotoOferta").change(function() {
 
     var imagen = this.files[0];
 
-    /*====================================================
+    /*======================================================
   		VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
-  	=====================================================*/
+  	========================================================*/
 
     if (imagen["type"] != "image/jpeg" && imagen["type"] != "image/png") {
 
@@ -303,7 +303,6 @@ $(".fotoOferta").change(function() {
         $(datosImagen).on("load", function(event) {
 
             var rutaImagen = event.target.result;
-
             $(".previsualizarOferta").attr("src", rutaImagen);
 
         })
@@ -331,6 +330,8 @@ $(".tablaSubCategorias tbody").on("click", ".btnEditarSubCategoria", function() 
         processData: false,
         dataType: "json",
         success: function(respuesta) {
+
+            //console.log("respuesta", respuesta);
 
             $("#modalEditarSubCategoria .editarIdSubCategoria").val(respuesta[0]["id"]);
             $("#modalEditarSubCategoria .tituloSubCategoria").val(respuesta[0]["subcategoria"]);

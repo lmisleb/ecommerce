@@ -16,7 +16,7 @@ BREADCRUMB OFERTAS
 			
 			<ul class="breadcrumb fondoBreadcrumb text-uppercase">
 				
-				<li><a href="<?php echo $url;  ?>">INICIO</a></li>
+				<li><a href="<?php echo $url; ?>">INICIO</a></li>
 				<li class="active pagActiva"><?php echo $rutas[0] ?></li>
 
 			</ul>
@@ -83,20 +83,22 @@ JUMBOTRON AVISO OFERTA
 			<?php
 
 				date_default_timezone_set('America/Santiago');
-
 				$item = null;
 				$valor = null;
 				$ordenar = "id";
 				$fecha = date('Y-m-d');
 				$hora = date('H:i:s');
 				$fechaActual = $fecha .' '. $hora;
+				$ofertas = false;
 			
 				/*=====================================
-				OFERTAS POR CATEGORÍAS
+					OFERTAS POR CATEGORÍAS ACTIVAS
 				=======================================*/
 				
-				$respuesta = ControladorProductos::ctrMostrarCategorias($item, $valor);
-	
+				$respuesta = ControladorProductos::ctrMostrarCategoriasActivas($item, $valor);
+				//echo json_encode($respuesta);
+				//print_r("Categorías: ");
+				
 				foreach ($respuesta as $key => $value) {
 					
 					if($value["oferta"] == 1){
@@ -169,17 +171,26 @@ JUMBOTRON AVISO OFERTA
 						}
 
 					}
-			
+
+					if($value["oferta"] == 1){
+
+						$ofertas = true;
+	
+					}
+
+					//print_r($value["oferta"]);
+
 				}
 
-				/*=====================================
-				OFERTAS POR SUB-CATEGORÍAS
-				=======================================*/
+				/*=========================================
+					OFERTAS POR SUB-CATEGORÍAS ACTIVAS
+				===========================================*/
 
-				$respuestaSubCategorias = ControladorProductos::ctrMostrarSubCategorias($item, $valor);
+				$respuestaSubCategorias = ControladorProductos::ctrMostrarSubCategoriasActivas($item, $valor);
+				//print_r(" Subcategorías: ");
 
 				foreach ($respuestaSubCategorias as $key => $value) {
-					
+
 					if($value["oferta"] == 1 && $value["ofertadoPorCategoria"] == 0 ){
 
 						if($value["finOferta"] > $fecha){
@@ -250,14 +261,23 @@ JUMBOTRON AVISO OFERTA
 						}
 
 					}
+
+					if($value["oferta"] == 1){
+
+						$ofertas = true;
+	
+					}
+
+					//print_r($value["oferta"]);
 			
 				}
 
 				/*=====================================
-				OFERTAS POR PRODUCTOS
+					OFERTAS POR PRODUCTOS ACTIVOS
 				=======================================*/
 
 				$respuestaPorProductos = ControladorProductos::ctrListarProductos($ordenar, $item, $valor);
+				//print_r(" Productos: ");
 
 				foreach ($respuestaPorProductos as $key => $value) {
 					
@@ -331,7 +351,35 @@ JUMBOTRON AVISO OFERTA
 						}
 
 					}
+
+					// if($value["oferta"] == 1){
+
+					// 	$ofertas = true;
+	
+					// }
+
+					// print_r($value["oferta"]);
 			
+				}
+
+				if($ofertas == false){
+
+					// echo '<div class="col-xs-12 error404 text-center">
+	
+					// 	<h1><small>¡Oops!</small></h1>
+
+					// 	<h2>No hay ofertas en estos momentos.</h2>
+
+					// 	<br>
+					// 	<br>
+					// 	<br>
+					// 	<br>
+					// 	<br>
+					// 	<br>
+					// 	<br>
+
+					// </div>';
+
 				}
 			
 			?>

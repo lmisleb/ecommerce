@@ -12,14 +12,40 @@ class ModeloProductos{
 
 		if($item != null){
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item AND estado = 1");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
 			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
 			$stmt -> execute();
 			return $stmt -> fetch();
 
 		}else{
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE estado = 1");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+			$stmt -> execute();
+			return $stmt -> fetchAll(); //para consultas a las tablas con múltiples filas
+
+		}
+		
+		$stmt -> close();
+		$stmt = null;
+
+	}
+
+	/*=============================================
+		MOSTRAR CATEGORÍAS ACTIVAS
+	=============================================*/
+
+	static public function mdlMostrarCategoriasActivas($tabla, $item, $valor){
+
+		if($item != null){
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item WHERE estado = 1 ORDER BY categoria");
+			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+			$stmt -> execute();
+			return $stmt -> fetch();
+
+		}else{
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE estado = 1 ORDER BY categoria");
 			$stmt -> execute();
 			return $stmt -> fetchAll(); //para consultas a las tablas con múltiples filas
 
@@ -38,14 +64,41 @@ class ModeloProductos{
 
 		if($item != null){
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item AND estado = 1");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
 			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR); // enlazar parámetros
 			$stmt -> execute();
 			return $stmt -> fetchAll();
 			
 		}else{
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE estado = 1");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR); // enlazar parámetros
+			$stmt -> execute();
+			return $stmt -> fetchAll();
+
+		}
+
+		$stmt -> close();
+		$stmt = null;
+
+	}
+
+	/*=============================================
+		MOSTRAR SUB-CATEGORÍAS ACTIVAS
+	=============================================*/
+
+	static public function mdlMostrarSubCategoriasActivas($tabla, $item, $valor){
+
+		if($item != null){
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item AND estado = 1 ORDER BY subcategoria");
+			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR); // enlazar parámetros
+			$stmt -> execute();
+			return $stmt -> fetchAll();
+			
+		}else{
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE estado = 1 ORDER BY subcategoria");
 			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR); // enlazar parámetros
 			$stmt -> execute();
 			return $stmt -> fetchAll();
@@ -66,6 +119,31 @@ class ModeloProductos{
 		if($item != null){
 
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item ORDER BY $ordenar $modo LIMIT $base, $tope");
+			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_INT); // enlazar parámetros
+			$stmt -> execute();
+			return $stmt -> fetchAll();
+
+		} else {
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY $ordenar $modo LIMIT $base, $tope");
+			$stmt -> execute();
+			return $stmt -> fetchAll();
+		}
+
+		$stmt -> close();
+		$stmt = null;
+
+	}
+
+	/*=============================================
+		MOSTRAR PRODUCTOS ACTIVOS	
+	=============================================*/
+
+	static public function mdlMostrarProductosActivos($tabla, $ordenar, $item, $valor, $base, $tope, $modo){
+
+		if($item != null){
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item AND estado = 1 ORDER BY $ordenar $modo LIMIT $base, $tope");
 			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_INT); // enlazar parámetros
 			$stmt -> execute();
 			return $stmt -> fetchAll();

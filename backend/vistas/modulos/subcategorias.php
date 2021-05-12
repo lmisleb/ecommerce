@@ -37,8 +37,8 @@
                         <tr>
                         
                             <th style="width:10px">#</th>
-                            <th>Subcategoria</th>
                             <th>Categoria</th>
+                            <th>Subcategoria</th>
                             <th>Ruta</th>
                             <th>Estado</th>
                             <th>Descripción</th>

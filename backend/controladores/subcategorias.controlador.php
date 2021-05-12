@@ -37,7 +37,6 @@ class ControladorSubCategorias{
 					=============================================*/
 
 					list($ancho, $alto) = getimagesize($_FILES["fotoPortada"]["tmp_name"]);	
-
 					$nuevoAncho = 1280;
 					$nuevoAlto = 720;
 
@@ -308,7 +307,11 @@ class ControladorSubCategorias{
 						BORRAMOS ANTIGUA FOTO OFERTA
 					=============================================*/
 
-					unlink($_POST["antiguaFotoOferta"]);
+					if($_POST["antiguaFotoOferta"] != "vistas/img/ofertas/default/default.jpg"){
+
+						unlink($_POST["antiguaFotoOferta"]);
+
+					}
 
 					/*=============================================
 						DEFINIMOS LAS MEDIDAS

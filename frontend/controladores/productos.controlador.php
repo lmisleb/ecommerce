@@ -15,6 +15,18 @@ class ControladorProductos{
 	}
 
 	/*=============================================
+		MOSTRAR CATEGORÍAS ACTIVAS
+	=============================================*/
+
+	static public function ctrMostrarCategoriasActivas($item, $valor){
+
+		$tabla = "categorias";
+		$respuesta = ModeloProductos::mdlMostrarCategoriasActivas($tabla, $item, $valor);
+		return $respuesta;
+
+	}
+
+	/*=============================================
 	MOSTRAR SUBCATEGORÍAS
 	=============================================*/
 
@@ -22,6 +34,18 @@ class ControladorProductos{
 
 		$tabla = "subcategorias";
 		$respuesta = ModeloProductos::mdlMostrarSubCategorias($tabla, $item, $valor);
+		return $respuesta;
+
+	}
+
+	/*=============================================
+		MOSTRAR SUBCATEGORÍAS
+	=============================================*/
+
+	static public function ctrMostrarSubCategoriasActivas($item, $valor){
+
+		$tabla = "subcategorias";
+		$respuesta = ModeloProductos::mdlMostrarSubCategoriasActivas($tabla, $item, $valor);
 		return $respuesta;
 
 	}

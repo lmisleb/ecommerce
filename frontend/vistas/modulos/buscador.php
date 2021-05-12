@@ -145,7 +145,9 @@ LISTAR PRODUCTOS
 
 						<h1><small>¡Oops!</small></h1>
 
-						<h2>Aún no hay productos en esta sección</h2>
+						<br>
+
+						<h2>Lo siento, no se encontró ningún producto.</h2>
 
 				</div>';
 

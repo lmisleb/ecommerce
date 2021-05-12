@@ -8,9 +8,9 @@ FOOTER
 
 		<div class="row">
 
-		 	<!--=====================================
-			CATEGORÍAS Y SUBCATEGORÍAS FOOTER
-			======================================-->
+		 	<!--==============================================
+				CATEGORÍAS Y SUBCATEGORÍAS ACTIVAS FOOTER
+			==================================================-->
 
 			<div class="col-lg-5 col-md-6 col-xs-12 footerCategorias">
 
@@ -19,7 +19,7 @@ FOOTER
 					$url = Ruta::ctrRuta();
 					$item = null;
 					$valor = null;
-					$categorias = ControladorProductos::ctrMostrarCategorias($item, $valor);
+					$categorias = ControladorProductos::ctrMostrarCategoriasActivas($item, $valor);
 
 					foreach ($categorias as $key => $value) {
 
@@ -33,7 +33,7 @@ FOOTER
 
 							$item = "id_categoria";
 							$valor = $value["id"];
-							$subcategorias = ControladorProductos::ctrMostrarSubCategorias($item, $valor);
+							$subcategorias = ControladorProductos::ctrMostrarSubCategoriasActivas($item, $valor);
 							
 							foreach ($subcategorias as $key => $value) {
 							
@@ -152,9 +152,13 @@ FINAL
 						foreach ($jsonRedesSociales as $key => $value) {
 
 							echo '<li>
-									<a href="'.$value["url"].'" target="_blank">
-										<i class="fa '.$value["red"].' redSocial '.$value["estilo"].'" aria-hidden="true"></i>
-									</a>
+							
+								<a href="'.$value["url"].'" target="_blank">
+
+									<i class="fa '.$value["red"].' redSocial '.$value["estilo"].'" aria-hidden="true"></i>
+
+								</a>
+
 							</li>';
 						}
 
