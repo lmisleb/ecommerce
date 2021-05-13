@@ -22,7 +22,8 @@ class AjaxSubCategorias{
 		$item1 = "estado";
 		$valor1 = $this->activarSubCategoria;
 		$item2 = "id";
-		$valor2 = $this->activarId;	
+		$valor2 = $this->activarId;
+
 		ModeloProductos::mdlActivarDesactivarProductos("productos", $item1, $valor1, "id_subcategoria", $valor2);
 		$respuesta = ModeloSubCategorias::mdlActivarDesactivarSubCategorias($tabla, $item1, $valor1, $item2, $valor2);
 		echo $respuesta;
@@ -45,7 +46,7 @@ class AjaxSubCategorias{
 	}
 
 	/*=============================================
-	EDITAR SUBCATEGORIA
+		EDITAR SUBCATEGORIA
 	=============================================*/	
 
 	public $idSubCategoria;
@@ -54,9 +55,7 @@ class AjaxSubCategorias{
 
 		$item = "id";
 		$valor = $this->idSubCategoria;
-
 		$respuesta = ControladorSubCategorias::ctrMostrarSubCategorias($item, $valor);
-
 		echo json_encode($respuesta);
 
 	}

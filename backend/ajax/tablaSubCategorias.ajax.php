@@ -20,8 +20,7 @@ class TablaSubCategorias{
 		$item = null;
 		$valor = null;
 		$subcategorias = ControladorSubCategorias::ctrMostrarSubCategorias($item, $valor);
-		//echo json_encode($subcategorias);
-		//return;
+		//echo json_encode($subcategorias); return;
 
 		$datosJson = '{
 
@@ -40,23 +39,15 @@ class TablaSubCategorias{
 					if($valor == 0){
 
 						$categoria = "SIN CATEGORÍA";
+						$categorialbl = "<label style='color:red'>SIN CATEGORÍA</label>";
 
 					}else{
 
-						$categoria = $categorias["categoria"];
 						//$categoria = "CON CATEGORÍA";
+						//$categoria = $categorias["categoria"];
+						$categorialbl = "<label>".$categorias["categoria"]."</label>";
 
 					}
-
-					// if($categorias["categoria"] == ""){
-
-					// 	$categoria = "SIN CATEGORÍA";
-					
-					// }else{
-
-					// 	$categoria = $categorias["categoria"];
-
-					// }
 
 					/*=============================================
 						REVISAR ESTADO
@@ -74,6 +65,12 @@ class TablaSubCategorias{
 						$colorEstado = "btn-success";
 						$textoEstado = "Activado";
 						$estadoSubCategoria = 0;
+						$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idSubCategoria='". $subcategorias[$i]["id"]."' estadoSubCategoria='".$estadoSubCategoria."'>".$textoEstado."</button>";
+
+					}
+
+					if($categoria == "SIN CATEGORÍA"){
+
 						$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idSubCategoria='". $subcategorias[$i]["id"]."' estadoSubCategoria='".$estadoSubCategoria."'>".$textoEstado."</button>";
 
 					}
@@ -146,7 +143,7 @@ class TablaSubCategorias{
 						CREAR LAS ACCIONES
 					=============================================*/
 
-					if( $subcategorias[$i]["estado"] == 0){
+					if($subcategorias[$i]["estado"] == 0){
 
 						$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' data-toggle='modal' data-target='#modalEditarSubCategoria' disabled><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' imgOferta='".$subcategorias[$i]["imgOferta"]."' rutaCabecera='".$subcategorias[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."'><i class='fa fa-times'></i></button></div>";
 
@@ -156,9 +153,15 @@ class TablaSubCategorias{
 
 					}
 
+					if($categoria == "SIN CATEGORÍA"){
+
+						$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' data-toggle='modal' data-target='#modalEditarSubCategoria'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' imgOferta='".$subcategorias[$i]["imgOferta"]."' rutaCabecera='".$subcategorias[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."'><i class='fa fa-times'></i></button></div>";
+
+					}
+
 					$datosJson .=  '[
 							"'.($i+1).'",
-							"'.$categoria.'",
+							"'.$categorialbl.'",
 							"'.$subcategorias[$i]["subcategoria"].'",
 							"'.$subcategorias[$i]["ruta"].'",
 							"'.$estado.'",

@@ -73,9 +73,7 @@ $('.tablaSubCategorias tbody').on("click", ".btnActivar", function() {
         contentType: false,
         processData: false,
         success: function(respuesta) {
-
-            console.log("respuesta", respuesta);
-
+            //console.log("respuesta", respuesta);
         }
 
     })
@@ -119,12 +117,10 @@ $(".validarSubCategoria").change(function() {
         processData: false,
         dataType: "json",
         success: function(respuesta) {
-
-            // console.log("respuesta", respuesta);
-
+            //console.log("respuesta", respuesta);
             if (respuesta.length != 0) {
 
-                $(".validarSubCategoria").parent().after('<div class="alert alert-warning">Esta Subcategoría ya existe en la base de datos</div>');
+                $(".validarSubCategoria").parent().after('<div class="alert alert-warning">Esta Subcategoría ya existe en la base de datos ... !!!</div>');
                 $(".validarSubCategoria").val("");
 
             }
@@ -202,7 +198,6 @@ $(".fotoPortada").change(function() {
         $(datosImagen).on("load", function(event) {
 
             var rutaImagen = event.target.result;
-
             $(".previsualizarPortada").attr("src", rutaImagen);
 
         })
@@ -398,7 +393,7 @@ $(".tablaSubCategorias tbody").on("click", ".btnEditarSubCategoria", function() 
                 dataType: "json",
                 success: function(respuesta) {
 
-                    // console.log("respuesta", respuesta);
+                    //console.log("respuesta", respuesta);
 
                     /*=============================================
                     	CARGAMOS EL ID DE LA CABECERA

@@ -244,28 +244,39 @@ INFOPRODUCTOS
 
 							echo '<h1 class="text-muted text-uppercase">'.$infoproducto["titulo"].'
 
-							<br>
+							<br>';
 
-							<small>
-						
-								<span class="label label-warning">'.$infoproducto["descuentoOferta"].'% off</span>
+							if($infoproducto["precio"] != 0){
 
-							</small>
+								echo '<small>
 							
-							</h1>';
+									<span class="label label-warning">'.$infoproducto["descuentoOferta"].'% off</span>
+
+								</small>';
+
+							}
+							
+							echo '</h1>';
 
 						}else{
 
 							echo '<h1 class="text-muted text-uppercase">'.$infoproducto["titulo"].'
 
-							<br>
+							<br>';
 
-							<small>
-								<span class="label label-warning">Nuevo</span> 
-								<span class="label label-warning">'.$infoproducto["descuentoOferta"].'% off</span> 
-							</small>
+							if($infoproducto["precio"] != 0){
+
+								echo '<small>
+
+									<span class="label label-warning">Nuevo</span> 
+
+									<span class="label label-warning">'.$infoproducto["descuentoOferta"].'% off</span> 
+
+								</small>';
+
+							}
 							
-							</h1>';
+							echo '</h1>';
 
 						}
 					}
@@ -1107,7 +1118,7 @@ ARTÏCULOS RELACIONADOS
 
 									}
 
-									if($value["oferta"] != 0){
+									if($value["oferta"] != 0 && $value["precio"] != 0){
 
 										echo '<span class="label label-warning fontSize">'.$value["descuentoOferta"].'% off</span>';
 

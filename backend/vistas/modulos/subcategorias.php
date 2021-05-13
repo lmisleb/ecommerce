@@ -90,7 +90,7 @@
 
                 <!--=====================================
                     CUERPO DEL MODAL
-                ======================================-->
+                =========================================-->
 
                 <div class="modal-body">
 
@@ -98,7 +98,7 @@
 
                         <!--=============================================
                             ENTRADA PARA EL NOMBRE DE LA SUBCATEGORÍA
-                        ==============================================-->
+                        =================================================-->
                         
                         <div class="form-group">
                         
@@ -106,7 +106,7 @@
                             
                                 <span class="input-group-addon"><i class="fa fa-th"></i></span> 
 
-                                <input type="text" class="form-control input-lg text-capitalize validarSubCategoria tituloSubCategoria" name="tituloSubCategoria" placeholder="Ingresar subcategoría" required>
+                                <input type="text" class="form-control input-lg validarSubCategoria tituloSubCategoria" name="tituloSubCategoria" placeholder="Ingresar subcategoría" required>
 
                             </div>
 
@@ -114,7 +114,7 @@
 
                         <!--===========================================
                             ENTRADA PARA LA RUTA DE LA SUBCATEGORÍA
-                        ============================================-->
+                        ===============================================-->
                         
                         <div class="form-group">
                         
@@ -218,6 +218,7 @@
                             <select class="form-control input-lg selActivarOferta" name="selActivarOferta">
                                 
                                 <option value="">No tiene oferta</option>
+
                                 <option value="oferta">Activar oferta</option>
                             
                             </select>
@@ -367,10 +368,12 @@
                         
                             <div class="input-group">
                             
-                                <span class="input-group-addon"><i class="fa fa-th"></i></span> 
-                                <input type="text" class="form-control input-lg text-capitalize validarSubCategoria tituloSubCategoria"  name="editarTituloSubCategoria" required>
+                                <span class="input-group-addon"><i class="fa fa-th"></i></span>
+
+                                <input type="text" class="form-control input-lg validarSubCategoria tituloSubCategoria"  name="editarTituloSubCategoria" required>
 
                                 <input type="hidden" class="editarIdSubCategoria" name="editarIdSubCategoria">
+
                                 <input type="hidden" class="editarIdCabecera" name="editarIdCabecera">
 
                             </div>
@@ -393,9 +396,9 @@
 
                         </div>
 
-                        <!--=================================================
-                        ENTRADA PARA EDITAR LA SELECCIÓN DE LA CATEGORÍA
-                        ===================================================-->
+                        <!--====================================================
+                            ENTRADA PARA EDITAR LA SELECCIÓN DE LA CATEGORÍA
+                        ========================================================-->
 
                         <div class="form-group">
                         
@@ -455,11 +458,13 @@
                         <div class="form-group">
                         
                             <div class="panel">SUBIR FOTO PORTADA</div>
+
                             <input type="file" class="fotoPortada" name="fotoPortada">
 
                             <input type="hidden" class="antiguaFotoPortada" name="antiguaFotoPortada">
 
                             <p class="help-block">Tamaño recomendado 1280px * 720px <br> Peso máximo de la foto 2MB</p>
+
                             <img src="vistas/img/cabeceras/default/default.jpg" class="img-thumbnail previsualizarPortada" width="100%">
 
                         </div>
@@ -473,6 +478,7 @@
                             <select class="form-control input-lg selActivarOferta" name="selActivarOferta">
                                 
                                 <option value="">No tiene oferta</option>
+
                                 <option value="oferta">Activar oferta</option>
                             
                             </select>
@@ -540,11 +546,13 @@
                             <div class="form-group">
                                 
                                 <div class="panel">SUBIR FOTO OFERTA</div>
+
                                 <input type="file" class="fotoOferta" name="fotoOferta">
 
                                 <input type="hidden" class="antiguaFotoOferta" name="antiguaFotoOferta">
 
                                 <p class="help-block">Tamaño recomendado 640px * 430px <br> Peso máximo de la foto 2MB</p>
+
                                 <img src="vistas/img/ofertas/default/default.jpg" class="img-thumbnail previsualizarOferta" width="100px">
 
                             </div>
@@ -569,8 +577,8 @@
 
                 <?php
 
-                    $crearCategoria = new ControladorSubCategorias();
-                    $crearCategoria -> ctrEditarSubCategoria();
+                    $editarSubCategoria = new ControladorSubCategorias();
+                    $editarSubCategoria -> ctrEditarSubCategoria();
 
                 ?>
 
@@ -584,8 +592,8 @@
 
 <?php
 
-    $eliminarCategoria = new ControladorSubCategorias();
-    $eliminarCategoria -> ctrEliminarSubCategoria();
+    $eliminarSubCategoria = new ControladorSubCategorias();
+    $eliminarSubCategoria -> ctrEliminarSubCategoria();
 
 ?>
 

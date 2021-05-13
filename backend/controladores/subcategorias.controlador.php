@@ -4,7 +4,7 @@ class ControladorSubCategorias{
 
 	/*=============================================
 		MOSTRAR SUBCATEGORIAS
-	=============================================*/
+	===============================================*/
 
 	static public function ctrMostrarSubCategorias($item, $valor){
 
@@ -16,7 +16,7 @@ class ControladorSubCategorias{
 
 	/*=============================================
 		CREAR SUBCATEGORIA
-	=============================================*/
+	===============================================*/
 
 	static public function ctrCrearSubCategoria(){
 
@@ -26,7 +26,7 @@ class ControladorSubCategorias{
 
 				/*=============================================
 					VALIDAR IMAGEN PORTADA
-				=============================================*/
+				===============================================*/
 
 				$rutaPortada = "vistas/img/cabeceras/default/default.jpg";
 
@@ -34,22 +34,22 @@ class ControladorSubCategorias{
 
 					/*=============================================
 						DEFINIMOS LAS MEDIDAS
-					=============================================*/
+					===============================================*/
 
 					list($ancho, $alto) = getimagesize($_FILES["fotoPortada"]["tmp_name"]);	
 					$nuevoAncho = 1280;
 					$nuevoAlto = 720;
 
 
-					/*============================================================================
+					/*=============================================================================
 						DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
-					==============================================================================*/
+					===============================================================================*/
 
 					if($_FILES["fotoPortada"]["type"] == "image/jpeg"){
 
 						/*=============================================
 							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
-						=============================================*/
+						===============================================*/
 
 						$rutaPortada = "vistas/img/cabeceras/".$_POST["rutaSubCategoria"].".jpg";
 						$origen = imagecreatefromjpeg($_FILES["fotoPortada"]["tmp_name"]);
@@ -63,7 +63,7 @@ class ControladorSubCategorias{
 
 						/*=============================================
 							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
-						=============================================*/
+						===============================================*/
 
 						$rutaPortada = "vistas/img/cabeceras/".$_POST["rutaSubCategoria"].".png";
 						$origen = imagecreatefrompng($_FILES["fotoPortada"]["tmp_name"]);
@@ -79,7 +79,7 @@ class ControladorSubCategorias{
 
 				/*=============================================
 					VALIDAR IMAGEN OFERTA
-				=============================================*/
+				===============================================*/
 
 				$rutaOferta = "vistas/img/ofertas/default/default.jpg";
 
@@ -87,21 +87,21 @@ class ControladorSubCategorias{
 
 					/*=============================================
 						DEFINIMOS LAS MEDIDAS
-					=============================================*/
+					===============================================*/
 
 					list($ancho, $alto) = getimagesize($_FILES["fotoOferta"]["tmp_name"]);
 					$nuevoAncho = 640;
 					$nuevoAlto = 430;
 
-					/*=============================================================================
+					/*==============================================================================
 						DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
-					===============================================================================*/
+					================================================================================*/
 
 					if($_FILES["fotoOferta"]["type"] == "image/jpeg"){
 
 						/*=============================================
 							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
-						=============================================*/
+						===============================================*/
 
 						$aleatorio = mt_rand(100,999);
 						$rutaOferta = "vistas/img/ofertas/".$_POST["rutaSubCategoria"].".jpg";
@@ -116,7 +116,7 @@ class ControladorSubCategorias{
 
 						/*=============================================
 							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
-						=============================================*/
+						===============================================*/
 
 						$aleatorio = mt_rand(100,999);
 						$rutaOferta = "vistas/img/ofertas/".$_POST["rutaSubCategoria"].".png";
@@ -132,8 +132,8 @@ class ControladorSubCategorias{
 				}			
 
 				/*=============================================
-				PREGUNTAMOS SI VIENE OFERTE EN CAMINO
-				=============================================*/
+					PREGUNTAMOS SI VIENE OFERTE EN CAMINO
+				===============================================*/
 
 				if($_POST["selActivarOferta"] == "oferta"){
 
@@ -229,7 +229,7 @@ class ControladorSubCategorias{
 		EDITAR SUBCATEGORIA
 	=============================================*/
 
-	static public function ctreditarSubCategoria(){
+	static public function ctrEditarSubCategoria(){
 
 		if(isset($_POST["editarTituloSubCategoria"])){
 
@@ -436,7 +436,7 @@ class ControladorSubCategorias{
 				}
 			
 				ModeloCabeceras::mdlEditarCabecera("cabeceras", $datos);
-				$respuesta = ModeloSubCategorias::mdleditarSubCategoria("subcategorias", $datos);
+				$respuesta = ModeloSubCategorias::mdlEditarSubCategoria("subcategorias", $datos);
 
 				if($respuesta == "ok"){
 
@@ -507,7 +507,7 @@ class ControladorSubCategorias{
 			}
 
 			/*=============================================
-			ELIMINAR CABECERA
+				ELIMINAR CABECERA
 			=============================================*/
 
 			if($_GET["imgPortada"] != "" && $_GET["imgPortada"] != "vistas/img/cabeceras/default/default.jpg"){
@@ -519,7 +519,7 @@ class ControladorSubCategorias{
 			ModeloCabeceras::mdlEliminarCabecera("cabeceras", $_GET["rutaCabecera"]);
 
 			/*==============================================
-				QUITAR LAS SUBATEGORIAS DE LOS PRODUCTOS
+				QUITAR LAS SUBCATEGORIAS DE LOS PRODUCTOS
 			================================================*/
 
 			$traerProductos = ModeloProductos::mdlMostrarProductos("productos", "id_subcategoria", $_GET["idSubCategoria"]);
@@ -528,9 +528,10 @@ class ControladorSubCategorias{
 
 				$item1 = "id_subcategoria";
 				$valor1 = 0;
-				$item2 = "id";
-				$valor2 = $value["id"];
-				ModeloProductos::mdlActualizarProductos("productos", $item1, $valor1, $item2, $valor2);	
+				$item2 = "estado";
+				$item3 = "id";
+				$valor3 = $value["id"];
+				ModeloProductos::mdlActualizarProductos("productos", $item1, $valor1, $item2, $item3, $valor3);	
 				
 			}
 

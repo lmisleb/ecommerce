@@ -145,9 +145,9 @@ class ModeloSubCategorias{
 																  :finOferta)");
 
 		$stmt->bindParam(":subcategoria", $datos["subcategoria"], PDO::PARAM_STR);
-		$stmt->bindParam(":id_categoria", $datos["idCategoria"], PDO::PARAM_STR);
+		$stmt->bindParam(":id_categoria", $datos["idCategoria"], PDO::PARAM_INT);
 		$stmt->bindParam(":ruta", $datos["ruta"], PDO::PARAM_STR);
-		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
+		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_INT);
 		$stmt->bindParam(":oferta", $datos["oferta"], PDO::PARAM_STR);
 		$stmt->bindParam(":precioOferta", $datos["precioOferta"], PDO::PARAM_STR);
 		$stmt->bindParam(":descuentoOferta", $datos["descuentoOferta"], PDO::PARAM_STR);
@@ -195,7 +195,7 @@ class ModeloSubCategorias{
 		$stmt->bindParam(":descuentoOferta", $datos["descuentoOferta"], PDO::PARAM_STR);
 		$stmt->bindParam(":imgOferta", $datos["imgOferta"], PDO::PARAM_STR);
 		$stmt->bindParam(":finOferta", $datos["finOferta"], PDO::PARAM_STR);
-		$stmt -> bindParam(":id", $datos["id"], PDO::PARAM_INT);
+		$stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
 
 		if($stmt->execute()){
 

@@ -104,7 +104,7 @@ class ModeloProductos{
 		$stmt->bindParam(":descuentoOferta", $descuentoOfertaActualizado, PDO::PARAM_STR);
 		$stmt->bindParam(":imgOferta", $datos["imgOferta"], PDO::PARAM_STR);
 		$stmt->bindParam(":finOferta", $datos["finOferta"], PDO::PARAM_STR);
-		$stmt -> bindParam(":id", $idOferta, PDO::PARAM_INT);
+		$stmt->bindParam(":id", $idOferta, PDO::PARAM_INT);
 
 		if($stmt->execute()){
 

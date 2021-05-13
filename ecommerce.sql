@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-05-2021 a las 23:42:21
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.3
+-- Tiempo de generación: 13-05-2021 a las 07:11:27
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -100,7 +99,10 @@ INSERT INTO `cabeceras` (`id`, `ruta`, `titulo`, `descripcion`, `palabrasClaves`
 (13, 'accesorios', 'ACCESORIOS', 'Accesorios Varios', 'collares,pulseras,anillos', 'vistas/img/cabeceras/accesorios.jpg', '2021-05-07 21:02:10'),
 (14, 'calzado', 'CALZADO', 'Calzados de vestir y deportivos', 'nike,adidas,vans,loto', 'vistas/img/cabeceras/calzado.jpg', '2021-05-07 21:03:36'),
 (15, 'ropa', 'ROPA', 'Variedad de ropa nueva', 'camisas,pantalones,shores,medias', 'vistas/img/cabeceras/ropa.jpg', '2021-05-07 21:04:31'),
-(17, 'desarrollo-web', 'CURSOS', 'Diversos Cursos', 'php,java,html,css', 'vistas/img/cabeceras/curso.png', '2021-05-09 20:07:06');
+(17, 'desarrollo-web', 'CURSOS', 'Diversos Cursos', 'php,java,html,css', 'vistas/img/cabeceras/curso.png', '2021-05-09 20:07:06'),
+(18, 'peliculas', 'PELíCULAS', 'Las mejores películas.', 'Matrix', 'vistas/img/cabeceras/peliculas.jpg', '2021-05-13 05:09:50'),
+(19, 'peliculas-de-accion', 'Películas de Acción', 'Las mejores películas de acción.', 'mortal combat', 'vistas/img/cabeceras/peliculas-de-accion.jpg', '2021-05-13 05:08:16'),
+(20, 'peliculas-infantiles', 'Películas Infantiles', 'Las mejores películas infantiles.', 'ET', 'vistas/img/cabeceras/peliculas-infantiles.jpg', '2021-05-13 05:08:58');
 
 -- --------------------------------------------------------
 
@@ -130,7 +132,8 @@ INSERT INTO `categorias` (`id`, `categoria`, `ruta`, `estado`, `oferta`, `precio
 (2, 'CALZADO', 'calzado', 1, 0, 0, 0, 'vistas/img/ofertas/default/default.jpg', '0000-00-00 00:00:00', '2021-05-07 21:03:36'),
 (3, 'ACCESORIOS', 'accesorios', 1, 0, 0, 0, 'vistas/img/ofertas/default/default.jpg', '0000-00-00 00:00:00', '2021-05-07 21:02:10'),
 (4, 'TECNOLOGIA', 'tecnologia', 1, 0, 0, 0, 'vistas/img/ofertas/default/default.jpg', '0000-00-00 00:00:00', '2021-05-07 20:54:10'),
-(5, 'CURSOS', 'cursos', 1, 0, 0, 0, 'vistas/img/ofertas/default/default.jpg', '0000-00-00 00:00:00', '2021-05-09 21:41:50');
+(5, 'CURSOS', 'cursos', 1, 0, 0, 0, 'vistas/img/ofertas/default/default.jpg', '0000-00-00 00:00:00', '2021-05-09 21:41:50'),
+(18, 'PELíCULAS', 'peliculas', 1, 1, 20, 0, 'vistas/img/ofertas/peliculas.jpg', '2021-05-31 23:59:59', '2021-05-13 05:09:50');
 
 -- --------------------------------------------------------
 
@@ -937,7 +940,9 @@ INSERT INTO `subcategorias` (`id`, `subcategoria`, `id_categoria`, `ruta`, `esta
 (18, 'Desarrollo Web', 5, 'desarrollo-web', 1, 0, 0, 0, 0, 'vistas/img/ofertas/default/default.jpg', '0000-00-00 00:00:00', '2021-05-09 21:41:50'),
 (19, 'Aplicaciones Móviles', 5, 'aplicaciones-moviles', 1, 0, 0, 0, 0, 'vistas/img/ofertas/default/default.jpg', '0000-00-00 00:00:00', '2021-05-09 21:41:50'),
 (20, 'Diseño Gráfico', 5, 'diseno-grafico', 1, 0, 0, 0, 0, 'vistas/img/ofertas/default/default.jpg', '0000-00-00 00:00:00', '2021-05-09 21:41:50'),
-(21, 'Marketing Digital', 5, 'marketing-digital', 1, 0, 0, 0, 0, 'vistas/img/ofertas/default/default.jpg', '0000-00-00 00:00:00', '2021-05-09 21:41:50');
+(21, 'Marketing Digital', 5, 'marketing-digital', 1, 0, 0, 0, 0, 'vistas/img/ofertas/default/default.jpg', '0000-00-00 00:00:00', '2021-05-09 21:41:50'),
+(24, 'Películas de Acción', 18, 'peliculas-de-accion', 1, 1, 1, 20, 0, 'vistas/img/ofertas/peliculas.jpg', '2021-05-31 23:59:59', '2021-05-13 05:09:50'),
+(25, 'Películas Infantiles', 18, 'peliculas-infantiles', 1, 1, 1, 20, 0, 'vistas/img/ofertas/peliculas.jpg', '2021-05-31 23:59:59', '2021-05-13 05:09:50');
 
 -- --------------------------------------------------------
 
@@ -1176,13 +1181,13 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT de la tabla `cabeceras`
 --
 ALTER TABLE `cabeceras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `comentarios`
@@ -1230,7 +1235,7 @@ ALTER TABLE `slide`
 -- AUTO_INCREMENT de la tabla `subcategorias`
 --
 ALTER TABLE `subcategorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

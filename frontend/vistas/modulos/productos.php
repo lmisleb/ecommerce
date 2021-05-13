@@ -224,7 +224,16 @@ LISTAR PRODUCTOS
 
 						<h1><small>Oops!</small></h1>
 
-						<h2>Aún no hay productos en esta sección</h2>
+						<h2>Aún no hay productos disponibles en esta sección.</h2>
+
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br> 
 					
 					</div>';
 
@@ -264,7 +273,7 @@ LISTAR PRODUCTOS
 	
 											}
 	
-											if($value["oferta"] != 0){
+											if($value["oferta"] != 0 && $value["precio"] != 0){
 	
 												echo '<span class="label label-warning fontSize">'.$value["descuentoOferta"].'% off</span>';
 	
@@ -409,7 +418,7 @@ LISTAR PRODUCTOS
 	
 											}
 	
-											if($value["oferta"] != 0){
+											if($value["oferta"] != 0 && $value["precio"] != 0){
 	
 												echo '<span class="label label-warning">'.$value["descuentoOferta"].'% off</span>';
 	

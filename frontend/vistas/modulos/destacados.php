@@ -180,7 +180,7 @@ BANNER
 
 										}
 
-										if($value["oferta"] != 0){
+										if($value["oferta"] != 0 && $value["precio"] != 0){
 
 											echo '<span class="label label-warning fontSize">'.$value["descuentoOferta"].'% off</span>';
 
@@ -327,7 +327,7 @@ BANNER
 
 										}
 
-										if($value["oferta"] != 0){
+										if($value["oferta"] != 0 && $value["precio"] != 0){
 
 											echo '<span class="label label-warning">'.$value["descuentoOferta"].'% off</span>';
 
