@@ -295,7 +295,7 @@ class ControladorSubCategorias{
 
 				}
 
-				/*=============================================
+				/*============================================
 					VALIDAR IMAGEN OFERTA
 				=============================================*/
 
@@ -305,11 +305,17 @@ class ControladorSubCategorias{
 
 					/*=============================================
 						BORRAMOS ANTIGUA FOTO OFERTA
-					=============================================*/
+					=============================================*/	
 
-					if($_POST["antiguaFotoOferta"] != "vistas/img/ofertas/default/default.jpg"){
+					$ofertaCategoria = ModeloCategorias::mdlMostrarCategorias("categorias", "id", $_POST["seleccionarCategoria"]);
+				
+					if($ofertaCategoria["oferta"] == 0){
 
-						unlink($_POST["antiguaFotoOferta"]);
+						if($_POST["antiguaFotoOferta"] != "vistas/img/ofertas/default/default.jpg"){
+
+							unlink($_POST["antiguaFotoOferta"]);
+	
+						}
 
 					}
 
@@ -372,8 +378,8 @@ class ControladorSubCategorias{
 								   "estado"=> 1,
 								   "idCabecera"=>$_POST["editarIdCabecera"],
 								   "titulo"=>$_POST["editarTituloSubCategoria"],
-								   "descripcion"=> $_POST["descripcionSubCategoria"],
-								   "palabrasClaves"=> $_POST["pClavesSubCategoria"],
+								   "descripcion"=>$_POST["descripcionSubCategoria"],
+								   "palabrasClaves"=>$_POST["pClavesSubCategoria"],
 								   "imgPortada"=>$rutaPortada,
 								   "oferta"=>1,
 								   "precioOferta"=>$_POST["precioOferta"],
@@ -383,9 +389,15 @@ class ControladorSubCategorias{
 
 				}else{
 
-					if($_POST["antiguaFotoOferta"] != "vistas/img/ofertas/default/default.jpg"){
+					$ofertaCategoria = ModeloCategorias::mdlMostrarCategorias("categorias", "id", $_POST["seleccionarCategoria"]);
+				
+					if($ofertaCategoria["oferta"] == 0){
 
-						unlink($_POST["antiguaFotoOferta"]);
+						if($_POST["antiguaFotoOferta"] != "vistas/img/ofertas/default/default.jpg"){
+
+							unlink($_POST["antiguaFotoOferta"]);
+	
+						}
 
 					}
 
@@ -396,8 +408,8 @@ class ControladorSubCategorias{
 								   "estado"=> 1,
 								   "idCabecera"=>$_POST["editarIdCabecera"],
 								   "titulo"=>$_POST["editarTituloSubCategoria"],
-								   "descripcion"=> $_POST["descripcionSubCategoria"],
-								   "palabrasClaves"=> $_POST["pClavesSubCategoria"],
+								   "descripcion"=>$_POST["descripcionSubCategoria"],
+								   "palabrasClaves"=>$_POST["pClavesSubCategoria"],
 								   "imgPortada"=>$rutaPortada,
 								   "oferta"=>0,
 								   "precioOferta"=>0,
@@ -508,7 +520,7 @@ class ControladorSubCategorias{
 
 			/*=============================================
 				ELIMINAR CABECERA
-			=============================================*/
+			===============================================*/
 
 			if($_GET["imgPortada"] != "" && $_GET["imgPortada"] != "vistas/img/cabeceras/default/default.jpg"){
 
@@ -518,9 +530,9 @@ class ControladorSubCategorias{
 
 			ModeloCabeceras::mdlEliminarCabecera("cabeceras", $_GET["rutaCabecera"]);
 
-			/*==============================================
+			/*==================================================
 				QUITAR LAS SUBCATEGORIAS DE LOS PRODUCTOS
-			================================================*/
+			====================================================*/
 
 			$traerProductos = ModeloProductos::mdlMostrarProductos("productos", "id_subcategoria", $_GET["idSubCategoria"]);
 
