@@ -150,34 +150,18 @@ class TablaProductos{
 
 					if($productos[$i]["multimedia"] != null){
 
-						$multimedia = json_decode($productos[$i]["multimedia"],true);
-						//echo json_encode($productos[$i]["multimedia"],true); return;
+						//print_r($productos[$i]["multimedia"]);
 
-						if($multimedia==false){
+						$multimedia = json_decode($productos[$i]["multimedia"],true);
+
+						if(substr($multimedia[0]["foto"], 0, 11) == "vistas/img/"){
+
+							$vistaMultimedia = "<img src='".$multimedia[0]["foto"]."' class='img-thumbnail imgTablaMultimedia' width='100px'>";
 
 						}else{
 
-							if($multimedia[0]["foto"] != ""){
-
-								$vistaMultimedia = "<img src='".$multimedia[0]["foto"]."' class='img-thumbnail imgTablaMultimedia' width='100px'>";
-	
-							}else{
-	
-								$vistaMultimedia = "<img src='http://i3.ytimg.com/vi/".$productos[$i]["multimedia"]."/hqdefault.jpg' class='img-thumbnail imgTablaMultimedia' width='100px'>";
-	
-							}
-
+							$vistaMultimedia = "<img src='http://i3.ytimg.com/vi/".$multimedia[0]["foto"]."/hqdefault.jpg' class='img-thumbnail imgTablaMultimedia' width='100px'>";
 						}
-
-						// if($multimedia[0]["foto"] != ""){
-
-						// 	$vistaMultimedia = "<img src='".$multimedia[0]["foto"]."' class='img-thumbnail imgTablaMultimedia' width='100px'>";
-
-						// }else{
-
-						// 	$vistaMultimedia = "<img src='http://i3.ytimg.com/vi/".$productos[$i]["multimedia"]."/hqdefault.jpg' class='img-thumbnail imgTablaMultimedia' width='100px'>";
-
-						// }
 
 					}else{
 
