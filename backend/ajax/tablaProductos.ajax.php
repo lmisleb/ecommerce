@@ -20,6 +20,7 @@ class TablaProductos{
 		$item = null;
 		$valor = null;
 		$productos = ControladorProductos::ctrMostrarProductos($item, $valor);
+		//echo json_encode($productos); return;
 
 		$datosJson = '
 
@@ -32,17 +33,23 @@ class TablaProductos{
 						TRAER LAS CATEGORÍAS
 					=============================================*/
 
+					$categoria = null;
+					$subcategoria = null;
+					$imgPortada = null;
+					$vistaMultimedia = null;
 					$item = "id";
 					$valor = $productos[$i]["id_categoria"];
 					$categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
 
-					if($categorias["categoria"] == ""){
+					if($valor == 0){
 
 						$categoria = "SIN CATEGORÍA";
-					
+						$categorialbl = "<label class='lblCategoriaRed'>SIN CATEGORÍA</label>";
+
 					}else{
 
-						$categoria = $categorias["categoria"];
+						$categorialbl = "<label class='lblCategoria'>".$categorias["categoria"]."</label>";
+
 					}
 
 					/*=============================================
@@ -53,34 +60,54 @@ class TablaProductos{
 					$valor2 = $productos[$i]["id_subcategoria"];
 					$subcategorias = ControladorSubCategorias::ctrMostrarSubCategorias($item2, $valor2);
 
-					if($subcategorias[0]["subcategoria"] == ""){
+					if($valor2 == 0){
 
 						$subcategoria = "SIN SUBCATEGORÍA";
-					
+						$subcategorialbl = "<label class='lblSubCategoriaRed'>SIN SUBCATEGORÍA</label>";
+
 					}else{
 
-						$subcategoria = $subcategorias[0]["subcategoria"];
+						$subcategorialbl = "<label class='lblSubCategoria'>".$subcategorias[0]["subcategoria"]."</label>";
+
 					}
 
 					/*=============================================
-						AGREGAR ETIQUETAS DE ESTADO
+						NOMBRE DEL PRODUCTO
 					=============================================*/
 
-					if($productos[$i]["estado"] == 0){
+					$productolbl = "<label class='lblProducto'>".$productos[$i]["titulo"]."</label>";
+
+					/*=============================================
+						REVISAR ESTADO  
+					=============================================*/
+
+					if($categorias[3] == 0 || $subcategorias[0][4] == 0){
 
 						$colorEstado = "btn-danger";
 						$textoEstado = "Desactivado";
 						$estadoProducto = 1;
+						$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idProducto='".$productos[$i]["id"]."' estadoProducto='".$estadoProducto."'>".$textoEstado."</button>";
 
 					}else{
 
 						$colorEstado = "btn-success";
 						$textoEstado = "Activado";
 						$estadoProducto = 0;
+						$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idProducto='".$productos[$i]["id"]."' estadoProducto='".$estadoProducto."'>".$textoEstado."</button>";
 
 					}
 
-					$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idProducto='".$productos[$i]["id"]."' estadoProducto='".$estadoProducto."'>".$textoEstado."</button>";
+					if($categorias[3] == 0 || $subcategorias[0][4] == 0){
+
+						$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idProducto='".$productos[$i]["id"]."' estadoProducto='".$estadoProducto."' disabled>".$textoEstado."</button>";
+
+					}
+
+					if($categoria == "SIN CATEGORÍA" || $subcategoria == "SIN SUBCATEGORÍA"){
+
+						$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idProducto='".$productos[$i]["id"]."' estadoProducto='".$estadoProducto."'>".$textoEstado."</button>";
+
+					}
 
 					/*=============================================
 						TRAER LAS CABECERAS
@@ -90,13 +117,25 @@ class TablaProductos{
 					$valor3 = $productos[$i]["ruta"];
 					$cabeceras = ControladorCabeceras::ctrMostrarCabeceras($item3, $valor3);
 
-					if($cabeceras["portada"] != ""){
+					if($cabeceras == false){
 
-						$imagenPortada = "<img src='".$cabeceras["portada"]."' class='img-thumbnail imgPortadaProductos' width='100px'>";
+						$cabeceras["portada"] = "";
+						$cabeceras["descripcion"] = "";
+						$cabeceras["palabrasClaves"] = "";
+						$imgPortada = "<img class='img-thumbnail imgPortadaCategorias' src='vistas/img/cabeceras/default/default.jpg' width='100px'>";
 
 					}else{
 
-						$imagenPortada = "<img src='vistas/img/cabeceras/default/default.jpg' class='img-thumbnail imgPortadaProductos' width='100px'>";
+						if($cabeceras["portada"] != ""){
+
+							$imgPortada = "<img src='".$cabeceras["portada"]."' class='img-thumbnail imgPortadaProductos' width='100px'>";
+
+						}else{
+
+							$imgPortada = "<img src='vistas/img/cabeceras/default/default.jpg' class='img-thumbnail imgPortadaProductos' width='100px'>";
+
+						}
+
 					}
 
 					/*=============================================
@@ -112,16 +151,33 @@ class TablaProductos{
 					if($productos[$i]["multimedia"] != null){
 
 						$multimedia = json_decode($productos[$i]["multimedia"],true);
+						//echo json_encode($productos[$i]["multimedia"],true); return;
 
-						if($multimedia[0]["foto"] != ""){
-
-							$vistaMultimedia = "<img src='".$multimedia[0]["foto"]."' class='img-thumbnail imgTablaMultimedia' width='100px'>";
+						if($multimedia==false){
 
 						}else{
 
-							$vistaMultimedia = "<img src='http://i3.ytimg.com/vi/".$productos[$i]["multimedia"]."/hqdefault.jpg' class='img-thumbnail imgTablaMultimedia' width='100px'>";
+							if($multimedia[0]["foto"] != ""){
+
+								$vistaMultimedia = "<img src='".$multimedia[0]["foto"]."' class='img-thumbnail imgTablaMultimedia' width='100px'>";
+	
+							}else{
+	
+								$vistaMultimedia = "<img src='http://i3.ytimg.com/vi/".$productos[$i]["multimedia"]."/hqdefault.jpg' class='img-thumbnail imgTablaMultimedia' width='100px'>";
+	
+							}
 
 						}
+
+						// if($multimedia[0]["foto"] != ""){
+
+						// 	$vistaMultimedia = "<img src='".$multimedia[0]["foto"]."' class='img-thumbnail imgTablaMultimedia' width='100px'>";
+
+						// }else{
+
+						// 	$vistaMultimedia = "<img src='http://i3.ytimg.com/vi/".$productos[$i]["multimedia"]."/hqdefault.jpg' class='img-thumbnail imgTablaMultimedia' width='100px'>";
+
+						// }
 
 					}else{
 
@@ -219,7 +275,21 @@ class TablaProductos{
 						TRAER LAS ACCIONES
 					=============================================*/
 
-					$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarProducto' idProducto='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalEditarProducto'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarProducto' idProducto='".$productos[$i]["id"]."' imgOferta='".$productos[$i]["imgOferta"]."' rutaCabecera='".$productos[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."' imgPrincipal='".$productos[$i]["portada"]."'><i class='fa fa-times'></i></button></div>";
+					if($categorias[3] == 0 || $subcategorias[0][4] == 0){
+
+						$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarProducto' idProducto='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalEditarProducto' disabled><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarProducto' idProducto='".$productos[$i]["id"]."' imgOferta='".$productos[$i]["imgOferta"]."' rutaCabecera='".$productos[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."' imgPrincipal='".$productos[$i]["portada"]."'><i class='fa fa-times'></i></button></div>";						
+
+					}else{
+
+						$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarProducto' idProducto='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalEditarProducto'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarProducto' idProducto='".$productos[$i]["id"]."' imgOferta='".$productos[$i]["imgOferta"]."' rutaCabecera='".$productos[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."' imgPrincipal='".$productos[$i]["portada"]."'><i class='fa fa-times'></i></button></div>";
+
+					}
+
+					if($categoria == "SIN CATEGORÍA" || $subcategoria == "SIN SUBCATEGORÍA"){
+
+						$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarProducto' idProducto='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalEditarProducto'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarProducto' idProducto='".$productos[$i]["id"]."' imgOferta='".$productos[$i]["imgOferta"]."' rutaCabecera='".$productos[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."' imgPrincipal='".$productos[$i]["portada"]."'><i class='fa fa-times'></i></button></div>";
+
+					}
 
 					/*=============================================
 						CONSTRUIR LOS DATOS JSON
@@ -228,15 +298,15 @@ class TablaProductos{
 					$datosJson .='[
 							
 						"'.($i+1).'",
-						"'.$productos[$i]["titulo"].'",
-						"'.$categoria.'",
-						"'.$subcategoria.'",
+						"'.$categorialbl.'",
+						"'.$subcategorialbl.'",
+						"'.$productolbl.'",
 						"'.$productos[$i]["ruta"].'",
 						"'.$estado.'",
 						"'.$productos[$i]["tipo"].'",
 						"'.$cabeceras["descripcion"].'",
 						"'.$cabeceras["palabrasClaves"].'",
-						"'.$imagenPortada.'",
+						"'.$imgPortada.'",
 						"'.$imagenPrincipal.'",
 						"'.$vistaMultimedia.'",
 						"'.$vistaDetalles.'",

@@ -2,7 +2,9 @@
 
 	<section class="content-header">
 
-	    <h1>Gestor Productos</h1>
+	    <!-- <h1>Gestor Productos</h1> -->
+
+        <h1><a href="categorias">Categorías | </a> <a href="subcategorias"> Subcategorías | </a> <a href="productos"> Productos</a></h1>
 
 		<ol class="breadcrumb">
 
@@ -37,9 +39,9 @@
 						<tr>
 						 
                             <th style="width:10px">#</th>
-                            <th>Titulo</th>
                             <th>Categoria</th>
                             <th>Subcategoria</th>
+                            <th>Producto</th>
                             <th>Ruta</th>
                             <th>Estado</th>
                             <th>Tipo</th>

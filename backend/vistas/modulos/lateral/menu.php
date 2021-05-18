@@ -15,7 +15,7 @@ MENU
         <a href="#">
 
             <i class="fa fa-th"></i>
-            <span>Gestor Categorías</span>
+            <span>Gestor Principal</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -26,12 +26,13 @@ MENU
             
             <li><a href="categorias"><i class="fa fa-circle-o"></i> Categorías</a></li>
             <li><a href="subcategorias"><i class="fa fa-circle-o"></i> Subcategorías</a></li>
+            <li><a href="productos"><i class="fa fa-circle-o"></i> Productos</a></li>
         
         </ul>
 
     </li>
 
-    <li><a href="productos"><i class="fa fa-product-hunt"></i> <span>Gestor Productos</span></a></li>
+    <!-- <li><a href="productos"><i class="fa fa-product-hunt"></i> <span>Gestor Productos</span></a></li> -->
 
     <li><a href="banner"><i class="fa fa-map-o"></i> <span>Gestor Banner</span></a></li>
 

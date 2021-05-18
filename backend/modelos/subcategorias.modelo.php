@@ -31,7 +31,7 @@ class ModeloSubCategorias{
 	}
 
 	/*=============================================
-		ACTIVAR/DESACTIVAR SUBCATEGORIAS
+		ACTIVAR / DESACTIVAR SUBCATEGORIAS
 	=============================================*/
 
 	static public function mdlActivarDesactivarSubCategorias($tabla, $item1, $valor1, $item2, $valor2){
@@ -108,7 +108,7 @@ class ModeloSubCategorias{
 
 		}else{
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY id DESC");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY subcategoria ASC");
 			$stmt -> execute();
 			return $stmt -> fetchAll();
 
@@ -178,7 +178,6 @@ class ModeloSubCategorias{
 		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET subcategoria = :subcategoria, 
 																 id_categoria = :id_categoria, 
 																 ruta = :ruta, 
-																 estado = :estado, 
 																 oferta = :oferta, 
 																 precioOferta = :precioOferta, 
 																 descuentoOferta = :descuentoOferta, 
@@ -189,7 +188,6 @@ class ModeloSubCategorias{
 		$stmt->bindParam(":subcategoria", $datos["subcategoria"], PDO::PARAM_STR);
 		$stmt->bindParam(":id_categoria", $datos["idCategoria"], PDO::PARAM_STR);
 		$stmt->bindParam(":ruta", $datos["ruta"], PDO::PARAM_STR);
-		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
 		$stmt->bindParam(":oferta", $datos["oferta"], PDO::PARAM_STR);
 		$stmt->bindParam(":precioOferta", $datos["precioOferta"], PDO::PARAM_STR);
 		$stmt->bindParam(":descuentoOferta", $datos["descuentoOferta"], PDO::PARAM_STR);

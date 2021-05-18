@@ -36,29 +36,34 @@ class TablaSubCategorias{
 					$valor = $subcategorias[$i]["id_categoria"];
 					$categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
 
-					if($valor == 0){
+
+					if($categorias == false){
 
 						$categoria = "SIN CATEGORÍA";
-						$categorialbl = "<label style='color:red'>SIN CATEGORÍA</label>";
+						$categorialbl = "<label class='lblCategoriaRed'>SIN CATEGORÍA</label>";
 
 					}else{
 
-						//$categoria = "CON CATEGORÍA";
-						//$categoria = $categorias["categoria"];
-						$categorialbl = "<label>".$categorias["categoria"]."</label>";
-
+						$categorialbl = "<label class='lblCategoria'>".$categorias["categoria"]."</label>";
+											
 					}
+
+					/*=============================================
+						NOMBRE DE LA SUBCATEGORIA
+					=============================================*/
+
+					$subcategorialbl = "<label class='lblSubCategoria'>".$subcategorias[$i]["subcategoria"]."</label>";
 
 					/*=============================================
 						REVISAR ESTADO
 					=============================================*/
 
-					if( $subcategorias[$i]["estado"] == 0){
+					if($subcategorias[$i]["estado"] == 0){
 
 						$colorEstado = "btn-danger";
 						$textoEstado = "Desactivado";
 						$estadoSubCategoria = 1;
-						$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idSubCategoria='". $subcategorias[$i]["id"]."' estadoSubCategoria='".$estadoSubCategoria."' disabled>".$textoEstado."</button>";
+						$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idSubCategoria='". $subcategorias[$i]["id"]."' estadoSubCategoria='".$estadoSubCategoria."'>".$textoEstado."</button>";
 
 					}else{
 
@@ -69,12 +74,25 @@ class TablaSubCategorias{
 
 					}
 
-					if($categoria == "SIN CATEGORÍA"){
+					if($categorias != false){
 
-						$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idSubCategoria='". $subcategorias[$i]["id"]."' estadoSubCategoria='".$estadoSubCategoria."'>".$textoEstado."</button>";
+						if($categorias["estado"] == 0){
+
+							$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idSubCategoria='". $subcategorias[$i]["id"]."' estadoSubCategoria='".$estadoSubCategoria."' disabled>".$textoEstado."</button>";
+
+						}
+							
+						if($categoria == "SIN CATEGORÍA"){
+
+							$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idSubCategoria='". $subcategorias[$i]["id"]."' estadoSubCategoria='".$estadoSubCategoria."'>".$textoEstado."</button>";
+
+						}
+
+					}else{
+
+						$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idSubCategoria='". $subcategorias[$i]["id"]."' estadoSubCategoria='".$estadoSubCategoria."' disabled>".$textoEstado."</button>";
 
 					}
-
 
 					/*=============================================
 						REVISAR IMAGEN PORTADA
@@ -84,7 +102,7 @@ class TablaSubCategorias{
 					$valor2 = $subcategorias[$i]["ruta"];
 					$cabeceras = ControladorCabeceras::ctrMostrarCabeceras($item2, $valor2);
 
-					if($cabeceras==false){
+					if($cabeceras == false){
 
 						$cabeceras["portada"] = "";
 						$cabeceras["descripcion"] = "";
@@ -143,26 +161,28 @@ class TablaSubCategorias{
 						CREAR LAS ACCIONES
 					=============================================*/
 
-					if($subcategorias[$i]["estado"] == 0){
+					$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' data-toggle='modal' data-target='#modalEditarSubCategoria'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' imgOferta='".$subcategorias[$i]["imgOferta"]."' rutaCabecera='".$subcategorias[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."'><i class='fa fa-times'></i></button></div>";
 
-						$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' data-toggle='modal' data-target='#modalEditarSubCategoria' disabled><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' imgOferta='".$subcategorias[$i]["imgOferta"]."' rutaCabecera='".$subcategorias[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."'><i class='fa fa-times'></i></button></div>";
+					if($categorias != false){
+					
+						if($categorias["estado"] == 0){
 
-					}else{
+							$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' data-toggle='modal' data-target='#modalEditarSubCategoria' disabled><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' imgOferta='".$subcategorias[$i]["imgOferta"]."' rutaCabecera='".$subcategorias[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."'><i class='fa fa-times'></i></button></div>";
 
-						$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' data-toggle='modal' data-target='#modalEditarSubCategoria'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' imgOferta='".$subcategorias[$i]["imgOferta"]."' rutaCabecera='".$subcategorias[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."'><i class='fa fa-times'></i></button></div>";
+						}
 
-					}
+						if($categoria == "SIN CATEGORÍA"){
 
-					if($categoria == "SIN CATEGORÍA"){
+							$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' data-toggle='modal' data-target='#modalEditarSubCategoria'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' imgOferta='".$subcategorias[$i]["imgOferta"]."' rutaCabecera='".$subcategorias[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."'><i class='fa fa-times'></i></button></div>";
 
-						$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' data-toggle='modal' data-target='#modalEditarSubCategoria'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarSubCategoria' idSubCategoria='".$subcategorias[$i]["id"]."' imgOferta='".$subcategorias[$i]["imgOferta"]."' rutaCabecera='".$subcategorias[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."'><i class='fa fa-times'></i></button></div>";
-
+						}
+					
 					}
 
 					$datosJson .=  '[
 							"'.($i+1).'",
 							"'.$categorialbl.'",
-							"'.$subcategorias[$i]["subcategoria"].'",
+							"'.$subcategorialbl.'",
 							"'.$subcategorias[$i]["ruta"].'",
 							"'.$estado.'",
 							"'.$cabeceras["descripcion"].'",
@@ -183,7 +203,7 @@ class TablaSubCategorias{
 
 		}';
 
-		echo $datosJson;    
+		echo $datosJson;
 		
 	}
 

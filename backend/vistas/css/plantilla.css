@@ -79,7 +79,6 @@ REDES SOCIALES
 .instagramColor{
 	color:white;
 	background:linear-gradient(45deg, #fca925, #ee1d5f,  #6350a2);
-
 }
 
 .instagramBlanco{
@@ -89,4 +88,26 @@ REDES SOCIALES
 
 .instagramNegro{
 	color:black;
+}
+
+/*ETIQUETA CATEGORIA*/
+
+.lblCategoria{
+	font-weight: normal;
+	color: royalblue;
+}
+
+.lblCategoriaRed, .lblSubCategoriaRed{
+	font-weight: bold;
+	color: red;
+}
+
+.lblSubCategoria{
+	font-weight: normal;
+	color: greenyellow;
+}
+
+.lblProducto{
+	font-weight: normal;
+	color: orange;
 }

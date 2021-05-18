@@ -136,7 +136,7 @@ class ModeloProductos{
 
 		}else{
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE estado = 1 ORDER BY id DESC");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY id DESC");
 			$stmt -> execute();
 			return $stmt -> fetchAll();
 

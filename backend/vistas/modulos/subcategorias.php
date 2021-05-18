@@ -2,7 +2,9 @@
 
     <section class="content-header">
 
-        <h1>Gestor Subcategorías</h1>
+        <!-- <h1>Gestor Subcategorías</h1> -->
+
+        <h1><a href="categorias">Categorías | </a> <a href="subcategorias"> Subcategorías | </a> <a href="productos"> Productos</a></h1>
 
         <ol class="breadcrumb">
 

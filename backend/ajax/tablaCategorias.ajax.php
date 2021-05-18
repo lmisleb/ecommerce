@@ -17,20 +17,25 @@ class TablaCategorias{
 		$item = null;
 		$valor = null;
 		$categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
-		//echo json_encode($categorias);
-		//return;
+		//echo json_encode($categorias); return;
 
 		$datosJson = '{
 			
 			"data": [ ';
 
 				for($i = 0; $i < count($categorias); $i++){
+
+					/*=============================================
+						NOMBRE DE LA CATEGORIA
+					=============================================*/
+
+					$categorialbl = "<label class='lblCategoria'>".$categorias[$i]["categoria"]."</label>";
 				
 					/*======================
 						REVISAR ESTADO
 					======================*/ 
 
-					if( $categorias[$i]["estado"] == 0){
+					if($categorias[$i]["estado"] == 0){
 
 						$colorEstado = "btn-danger";
 						$textoEstado = "Desactivado";
@@ -54,7 +59,7 @@ class TablaCategorias{
 					$valor = $categorias[$i]["ruta"];
 					$cabeceras = ControladorCabeceras::ctrMostrarCabeceras($item, $valor);
 					
-					if($cabeceras==false){
+					if($cabeceras == false){
 
 						$cabeceras["portada"] = "";
 						$cabeceras["descripcion"] = "";
@@ -117,7 +122,7 @@ class TablaCategorias{
 							
 					$datosJson .= '[
 							"'.($i+1).'",
-							"'.$categorias[$i]["categoria"].'",
+							"'.$categorialbl.'",
 							"'.$categorias[$i]["ruta"].'",
 							"'.$estado.'",
 							"'.$cabeceras["descripcion"].'",

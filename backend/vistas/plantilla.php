@@ -15,7 +15,7 @@
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
 		<!-- =============================================
-			PLUGINS DE CCS
+			PLUGINS DE CSS
 		============================================= -->
 
 		<!-- Bootstrap 3.3.7 -->

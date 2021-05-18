@@ -19,7 +19,7 @@ class ModeloCategorias{
 
 		}else{
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY id DESC");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY categoria ASC");
 			$stmt -> execute();
 			return $stmt -> fetchAll();
 
