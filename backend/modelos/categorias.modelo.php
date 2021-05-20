@@ -107,7 +107,6 @@ class ModeloCategorias{
 
 		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET categoria = :categoria, 
 																 ruta = :ruta, 
-																 estado = :estado, 
 																 oferta = :oferta, 
 																 precioOferta = :precioOferta, 
 																 descuentoOferta = :descuentoOferta, 
@@ -117,7 +116,6 @@ class ModeloCategorias{
 														   
 		$stmt -> bindParam(":categoria", $datos["categoria"], PDO::PARAM_STR);
 		$stmt->bindParam(":ruta", $datos["ruta"], PDO::PARAM_STR);
-		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
 		$stmt->bindParam(":oferta", $datos["oferta"], PDO::PARAM_STR);
 		$stmt->bindParam(":precioOferta", $datos["precioOferta"], PDO::PARAM_STR);
 		$stmt->bindParam(":descuentoOferta", $datos["descuentoOferta"], PDO::PARAM_STR);
