@@ -36,7 +36,6 @@ class TablaSubCategorias{
 					$valor = $subcategorias[$i]["id_categoria"];
 					$categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
 
-
 					if($categorias == false){
 
 						$categoria = "SIN CATEGORÍA";

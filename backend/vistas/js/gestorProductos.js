@@ -70,7 +70,7 @@ $('.tablaProductos tbody').on("click", ".btnActivar", function(){
         processData: false,
         success: function(respuesta){    
             
-            // console.log("respuesta", respuesta);
+            //console.log("respuesta", respuesta);
 
         }
 

@@ -37,11 +37,13 @@ class TablaProductos{
 					$subcategoria = null;
 					$imgPortada = null;
 					$vistaMultimedia = null;
+					$estadoProducto = null;
+
 					$item = "id";
 					$valor = $productos[$i]["id_categoria"];
 					$categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
 
-					if($valor == 0){
+					if($categorias == false){
 
 						$categoria = "SIN CATEGORÍA";
 						$categorialbl = "<label class='lblCategoriaRed'>SIN CATEGORÍA</label>";
@@ -49,7 +51,7 @@ class TablaProductos{
 					}else{
 
 						$categorialbl = "<label class='lblCategoria'>".$categorias["categoria"]."</label>";
-
+											
 					}
 
 					/*=============================================
@@ -60,7 +62,7 @@ class TablaProductos{
 					$valor2 = $productos[$i]["id_subcategoria"];
 					$subcategorias = ControladorSubCategorias::ctrMostrarSubCategorias($item2, $valor2);
 
-					if($valor2 == 0){
+					if($subcategorias == false){
 
 						$subcategoria = "SIN SUBCATEGORÍA";
 						$subcategorialbl = "<label class='lblSubCategoriaRed'>SIN SUBCATEGORÍA</label>";
@@ -78,37 +80,58 @@ class TablaProductos{
 					$productolbl = "<label class='lblProducto'>".$productos[$i]["titulo"]."</label>";
 
 					/*=============================================
-						REVISAR ESTADO  
+						ACTIVAR / DESACTIVAR PRODUCTO
 					=============================================*/
 
-					if($categorias[3] == 0 || $subcategorias[0][4] == 0){
+					if($productos[$i]["estado"] == 0){
 
 						$colorEstado = "btn-danger";
 						$textoEstado = "Desactivado";
 						$estadoProducto = 1;
-						$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idProducto='".$productos[$i]["id"]."' estadoProducto='".$estadoProducto."'>".$textoEstado."</button>";
-
+	  
 					}else{
-
+	  
 						$colorEstado = "btn-success";
 						$textoEstado = "Activado";
 						$estadoProducto = 0;
-						$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idProducto='".$productos[$i]["id"]."' estadoProducto='".$estadoProducto."'>".$textoEstado."</button>";
+	  
+					}
+	  
+					$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idProducto='".$productos[$i]["id"]."' estadoProducto='".$estadoProducto."'>".$textoEstado."</button>";
+
+					/*===================================================================================================
+						ANULAR BOTON (ACTIVAR / DESACTIVAR) PRODUCTO SI EN CATEGORIA Y SUBCATEGORIA ESTA DESACTIVADO
+					=====================================================================================================*/
+
+					if($categorias != false){
+
+						if($categorias[3] == 0){
+							$colorEstado = "btn-danger";
+					 		$textoEstado = "Desactivado";
+							$estadoProducto = 1;
+ 							$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idProducto='".$productos[$i]["id"]."' estadoProducto='".$estadoProducto."' disabled>".$textoEstado."</button>";
+						}
 
 					}
 
-					if($categorias[3] == 0 || $subcategorias[0][4] == 0){
+					if($subcategorias != false ){
 
-						$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idProducto='".$productos[$i]["id"]."' estadoProducto='".$estadoProducto."' disabled>".$textoEstado."</button>";
+						if($subcategorias[0][4] == 0){
+							$colorEstado = "btn-danger";
+					 		$textoEstado = "Desactivado";
+							$estadoProducto = 1;
+ 							$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idProducto='".$productos[$i]["id"]."' estadoProducto='".$estadoProducto."' disabled>".$textoEstado."</button>";
+						}
 
 					}
 
 					if($categoria == "SIN CATEGORÍA" || $subcategoria == "SIN SUBCATEGORÍA"){
-
-						$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idProducto='".$productos[$i]["id"]."' estadoProducto='".$estadoProducto."'>".$textoEstado."</button>";
-
+						$colorEstado = "btn-danger";
+						$textoEstado = "Desactivado";
+					   	$estadoProducto = 1;
+						$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idProducto='".$productos[$i]["id"]."' estadoProducto='".$estadoProducto."' disabled>".$textoEstado."</button>";
 					}
-
+					
 					/*=============================================
 						TRAER LAS CABECERAS
 					=============================================*/
@@ -262,22 +285,38 @@ class TablaProductos{
 						TRAER LAS ACCIONES
 					=============================================*/
 
-					if($categorias[3] == 0 || $subcategorias[0][4] == 0){
+					$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarProducto' idProducto='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalEditarProducto'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarProducto' idProducto='".$productos[$i]["id"]."' imgOferta='".$productos[$i]["imgOferta"]."' rutaCabecera='".$productos[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."' imgPrincipal='".$productos[$i]["portada"]."'><i class='fa fa-times'></i></button></div>";						
 
-						$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarProducto' idProducto='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalEditarProducto' disabled><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarProducto' idProducto='".$productos[$i]["id"]."' imgOferta='".$productos[$i]["imgOferta"]."' rutaCabecera='".$productos[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."' imgPrincipal='".$productos[$i]["portada"]."'><i class='fa fa-times'></i></button></div>";						
+					/*===================================================================================================
+						ANULAR BOTON (ACCCIONES) PRODUCTO SI EN CATEGORIA Y SUBCATEGORIA ESTA DESACTIVADO
+					=====================================================================================================*/
 
-					}else{
+					if($categorias != false){
 
-						$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarProducto' idProducto='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalEditarProducto'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarProducto' idProducto='".$productos[$i]["id"]."' imgOferta='".$productos[$i]["imgOferta"]."' rutaCabecera='".$productos[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."' imgPrincipal='".$productos[$i]["portada"]."'><i class='fa fa-times'></i></button></div>";
+						if($categorias[3] == 0){
+
+							$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarProducto' idProducto='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalEditarProducto' disabled><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarProducto' idProducto='".$productos[$i]["id"]."' imgOferta='".$productos[$i]["imgOferta"]."' rutaCabecera='".$productos[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."' imgPrincipal='".$productos[$i]["portada"]."'><i class='fa fa-times'></i></button></div>";						
+
+						}
+
+					}
+
+					if($subcategorias != false ){
+
+						if($subcategorias[0][4] == 0){
+
+							$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarProducto' idProducto='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalEditarProducto' disabled><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarProducto' idProducto='".$productos[$i]["id"]."' imgOferta='".$productos[$i]["imgOferta"]."' rutaCabecera='".$productos[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."' imgPrincipal='".$productos[$i]["portada"]."'><i class='fa fa-times'></i></button></div>";						
+							
+						}
 
 					}
 
 					if($categoria == "SIN CATEGORÍA" || $subcategoria == "SIN SUBCATEGORÍA"){
-
-						$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarProducto' idProducto='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalEditarProducto'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarProducto' idProducto='".$productos[$i]["id"]."' imgOferta='".$productos[$i]["imgOferta"]."' rutaCabecera='".$productos[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."' imgPrincipal='".$productos[$i]["portada"]."'><i class='fa fa-times'></i></button></div>";
+						
+						$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarProducto' idProducto='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalEditarProducto'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarProducto' idProducto='".$productos[$i]["id"]."' imgOferta='".$productos[$i]["imgOferta"]."' rutaCabecera='".$productos[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."' imgPrincipal='".$productos[$i]["portada"]."'><i class='fa fa-times'></i></button></div>";						
 
 					}
-
+				
 					/*=============================================
 						CONSTRUIR LOS DATOS JSON
 					=============================================*/
