@@ -24,7 +24,7 @@
                 
                 <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarCategoria">
 
-                    Agregar categoría
+                    Agregar Categoría
 
                 </button>
 
@@ -85,7 +85,7 @@
                 
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 
-                    <h4 class="modal-title">Agregar categoría</h4>
+                    <h4 class="modal-title">Agregar Categoría...</h4>
 
                 </div>
 
@@ -173,7 +173,7 @@
 
                             <p class="help-block">Tamaño recomendado 1280px * 720px <br> Peso máximo de la foto 2MB</p>
 
-                            <img src="vistas/img/cabeceras/default/default.jpg" class="img-thumbnail previsualizarPortada" width="100%">
+                            <img src="vistas/img/default/default.png" class="img-thumbnail previsualizarPortada" width="100%">
 
                         </div>
 
@@ -258,7 +258,7 @@
 
                                 <p class="help-block">Tamaño recomendado 640px * 430px <br> Peso máximo de la foto 2MB</p>
 
-                                <img src="vistas/img/ofertas/default/default.jpg" class="img-thumbnail previsualizarOferta" width="100px">
+                                <img src="vistas/img/default/default.png" class="img-thumbnail previsualizarOferta" width="100px">
 
                             </div>
 
@@ -315,7 +315,7 @@
                 
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 
-                    <h4 class="modal-title">Editar categoría</h4>
+                    <h4 class="modal-title">Editar Categoría...</h4>
 
                 </div>
 
@@ -336,8 +336,7 @@
                             <div class="input-group">
                                 
                                 <span class="input-group-addon"><i class="fa fa-th"></i></span>
-                                <input type="text" class="form-control input-lg text-uppercase validarCategoria tituloCategoria" placeholder="Ingresar Categoria" name="editarTituloCategoria" required>
-                                
+                                <input type="text" class="form-control input-lg text-uppercase validarCategoria tituloCategoria" placeholder="Ingresar Categoria" name="editarTituloCategoria" required>        
                                 <input type="hidden" class="editarIdCategoria" name="editarIdCategoria">
                                 <input type="hidden" class="editarIdCabecera" name="editarIdCabecera">
 
@@ -403,11 +402,9 @@
                         
                             <div class="panel">SUBIR FOTO PORTADA</div>
                             <input type="file" class="fotoPortada" name="fotoPortada">
-                            
                             <input type="hidden" class="antiguaFotoPortada" name="antiguaFotoPortada">
-
                             <p class="help-block">Tamaño recomendado 1280px * 720px <br> Peso máximo de la foto 2MB</p>
-                            <img src="vistas/img/cabeceras/default/default.jpg" class="img-thumbnail previsualizarPortada" width="100%">
+                            <img src="vistas/img/default/default.png" class="img-thumbnail previsualizarPortada" width="100%">
 
                         </div>
 
@@ -488,11 +485,9 @@
                                 
                                 <div class="panel">SUBIR FOTO OFERTA</div>
                                 <input type="file" class="fotoOferta" name="fotoOferta">
-
                                 <input type="hidden" class="antiguaFotoOferta" name="antiguaFotoOferta">
-
                                 <p class="help-block">Tamaño recomendado 640px * 430px <br> Peso máximo de la foto 2MB</p>
-                                <img src="vistas/img/ofertas/default/default.jpg" class="img-thumbnail previsualizarOferta" width="100px">
+                                <img src="vistas/img/default/default.png" class="img-thumbnail previsualizarOferta" width="100px">
 
                             </div>
 

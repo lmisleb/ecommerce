@@ -64,7 +64,7 @@ class TablaCategorias{
 						$cabeceras["portada"] = "";
 						$cabeceras["descripcion"] = "";
 						$cabeceras["palabrasClaves"] = "";
-						$imgPortada = "<img class='img-thumbnail imgPortadaCategorias' src='vistas/img/cabeceras/default/default.jpg' width='100px'>";
+						$imgPortada = "<img class='img-thumbnail imgPortadaCategorias' src='vistas/img/default/default.png' width='100px'>";
 
 					}else{
 
@@ -74,7 +74,7 @@ class TablaCategorias{
 
 						}else{
 
-							$imgPortada = "<img class='img-thumbnail imgPortadaCategorias' src='vistas/img/cabeceras/default/default.jpg' width='100px'>";
+							$imgPortada = "<img class='img-thumbnail imgPortadaCategorias' src='vistas/img/default/default.png' width='100px'>";
 						}
 
 					}
@@ -110,7 +110,7 @@ class TablaCategorias{
 
 					}else{
 
-						$imgOfertas = "<img class='img-thumbnail imgOfertaCategorias' src='vistas/img/ofertas/default/default.jpg' width='100px'>";
+						$imgOfertas = "<img class='img-thumbnail imgOfertaCategorias' src='vistas/img/default/default.png' width='100px'>";
 
 					}
 
@@ -151,6 +151,7 @@ class TablaCategorias{
 
 /*=============================================
 	ACTIVAR TABLA DE CATEGORÍAS
-=============================================*/ 
+=============================================*/
+
 $activar = new TablaCategorias();
 $activar -> mostrarTabla();

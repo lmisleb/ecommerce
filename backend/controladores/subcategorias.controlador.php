@@ -28,7 +28,7 @@ class ControladorSubCategorias{
 					VALIDAR IMAGEN PORTADA
 				===============================================*/
 
-				$rutaPortada = "vistas/img/cabeceras/default/default.jpg";
+				$rutaPortada = "vistas/img/default/default.png";
 
 				if(isset($_FILES["fotoPortada"]["tmp_name"]) && !empty($_FILES["fotoPortada"]["tmp_name"])){
 
@@ -81,7 +81,7 @@ class ControladorSubCategorias{
 					VALIDAR IMAGEN OFERTA
 				===============================================*/
 
-				$rutaOferta = "vistas/img/ofertas/default/default.jpg";
+				$rutaOferta = "vistas/img/default/default.png";
 
 				if(isset($_FILES["fotoOferta"]["tmp_name"]) && !empty($_FILES["fotoOferta"]["tmp_name"])){
 
@@ -164,7 +164,7 @@ class ControladorSubCategorias{
 								   "oferta"=>0,
 								   "precioOferta"=>0,
 								   "descuentoOferta"=>0,
-								   "imgOferta"=>"vistas/img/ofertas/default/default.jpg",								   
+								   "imgOferta"=>"vistas/img/default/default.png",								   
 								   "finOferta"=>"");
 
 				}
@@ -311,7 +311,7 @@ class ControladorSubCategorias{
 				
 					if($ofertaCategoria["oferta"] == 0){
 
-						if($_POST["antiguaFotoOferta"] != "vistas/img/ofertas/default/default.jpg"){
+						if($_POST["antiguaFotoOferta"] != "vistas/img/default/default.png"){
 
 							unlink($_POST["antiguaFotoOferta"]);
 	
@@ -392,7 +392,7 @@ class ControladorSubCategorias{
 				
 					if($ofertaCategoria["oferta"] == 0){
 
-						if($_POST["antiguaFotoOferta"] != "vistas/img/ofertas/default/default.jpg"){
+						if($_POST["antiguaFotoOferta"] != "vistas/img/default/default.png"){
 
 							unlink($_POST["antiguaFotoOferta"]);
 	
@@ -412,7 +412,7 @@ class ControladorSubCategorias{
 								   "oferta"=>0,
 								   "precioOferta"=>0,
 								   "descuentoOferta"=>0,
-								   "imgOferta"=>"vistas/img/ofertas/default/default.jpg",								   
+								   "imgOferta"=>"vistas/img/default/default.png",								   
 								   "finOferta"=>"");
 
 				}
@@ -510,7 +510,7 @@ class ControladorSubCategorias{
 				ELIMINAR IMAGEN OFERTA
 			=============================================*/
 
-			if($_GET["imgOferta"] != "" && $_GET["imgOferta"] != "vistas/img/ofertas/default/default.jpg"){
+			if($_GET["imgOferta"] != "" && $_GET["imgOferta"] != "vistas/img/default/default.png"){
 
 				unlink($_GET["imgOferta"]);		
 
@@ -520,7 +520,7 @@ class ControladorSubCategorias{
 				ELIMINAR CABECERA
 			===============================================*/
 
-			if($_GET["imgPortada"] != "" && $_GET["imgPortada"] != "vistas/img/cabeceras/default/default.jpg"){
+			if($_GET["imgPortada"] != "" && $_GET["imgPortada"] != "vistas/img/default/default.png"){
 
 				unlink($_GET["imgPortada"]);		
 

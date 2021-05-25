@@ -124,7 +124,7 @@ class ControladorProductos{
 					VALIDAR IMAGEN PORTADA
 				=============================================*/
 
-				$rutaPortada = "../vistas/img/cabeceras/default/default.jpg";
+				$rutaPortada = "../vistas/img/default/default.png";
 
 				if(isset($datos["fotoPortada"]["tmp_name"]) && !empty($datos["fotoPortada"]["tmp_name"])){
 
@@ -334,7 +334,7 @@ class ControladorProductos{
 						"oferta"=>0,
 						"precioOferta"=>0,
 						"descuentoOferta"=>0,
-						"imgOferta"=>"",
+						"imgOferta"=>"vistas/img/default/default.png",
 						"finOferta"=>""
 					);
 
@@ -661,7 +661,7 @@ class ControladorProductos{
 						"oferta"=>0,
 						"precioOferta"=>0,
 						"descuentoOferta"=>0,
-						"imgOferta"=>"",								   
+						"imgOferta"=>"vistas/img/default/default.png",								   
 						"finOferta"=>""
 					);
 
@@ -725,7 +725,7 @@ class ControladorProductos{
 				ELIMINAR FOTO PRINCIPAL
 			=============================================*/
 
-			if($_GET["imgPrincipal"] != "" && $_GET["imgPrincipal"] != "vistas/img/productos/default/default.jpg"){
+			if($_GET["imgPrincipal"] != "" && $_GET["imgPrincipal"] != "vistas/img/default/default.png"){
 
 				unlink($_GET["imgPrincipal"]);		
 
@@ -745,7 +745,7 @@ class ControladorProductos{
 				ELIMINAR CABECERA
 			=============================================*/
 
-			if($_GET["imgPortada"] != "" && $_GET["imgPortada"] != "vistas/img/cabeceras/default/default.jpg"){
+			if($_GET["imgPortada"] != "" && $_GET["imgPortada"] != "vistas/img/default/default.png"){
 
 				unlink($_GET["imgPortada"]);		
 

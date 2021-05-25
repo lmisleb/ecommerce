@@ -118,7 +118,7 @@ $(".validarProducto").change(function(){
 
             if(respuesta.length != 0){
 
-                $(".validarProducto").parent().after('<div class="alert alert-warning">Este título de producto ya existe en la base de datos</div>');
+                $(".validarProducto").parent().after('<div class="alert alert-warning">Este título de producto ya existe en la base de datos ...</div>');
                 $(".validarProducto").val("");
 
             }
@@ -1097,7 +1097,7 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
                 $("#modalEditarProducto .selActivarOferta").val("");
                 $("#modalEditarProducto .datosOferta").hide();
                 $("#modalEditarProducto .valorOferta").prop("required",false);
-                $("#modalEditarProducto .previsualizarOferta").attr("src", "vistas/img/ofertas/default/default.jpg");
+                $("#modalEditarProducto .previsualizarOferta").attr("src", "vistas/img/default/default.png");
                 $("#modalEditarProducto .antiguaFotoOferta").val(respuesta[0]["imgOferta"]);
 
             }

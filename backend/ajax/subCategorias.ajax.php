@@ -60,9 +60,9 @@ class AjaxSubCategorias{
 
 	}
 
-	/*=============================================
-	TRAER SUBCATEGORIAS DE ACUERDO A LA CATEGORÍA
-	=============================================*/	
+	/*==================================================
+		TRAER SUBCATEGORIAS DE ACUERDO A LA CATEGORÍA
+	====================================================*/	
 
 	public $idCategoria;
 
@@ -70,9 +70,7 @@ class AjaxSubCategorias{
 
 		$item = "id_categoria";
 		$valor = $this->idCategoria;
-
 		$respuesta = ControladorSubCategorias::ctrMostrarSubCategorias($item, $valor);
-
 		echo json_encode($respuesta);
 
 	}
@@ -93,7 +91,7 @@ if(isset($_POST["activarSubCategoria"])){
 }
 
 /*=============================================
-VALIDAR NO REPETIR SUBCATEGORÍA
+	VALIDAR NO REPETIR SUBCATEGORÍA
 =============================================*/
 
 if(isset( $_POST["validarSubCategoria"])){
@@ -105,8 +103,9 @@ if(isset( $_POST["validarSubCategoria"])){
 }
 
 /*=============================================
-EDITAR SUBCATEGORIA
+	EDITAR SUBCATEGORIA
 =============================================*/
+
 if(isset($_POST["idSubCategoria"])){
 
 	$editarSubCategoria = new AjaxSubCategorias();
@@ -115,9 +114,10 @@ if(isset($_POST["idSubCategoria"])){
 
 }
 
-/*=============================================
-TRAER SUBCATEGORIAS DE ACUERDO A LA CATEGORÍA
-=============================================*/
+/*==================================================
+	TRAER SUBCATEGORIAS DE ACUERDO A LA CATEGORÍA
+===================================================*/
+
 if(isset($_POST["idCategoria"])){
 
 	$traerSubCategoria = new AjaxSubCategorias();

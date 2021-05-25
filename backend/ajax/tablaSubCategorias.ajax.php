@@ -106,7 +106,7 @@ class TablaSubCategorias{
 						$cabeceras["portada"] = "";
 						$cabeceras["descripcion"] = "";
 						$cabeceras["palabrasClaves"] = "";
-						$imgPortada = "<img class='img-thumbnail imgPortadaCategorias' src='vistas/img/cabeceras/default/default.jpg' width='100px'>";
+						$imgPortada = "<img class='img-thumbnail imgPortadaCategorias' src='vistas/img/default/default.png' width='100px'>";
 
 					}else{
 
@@ -116,7 +116,7 @@ class TablaSubCategorias{
 
 						}else{
 
-							$imgPortada = "<img src='vistas/img/cabeceras/default/default.jpg' class='img-thumbnail imgPortadaSubCategorias' width='100px'>";
+							$imgPortada = "<img src='vistas/img/default/default.png' class='img-thumbnail imgPortadaSubCategorias' width='100px'>";
 						}
 
 					}
@@ -152,7 +152,7 @@ class TablaSubCategorias{
 
 					}else{
 
-						$imgOferta = "<img src='vistas/img/ofertas/default/default.jpg' class='img-thumbnail imgTablaSubCategorias' width='100px'>";
+						$imgOferta = "<img src='vistas/img/default/default.png' class='img-thumbnail imgTablaSubCategorias' width='100px'>";
 
 					}
 

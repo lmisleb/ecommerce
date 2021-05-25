@@ -1,5 +1,5 @@
 <!--=====================================
-VALIDAR SESIÓN
+	VALIDAR SESIÓN
 ======================================-->
 
 <?php
@@ -22,7 +22,7 @@ VALIDAR SESIÓN
 ?>
 
 <!--=====================================
-BREADCRUMB PERFIL
+	BREADCRUMB PERFIL
 ======================================-->
 
 <div class="container-fluid well well-sm">
@@ -34,6 +34,7 @@ BREADCRUMB PERFIL
 			<ul class="breadcrumb fondoBreadcrumb text-uppercase">
 				
 				<li><a href="<?php echo $url;  ?>">INICIO</a></li>
+
 				<li class="active pagActiva"><?php echo $rutas[0] ?></li>
 
 			</ul>
@@ -45,7 +46,7 @@ BREADCRUMB PERFIL
 </div>
 
 <!--=====================================
-SECCIÓN PERFIL
+	SECCIÓN PERFIL
 ======================================-->
 
 <div class="container-fluid">
@@ -79,7 +80,7 @@ SECCIÓN PERFIL
 		<div class="tab-content">
 
 			<!--=====================================
-			PESTAÑA COMPRAS
+				PESTAÑA COMPRAS
 			======================================-->
 
 	  		<div id="compras" class="tab-pane fade in active">
@@ -353,8 +354,11 @@ SECCIÓN PERFIL
 									</div>';
 
 								}
+
 							}
+
 						}
+						
 					?>
 				
 				</div>
@@ -362,7 +366,7 @@ SECCIÓN PERFIL
 		  	</div>
 
 		  	<!--=====================================
-			PESTAÑA DESEOS
+				PESTAÑA DESEOS
 			======================================-->
 
 		  	<div id="deseos" class="tab-pane fade">
@@ -372,13 +376,20 @@ SECCIÓN PERFIL
 					$item = $_SESSION["id"];
 					$deseos = ControladorUsuarios::ctrMostrarDeseos($item);
 
-					if(!$deseos){
+					if($deseos == false){
 
 						echo '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center error404">
 								
 							<h1><small>¡Oops!</small></h1>
 					
 							<h2>Aún no tiene productos en su lista de deseos</h2>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
 
 						</div>';
 					
@@ -389,7 +400,7 @@ SECCIÓN PERFIL
 							$ordenar = "id";
 							$valor = $value1["id_producto"];
 							$item = "id";
-							$productos = ControladorProductos::ctrListarProductos($ordenar, $item, $valor);
+							$productos = ControladorProductos::ctrListarProductosActivos($ordenar, $item, $valor);
 
 							echo '<ul class="grid0">';
 
@@ -402,6 +413,8 @@ SECCIÓN PERFIL
 											<a href="'.$url.$value2["ruta"].'" class="pixelProducto">
 												
 												<img src="'.$servidor.$value2["portada"].'" class="img-responsive">
+
+												COD: '.$value2["id"].'
 
 											</a>
 
@@ -527,7 +540,7 @@ SECCIÓN PERFIL
 		  	</div>
 
 			<!--=====================================
-			PESTAÑA PERFIL
+				PESTAÑA PERFIL
 			======================================-->
 		  	
 		  	<div id="perfil" class="tab-pane fade">
@@ -709,7 +722,7 @@ SECCIÓN PERFIL
 </div>
 
 <!--=====================================
-VENTANA MODAL PARA COMENTARIOS
+	VENTANA MODAL PARA COMENTARIOS
 ======================================-->
 
 <div  class="modal fade modalFormulario" id="modalComentarios" role="dialog">
@@ -774,9 +787,7 @@ VENTANA MODAL PARA COMENTARIOS
 
 		</div>
 
-		<div class="modal-footer">
-      	
-      	</div>
+		<div class="modal-footer"></div>
 
 	</div>
 

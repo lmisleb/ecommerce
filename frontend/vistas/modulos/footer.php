@@ -1,5 +1,5 @@
 <!--=====================================
-FOOTER
+	FOOTER
 ======================================-->
 
 <footer class="container-fluid">
@@ -52,7 +52,7 @@ FOOTER
 			</div>
 
 			<!--=====================================
-			DATOS CONTACTO
+				DATOS CONTACTO
 			======================================-->
 
 			<div class="col-md-3 col-sm-6 col-xs-12 text-left infoContacto">
@@ -73,8 +73,7 @@ FOOTER
 
 					<i class="fa fa-map-marker" aria-hidden="true"></i> Camino al Sauce, Parcela 8, Calera de Tango, Lonkén.
 
-					<br><br>
-					Santiago de Chile | Chile
+					<br><br>Santiago de Chile | Chile
 
 				</h5>
 
@@ -83,7 +82,7 @@ FOOTER
 			</div>
 
 			<!--=====================================
-			FORMULARIO CONTÁCTENOS
+				FORMULARIO CONTÁCTENOS
 			======================================-->
 
 			<div class="col-lg-4 col-md-3 col-sm-6 col-xs-12 formContacto">
@@ -125,7 +124,7 @@ FOOTER
 
 
 <!--=====================================
-FINAL
+	FINAL
 ======================================-->
 
 <div class="container-fluid final">
@@ -160,6 +159,7 @@ FINAL
 								</a>
 
 							</li>';
+
 						}
 
 					?>

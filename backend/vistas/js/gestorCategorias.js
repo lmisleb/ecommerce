@@ -117,7 +117,7 @@ $(".validarCategoria").change(function() {
             
             if (respuesta) {
 
-                $(".validarCategoria").parent().after('<div class="alert alert-warning">Esta categoría ya existe en la base de datos</div>')
+                $(".validarCategoria").parent().after('<div class="alert alert-warning">Esta categoría ya existe en la base de datos ...</div>')
                 $(".validarCategoria").val("");
             }
 
@@ -475,7 +475,7 @@ $(".tablaCategorias tbody").on("click", ".btnEditarCategoria", function() {
                 $("#modalEditarCategoria .selActivarOferta").val("");
                 $("#modalEditarCategoria .datosOferta").hide();
                 $("#modalEditarCategoria .valorOferta").prop("required", false);
-                $("#modalEditarCategoria .previsualizarOferta").attr("src", "vistas/img/ofertas/default/default.jpg");
+                $("#modalEditarCategoria .previsualizarOferta").attr("src", "vistas/img/default/default.png");
                 $("#modalEditarCategoria .antiguaFotoOferta").val(respuesta["imgOferta"]);
 
             }
@@ -530,7 +530,7 @@ $(".tablaCategorias tbody").on("click", ".btnEliminarCategoria", function() {
     swal({
 
         title: '¿Está seguro de borrar la categoría?',
-        text: "¡Si no lo está puede cancelar la accíón!",
+        text: "¡Si no lo está puede cancelar la acción!",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',

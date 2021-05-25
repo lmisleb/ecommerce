@@ -94,7 +94,7 @@
 
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 
-					<h4 class="modal-title">Agregar producto</h4>
+					<h4 class="modal-title">Agregar Producto...</h4>
 
 				</div>
 
@@ -474,7 +474,7 @@
 
 							<p class="help-block">Tamaño recomendado 1280px * 720px <br> Peso máximo de la foto 2MB</p>
 
-							<img src="vistas/img/cabeceras/default/default.jpg" class="img-thumbnail previsualizarPortada" width="100%">
+							<img src="vistas/img/default/default.png" class="img-thumbnail previsualizarPortada" width="100%">
 
 						</div>
 
@@ -490,7 +490,7 @@
 
 							<p class="help-block">Tamaño recomendado 400px * 450px <br> Peso máximo de la foto 2MB</p>
 
-							<img src="vistas/img/productos/default/default.jpg" class="img-thumbnail previsualizarPrincipal" width="200px">
+							<img src="vistas/img/default/default.png" class="img-thumbnail previsualizarPrincipal" width="200px">
 
 						</div>
 
@@ -632,7 +632,7 @@
 
 								<p class="help-block">Tamaño recomendado 640px * 430px <br> Peso máximo de la foto 2MB</p>
 
-								<img src="vistas/img/ofertas/default/default.jpg" class="img-thumbnail previsualizarOferta" width="100px">
+								<img src="vistas/img/default/default.png" class="img-thumbnail previsualizarOferta" width="100px">
 
 							</div>
 
@@ -682,7 +682,7 @@
 
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-                <h4 class="modal-title">Editar producto</h4>
+                <h4 class="modal-title">Editar Producto...</h4>
 
             </div>
 
@@ -1063,7 +1063,7 @@
 
                         <p class="help-block">Tamaño recomendado 1280px * 720px <br> Peso máximo de la foto 2MB</p>
 
-                        <img src="vistas/img/cabeceras/default/default.jpg" class="img-thumbnail previsualizarPortada" width="100%">
+                        <img src="vistas/img/default/default.png" class="img-thumbnail previsualizarPortada" width="100%">
 
                     </div>
 
@@ -1081,7 +1081,7 @@
 
                         <p class="help-block">Tamaño recomendado 400px * 450px <br> Peso máximo de la foto 2MB</p>
 
-                        <img src="vistas/img/productos/default/default.jpg" class="img-thumbnail previsualizarPrincipal" width="200px">
+                        <img src="vistas/img/default/default.png" class="img-thumbnail previsualizarPrincipal" width="200px">
 
                     </div>
 
@@ -1225,7 +1225,7 @@
 
                             <p class="help-block">Tamaño recomendado 640px * 430px <br> Peso máximo de la foto 2MB</p>
 
-                            <img src="vistas/img/ofertas/default/default.jpg" class="img-thumbnail previsualizarOferta" width="100px">
+                            <img src="vistas/img/default/default.png" class="img-thumbnail previsualizarOferta" width="100px">
 
                         </div>
 

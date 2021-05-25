@@ -1,5 +1,5 @@
 <!--=====================================
-BANNER
+	BANNER
 ======================================-->
 
 <?php 
@@ -19,19 +19,19 @@ BANNER
 		
 			echo'<figure class="banner">
 
-					<img src="'.$servidor.$banner["img"].'" class="img-responsive" width="100%">
+				<img src="'.$servidor.$banner["img"].'" class="img-responsive" width="100%">
 
-					<div class="textoBanner '.$banner["estilo"].'">
-						
-						<h1 style="color:'.$titulo1["color"].'">'.$titulo1["texto"].'</h1>
+				<div class="textoBanner '.$banner["estilo"].'">
+					
+					<h1 style="color:'.$titulo1["color"].'">'.$titulo1["texto"].'</h1>
 
-						<h2 style="color:'.$titulo2["color"].'"><strong>'.$titulo2["texto"].'</strong></h2>
+					<h2 style="color:'.$titulo2["color"].'"><strong>'.$titulo2["texto"].'</strong></h2>
 
-						<h3 style="color:'.$titulo3["color"].'">'.$titulo3["texto"].'</h3>
+					<h3 style="color:'.$titulo3["color"].'">'.$titulo3["texto"].'</h3>
 
-					</div>
+				</div>
 
-				</figure>';
+			</figure>';
 
 		}
 
@@ -40,7 +40,7 @@ BANNER
 ?>
 
 <!--=====================================
-BARRA PRODUCTOS
+	BARRA PRODUCTOS
 ======================================-->
 
 <div class="container-fluid well well-sm barraProductos">
@@ -59,12 +59,12 @@ BARRA PRODUCTOS
 
 						<ul class="dropdown-menu" role="menu">
 
-						<?php
-					  	
-							echo '<li><a href="'.$url.$rutas[0].'/1/recientes">Más reciente</a></li>
-								  <li><a href="'.$url.$rutas[0].'/1/antiguos">Más antiguo</a></li>';
-  
-						?>
+							<?php
+							
+								echo '<li><a href="'.$url.$rutas[0].'/1/recientes">Más reciente</a></li>
+									<li><a href="'.$url.$rutas[0].'/1/antiguos">Más antiguo</a></li>';
+	
+							?>
 						
 						</ul>
 				
@@ -103,7 +103,7 @@ BARRA PRODUCTOS
 </div>
 
 <!--=====================================
-LISTAR PRODUCTOS
+	LISTAR PRODUCTOS
 ======================================-->
 
 <div class="container-fluid productos">
@@ -113,7 +113,7 @@ LISTAR PRODUCTOS
 		<div class="row">
 
 			<!--=====================================
-			BREADCRUMB O MIGAS DE PAN
+				BREADCRUMB O MIGAS DE PAN
 			======================================-->
 
 			<ul class="breadcrumb text-uppercase fondoBreadcrumb">
@@ -126,7 +126,7 @@ LISTAR PRODUCTOS
 			<?php 
 
 				/*=====================================
-				LLAMADO DE PAGINACIÓN
+					LLAMADO DE PAGINACIÓN
 				======================================*/
 				
 				if(isset($rutas[1])){
@@ -171,9 +171,9 @@ LISTAR PRODUCTOS
 	
 				}
 
-				/*==========================================================
-				LLAMADO DE PRODUCTOS, CATEGORIAS, SUBCATEGORIAS Y DESTACADOS
-				===========================================================*/
+				/*==================================================================
+					LLAMADO DE PRODUCTOS, CATEGORIAS, SUBCATEGORIAS Y DESTACADOS
+				====================================================================*/
 
 				if($rutas[0] == "articulos-gratis"){
 
@@ -198,11 +198,11 @@ LISTAR PRODUCTOS
 					$ordenar = "id";
 					$item1 = "ruta";
 					$valor1 = $rutas[0];
-					$categoria = ControladorProductos::ctrMostrarCategorias($item1, $valor1);
+					$categoria = ControladorProductos::ctrMostrarCategoriasActivas($item1, $valor1);
 
 					if(!$categoria){
 						
-						$subCategoria = ControladorProductos::ctrMostrarSubCategorias($item1, $valor1);
+						$subCategoria = ControladorProductos::ctrMostrarSubCategoriasActivas($item1, $valor1);
 						$item2 = "id_subcategoria";
 						$valor2 = $subCategoria[0]["id"];
 
@@ -215,8 +215,8 @@ LISTAR PRODUCTOS
 					
 				}
 				
-				$productos = ControladorProductos::ctrMostrarProductos($ordenar, $item2, $valor2, $base, $tope, $modo);
-				$listaProductos = ControladorProductos::ctrListarProductos($ordenar, $item2, $valor2);
+				$productos = ControladorProductos::ctrMostrarProductosActivos($ordenar, $item2, $valor2, $base, $tope, $modo);
+				$listaProductos = ControladorProductos::ctrListarProductosActivos($ordenar, $item2, $valor2);
 
 				if(!$productos){
 
@@ -399,6 +399,8 @@ LISTAR PRODUCTOS
 									</a>
 	
 								</figure>
+
+								COD: '.$value["id"].'
 	
 							</div>
 								
@@ -535,7 +537,7 @@ LISTAR PRODUCTOS
 			<center>
 
 				<!--=====================================
-				PAGINACIÓN
+					PAGINACIÓN
 				======================================-->
 
 				<?php
@@ -547,9 +549,9 @@ LISTAR PRODUCTOS
 
 						if($pagProductos > 4 ){
 
-							/*==============================================
-							BOTONES DE LAS PRIMERAS 4 PÁGINAS Y LA ÚLTIMA
-							================================================*/
+							/*==================================================
+								BOTONES DE LAS PRIMERAS 4 PÁGINAS Y LA ÚLTIMA
+							====================================================*/
 
 							if($rutas[1] == 1){
 
@@ -567,9 +569,9 @@ LISTAR PRODUCTOS
 	
 							}
 	
-							/*==============================================
-							LOS BOTONES DE LA MITAD DE PÁGINAS HACIA ABAJO
-							================================================*/
+							/*===================================================
+								LOS BOTONES DE LA MITAD DE PÁGINAS HACIA ABAJO
+							=====================================================*/
 
 							else if ($rutas[1] != $pagProductos && $rutas[1] != 1 && $rutas[1] <  ($pagProductos/2) && $rutas[1] < ($pagProductos-3)) {
 
@@ -591,9 +593,9 @@ LISTAR PRODUCTOS
 
 							}
 
-							/*=================================================
-							LOS BOTONES DE LA MITAD DE PÁGINAS HACIA ARRIBA
-							===================================================*/
+							/*=====================================================
+								LOS BOTONES DE LA MITAD DE PÁGINAS HACIA ARRIBA
+							=======================================================*/
 
 							else if ($rutas[1] != $pagProductos && $rutas[1] != 1 && $rutas[1] >=  ($pagProductos/2) && $rutas[1] < ($pagProductos-3)) {
 
@@ -615,9 +617,9 @@ LISTAR PRODUCTOS
 
 							}else{
 
-								/*======================================================
-								LOS BOTONES DE LAS ÚLTIMAS 4 PÁGINAS Y LA PRIMERA PÁG
-								========================================================*/
+								/*==========================================================
+									LOS BOTONES DE LAS ÚLTIMAS 4 PÁGINAS Y LA PRIMERA PÁG
+								============================================================*/
 
 								$numPagActual = $rutas[1];
 

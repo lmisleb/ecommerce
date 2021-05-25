@@ -3,7 +3,7 @@
 class ControladorProductos{
 
 	/*=============================================
-	MOSTRAR CATEGORÍAS
+		MOSTRAR CATEGORÍAS
 	=============================================*/
 
 	static public function ctrMostrarCategorias($item, $valor){
@@ -27,7 +27,7 @@ class ControladorProductos{
 	}
 
 	/*=============================================
-	MOSTRAR SUBCATEGORÍAS
+		MOSTRAR SUBCATEGORÍAS
 	=============================================*/
 
 	static public function ctrMostrarSubCategorias($item, $valor){
@@ -39,7 +39,7 @@ class ControladorProductos{
 	}
 
 	/*=============================================
-		MOSTRAR SUBCATEGORÍAS
+		MOSTRAR SUBCATEGORÍAS ACTIVAS
 	=============================================*/
 
 	static public function ctrMostrarSubCategoriasActivas($item, $valor){
@@ -51,7 +51,7 @@ class ControladorProductos{
 	}
 
 	/*=============================================
-	MOSTRAR PRODUCTOS
+		MOSTRAR PRODUCTOS
 	=============================================*/
 
 	static public function ctrMostrarProductos($ordenar, $item, $valor, $base, $tope, $modo){
@@ -59,10 +59,23 @@ class ControladorProductos{
 		$tabla = "productos";
 		$respuesta = ModeloProductos::mdlMostrarProductos($tabla, $ordenar, $item, $valor, $base, $tope, $modo);
 		return $respuesta;
+
 	}
 
 	/*=============================================
-	MOSTRAR INFOPRODUCTO
+		MOSTRAR PRODUCTOS ACTIVOS
+	=============================================*/
+
+	static public function ctrMostrarProductosActivos($ordenar, $item, $valor, $base, $tope, $modo){
+
+		$tabla = "productos";
+		$respuesta = ModeloProductos::mdlMostrarProductosActivos($tabla, $ordenar, $item, $valor, $base, $tope, $modo);
+		return $respuesta;
+
+	}
+
+	/*=============================================
+		MOSTRAR INFOPRODUCTO
 	=============================================*/
 
 	static public function ctrMostrarInfoProducto($item, $valor){
@@ -74,13 +87,37 @@ class ControladorProductos{
 	}
 
 	/*=============================================
-	LISTAR PRODUCTOS
+		MOSTRAR INFOPRODUCTO ACTIVOS
+	=============================================*/
+
+	static public function ctrMostrarInfoProductoActivos($item, $valor){
+
+		$tabla = "productos";
+		$respuesta = ModeloProductos::mdlMostrarInfoProductoActivos($tabla, $item, $valor);
+		return $respuesta;
+
+	}
+
+	/*=============================================
+		LISTAR PRODUCTOS
 	=============================================*/
 
 	static public function ctrListarProductos($ordenar, $item, $valor){
 
 		$tabla = "productos";
 		$respuesta = ModeloProductos::mdlListarProducto($tabla, $ordenar, $item, $valor);
+		return $respuesta;
+
+	}
+
+	/*=============================================
+		LISTAR PRODUCTOS ACTIVOS
+	=============================================*/
+
+	static public function ctrListarProductosActivos($ordenar, $item, $valor){
+
+		$tabla = "productos";
+		$respuesta = ModeloProductos::mdlListarProductoActivos($tabla, $ordenar, $item, $valor);
 		return $respuesta;
 
 	}
@@ -130,6 +167,7 @@ class ControladorProductos{
 		$tabla = "productos";
 		$respuesta = ModeloProductos::mdlActualizarProducto($tabla, $item1, $valor1, $item2, $valor2);
 		return $respuesta;
+
 	}
 	
 }

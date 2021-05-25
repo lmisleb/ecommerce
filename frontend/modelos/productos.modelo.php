@@ -5,7 +5,7 @@ require_once "conexion.php";
 class ModeloProductos{
 
 	/*=============================================
-	MOSTRAR CATEGORÍAS
+		MOSTRAR CATEGORÍAS
 	=============================================*/
 
 	static public function mdlMostrarCategorias($tabla, $item, $valor){
@@ -38,7 +38,7 @@ class ModeloProductos{
 
 		if($item != null){
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item WHERE estado = 1 ORDER BY categoria");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE estado = 1 AND $item = :$item ORDER BY categoria");
 			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
 			$stmt -> execute();
 			return $stmt -> fetch();
@@ -57,7 +57,7 @@ class ModeloProductos{
 	}
 
 	/*=============================================
-	MOSTRAR SUB-CATEGORÍAS
+		MOSTRAR SUB-CATEGORÍAS
 	=============================================*/
 
 	static public function mdlMostrarSubCategorias($tabla, $item, $valor){
@@ -91,7 +91,7 @@ class ModeloProductos{
 
 		if($item != null){
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item AND estado = 1 ORDER BY subcategoria");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE estado = 1 AND $item = :$item ORDER BY subcategoria");
 			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR); // enlazar parámetros
 			$stmt -> execute();
 			return $stmt -> fetchAll();
@@ -111,7 +111,7 @@ class ModeloProductos{
 	}
 
 	/*=============================================
-	MOSTRAR PRODUCTOS
+		MOSTRAR PRODUCTOS
 	=============================================*/
 
 	static public function mdlMostrarProductos($tabla, $ordenar, $item, $valor, $base, $tope, $modo){
@@ -143,7 +143,7 @@ class ModeloProductos{
 
 		if($item != null){
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item AND estado = 1 ORDER BY $ordenar $modo LIMIT $base, $tope");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE estado = 1 AND $item = :$item ORDER BY $ordenar $modo LIMIT $base, $tope");
 			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_INT); // enlazar parámetros
 			$stmt -> execute();
 			return $stmt -> fetchAll();
@@ -161,7 +161,7 @@ class ModeloProductos{
 	}
 
 	/*=============================================
-	MOSTRAR INFOPRODUCTO
+		MOSTRAR INFOPRODUCTO
 	=============================================*/
 
 	static public function mdlMostrarInfoProducto($tabla, $item, $valor){
@@ -176,7 +176,22 @@ class ModeloProductos{
 	}
 
 	/*=============================================
-	LISTAR PRODUCTOS
+		MOSTRAR INFOPRODUCTO ACTIVOS
+	=============================================*/
+
+	static public function mdlMostrarInfoProductoActivos($tabla, $item, $valor){
+
+		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE estado = 1 AND $item = :$item");
+		$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR); // enlazar parámetros
+		$stmt -> execute();
+		return $stmt -> fetch();
+		$stmt -> close();
+		$stmt = null;
+
+	}
+
+	/*=============================================
+		LISTAR PRODUCTOS
 	=============================================*/
 
 	static public function mdlListarProducto($tabla, $ordenar, $item, $valor){
@@ -184,6 +199,31 @@ class ModeloProductos{
 		if($item != null){
 
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item ORDER BY $ordenar DESC");
+			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_INT); // enlazar parámetros
+			$stmt -> execute();
+			return $stmt -> fetchAll();
+
+		} else {
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY $ordenar DESC");
+			$stmt -> execute();
+			return $stmt -> fetchAll();
+		}
+
+		$stmt -> close();
+		$stmt = null;
+
+	}
+
+	/*=============================================
+		LISTAR PRODUCTOS ACTIVOS
+	=============================================*/
+
+	static public function mdlListarProductoActivos($tabla, $ordenar, $item, $valor){
+
+		if($item != null){
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE estado = 1 AND $item = :$item ORDER BY $ordenar DESC");
 			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_INT); // enlazar parámetros
 			$stmt -> execute();
 			return $stmt -> fetchAll();
@@ -201,7 +241,7 @@ class ModeloProductos{
 	}
 
 	/*=============================================
-	MOSTRAR BANNER
+		MOSTRAR BANNER
 	=============================================*/
 
 	static public function mdlMostrarBanner($tabla, $ruta){
@@ -216,7 +256,7 @@ class ModeloProductos{
 	}
 
 	/*=============================================
-	BUSCADOR
+		BUSCADOR
 	=============================================*/
 
 	static public function mdlBuscarProductos($tabla, $busqueda, $ordenar, $modo, $base, $tope){
@@ -240,7 +280,7 @@ class ModeloProductos{
 	}
 
 	/*=============================================
-	LISTAR PRODUCTOS
+		LISTAR PRODUCTOS
 	=============================================*/
 
 	static public function mdlListarProductosBusqueda($tabla, $busqueda){
@@ -264,7 +304,7 @@ class ModeloProductos{
 	}
 
 	/*=============================================
-	ACTUALIZAR VISTA PRODUCTO
+		ACTUALIZAR VISTA PRODUCTO
 	=============================================*/
 
 	static public function mdlActualizarProducto($tabla, $item1, $valor1, $item2, $valor2){

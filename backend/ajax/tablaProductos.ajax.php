@@ -77,7 +77,7 @@ class TablaProductos{
 						NOMBRE DEL PRODUCTO
 					=============================================*/
 
-					$productolbl = "<label class='lblProducto'>".$productos[$i]["titulo"]."</label>";
+					$productolbl = "<label class='lblProducto'>".$productos[$i]["titulo"]."</label> <label class='lblCod'>"." Cod: (".$productos[$i]["id"].")"."</label>";
 
 					/*=============================================
 						ACTIVAR / DESACTIVAR PRODUCTO
@@ -145,7 +145,7 @@ class TablaProductos{
 						$cabeceras["portada"] = "";
 						$cabeceras["descripcion"] = "";
 						$cabeceras["palabrasClaves"] = "";
-						$imgPortada = "<img class='img-thumbnail imgPortadaCategorias' src='vistas/img/cabeceras/default/default.jpg' width='100px'>";
+						$imgPortada = "<img class='img-thumbnail imgPortadaCategorias' src='vistas/img/default/default.png' width='100px'>";
 
 					}else{
 
@@ -155,7 +155,7 @@ class TablaProductos{
 
 						}else{
 
-							$imgPortada = "<img src='vistas/img/cabeceras/default/default.jpg' class='img-thumbnail imgPortadaProductos' width='100px'>";
+							$imgPortada = "<img src='vistas/img/default/default.png' class='img-thumbnail imgPortadaProductos' width='100px'>";
 
 						}
 
@@ -191,7 +191,7 @@ class TablaProductos{
 
 					}else{
 
-						$vistaMultimedia = "<img src='vistas/img/multimedia/default/default.jpg' class='img-thumbnail imgTablaMultimedia' width='100px'>";
+						$vistaMultimedia = "<img src='vistas/img/default/default.png' class='img-thumbnail imgTablaMultimedia' width='100px'>";
 
 					}
 
@@ -277,7 +277,7 @@ class TablaProductos{
 
 					}else{
 
-						$imgOferta = "<img src='vistas/img/ofertas/default/default.jpg' class='img-thumbnail imgTablaProductos' width='100px'>";
+						$imgOferta = "<img src='vistas/img/default/default.png' class='img-thumbnail imgTablaProductos' width='100px'>";
 
 					}
 

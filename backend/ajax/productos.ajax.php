@@ -31,7 +31,7 @@ class AjaxProductos{
 	}
 
 	/*=============================================
-	VALIDAR NO REPETIR PRODUCTO
+		VALIDAR NO REPETIR PRODUCTO
 	=============================================*/	
 
 	public $validarProducto;
@@ -40,15 +40,13 @@ class AjaxProductos{
 
 		$item = "titulo";
 		$valor = $this->validarProducto;
-
 		$respuesta = ControladorProductos::ctrMostrarProductos($item, $valor);
-
 		echo json_encode($respuesta);
 
 	}
 
 	/*=============================================
-	RECIBIR MULTIMEDIA
+		RECIBIR MULTIMEDIA
 	=============================================*/
 
 	public $imagenMultimedia;
@@ -58,15 +56,13 @@ class AjaxProductos{
 
 		$datos = $this->imagenMultimedia;
 		$ruta = $this->rutaMultimedia;
-
 		$respuesta = ControladorProductos::ctrSubirMultimedia($datos, $ruta);
-
 		echo $respuesta;
 
 	}
 
 	/*=============================================
-	GUARDAR PRODUCTO Y EDITAR PRODUCTO
+		GUARDAR PRODUCTO Y EDITAR PRODUCTO
 	=============================================*/	
 
 	public $tituloProducto;
@@ -88,7 +84,6 @@ class AjaxProductos{
 	public $descuentoOferta;
 	public $finOferta;
 	public $fotoOferta;
-
 	public $id;
 	public $antiguaFotoPortada;
 	public $antiguaFotoPrincipal;
@@ -120,13 +115,12 @@ class AjaxProductos{
 			);
 
 		$respuesta = ControladorProductos::ctrCrearProducto($datos);
-
 		echo $respuesta;
 
 	}
 
 	/*=============================================
-	TRAER PRODUCTOS
+		TRAER PRODUCTOS
 	=============================================*/	
 
 	public $idProducto;
@@ -135,15 +129,13 @@ class AjaxProductos{
 
 		$item = "id";
 		$valor = $this->idProducto;
-
 		$respuesta = ControladorProductos::ctrMostrarProductos($item, $valor);
-
 		echo json_encode($respuesta);
 
 	}
 
 	/*=============================================
-	EDITAR PRODUCTOS
+		EDITAR PRODUCTOS
 	=============================================*/	
 
 	public function  ajaxEditarProducto(){
@@ -176,8 +168,6 @@ class AjaxProductos{
 			);
 
 		$respuesta = ControladorProductos::ctrEditarProducto($datos);
-
-	
 		echo $respuesta;
 
 	}
@@ -185,7 +175,7 @@ class AjaxProductos{
  }
 
 /*=============================================
-ACTIVAR PRODUCTOS
+	ACTIVAR PRODUCTOS
 =============================================*/	
 
 if(isset($_POST["activarProducto"])){
@@ -198,7 +188,7 @@ if(isset($_POST["activarProducto"])){
 }
 
 /*=============================================
-VALIDAR NO REPETIR PRODUCTO
+	VALIDAR NO REPETIR PRODUCTO
 =============================================*/
 
 if(isset($_POST["validarProducto"])){
@@ -273,7 +263,6 @@ if(isset($_POST["tituloProducto"])){
 	}	
 
 	$producto -> finOferta = $_POST["finOferta"];
-
 	$producto -> ajaxCrearProducto();
 
 }
@@ -344,14 +333,10 @@ if(isset($_POST["id"])){
 	}	
 
 	$editarProducto -> finOferta = $_POST["finOferta"];
-
 	$editarProducto -> antiguaFotoPortada = $_POST["antiguaFotoPortada"];
 	$editarProducto -> antiguaFotoPrincipal = $_POST["antiguaFotoPrincipal"];
 	$editarProducto -> antiguaFotoOferta = $_POST["antiguaFotoOferta"];
 	$editarProducto -> idCabecera = $_POST["idCabecera"];
-
 	$editarProducto -> ajaxEditarProducto();
 
 }
-
-
