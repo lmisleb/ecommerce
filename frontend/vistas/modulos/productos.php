@@ -255,7 +255,7 @@
 	
 								</figure>
 
-								COD: '.$value["id"].'
+								<small class="CodAzul">COD: '.$value["id"].'</small>
 	
 								<h4>
 						
@@ -400,7 +400,7 @@
 	
 								</figure>
 
-								COD: '.$value["id"].'
+								<small class="CodAzul">COD: '.$value["id"].'</small>
 	
 							</div>
 								

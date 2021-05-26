@@ -116,7 +116,7 @@
                         
                                 <span class="input-group-addon"><i class="fa fa-product-hunt"></i></span> 
 
-                                <input type="text" class="form-control input-lg validarProducto tituloProducto"  placeholder="Ingresar título producto">
+                                <input type="text" class="form-control input-lg validarProducto tituloProducto" placeholder="Ingresar título producto">
 
                             </div>
 
@@ -456,7 +456,7 @@
                         
                                 <span class="input-group-addon"><i class="fa fa-key"></i></span> 
 
-                                <input type="text" class="form-control input-lg tagsInput pClavesProducto" data-role="tagsinput"  placeholder="Ingresar palabras claves">
+                                <input type="text" class="form-control input-lg tagsInput pClavesProducto" data-role="tagsinput" placeholder="Ingresar palabras claves">
 
                             </div>
 
@@ -580,7 +580,7 @@
 									
 										<span class="input-group-addon"><i class="ion ion-social-usd"></i></span> 
 										
-										<input class="form-control input-lg valorOferta precioOferta" tipo="oferta" type="number" value="0"   min="0" placeholder="Precio">
+										<input class="form-control input-lg valorOferta precioOferta" tipo="oferta" type="number" value="0" min="0" placeholder="Precio">
 
 									</div>
 
@@ -590,7 +590,7 @@
 										 
 									<div class="input-group">
 											 
-										<input class="form-control input-lg valorOferta descuentoOferta" tipo="descuento" type="number" value="0"  min="0" placeholder="Descuento">
+										<input class="form-control input-lg valorOferta descuentoOferta" tipo="descuento" type="number" value="0" min="0" placeholder="Descuento">
 
 										<span class="input-group-addon"><i class="fa fa-percent"></i></span>
 

@@ -156,7 +156,7 @@
 								
 								<a href="'.$value["ruta"].'" class="pixelProducto">
 									
-									<img src="'.$servidor.$value["portada"].'" class="img-responsive">
+									<img src="'.$servidor.$value["portada"].'" class="img-responsive" title=" COD: '.$value["id"].'">
 
 								</a>
 
@@ -302,6 +302,8 @@
 									</a>
 
 								</figure>
+
+								<small class="CodAzul">COD: '.$value["id"].'</small>
 
 							</div>
 								

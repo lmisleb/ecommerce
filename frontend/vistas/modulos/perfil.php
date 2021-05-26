@@ -126,6 +126,8 @@
 
 												</figure>
 
+												<small class="CodAzul">COD: '.$value2["id"].'</small>
+
 											</div>
 
 											<div class="col-sm-6 col-xs-12">
@@ -414,7 +416,7 @@
 												
 												<img src="'.$servidor.$value2["portada"].'" class="img-responsive">
 
-												COD: '.$value2["id"].'
+												<small class="CodAzul">COD: '.$value["id"].'</small>
 
 											</a>
 

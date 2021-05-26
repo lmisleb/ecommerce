@@ -201,6 +201,7 @@ if(isset($_POST["validarProducto"])){
 
 #RECIBIR ARCHIVOS MULTIMEDIA
 #-----------------------------------------------------------
+
 if(isset($_FILES["file"])){
 
 	$multimedia = new AjaxProductos();
@@ -212,6 +213,7 @@ if(isset($_FILES["file"])){
 
 #CREAR PRODUCTO
 #-----------------------------------------------------------
+
 if(isset($_POST["tituloProducto"])){
 
 	$producto = new AjaxProductos();
@@ -268,8 +270,9 @@ if(isset($_POST["tituloProducto"])){
 }
 
 /*=============================================
-TRAER PRODUCTO
+	TRAER PRODUCTO
 =============================================*/
+
 if(isset($_POST["idProducto"])){
 
 	$traerProducto = new AjaxProductos();
@@ -279,8 +282,9 @@ if(isset($_POST["idProducto"])){
 }
 
 /*=============================================
-EDITAR PRODUCTO
+	EDITAR PRODUCTO
 =============================================*/
+
 if(isset($_POST["id"])){
 
 	$editarProducto = new AjaxProductos();

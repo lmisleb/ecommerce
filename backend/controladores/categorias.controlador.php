@@ -382,7 +382,7 @@ class ControladorCategorias{
 								   "oferta"=>0,
 								   "precioOferta"=>0,
 								   "descuentoOferta"=>0,
-								   "imgOferta"=>"vistas/img/ofertas/default/default.jpg",
+								   "imgOferta"=>"vistas/img/default/default.png",
 								   "finOferta"=>"");
 
 				}

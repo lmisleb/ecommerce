@@ -146,7 +146,8 @@ class ControladorProductos{
 							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
-						$aleatorio = mt_rand(100,999);
+						//$aleatorio = mt_rand(100,999);
+						//$rutaPortada = "../vistas/img/cabeceras/".$aleatorio.".jpg";
 						$rutaPortada = "../vistas/img/cabeceras/".$datos["rutaProducto"].".jpg";
 						$origen = imagecreatefromjpeg($datos["fotoPortada"]["tmp_name"]);						
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
@@ -161,7 +162,8 @@ class ControladorProductos{
 							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
-						$aleatorio = mt_rand(100,999);
+						//$aleatorio = mt_rand(100,999);
+						//$rutaPortada = "../vistas/img/cabeceras/".$aleatorio.".png";
 						$rutaPortada = "../vistas/img/cabeceras/".$datos["rutaProducto"].".png";
 						$origen = imagecreatefrompng($datos["fotoPortada"]["tmp_name"]);
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
@@ -176,15 +178,15 @@ class ControladorProductos{
 
 				/*=============================================
 					VALIDAR IMAGEN PRINCIPAL
-				=============================================*/
+				===============================================*/
 
-				$rutaFotoPrincipal = "../vistas/img/productos/default/default.jpg";
+				$rutaFotoPrincipal = "../vistas/img/default/default.jpg";
 
 				if(isset($datos["fotoPrincipal"]["tmp_name"]) && !empty($datos["fotoPrincipal"]["tmp_name"])){
 
 					/*=============================================
 						DEFINIMOS LAS MEDIDAS
-					=============================================*/
+					===============================================*/
 
 					list($ancho, $alto) = getimagesize($datos["fotoPrincipal"]["tmp_name"]);
 					$nuevoAncho = 400;
@@ -192,15 +194,16 @@ class ControladorProductos{
 
 					/*=============================================================================
 						DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
-					==============================================================================*/
+					===============================================================================*/
 
 					if($datos["fotoPrincipal"]["type"] == "image/jpeg"){
 
 						/*=============================================
 							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
-						=============================================*/
+						===============================================*/
 
-						$aleatorio = mt_rand(100,999);
+						//$aleatorio = mt_rand(100,999);
+						//$rutaFotoPrincipal = "../vistas/img/productos/".$aleatorio.".jpg";
 						$rutaFotoPrincipal = "../vistas/img/productos/".$datos["rutaProducto"].".jpg";
 						$origen = imagecreatefromjpeg($datos["fotoPrincipal"]["tmp_name"]);
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
@@ -215,7 +218,8 @@ class ControladorProductos{
 							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
-						$aleatorio = mt_rand(100,999);
+						//$aleatorio = mt_rand(100,999);
+						//$rutaFotoPrincipal = "../vistas/img/productos/".$aleatorio.".png";
 						$rutaFotoPrincipal = "../vistas/img/productos/".$datos["rutaProducto"].".png";
 						$origen = imagecreatefrompng($datos["fotoPrincipal"]["tmp_name"]);
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
@@ -254,7 +258,8 @@ class ControladorProductos{
 							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
-						$aleatorio = mt_rand(100,999);
+						//$aleatorio = mt_rand(100,999);
+						//$rutaOferta = "../vistas/img/ofertas/".$aleatorio.".jpg";
 						$rutaOferta = "../vistas/img/ofertas/".$datos["rutaProducto"].".jpg";
 						$origen = imagecreatefromjpeg($datos["fotoOferta"]["tmp_name"]);						
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
@@ -269,7 +274,8 @@ class ControladorProductos{
 							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
-						$aleatorio = mt_rand(100,999);
+						//$aleatorio = mt_rand(100,999);
+						//$rutaOferta = "../vistas/img/ofertas/".$aleatorio.".png";
 						$rutaOferta = "../vistas/img/ofertas/".$datos["rutaProducto"].".png";
 						$origen = imagecreatefrompng($datos["fotoOferta"]["tmp_name"]);						
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
@@ -283,7 +289,7 @@ class ControladorProductos{
 				}
 
 				/*=============================================
-					PREGUNTAMOS SI VIENE OFERTE EN CAMINO
+					PREGUNTAMOS SI VIENE OFERTA EN CAMINO
 				=============================================*/
 
 				if($datos["selActivarOferta"] == "oferta"){
@@ -399,13 +405,13 @@ class ControladorProductos{
 
 						foreach ($multimediaBD as $key => $value) {
 
-						  array_push($objectMultimediaBD, $value["foto"]);
+							array_push($objectMultimediaBD, $value["foto"]);
 
 						}
 
 						foreach ($multimediaEditar as $key => $value) {
 
-						  array_push($objectMultimediaEditar, $value["foto"]);
+							array_push($objectMultimediaEditar, $value["foto"]);
 
 						}
 

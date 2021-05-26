@@ -324,9 +324,9 @@ $(".fotoPrincipal").change(function(){
 
     imagenFotoPrincipal = this.files[0];
     
-    /*=============================================
+    /*====================================================
         VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
-    =============================================*/
+    ======================================================*/
 
     if(imagenFotoPrincipal["type"] != "image/jpeg" && imagenFotoPrincipal["type"] != "image/png"){
 
@@ -387,7 +387,6 @@ function activarOferta(event){
     }
 }
 
-
 $(".selActivarOferta").change(function(){
 
     activarOferta($(this).val())
@@ -398,7 +397,7 @@ $(".selActivarOferta").change(function(){
     VALOR OFERTA
 =============================================*/
 
-$("#modalCrearProducto .valorOferta").change(function(){
+$("#modalAgregarProducto .valorOferta").change(function(){
 
     if($(".precio").val()!= 0){
 
@@ -431,10 +430,20 @@ $("#modalCrearProducto .valorOferta").change(function(){
 
         $(".precioOferta").val(0);
         $(".descuentoOferta").val(0);
-
         return;
 
     }
+
+})
+
+/*=============================================
+    CAMBIAR EL PRECIO
+=============================================*/
+
+$(".precio").change(function(){
+
+    $(".precioOferta").val(0);
+    $(".descuentoOferta").val(0);
 
 })
 
@@ -491,17 +500,6 @@ $(".fotoOferta").change(function(){
 })
 
 /*=============================================
-    CAMBIAR EL PRECIO
-=============================================*/
-
-$(".precio").change(function(){
-
-    $(".precioOferta").val(0);
-    $(".descuentoOferta").val(0);
-
-})
-
-/*=============================================
     GUARDAR EL PRODUCTO
 =============================================*/
 
@@ -514,12 +512,7 @@ $(".guardarProducto").click(function(){
         PREGUNTAMOS SI LOS CAMPOS OBLIGATORIOS ESTÁN LLENOS
     ============================================================*/
 
-    if($(".tituloProducto").val() != "" && 
-        $(".seleccionarTipo").val() != "" && 
-        $(".seleccionarCategoria").val() != "" &&
-        $(".seleccionarSubCategoria").val() != "" &&
-        $(".descripcionProducto").val() != "" &&
-        $(".pClavesProducto").val() != ""){
+    if($(".tituloProducto").val() != "" && $(".seleccionarTipo").val() != "" && $(".seleccionarCategoria").val() != "" && $(".seleccionarSubCategoria").val() != "" && $(".descripcionProducto").val() != "" && $(".pClavesProducto").val() != ""){
 
         /*=====================================================================
             PREGUNTAMOS SI VIENEN IMÁGENES PARA MULTIMEDIA O LINK DE YOUTUBE
@@ -571,7 +564,7 @@ $(".guardarProducto").click(function(){
 
                             if(multimediaFisica == null){
 
-                                    swal({
+                                swal({
                                     title: "El campo de multimedia no debe estar vacío",
                                     type: "error",
                                     confirmButtonText: "¡Cerrar!"
@@ -634,9 +627,9 @@ $(".guardarProducto").click(function(){
 
 function agregarMiProducto(imagen){
 
-    /*=============================================
-    ALMACENAMOS TODOS LOS CAMPOS DE PRODUCTO
-    =============================================*/
+    /*===============================================
+        ALMACENAMOS TODOS LOS CAMPOS DE PRODUCTO
+    =================================================*/
 
     var tituloProducto = $(".tituloProducto").val();
     var rutaProducto = $(".rutaProducto").val();

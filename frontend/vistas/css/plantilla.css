@@ -57,10 +57,13 @@ a:visited, a:link, a:focus, a:hover, a:active {
     margin-left: 15px;
 }
 
-
 .fondoBreadcrumb {
     margin-bottom: 5px;
     background: rgba(0, 0, 0, 0);
+}
+
+.CodAzul{
+    color: #1B4F72;
 }
 
 /*=============================================

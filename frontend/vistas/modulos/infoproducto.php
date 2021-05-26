@@ -65,7 +65,7 @@
 
 								echo '</figure>
 								
-								COD: '.$infoproducto["id"].'
+								<small class="CodAzul">COD: '.$infoproducto["id"].'</small>
 
 								<div class="flexslider">
 								  
@@ -99,7 +99,7 @@
 							
 						<iframe class="videoPresentacion" src="https://www.youtube.com/embed/'.$infoproducto["multimedia"].'?rel=0&autoplay=0" width="100%" frameborder="0" allowfullscreen></iframe>
 
-						COD: '.$infoproducto["id"].'
+						<small class="CodAzul">COD: '.$infoproducto["id"].'</small>
 
 					</div>';
 
@@ -1024,7 +1024,7 @@
 
 	<hr>
 
-</div>
+<!-- </div> -->
 
 </div>
 
@@ -1114,7 +1114,7 @@
 
 						</figure>
 
-						COD: '.$value["id"].'
+						<small class="CodAzul">COD: '.$value["id"].'</small>
 
 						<h4>
 				

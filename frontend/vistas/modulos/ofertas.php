@@ -8,6 +8,7 @@
 <!--=====================================
 BREADCRUMB OFERTAS
 ======================================-->
+
 <div class="container-fluid well well-sm">
 	
 	<div class="container">
@@ -17,6 +18,7 @@ BREADCRUMB OFERTAS
 			<ul class="breadcrumb fondoBreadcrumb text-uppercase">
 				
 				<li><a href="<?php echo $url; ?>">INICIO</a></li>
+
 				<li class="active pagActiva"><?php echo $rutas[0] ?></li>
 
 			</ul>
@@ -28,7 +30,7 @@ BREADCRUMB OFERTAS
 </div>
 
 <!--=====================================
-JUMBOTRON AVISO OFERTA
+	JUMBOTRON AVISO OFERTA
 ======================================-->
 
 <?php 
