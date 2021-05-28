@@ -236,7 +236,7 @@ class ControladorProductos{
 					VALIDAR IMAGEN OFERTA
 				=============================================*/
 
-				$rutaOferta = "";
+				$rutaOferta = "../vistas/img/default/default.png";
 
 				if(isset($datos["fotoOferta"]["tmp_name"]) && !empty($datos["fotoOferta"]["tmp_name"])){
 
@@ -386,9 +386,9 @@ class ControladorProductos{
 
 			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $datos["tituloProducto"])  && preg_match('/^[,\\.\\a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["descripcionProducto"]) ){
 
-				/*=============================================
+				/*===================================================
 					ELIMINAR LAS FOTOS DE MULTIMEDIA DE LA CARPETA
-				=============================================*/
+				=====================================================*/
 
 				if($datos["tipo"] == "fisico"){
 
@@ -459,7 +459,8 @@ class ControladorProductos{
 							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
-						$aleatorio = mt_rand(100,999);
+						//$aleatorio = mt_rand(100,999);
+						//$rutaPortada = "../vistas/img/cabeceras/".$aleatorio.".jpg";
 						$rutaPortada = "../vistas/img/cabeceras/".$datos["rutaProducto"].".jpg";
 						$origen = imagecreatefromjpeg($datos["fotoPortada"]["tmp_name"]);
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
@@ -474,7 +475,8 @@ class ControladorProductos{
 							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
-						$aleatorio = mt_rand(100,999);
+						//$aleatorio = mt_rand(100,999);
+						//$rutaPortada = "../vistas/img/cabeceras/".$aleatorio.".png";
 						$rutaPortada = "../vistas/img/cabeceras/".$datos["rutaProducto"].".png";
 						$origen = imagecreatefrompng($datos["fotoPortada"]["tmp_name"]);
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
@@ -499,7 +501,13 @@ class ControladorProductos{
 						BORRAMOS ANTIGUA FOTO PRINCIPAL
 					=============================================*/
 
-					unlink("../".$datos["antiguaFotoPrincipal"]);
+					//unlink("../".$datos["antiguaFotoPrincipal"]);
+					
+					if($_POST["antiguaFotoPrincipal"] != "vistas/img/default/default.png"){
+
+						unlink("../".$datos["antiguaFotoPrincipal"]);
+
+					}
 
 					/*=============================================
 						DEFINIMOS LAS MEDIDAS
@@ -519,7 +527,7 @@ class ControladorProductos{
 							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
-						$aleatorio = mt_rand(100,999);
+						//$aleatorio = mt_rand(100,999);
 						$rutaFotoPrincipal = "../vistas/img/productos/".$datos["rutaProducto"].".jpg";
 						$origen = imagecreatefromjpeg($datos["fotoPrincipal"]["tmp_name"]);
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
@@ -534,7 +542,7 @@ class ControladorProductos{
 							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
-						$aleatorio = mt_rand(100,999);
+						//$aleatorio = mt_rand(100,999);
 						$rutaFotoPrincipal = "../vistas/img/productos/".$datos["rutaProducto"].".png";
 						$origen = imagecreatefrompng($datos["fotoPrincipal"]["tmp_name"]);
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
@@ -556,14 +564,20 @@ class ControladorProductos{
 				if(isset($datos["fotoOferta"]["tmp_name"]) && !empty($datos["fotoOferta"]["tmp_name"])){
 
 					/*=============================================
-					BORRAMOS ANTIGUA FOTO OFERTA
+						BORRAMOS ANTIGUA FOTO OFERTA
 					=============================================*/
 
-					if($datos["antiguaFotoOferta"] != ""){
+					if($_POST["antiguaFotoOferta"] != "vistas/img/default/default.png"){
 
 						unlink("../".$datos["antiguaFotoOferta"]);
 
 					}
+
+					// if($datos["antiguaFotoOferta"] != ""){
+
+					// 	unlink("../".$datos["antiguaFotoOferta"]);
+
+					// }
 
 					/*=============================================
 					DEFINIMOS LAS MEDIDAS
@@ -583,7 +597,7 @@ class ControladorProductos{
 							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
-						$aleatorio = mt_rand(100,999);
+						//$aleatorio = mt_rand(100,999);
 						$rutaOferta = "../vistas/img/ofertas/".$datos["rutaProducto"].".jpg";
 						$origen = imagecreatefromjpeg($datos["fotoOferta"]["tmp_name"]);						
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
@@ -598,7 +612,7 @@ class ControladorProductos{
 							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
-						$aleatorio = mt_rand(100,999);
+						//$aleatorio = mt_rand(100,999);
 						$rutaOferta = "../vistas/img/ofertas/".$datos["rutaProducto"].".png";
 						$origen = imagecreatefrompng($datos["fotoOferta"]["tmp_name"]);						
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
@@ -644,6 +658,12 @@ class ControladorProductos{
 					);
 
 				}else{
+
+					if($_POST["antiguaFotoOferta"] != "vistas/img/default/default.png"){
+
+						unlink("../".$datos["antiguaFotoOferta"]);
+
+					}
 
 					$datosProducto = array(
 						"id"=>$datos["idProducto"],

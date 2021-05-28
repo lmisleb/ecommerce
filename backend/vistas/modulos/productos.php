@@ -486,7 +486,7 @@
 								
 							<div class="panel">SUBIR FOTO PRINCIPAL DEL PRODUCTO</div>
 
-							<input type="file" class="fotoPrincipal">
+                            <input type="file" class="fotoPrincipal">
 
 							<p class="help-block">Tamaño recomendado 400px * 450px <br> Peso máximo de la foto 2MB</p>
 
@@ -520,7 +520,7 @@
 
 							<div class="col-md-4 col-xs-12">
 	
-								<div class="panel">PESO</div>
+								<div class="panel">PESO (KG)</div>
 							
 								<div class="input-group">
 							
@@ -901,7 +901,7 @@
                         </div>
 
                     <!--=====================================
-                    AGREGAR DETALLES FÍSICOS
+                        AGREGAR DETALLES FÍSICOS
                     ======================================-->  
 
                     <div class="detallesFisicos" style="display:none">
@@ -1057,9 +1057,9 @@
                         
                         <div class="panel">SUBIR FOTO PORTADA</div>
 
-                        <input type="file" class="fotoPortada">
+                        <input type="file" class="fotoPortada" name="fotoPortada">
 
-                        <input type="hidden" class="antiguaFotoPortada">
+                        <input type="hidden" class="antiguaFotoPortada" name="antiguaFotoPortada">
 
                         <p class="help-block">Tamaño recomendado 1280px * 720px <br> Peso máximo de la foto 2MB</p>
 
@@ -1075,9 +1075,9 @@
                             
                         <div class="panel">SUBIR FOTO PRINCIPAL DEL PRODUCTO</div>
 
-                        <input type="file" class="fotoPrincipal">
+                        <input type="file" class="fotoPrincipal" name="antiguaFotoPrincipal">
 
-                        <input type="hidden" class="antiguaFotoPrincipal">
+                        <input type="hidden" class="antiguaFotoPrincipal" name="antiguaFotoPrincipal">
 
                         <p class="help-block">Tamaño recomendado 400px * 450px <br> Peso máximo de la foto 2MB</p>
 
@@ -1111,7 +1111,7 @@
 
                         <div class="col-md-4 col-xs-12">
 
-                            <div class="panel">PESO</div>
+                            <div class="panel">PESO (KG)</div>
                         
                             <div class="input-group">
                         
@@ -1219,9 +1219,9 @@
                             
                             <div class="panel">SUBIR FOTO OFERTA</div>
 
-                            <input type="file" class="fotoOferta valorOferta">
+                            <input type="file" class="fotoOferta valorOferta" name="antiguaFotoOferta">
 
-                            <input type="hidden" class="antiguaFotoOferta">
+                            <input type="hidden" class="antiguaFotoOferta" name="antiguaFotoOferta">
 
                             <p class="help-block">Tamaño recomendado 640px * 430px <br> Peso máximo de la foto 2MB</p>
 

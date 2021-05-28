@@ -261,7 +261,7 @@ $(".valorOferta").change(function() {
 })
 
 /*=============================================
-	SUBIENDO LA FOTO DE PORTADA
+	SUBIENDO LA FOTO DE OFERTA
 =============================================*/
 
 $(".fotoOferta").change(function() {

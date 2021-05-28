@@ -336,8 +336,11 @@
                             <div class="input-group">
                                 
                                 <span class="input-group-addon"><i class="fa fa-th"></i></span>
+
                                 <input type="text" class="form-control input-lg text-uppercase validarCategoria tituloCategoria" placeholder="Ingresar Categoria" name="editarTituloCategoria" required>        
+
                                 <input type="hidden" class="editarIdCategoria" name="editarIdCategoria">
+
                                 <input type="hidden" class="editarIdCabecera" name="editarIdCabecera">
 
                             </div> 
@@ -401,9 +404,13 @@
                         <div class="form-group">
                         
                             <div class="panel">SUBIR FOTO PORTADA</div>
+
                             <input type="file" class="fotoPortada" name="fotoPortada">
+
                             <input type="hidden" class="antiguaFotoPortada" name="antiguaFotoPortada">
+
                             <p class="help-block">Tamaño recomendado 1280px * 720px <br> Peso máximo de la foto 2MB</p>
+
                             <img src="vistas/img/default/default.png" class="img-thumbnail previsualizarPortada" width="100%">
 
                         </div>
@@ -417,6 +424,7 @@
                             <select class="form-control input-lg selActivarOferta" name="selActivarOferta">
                                 
                                 <option value="">No tiene oferta</option>
+
                                 <option value="oferta">Activar oferta</option>
 
                             </select>
@@ -484,9 +492,13 @@
                             <div class="form-group">
                                 
                                 <div class="panel">SUBIR FOTO OFERTA</div>
+
                                 <input type="file" class="fotoOferta" name="fotoOferta">
+
                                 <input type="hidden" class="antiguaFotoOferta" name="antiguaFotoOferta">
+
                                 <p class="help-block">Tamaño recomendado 640px * 430px <br> Peso máximo de la foto 2MB</p>
+                                
                                 <img src="vistas/img/default/default.png" class="img-thumbnail previsualizarOferta" width="100px">
 
                             </div>

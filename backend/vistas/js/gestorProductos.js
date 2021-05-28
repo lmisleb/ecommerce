@@ -695,7 +695,7 @@ function agregarMiProducto(imagen){
         processData: false,
         success: function(respuesta){
             
-            // console.log("respuesta", respuesta);
+            //console.log("respuesta", respuesta);
 
             if(respuesta == "ok"){
 
@@ -745,6 +745,8 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
         processData: false,
         dataType: "json",
         success: function(respuesta){
+
+            //console.log("respuesta", respuesta);
             
             $("#modalEditarProducto .idProducto").val(respuesta[0]["id"]);
             $("#modalEditarProducto .tituloProducto").val(respuesta[0]["titulo"]);
