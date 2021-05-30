@@ -11,7 +11,7 @@ class TablaCategorias{
   MOSTRAR LA TABLA DE CATEGORÍAS
   =============================================*/ 
 
- 	public function mostrarTabla(){	
+ 	public function mostrarTablaCategorias(){	
 
 		$imgPortada = null;
 		$item = null;
@@ -119,21 +119,25 @@ class TablaCategorias{
 					=============================================*/
 				
 					$acciones = "<div class='btn-group'><button class='btn btn-info btnEditarCategoria' idCategoria='".$categorias[$i]["id"]."' data-toggle='modal' data-target='#modalEditarCategoria'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarCategoria' idCategoria='".$categorias[$i]["id"]."' imgPortada='".$cabeceras["portada"]."' rutaCabecera='".$categorias[$i]["ruta"]."' imgOferta='".$categorias[$i]["imgOferta"]."'><i class='fa fa-times'></i></button></div>";
-							
+					
+					/*=============================================
+						CONSTRUIR LOS DATOS JSON
+					=============================================*/
+					
 					$datosJson .= '[
-							"'.($i+1).'",
-							"'.$categorialbl.'",
-							"'.$categorias[$i]["ruta"].'",
-							"'.$estado.'",
-							"'.$cabeceras["descripcion"].'",
-							"'.$cabeceras["palabrasClaves"].'",
-							"'.$imgPortada.'",
-							"'.$tipoOferta.'",
-							"'.$valorOferta.'",
-							"'.$imgOfertas.'",
-							"'.$categorias[$i]["finOferta"].'",
-							"'.$acciones.'"		    
-							],';
+						"'.($i+1).'",
+						"'.$categorialbl.'",
+						"'.$categorias[$i]["ruta"].'",
+						"'.$estado.'",
+						"'.$cabeceras["descripcion"].'",
+						"'.$cabeceras["palabrasClaves"].'",
+						"'.$imgPortada.'",
+						"'.$tipoOferta.'",
+						"'.$valorOferta.'",
+						"'.$imgOfertas.'",
+						"'.$categorias[$i]["finOferta"].'",
+						"'.$acciones.'"		    
+						],';
 
 				}
 
@@ -154,4 +158,4 @@ class TablaCategorias{
 =============================================*/
 
 $activar = new TablaCategorias();
-$activar -> mostrarTabla();
+$activar -> mostrarTablaCategorias();

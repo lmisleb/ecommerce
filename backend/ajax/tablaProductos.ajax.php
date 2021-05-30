@@ -21,11 +21,11 @@ class TablaProductos{
 		$valor = null;
 		$productos = ControladorProductos::ctrMostrarProductos($item, $valor);
 		//echo json_encode($productos); return;
+		//print_r($productos);
 
-		$datosJson = '
+		$datosJson = '{	
 
-			{	
-				"data":[';
+			"data": [ ';
 
 				for($i = 0; $i < count($productos); $i++){
 
@@ -38,7 +38,6 @@ class TablaProductos{
 					$imgPortada = null;
 					$vistaMultimedia = null;
 					$estadoProducto = null;
-
 					$item = "id";
 					$valor = $productos[$i]["id_categoria"];
 					$categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
@@ -183,11 +182,15 @@ class TablaProductos{
 
 							}
 
-						}else{
+						}else if($vistaMultimedia == ""){
 
-							$vistaMultimedia = "<img src='http://i3.ytimg.com/vi/".$productos[$i]["multimedia"]."/hqdefault.jpg' class='img-thumbnail imgTablaMultimedia' width='100px'>";
+								$vistaMultimedia = "<img src='vistas/img/default/default.png' class='img-thumbnail imgTablaMultimedia' width='100px'>";
 
-						}
+							}else{
+
+								$vistaMultimedia = "<img src='http://i3.ytimg.com/vi/".$productos[$i]["multimedia"]."/hqdefault.jpg' class='img-thumbnail imgTablaMultimedia' width='100px'>";
+							
+							}
 
 					}else{
 
@@ -321,8 +324,7 @@ class TablaProductos{
 						CONSTRUIR LOS DATOS JSON
 					=============================================*/
 
-					$datosJson .='[
-							
+					$datosJson .='[							
 						"'.($i+1).'",
 						"'.$categorialbl.'",
 						"'.$subcategorialbl.'",
@@ -343,17 +345,16 @@ class TablaProductos{
 						"'.$valorOferta.'",
 						"'.$imgOferta.'",
 						"'.$productos[$i]["finOferta"].'",			
-						"'.$acciones.'"	   
-
+						"'.$acciones.'"
 					],';
 
 				}
 
 				$datosJson = substr($datosJson, 0, -1);
 
-				$datosJson .= ']
+			$datosJson .= ']
 
-			}';
+		}';
 
 		echo $datosJson;
 

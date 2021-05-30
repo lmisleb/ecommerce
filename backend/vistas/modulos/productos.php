@@ -75,7 +75,7 @@
 </div>
 
 <!--=====================================
-    MODAL AGREGAR PRODUCTO
+    MODAL PRODUCTO (AGREGAR)
 ======================================-->
 
 <div id="modalAgregarProducto" class="modal fade" role="dialog">
@@ -87,7 +87,7 @@
 			<!-- <form role="form" method="post" enctype="multipart/form-data"> -->
 				 
 				<!--=====================================
-				    CABEZA DEL MODAL
+				    CABEZA DEL MODAL (AGREGAR)
 				======================================-->
 
 				<div class="modal-header" style="background:#3c8dbc; color:white">
@@ -99,7 +99,7 @@
 				</div>
 
 				<!--=====================================
-				    CUERPO DEL MODAL
+				    CUERPO DEL MODAL (AGREGAR)
 				======================================-->
 
 				<div class="modal-body">
@@ -107,7 +107,7 @@
 					<div class="box-body">
 
 						<!--=====================================
-						    ENTRADA PARA EL TÍTULO
+						    AGREGAR TÍTULO
 						======================================-->
 
 						<div class="form-group">
@@ -123,7 +123,7 @@
 						</div>
 
 						<!--=====================================
-						    ENTRADA PARA LA RUTA DEL PRODUCTO
+						    RUTA DEL PRODUCTO
 						======================================-->
 
 						<div class="form-group">
@@ -139,7 +139,7 @@
 						</div>
 
 					    <!--======================================
-						    ENTRADA PARA LA RUTA DEL PRODUCTO
+						    SELECCIONAR TIPO PRODUCTO
 						==========================================-->
 
 						<div class="form-group">
@@ -163,13 +163,13 @@
 						</div>
 
 						<!--=====================================
-						    ENTRADA PARA AGREGAR MULTIMEDIA
+						    AGREGAR MULTIMEDIA
 						======================================-->
 
 						<div class="form-group agregarMultimedia"> 
 
 							<!--=========================================
-							    SUBIR MULTIMEDIA DE PRODUCTO VIRTUAL
+							    AGREGAR MULTIMEDIA VIRTUAL
 							===========================================-->
 							
 							<div class="input-group multimediaVirtual" style="display:none">
@@ -181,7 +181,7 @@
 							</div>
 
 							<!--=======================================
-							    SUBIR MULTIMEDIA DE PRODUCTO FÍSICO
+							    AGREGAR MULTIMEDIA FÍSICA
 							===========================================-->
 							
 							<div class="multimediaFisica needsclick dz-clickable" style="display:none">
@@ -675,7 +675,7 @@
 		<div class="modal-content">
 					
             <!--=====================================
-                CABEZA DEL MODAL
+                CABEZA DEL MODAL (EDITAR)
             ======================================-->
 
             <div class="modal-header" style="background:#3c8dbc; color:white">
@@ -687,7 +687,7 @@
             </div>
 
             <!--=====================================
-                CUERPO DEL MODAL
+                CUERPO DEL MODAL (EDITAR)
             =========================================-->
 
             <div class="modal-body">
@@ -695,7 +695,7 @@
                 <div class="box-body">
 
                     <!--=====================================
-                        ENTRADA PARA EL TÍTULO
+                        EDITAR TÍTULO DEL PRODUCTO
                     =========================================-->
 
                     <div class="form-group">
@@ -715,7 +715,7 @@
                     </div>
 
                     <!--=====================================
-                        ENTRADA PARA LA RUTA DEL PRODUCTO
+                        RUTA DEL PRODUCTO
                     =========================================-->
 
                     <div class="form-group">
@@ -731,7 +731,7 @@
                     </div>
 
                     <!--=================================================
-                        ENTRADA PARA SELECCIONAR EL TIPO DEL PRODUCTO
+                        EDITAR TIPO DEL PRODUCTO
                     =====================================================-->
 
                     <div class="form-group">
@@ -747,13 +747,13 @@
                     </div>
 
                     <!--=====================================
-                        ENTRADA PARA AGREGAR MULTIMEDIA
+                        EDITAR MULTIMEDIA
                     =========================================-->
 
                     <div class="form-group agregarMultimedia"> 
 
                         <!--=======================================
-                            SUBIR MULTIMEDIA DE PRODUCTO VIRTUAL
+                           EDITAR MULTIMEDIA VIRTUAL
                         ===========================================-->
                         
                         <div class="input-group multimediaVirtual" style="display:none">
@@ -765,7 +765,7 @@
                         </div>
 
                         <!--=======================================
-                            SUBIR MULTIMEDIA DE PRODUCTO FÍSICO
+                            EDITAR MULTIMEDIA FÍSICO
                         ===========================================-->
 
                         <div class="row previsualizarImgFisico"></div>
@@ -783,7 +783,7 @@
                     </div>
 
                     <!--=====================================
-                        AGREGAR DETALLES VIRTUALES
+                        EDITAR DETALLES VIRTUALES
                     ======================================-->
 
                     <div class="detallesVirtual" style="display:none">
@@ -901,7 +901,7 @@
                         </div>
 
                     <!--=====================================
-                        AGREGAR DETALLES FÍSICOS
+                        EDITAR DETALLES FÍSICOS
                     ======================================-->  
 
                     <div class="detallesFisicos" style="display:none">
@@ -965,7 +965,7 @@
                     </div> 
 
                     <!--=====================================
-                        AGREGAR CATEGORÍA
+                        EDITAR CATEGORÍA
                     ======================================-->
 
                     <div class="form-group">
@@ -998,7 +998,7 @@
                     </div>
 
                     <!--=====================================
-                        AGREGAR SUBCATEGORÍA
+                        EDITAR SUBCATEGORÍA
                     ======================================-->
 
                     <div class="form-group entradaSubcategoria">
@@ -1018,7 +1018,7 @@
                     </div>
 
                     <!--=====================================
-                        AGREGAR DESCRIPCIÓN
+                        EDITAR DESCRIPCIÓN
                     ======================================-->
 
                     <div class="form-group">
@@ -1034,7 +1034,7 @@
                     </div>
 
                     <!--=====================================
-                        AGREGAR PALABRAS CLAVES
+                        EDITAR PALABRAS CLAVES
                     ======================================-->
 
                     <div class="form-group editarPalabrasClaves">
@@ -1050,7 +1050,7 @@
                     </div>
 
                     <!--=====================================
-                        AGREGAR FOTO DE PORTADA
+                        EDITAR FOTO DE PORTADA
                     ======================================-->
 
                     <div class="form-group">
@@ -1068,7 +1068,7 @@
                     </div>
 
                     <!--=====================================
-                        AGREGAR FOTO DE MULTIMEDIA
+                        EDITAR FOTO DE MULTIMEDIA
                     ======================================-->
 
                     <div class="form-group">
@@ -1086,7 +1086,7 @@
                     </div>
 
                     <!--=====================================
-                        AGREGAR PRECIO, PESO Y ENTREGA
+                        EDITAR PRECIO, PESO Y ENTREGA
                     ======================================-->
 
                     <div class="form-group row">
@@ -1142,7 +1142,7 @@
                     </div>
 
                     <!--=====================================
-                        AGREGAR OFERTAS
+                        ACTIVAR OFERTAS
                     ======================================-->
 
                     <div class="form-group">
@@ -1160,7 +1160,7 @@
                     <div class="datosOferta" style="display:none">
                     
                         <!--=====================================
-                            VALOR OFERTAS
+                            EDITAR VALOR OFERTAS
                         ======================================-->
 
                         <div class="form-group row">
@@ -1191,9 +1191,9 @@
 
                         </div>
 
-                        <!--=====================================
-                            FECHA FINALIZACIÓN OFERTA
-                        ======================================-->
+                        <!--========================================
+                            EDITAR FECHA FINALIZACIÓN OFERTA
+                        ==========================================-->
 
                         <div class="form-group">
                                 
@@ -1212,7 +1212,7 @@
                         </div>
 
                         <!--=====================================
-                            FOTO OFERTA
+                            EDITAR FOTO OFERTA
                         ======================================-->
 
                         <div class="form-group">
@@ -1236,7 +1236,7 @@
             </div>
 
             <!--=====================================
-                PIE DEL MODAL
+                PIE DEL MODAL (EDITAR)
             ======================================-->
 
             <div class="modal-footer">

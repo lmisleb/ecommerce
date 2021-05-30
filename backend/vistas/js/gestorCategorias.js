@@ -2,16 +2,16 @@
 	CARGAR LA TABLA DINÁMICA DE CATEGORÍAS
 =============================================*/
 
-// $.ajax({
+$.ajax({
 
-// 	url:"ajax/tablaCategorias.ajax.php",
-// 	success:function(respuesta){
+	url:"ajax/tablaCategorias.ajax.php",
+	success:function(respuesta){
 
-// 		console.log("respuesta", respuesta);
+		//console.log("respuesta", respuesta);
 
-// 	}
+	}
 
-// })
+})
 
 $(".tablaCategorias").DataTable({
     "ajax": "ajax/tablaCategorias.ajax.php",
@@ -22,7 +22,7 @@ $(".tablaCategorias").DataTable({
         "sProcessing": "Procesando...",
         "sLengthMenu": "Mostrar _MENU_ registros",
         "sZeroRecords": "No se encontraron resultados",
-        "sEmptyTable": "Ningún dato disponible en esta tabla",
+        "sEmptyTable": "No hay datos disponible en esta tabla ...",
         "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
         "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0",
         "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
@@ -52,7 +52,6 @@ $(".tablaCategorias tbody").on("click", ".btnActivar", function() {
 
     var idCategoria = $(this).attr("idCategoria");
     var estadoCategoria = $(this).attr("estadoCategoria");
-
     var datos = new FormData();
     datos.append("activarId", idCategoria);
     datos.append("activarCategoria", estadoCategoria);

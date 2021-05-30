@@ -10,8 +10,9 @@
 	foreach ($ventas as $key => $value) {
 
 		/*=============================================
-		PORCENTAJES MÉTODOS DE PAGO PAYPAL
+			PORCENTAJES MÉTODOS DE PAGO PAYPAL
 		=============================================*/
+
 		if($value["metodo"] == "paypal"){
 
 			$totalPaypal += $value["pago"];
@@ -21,8 +22,9 @@
 		}
 
 		/*=============================================
-		PORCENTAJES MÉTODOS DE PAGO PAYU
+			PORCENTAJES MÉTODOS DE PAGO PAYU
 		=============================================*/
+
 		if($value["metodo"] == "payu"){
 
 			$totalPayu += $value["pago"];
@@ -32,7 +34,7 @@
 		}
 
 		/*=============================================
-		GRÁFICA EN LÍNEA
+			GRÁFICA EN LÍNEA
 		=============================================*/
 		
 		if($value["metodo"] != "gratis"){
@@ -63,8 +65,9 @@
 ?>
 
 <!--=====================================
-GRÁFICO DE VENTAS
+	GRÁFICO DE VENTAS
 ======================================-->
+
 <!-- solid sales graph -->
 <div class="box box-solid bg-teal-gradient">
 
@@ -132,13 +135,21 @@ GRÁFICO DE VENTAS
 
 		<?php
 
-			foreach ($noRepetirFechas as $value) {
-			
-				echo "{ y: '".$value."', ventas: ".$sumaPagosMes[$value]." },";
-				
-			}
+			if($ventas!=false){
 
-			echo "{ y: '".$value."', ventas: ".$sumaPagosMes[$value]." }";
+				foreach ($noRepetirFechas as $value) {
+				
+					echo "{ y: '".$value."', ventas: ".$sumaPagosMes[$value]." },";
+					
+				}
+
+				echo "{ y: '".$value."', ventas: ".$sumaPagosMes[$value]." }";
+
+			}else{
+
+				echo "{ y: '', ventas: '0' }";
+
+			}
 
 		?>
 

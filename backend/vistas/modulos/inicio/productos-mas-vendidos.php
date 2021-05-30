@@ -7,7 +7,7 @@
 ?>
 
 <!--=====================================
-PRODUCTOS MÁS VENDIDOS
+	PRODUCTOS MÁS VENDIDOS
 ======================================-->
 
 <!-- box -->
@@ -52,10 +52,14 @@ PRODUCTOS MÁS VENDIDOS
 
 					<?php
 
-						for($i = 0; $i < 5; $i++){
+						if($productos!=false){
 
-							echo '<li><i class="fa fa-circle-o text-'.$colores[$i].'"></i> '.$productos[$i]["titulo"].'</li>';
+							for($i = 0; $i < 5; $i++){
 
+								echo '<li><i class="fa fa-circle-o text-'.$colores[$i].'"></i> '.$productos[$i]["titulo"].'</li>';
+
+							}
+						
 						}
 
 					?>
@@ -77,12 +81,16 @@ PRODUCTOS MÁS VENDIDOS
 
 	  		<?php
 
-				for($i = 0; $i < 5; $i++){
+				if($productos!=false){
 
-					echo '<li>        
-						<a href="#">'.$productos[$i]["titulo"].'
-						<span class="pull-right text-'.$colores[$i].'"> '.ceil($productos[$i]["ventas"]*100/$totalVentas["total"]).'%</span></a>
-					</li>';
+					for($i = 0; $i < 5; $i++){
+
+						echo '<li>        
+							<a href="#">'.$productos[$i]["titulo"].'
+							<span class="pull-right text-'.$colores[$i].'"> '.ceil($productos[$i]["ventas"]*100/$totalVentas["total"]).'%</span></a>
+						</li>';
+
+					}
 
 				}
 
@@ -105,15 +113,18 @@ PRODUCTOS MÁS VENDIDOS
 
 		<?php
 
-			for($i = 0; $i < 5; $i++){
+			if($productos!=false){
 
-				echo "{
-					value    : ".$productos[$i]["ventas"].",
-					color    : '".$colores[$i]."',
-					highlight: '".$colores[$i]."',
-					label    : '".$productos[$i]["titulo"]."'
-				},";
+				for($i = 0; $i < 5; $i++){
 
+					echo "{
+						value    : ".$productos[$i]["ventas"].",
+						color    : '".$colores[$i]."',
+						highlight: '".$colores[$i]."',
+						label    : '".$productos[$i]["titulo"]."'
+					},";
+
+				}
 			}
 
 		?>

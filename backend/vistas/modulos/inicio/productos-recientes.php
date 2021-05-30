@@ -33,30 +33,34 @@ PRODUCTOS RECIENTES
 
 			<?php
 
-				for($i = 0; $i < 5; $i++){
+ 				if($productos!=false){
 
-					echo '<li class="item">
-							<div class="product-img">
-								<img src="'.$productos[$i]["portada"].'" alt="Product Image">
-							</div>
-							<div class="product-info">
-								<a href="" class="product-title">'.$productos[$i]["titulo"];
+					for($i = 0; $i < 5; $i++){
 
-								if($productos[$i]["precio"] == 0){
+						echo '<li class="item">
+								<div class="product-img">
+									<img src="'.$productos[$i]["portada"].'" alt="Product Image">
+								</div>
+								<div class="product-info">
+									<a href="" class="product-title">'.$productos[$i]["titulo"];
+
+									if($productos[$i]["precio"] == 0){
+										
+										echo '<span class="label label-warning pull-right">GRATIS</span></a>';
+
+									}else{
+
+										echo '<span class="label label-warning pull-right">$'.$productos[$i]["precio"].'</span></a>';
+
+									}
 									
-									echo '<span class="label label-warning pull-right">GRATIS</span></a>';
+							echo '</div>
 
-								}else{
+						</li>';
 
-									echo '<span class="label label-warning pull-right">$'.$productos[$i]["precio"].'</span></a>';
+					}
 
-								}
-								
-						echo '</div>
-
-					</li>';
-
-				}
+				 }
 
 			?> 
 
@@ -68,8 +72,18 @@ PRODUCTOS RECIENTES
 
   	<!-- box-footer -->
   	<div class="box-footer text-center">
+
+		<?php
+
+			if($productos!=false){
+
+				echo'<a href="productos" class="uppercase">Ver todos los productos</a>';
+				
+			}
+
+		?>
     
-    	<a href="productos" class="uppercase">Ver todos los productos</a>
+    	<!-- <a href="productos" class="uppercase">Ver todos los productos</a> -->
   
   	</div>
   	<!-- box-footer -->

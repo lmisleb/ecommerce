@@ -2,16 +2,16 @@
     CARGAR LA TABLA DINÁMICA DE PRODUCTOS
 =============================================*/
 
-// $.ajax({
+$.ajax({
 
-//     url:"ajax/tablaProductos.ajax.php",
-//     success:function(respuesta){
+    url:"ajax/tablaProductos.ajax.php",
+    success:function(respuesta){
         
-//         console.log("respuesta", respuesta);
+        //console.log("respuesta", respuesta);
 
-//     }
+    }
 
-// })
+})
 
 $('.tablaProductos').DataTable({
 
@@ -24,7 +24,7 @@ $('.tablaProductos').DataTable({
         "sProcessing":     "Procesando...",
         "sLengthMenu":     "Mostrar _MENU_ registros",
         "sZeroRecords":    "No se encontraron resultados",
-        "sEmptyTable":     "Ningún dato disponible en esta tabla",
+        "sEmptyTable":     "No hay datos disponible en esta tabla ...",
         "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
         "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0",
         "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
@@ -218,7 +218,7 @@ $(".multimediaFisica").dropzone({
 })
 
 /*=============================================
-    SELECCIONAR SUBCATEGORÍA
+    SELECCIONAR CATEGORÍA
 =============================================*/
 
 $(".seleccionarCategoria").change(function(){
@@ -879,7 +879,7 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
             
                 var datosCategoria = new FormData();
                 datosCategoria.append("idCategoria", respuesta[0]["id_categoria"]);
-                
+
                 $.ajax({
 
                         url:"ajax/categorias.ajax.php",
@@ -927,8 +927,9 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
 
                         $("#modalEditarProducto .optionEditarSubCategoria").val(respuesta[0]["id"]);
                         $("#modalEditarProducto .optionEditarSubCategoria").html(respuesta[0]["subcategoria"]);
+
                         var datosCategoria = new FormData();
-                        datosCategoria.append("idCategoria", respuesta[0]["id_categoria"]);	
+                        datosCategoria.append("idCategoria", respuesta[0]["id_categoria"]);
 
                         $.ajax({
 
@@ -944,7 +945,7 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
                                 respuesta.forEach(funcionForEach);
 
                                 function funcionForEach(item, index){
-
+                                    
                                     $("#modalEditarProducto .seleccionarSubCategoria").append(
 
                                         '<option value="'+item["id"]+'">'+item["subcategoria"]+'</option>'
@@ -963,7 +964,7 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
 
             }else{
                 
-                $("#modalEditarProducto .optionEditarSubCategoria").html("SIN CATEGORÍA");
+                $("#modalEditarProducto .optionEditarSubCategoria").html("SIN SUBCATEGORÍA");
 
             }
 
