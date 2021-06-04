@@ -398,7 +398,7 @@
 										
 										<option value="">Marca</option>';
 
-										for($i = 0; $i <= count($detalles["Marca"]); $i++){
+										for($i = 0; $i < count($detalles["Marca"]); $i++){
 
 											echo '<option value="'.$detalles["Marca"][$i].'">'.$detalles["Marca"][$i].'</option>';
 

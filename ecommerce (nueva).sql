@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-05-2021 a las 20:04:04
+-- Tiempo de generación: 04-06-2021 a las 06:36:12
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -120,7 +120,13 @@ INSERT INTO `cabeceras` (`id`, `ruta`, `titulo`, `descripcion`, `palabrasClaves`
 (25, 'camisas-de-mujer', 'Camisas de Mujer', 'Diversas Camisas.', 'camisas', 'vistas/img/cabeceras/camisas-mujer.jpg', '2021-05-30 07:01:03'),
 (26, 'camisa-de-cuadros', 'Camisa de Cuadros', 'Bellas camisas de mujer.', 'camisas dama', 'vistas/img/cabeceras/camisa-de-cuadros.jpg', '2021-05-30 05:16:43'),
 (29, 'pantalon-militar', 'Pantalón Militar', 'Bellos Pantalones.', 'Pantalón Femenino', 'vistas/img/cabeceras/pantalon-militar.jpg', '2021-05-30 07:16:46'),
-(30, 'pantalon-de-mujer', 'Pantalón de Mujer', 'Bellos pantalones.', 'pantalón', 'vistas/img/cabeceras/pantalon-de-mujer.jpg', '2021-05-30 07:30:13');
+(30, 'pantalon-de-mujer', 'Pantalón de Mujer', 'Bellos pantalones.', 'pantalón', 'vistas/img/cabeceras/pantalon-de-mujer.jpg', '2021-05-30 07:30:13'),
+(31, 'shores-de-mujer', 'Shores de Mujer', 'Shores de Mujer.', 'Shores', 'vistas/img/cabeceras/shores-de-mujer.jpg', '2021-06-04 03:34:03'),
+(32, 'shores-cortos', 'Shores Cortos', 'Shores Cortos.', 'Shores cortos', 'vistas/img/cabeceras/shores-cortos.jpg', '2021-06-04 03:37:18'),
+(33, 'camisas-casuales', 'Camisas Casuales', 'Camisas Casuales.', 'Camisas casuales', 'vistas/img/cabeceras/camisas-casuales.jpg', '2021-06-04 03:42:51'),
+(34, 'camisa-deportiva', 'Camisa Deportiva', 'Camisas deportivas de mujer.', 'Camisas Deportivas', 'vistas/img/cabeceras/camisa-deportiva.png', '2021-06-04 04:09:35'),
+(35, 'camisa-de-vestir', 'Camisa de Vestir', 'Camisas de Vestir', 'Camisa de Vestir', 'vistas/img/cabeceras/camisa-de-vestir.jpg', '2021-06-04 04:14:16'),
+(38, 'camisas-de-hombre', 'Camisas de Hombre', 'Camisas de Hombre', 'Camisas de Hombre', 'vistas/img/cabeceras/camisas-de-hombre.jpg', '2021-06-04 04:33:13');
 
 -- --------------------------------------------------------
 
@@ -300,14 +306,14 @@ CREATE TABLE `productos` (
 INSERT INTO `productos` (`id`, `id_categoria`, `id_subcategoria`, `tipo`, `ruta`, `estado`, `titulo`, `titular`, `descripcion`, `multimedia`, `detalles`, `precio`, `portada`, `vistas`, `ventas`, `vistasGratis`, `ventasGratis`, `ofertadoPorCategoria`, `ofertadoPorSubCategoria`, `oferta`, `precioOferta`, `descuentoOferta`, `imgOferta`, `finOferta`, `nuevo`, `peso`, `entrega`, `fecha`) VALUES
 (1, 1, 1, 'fisico', 'john-wick', 1, 'John Wick', 'Mucha pero muchas muertes....', 'Mucha pero muchas muertes.', '[{\"foto\":\"vistas/img/multimedia/john-wick/john wick 1.jpg\"},{\"foto\":\"vistas/img/multimedia/john-wick/john wick 4.jpg\"},{\"foto\":\"vistas/img/multimedia/john-wick/john wick 2.jpg\"},{\"foto\":\"vistas/img/multimedia/john-wick/john wick 3.jpg\"},{\"foto\":\"vistas/img/multimedia/john-wick/john wick.jpg\"}]', '{\"Talla\":[\"1\",\"2\",\"3\",\"4\"],\"Color\":[\"blanco\",\"negro\",\"rojo\",\"azul\"],\"Marca\":[\"1\",\"2\",\"3\",\"4\"]}', 30, 'vistas/img/productos/john-wick.jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 0.75, 5, '2021-05-30 04:54:56'),
 (2, 1, 1, 'fisico', 'mad-max', 1, 'Mad Max', 'Acción en la carretera...', 'Acción en la carretera', '[{\"foto\":\"vistas/img/multimedia/mad-max/mad max 2.jpg\"},{\"foto\":\"vistas/img/multimedia/mad-max/mad max 4.jpg\"},{\"foto\":\"vistas/img/multimedia/mad-max/mad max 1.jpg\"},{\"foto\":\"vistas/img/multimedia/mad-max/mad max 3.jpg\"}]', '{\"Talla\":[\"1\",\"2\",\"3\",\"4\"],\"Color\":[\"1\",\"2\",\"3\",\"4\"],\"Marca\":[\"1\",\"2\",\"3\",\"4\"]}', 27, 'vistas/img/productos/mad-max.jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 0.5, 5, '2021-05-30 04:54:56'),
-(3, 1, 1, 'fisico', 'kill-bill', 1, 'Kill Bill', 'Acción y muerte...', 'Acción y muerte', '[{\"foto\":\"vistas/img/multimedia/kill-bill/kill bill 2.jpg\"},{\"foto\":\"vistas/img/multimedia/kill-bill/kill bill 1.jpg\"}]', '{\"Talla\":[\"1\",\"2\"],\"Color\":[\"1\",\"2\"],\"Marca\":[\"1\",\"2\"]}', 25, 'vistas/img/productos/kill-bill.jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 0.8, 5, '2021-05-30 04:54:56'),
-(4, 1, 1, 'fisico', 'machete', 1, 'Machete', 'Sangre...', 'Sangre', '[{\"foto\":\"vistas/img/multimedia/machete/machete 2.jpg\"},{\"foto\":\"vistas/img/multimedia/machete/machete 1.1.jpg\"}]', '{\"Talla\":[\"1\",\"2\"],\"Color\":[\"1\",\"2\"],\"Marca\":[\"1\",\"2\"]}', 12, 'vistas/img/productos/machete.jpg', 0, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 0.25, 5, '2021-05-30 04:54:56'),
-(5, 1, 4, 'fisico', 'star-wars', 1, 'Star Wars', 'Trilogía Original de Star Wars....', 'Trilogía Original de Star Wars.', '[{\"foto\":\"vistas/img/multimedia/star-wars/star wars 1.jpg\"},{\"foto\":\"vistas/img/multimedia/star-wars/star wars 2.jpg\"},{\"foto\":\"vistas/img/multimedia/star-wars/star wars 3.jpg\"}]', '{\"Talla\":[\"1\",\"2\",\"3\"],\"Color\":[\"1\",\"2\",\"3\"],\"Marca\":[\"1\",\"2\",\"3\"]}', 75, 'vistas/img/productos/star-wars.jpg', 19, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 1.5, 5, '2021-05-30 06:24:47'),
-(6, 1, 4, 'fisico', 'aliens', 1, 'Aliens', 'Cuatrología de Aliens...', 'Cuatrología de Aliens', '[{\"foto\":\"vistas/img/multimedia/aliens/alien 1.1.jpg\"},{\"foto\":\"vistas/img/multimedia/aliens/aliens 4.jpg\"},{\"foto\":\"vistas/img/multimedia/aliens/aliens 2.jpg\"},{\"foto\":\"vistas/img/multimedia/aliens/aliens 3.jpg\"}]', '{\"Talla\":[\"1\",\"2\",\"3\",\"4\"],\"Color\":[\"1\",\"2\",\"3\",\"4\"],\"Marca\":[\"1\",\"2\",\"3\",\"4\"]}', 58, 'vistas/img/productos/aliens.jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 2.5, 5, '2021-05-30 06:17:39'),
-(7, 1, 4, 'fisico', 'valerian', 1, 'Valerian', 'Valerian y los mil y un planetas....', 'Valerian y los mil y un planetas.', '[{\"foto\":\"vistas/img/multimedia/valerian/valerian 1.jpg\"},{\"foto\":\"vistas/img/multimedia/valerian/valerian 2.jpg\"}]', '{\"Talla\":[\"1\"],\"Color\":[\"1\"],\"Marca\":[\"1\"]}', 15, 'vistas/img/productos/valerian.jpg', 5, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 0.47, 5, '2021-05-30 06:17:37'),
+(3, 1, 1, 'fisico', 'kill-bill', 1, 'Kill Bill', 'Acción y muerte...', 'Acción y muerte', '[{\"foto\":\"vistas/img/multimedia/kill-bill/kill bill 2.jpg\"},{\"foto\":\"vistas/img/multimedia/kill-bill/kill bill 1.jpg\"}]', '{\"Talla\":[\"1\",\"2\"],\"Color\":[\"1\",\"2\"],\"Marca\":[\"1\",\"2\"]}', 25, 'vistas/img/productos/kill-bill.jpg', 2, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 0.8, 5, '2021-06-04 03:59:44'),
+(4, 1, 1, 'fisico', 'machete', 1, 'Machete', 'Sangre...', 'Sangre', '[{\"foto\":\"vistas/img/multimedia/machete/machete 2.jpg\"},{\"foto\":\"vistas/img/multimedia/machete/machete 1.1.jpg\"}]', '{\"Talla\":[\"1\",\"2\"],\"Color\":[\"1\",\"2\"],\"Marca\":[\"1\",\"2\"]}', 12, 'vistas/img/productos/machete.jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 0.25, 5, '2021-06-04 04:04:30'),
+(5, 1, 4, 'fisico', 'star-wars', 1, 'Star Wars', 'Trilogía Original de Star Wars....', 'Trilogía Original de Star Wars.', '[{\"foto\":\"vistas/img/multimedia/star-wars/star wars 1.jpg\"},{\"foto\":\"vistas/img/multimedia/star-wars/star wars 2.jpg\"},{\"foto\":\"vistas/img/multimedia/star-wars/star wars 3.jpg\"}]', '{\"Talla\":[\"1\",\"2\",\"3\"],\"Color\":[\"1\",\"2\",\"3\"],\"Marca\":[\"1\",\"2\",\"3\"]}', 75, 'vistas/img/productos/star-wars.jpg', 22, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 1.5, 5, '2021-06-04 04:04:41'),
+(6, 1, 4, 'fisico', 'aliens', 1, 'Aliens', 'Cuatrología de Aliens...', 'Cuatrología de Aliens', '[{\"foto\":\"vistas/img/multimedia/aliens/alien 1.1.jpg\"},{\"foto\":\"vistas/img/multimedia/aliens/aliens 4.jpg\"},{\"foto\":\"vistas/img/multimedia/aliens/aliens 2.jpg\"},{\"foto\":\"vistas/img/multimedia/aliens/aliens 3.jpg\"}]', '{\"Talla\":[\"1\",\"2\",\"3\",\"4\"],\"Color\":[\"1\",\"2\",\"3\",\"4\"],\"Marca\":[\"1\",\"2\",\"3\",\"4\"]}', 58, 'vistas/img/productos/aliens.jpg', 2, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 2.5, 5, '2021-06-04 03:38:46'),
+(7, 1, 4, 'fisico', 'valerian', 1, 'Valerian', 'Valerian y los mil y un planetas....', 'Valerian y los mil y un planetas.', '[{\"foto\":\"vistas/img/multimedia/valerian/valerian 1.jpg\"},{\"foto\":\"vistas/img/multimedia/valerian/valerian 2.jpg\"}]', '{\"Talla\":[\"1\"],\"Color\":[\"1\"],\"Marca\":[\"1\"]}', 15, 'vistas/img/productos/valerian.jpg', 7, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 0.47, 5, '2021-06-04 03:38:49'),
 (8, 1, 4, 'fisico', 'avatar', 1, 'Avatar', 'Avatar...', 'Avatar', '[{\"foto\":\"vistas/img/multimedia/avatar/avatar 2.jpg\"},{\"foto\":\"vistas/img/multimedia/avatar/avatar.png\"}]', '{\"Talla\":[\"1\"],\"Color\":[\"1\"],\"Marca\":[\"1\"]}', 12, 'vistas/img/productos/avatar.png', 2, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 1.57, 5, '2021-05-30 07:08:32'),
 (9, 1, 2, 'fisico', 'la-huerfana', 1, 'La Huerfana', 'Suspenso...', 'Suspenso', '[{\"foto\":\"vistas/img/multimedia/la-huerfana/la huerfana.jpg\"},{\"foto\":\"vistas/img/multimedia/la-huerfana/la huerfana 1.jpg\"}]', '{\"Talla\":[\"1\"],\"Color\":[\"1\"],\"Marca\":[\"1\"]}', 17, 'vistas/img/productos/la-huerfana.jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 1.3, 5, '2021-05-30 04:54:56'),
-(10, 1, 2, 'fisico', 'mientras-duermes', 1, 'Mientras Duermes', 'Mientras duermes...', 'Mientras duermes', '[{\"foto\":\"vistas/img/multimedia/mientras-duermes/mientras.jpg\"},{\"foto\":\"vistas/img/multimedia/mientras-duermes/mientras duermes.jpg\"}]', '{\"Talla\":[\"1\"],\"Color\":[\"2\"],\"Marca\":[\"3\"]}', 11, 'vistas/img/productos/mientras-duermes.jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 0.27, 5, '2021-05-30 05:21:27'),
+(10, 1, 2, 'fisico', 'mientras-duermes', 1, 'Mientras Duermes', 'Mientras duermes...', 'Mientras duermes', '[{\"foto\":\"vistas/img/multimedia/mientras-duermes/mientras.jpg\"},{\"foto\":\"vistas/img/multimedia/mientras-duermes/mientras duermes.jpg\"}]', '{\"Talla\":[\"1\"],\"Color\":[\"2\"],\"Marca\":[\"3\"]}', 11, 'vistas/img/productos/mientras-duermes.jpg', 3, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 0.27, 5, '2021-06-04 04:03:46'),
 (11, 1, 2, 'fisico', 'la-mano-que-mece-la-cuna', 1, 'La mano que mece la cuna', 'La mano que mece la cuna....', 'La mano que mece la cuna.', '[{\"foto\":\"vistas/img/multimedia/la-mano-que-mece-la-cuna/la mano.jpg\"}]', '{\"Talla\":[\"1\"],\"Color\":[\"1\"],\"Marca\":[\"1\"]}', 9, 'vistas/img/productos/la-mano-que-mece-la-cuna.jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 0.33, 5, '2021-05-30 04:54:56'),
 (12, 1, 2, 'fisico', 'la-habitacion-del-panico', 1, 'La habitación del Pánico', 'La habitación del pánico....', 'La habitación del pánico.', '[{\"foto\":\"vistas/img/multimedia/la-habitacion-del-panico/habitacion del panico.jpg\"}]', '{\"Talla\":[\"1\"],\"Color\":[\"1\"],\"Marca\":[\"1\"]}', 15, 'vistas/img/productos/la-habitacion-del-panico.jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 0.57, 5, '2021-05-30 04:54:56'),
 (13, 1, 3, 'fisico', 'annabelle-creation', 1, 'Annabelle Creation', 'Annabelle Creation....', 'Annabelle Creation.', '[{\"foto\":\"vistas/img/multimedia/annabelle-creation/annabelle creation.jpg\"}]', '{\"Talla\":[\"1\"],\"Color\":[\"1\"],\"Marca\":[\"1\"]}', 9, 'vistas/img/productos/annabelle-creation.jpg', 2, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 0.87, 5, '2021-05-30 04:54:56'),
@@ -315,8 +321,12 @@ INSERT INTO `productos` (`id`, `id_categoria`, `id_subcategoria`, `tipo`, `ruta`
 (15, 1, 3, 'fisico', 'el-conjuro', 1, 'El Conjuro', 'El Conjuro 1, 2, 3....', 'El Conjuro 1, 2, 3.', '[{\"foto\":\"vistas/img/multimedia/el-conjuro/el conjuro 3.jpg\"},{\"foto\":\"vistas/img/multimedia/el-conjuro/el conjuro.jpg\"},{\"foto\":\"vistas/img/multimedia/el-conjuro/el conjuro 2.jpg\"}]', '{\"Talla\":[\"1\"],\"Color\":[\"1\"],\"Marca\":[\"1\"]}', 66, 'vistas/img/productos/el-conjuro.jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 0.6, 5, '2021-05-30 04:54:56'),
 (16, 1, 3, 'fisico', 'el-exorcista', 1, 'El Exorcista', 'El exorcista y el hereje....', 'El exorcista y el hereje.', '[{\"foto\":\"vistas/img/multimedia/el-exorcista/el exorcista.jpg\"},{\"foto\":\"vistas/img/multimedia/el-exorcista/el hereje.jpg\"}]', '{\"Talla\":[\"1\"],\"Color\":[\"1\"],\"Marca\":[\"1\"]}', 27, 'vistas/img/productos/el-exorcista.jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 0.88, 5, '2021-05-30 04:56:49'),
 (17, 1, 3, 'fisico', 'en-la-oscuridad', 1, 'En la Oscuridad', 'En la oscuridad....', 'En la oscuridad.', '[{\"foto\":\"vistas/img/multimedia/en-la-oscuridad/en la oscuridad.jpg\"}]', '{\"Talla\":[[\"1\"],[\"1\"]],\"Color\":[[\"1\"],[\"1\"]],\"Marca\":[[\"1\"],[\"1\"]]}', 7, 'vistas/img/productos/en-la-oscuridad.jpg', 0, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 0.22, 5, '2021-05-30 04:59:36'),
-(18, 2, 5, 'fisico', 'camisa-de-cuadros', 1, 'Camisa de Cuadros', 'Bellas camisas de mujer....', 'Bellas camisas de mujer.', '[{\"foto\":\"vistas/img/multimedia/camisa-de-cuadros/camisa.jpg\"}]', '{\"Talla\":[\"S\",\"M\",\"L\"],\"Color\":[\"Rojo\",\"Azul\",\"Verde\"],\"Marca\":[\"Marca 1\",\"Marca 2\"]}', 35, 'vistas/img/productos/camisa-de-cuadros.jpg', 11, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 0.2, 3, '2021-05-30 17:47:45'),
-(20, 2, 7, 'fisico', 'pantalon-militar', 1, 'Pantalón Militar', 'Bellos Pantalones....', 'Bellos Pantalones.', '[{\"foto\":\"vistas/img/multimedia/pantalon-militar/pantalon de mujer.jpg\"}]', '{\"Talla\":[\"XS\",\"S\",\"M\",\"L\",\"XL\"],\"Color\":[\"Verde\",\"Negro\",\"Azul\",\"Beige\"],\"Marca\":[\"Columbia\",\"Brasil\"]}', 57, 'vistas/img/productos/pantalon-militar.jpg', 0, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 1.2, 3, '2021-05-30 18:02:59');
+(18, 2, 5, 'fisico', 'camisa-de-cuadros', 1, 'Camisa de Cuadros', 'Bellas camisas de mujer....', 'Bellas camisas de mujer.', '[{\"foto\":\"vistas/img/multimedia/camisa-de-cuadros/camisa.jpg\"}]', '{\"Talla\":[\"S\",\"M\",\"L\"],\"Color\":[\"Rojo\",\"Azul\",\"Verde\"],\"Marca\":[\"Marca 1\",\"Marca 2\"]}', 35, 'vistas/img/productos/camisa-de-cuadros.jpg', 15, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 0.2, 3, '2021-06-04 03:54:24'),
+(20, 2, 7, 'fisico', 'pantalon-militar', 1, 'Pantalón Militar', 'Bellos Pantalones....', 'Bellos Pantalones.', '[{\"foto\":\"vistas/img/multimedia/pantalon-militar/pantalon de mujer.jpg\"}]', '{\"Talla\":[\"XS\",\"S\",\"M\",\"L\",\"XL\"],\"Color\":[\"Verde\",\"Negro\",\"Azul\",\"Beige\"],\"Marca\":[\"Columbia\",\"Brasil\"]}', 57, 'vistas/img/productos/pantalon-militar.jpg', 4, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 1.2, 3, '2021-06-04 04:04:07'),
+(21, 2, 8, 'fisico', 'shores-cortos', 1, 'Shores Cortos', 'Shores Cortos....', 'Shores Cortos.', '[{\"foto\":\"vistas/img/multimedia/shores-cortos/shores de mujer cortos.jpg\"}]', '{\"Talla\":[\"1\"],\"Color\":[\"1\"],\"Marca\":[\"1\"]}', 7, 'vistas/img/productos/shores-cortos.jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 0.2, 3, '2021-06-04 03:38:13'),
+(22, 2, 5, 'fisico', 'camisas-casuales', 1, 'Camisas Casuales', 'Camisas Casuales....', 'Camisas Casuales.', '[{\"foto\":\"vistas/img/multimedia/camisas-casuales/dama.jpg\"}]', '{\"Talla\":[\"XS\",\"S\",\"M\",\"L\",\"XL\",\"2XL\",\"3XL\"],\"Color\":[\"Amarillo\",\"Verde\",\"Azul\",\"Rojo\",\"Violeta\",\"Crema\"],\"Marca\":[\"Marca 1\"]}', 12, 'vistas/img/productos/camisas-casuales.jpg', 4, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 0.1, 3, '2021-06-04 04:03:58'),
+(23, 2, 5, 'fisico', 'camisa-deportiva', 1, 'Camisa Deportiva', 'Camisas deportivas de mujer....', 'Camisas deportivas de mujer.', '[{\"foto\":\"vistas/img/multimedia/camisa-deportiva/camisa deportiva.png\"}]', '{\"Talla\":[[\"S\",\"M\",\"L\"],[\"XS\",\"S\",\"M\",\"L\",\"XL\",\"2XL\",\"3XL\"]],\"Color\":[[\"Violeta\",\"Rojo\"],[\"Amarillo\",\"Verde\",\"Azul\",\"Rojo\",\"Violeta\",\"Crema\"]],\"Marca\":[[],[\"Marca 1\"]]}', 19, 'vistas/img/productos/camisa-deportiva.png', 0, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 0.2, 3, '2021-06-04 04:09:35'),
+(24, 2, 5, 'fisico', 'camisa-de-vestir', 1, 'Camisa de Vestir', 'Camisas de Vestir...', 'Camisas de Vestir', '[{\"foto\":\"vistas/img/multimedia/camisa-de-vestir/camisa de vestir.jpg\"}]', '{\"Talla\":[\"S\",\"M\",\"L\"],\"Color\":[\"Gris\",\"Blanca\",\"Verde\"],\"Marca\":[]}', 38, 'vistas/img/productos/camisa-de-vestir.jpg', 3, 0, 0, 0, 0, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', 0, 0.3, 3, '2021-06-04 04:20:58');
 
 -- --------------------------------------------------------
 
@@ -382,7 +392,9 @@ INSERT INTO `subcategorias` (`id`, `subcategoria`, `id_categoria`, `ruta`, `esta
 (3, 'Terror', 1, 'terror', 1, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', '2021-05-30 04:54:56'),
 (4, 'Ciencia Ficción', 1, 'ciencia-ficcion', 1, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', '2021-05-30 04:54:56'),
 (5, 'Camisas de Mujer', 2, 'camisas-de-mujer', 1, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', '2021-05-30 07:01:03'),
-(7, 'Pantalón de Mujer', 2, 'pantalon-de-mujer', 1, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', '2021-05-30 07:30:13');
+(7, 'Pantalón de Mujer', 2, 'pantalon-de-mujer', 1, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', '2021-05-30 07:30:13'),
+(8, 'Shores de Mujer', 2, 'shores-de-mujer', 1, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', '2021-06-04 03:34:03'),
+(10, 'Camisas de Hombre', 2, 'camisas-de-hombre', 1, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', '2021-06-04 04:33:13');
 
 -- --------------------------------------------------------
 
@@ -435,7 +447,7 @@ CREATE TABLE `visitaspaises` (
 --
 
 INSERT INTO `visitaspaises` (`id`, `pais`, `codigo`, `cantidad`, `fecha`) VALUES
-(1, 'Chile', 'CL', 2, '30-05-2021');
+(1, 'Chile', 'CL', 4, '04-06-2021');
 
 -- --------------------------------------------------------
 
@@ -457,7 +469,9 @@ CREATE TABLE `visitaspersonas` (
 
 INSERT INTO `visitaspersonas` (`id`, `ip`, `pais`, `visitas`, `fecha`) VALUES
 (1, '200.28.111.71', 'Chile', 1, '29-05-2021'),
-(2, '200.28.111.71', 'Chile', 1, '30-05-2021');
+(2, '200.28.111.71', 'Chile', 1, '30-05-2021'),
+(3, '200.28.111.71', 'Chile', 1, '03-06-2021'),
+(4, '200.28.111.71', 'Chile', 1, '04-06-2021');
 
 --
 -- Índices para tablas volcadas
@@ -573,7 +587,7 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT de la tabla `cabeceras`
 --
 ALTER TABLE `cabeceras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
@@ -615,7 +629,7 @@ ALTER TABLE `plantilla`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `slide`
@@ -627,7 +641,7 @@ ALTER TABLE `slide`
 -- AUTO_INCREMENT de la tabla `subcategorias`
 --
 ALTER TABLE `subcategorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -645,7 +659,7 @@ ALTER TABLE `visitaspaises`
 -- AUTO_INCREMENT de la tabla `visitaspersonas`
 --
 ALTER TABLE `visitaspersonas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

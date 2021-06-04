@@ -94,7 +94,7 @@
 
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 
-					<h4 class="modal-title">Agregar Producto...</h4>
+					<h4 class="modal-title">Agregar Producto ...</h4>
 
 				</div>
 
@@ -163,7 +163,7 @@
 						</div>
 
 						<!--=====================================
-						    AGREGAR MULTIMEDIA
+						    MULTIMEDIA
 						======================================-->
 
 						<div class="form-group agregarMultimedia"> 
@@ -379,7 +379,7 @@
 						</div> 
 
 					    <!--=====================================
-						    AGREGAR CATEGORÍA
+						    LLENAR SELECT CATEGORÍA
 						======================================-->
 
 						<div class="form-group">
@@ -390,7 +390,7 @@
 
                                 <select class="form-control input-lg seleccionarCategoria">
                                 
-                                    <option value="">Selecionar categoría</option>
+                                    <option value="0">Selecionar categoría</option>
 
                                         <?php
 
@@ -413,10 +413,10 @@
 						</div>
 
 						<!--=====================================
-						    AGREGAR SUBCATEGORÍA
+						    SUBCATEGORÍA
 						======================================-->
 
-						<div class="form-group  entradaSubcategoria" style="display:none">
+						<div class="form-group entradaSubcategoria" style="display:none">
 							
 							<div class="input-group">
 							
@@ -682,7 +682,7 @@
 
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-                <h4 class="modal-title">Editar Producto...</h4>
+                <h4 class="modal-title">Editar Producto ...</h4>
 
             </div>
 
@@ -731,7 +731,7 @@
                     </div>
 
                     <!--=================================================
-                        EDITAR TIPO DEL PRODUCTO
+                        EDITAR TIPO PRODUCTO
                     =====================================================-->
 
                     <div class="form-group">
@@ -747,10 +747,10 @@
                     </div>
 
                     <!--=====================================
-                        EDITAR MULTIMEDIA
+                        MULTIMEDIA
                     =========================================-->
 
-                    <div class="form-group agregarMultimedia"> 
+                    <div class="form-group editarMultimedia"> 
 
                         <!--=======================================
                            EDITAR MULTIMEDIA VIRTUAL
@@ -965,7 +965,7 @@
                     </div> 
 
                     <!--=====================================
-                        EDITAR CATEGORÍA
+                        SELECT CATEGORÍA
                     ======================================-->
 
                     <div class="form-group">
@@ -987,6 +987,7 @@
                                         foreach ($categorias as $key => $value) {
                                             
                                             echo '<option value="'.$value["id"].'">'.$value["categoria"].'</option>';
+
                                         }
 
                                     ?>
@@ -998,7 +999,7 @@
                     </div>
 
                     <!--=====================================
-                        EDITAR SUBCATEGORÍA
+                        SELECT SUBCATEGORÍA
                     ======================================-->
 
                     <div class="form-group entradaSubcategoria">
