@@ -101,9 +101,8 @@ $('.tablaProductos tbody').on("click", ".btnActivar", function(){
 $(".validarProducto").change(function(){
 
     $(".alert").remove();
-    var producto = $(this).val();
     var datos = new FormData();
-    datos.append("validarProducto", producto);
+    datos.append("validarProducto", $(this).val());
 
     $.ajax({
 
@@ -223,11 +222,10 @@ $(".multimediaFisica").dropzone({
 
 $(".seleccionarCategoria").change(function(){
 
-    var categoria = $(this).val();
     $(".seleccionarSubCategoria").html("");
     $("#modalEditarProducto .seleccionarSubCategoria").html("");
     var datos = new FormData();
-    datos.append("idCategoria", categoria);
+    datos.append("idCategoria", $(this).val());
 
     $.ajax({
 
@@ -745,33 +743,33 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
         contentType: false,
         processData: false,
         dataType: "json",
-        success: function(respuesta){
+        success: function(producto){
 
             //console.log("respuesta", respuesta);
             
-            $("#modalEditarProducto .idProducto").val(respuesta[0]["id"]);
-            $("#modalEditarProducto .tituloProducto").val(respuesta[0]["titulo"]);
-            $("#modalEditarProducto .rutaProducto").val(respuesta[0]["ruta"]);
+            $("#modalEditarProducto .idProducto").val(producto[0]["id"]);
+            $("#modalEditarProducto .tituloProducto").val(producto[0]["titulo"]);
+            $("#modalEditarProducto .rutaProducto").val(producto[0]["ruta"]);
 
             /*=============================================
                 TRAER EL TIPO DE PRODUCTO
             =============================================*/
 
-            $("#modalEditarProducto .seleccionarTipo").val(respuesta[0]["tipo"]);
+            $("#modalEditarProducto .seleccionarTipo").val(producto[0]["tipo"]);
 
             /*=============================================
                 CUANDO EL PRODUCTO ES VIRTUAL
             =============================================*/
 
-            if(respuesta[0]["tipo"] == "virtual"){
+            if(producto[0]["tipo"] == "virtual"){
         
                 $(".multimediaVirtual").show();
                 $(".multimediaFisica").hide();
-                $("#modalEditarProducto .multimedia").val(respuesta[0]["multimedia"]);
+                $("#modalEditarProducto .multimedia").val(producto[0]["multimedia"]);
                 $(".detallesVirtual").show();
                 $(".detallesFisicos").hide();
 
-                var detalles = JSON.parse(respuesta[0]["detalles"]);
+                var detalles = JSON.parse(producto[0]["detalles"]);
                 
                 $("#modalEditarProducto .detalleClases").val(detalles.Clases);
                 $("#modalEditarProducto .detalleTiempo").val(detalles.Tiempo);
@@ -789,9 +787,9 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
                 $(".multimediaVirtual").hide();
                 $(".multimediaFisica").show();
 
-                if(respuesta[0]["multimedia"] != ""){
+                if(producto[0]["multimedia"] != ""){
 
-                    var imagenesMultimedia = JSON.parse(respuesta[0]["multimedia"]);
+                    var imagenesMultimedia = JSON.parse(producto[0]["multimedia"]);
                     
                     for(var i = 0; i < imagenesMultimedia.length; i++){
 
@@ -841,7 +839,7 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
                 $(".detallesVirtual").hide();
                 $(".detallesFisicos").show();
 
-                var detalles = JSON.parse(respuesta[0]["detalles"]);
+                var detalles = JSON.parse(producto[0]["detalles"]);
 
                 $(".editarTalla").html(
 
@@ -876,10 +874,10 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
                 POSICIONARSE EN LA CATEGORIA DESPUES QUE EL SELECT ESTA LLENO
             =====================================================================*/
 
-            if(respuesta[0]["id_categoria"] != 0){
+            if(producto[0]["id_categoria"] != 0){
             
                 var datosCategoria = new FormData();
-                datosCategoria.append("idCategoria", respuesta[0]["id_categoria"]);
+                datosCategoria.append("idCategoria", producto[0]["id_categoria"]);
 
                 $.ajax({
 
@@ -890,10 +888,10 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
                     contentType: false,
                     processData: false,
                     dataType: "json",
-                    success: function(consultaCategoria){
+                    success: function(resCategoria){
 
-                        $("#modalEditarProducto .seleccionarCategoria").val(consultaCategoria["id"]);
-                        $("#modalEditarProducto .optionEditarCategoria").html(consultaCategoria["categoria"]);
+                        $("#modalEditarProducto .seleccionarCategoria").val(resCategoria["id"]);
+                        $("#modalEditarProducto .optionEditarCategoria").html(resCategoria["categoria"]);
 
                     }
 
@@ -911,10 +909,10 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
 
             $("#modalEditarProducto .seleccionarSubCategoria").html("");
 
-            if(respuesta[0]["id_subcategoria"] != 0){ 
+            if(producto[0]["id_subcategoria"] != 0){ 
 
                 var datosCategoria = new FormData();
-                datosCategoria.append("idCategoria", respuesta[0]["id_categoria"]);
+                datosCategoria.append("idCategoria", producto[0]["id_categoria"]);
 
                 $.ajax({
 
@@ -925,9 +923,9 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
                     contentType: false,
                     processData: false,
                     dataType: "json",
-                    success: function(consultaSubCategoria){
+                    success: function(resSubCategoria){
 
-                        consultaSubCategoria.forEach(funcionForEach);
+                        resSubCategoria.forEach(funcionForEach);
 
                         function funcionForEach(item, index){
 
@@ -938,7 +936,7 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
                         }
 
                         var datosSubCategoria = new FormData();
-                        datosSubCategoria.append("idSubCategoria", respuesta[0]["id_subcategoria"]);
+                        datosSubCategoria.append("idSubCategoria", producto[0]["id_subcategoria"]);
 
                         $.ajax({
 
@@ -949,10 +947,10 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
                             contentType: false,
                             processData: false,
                             dataType: "json",
-                            success: function(respuesta){
+                            success: function(resSubCategoria){
 
-                                $("#modalEditarProducto .seleccionarSubCategoria").val(respuesta[0]["id"]);
-                                $("#modalEditarProducto .optionEditarSubCategoria").html(respuesta[0]["subcategoria"]);
+                                $("#modalEditarProducto .seleccionarSubCategoria").val(resSubCategoria[0]["id"]);
+                                $("#modalEditarProducto .optionEditarSubCategoria").html(resSubCategoria[0]["subcategoria"]);
 
                             }
 
@@ -967,7 +965,7 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
                 $("#modalEditarProducto .seleccionarSubCategoria").append('<option value="0">SIN SUBCATEGORÍA</option>')
 
                 var datosCategoria = new FormData();
-                datosCategoria.append("idCategoria", respuesta[0]["id_categoria"]);
+                datosCategoria.append("idCategoria", producto[0]["id_categoria"]);
 
                 $.ajax({
 
@@ -978,9 +976,9 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
                     contentType: false,
                     processData: false,
                     dataType: "json",
-                    success: function(consultaSubCategoria){
+                    success: function(resSubCategoria){
 
-                        consultaSubCategoria.forEach(funcionForEach);
+                        resSubCategoria.forEach(funcionForEach);
 
                         function funcionForEach(item, index){
                             
@@ -999,7 +997,7 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
             =============================================*/
 
             var datosCabecera = new FormData();
-            datosCabecera.append("ruta", respuesta[0]["ruta"]);
+            datosCabecera.append("ruta", producto[0]["ruta"]);
 
             $.ajax({
 
@@ -1010,31 +1008,31 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
                 contentType: false,
                 processData: false,
                 dataType: "json",
-                success: function(respuesta){
+                success: function(resCabecera){
 
                     /*=============================================
                         CARGAMOS EL ID DE LA CABECERA
                     =============================================*/
 
-                    $("#modalEditarProducto .idCabecera").val(respuesta["id"]);
+                    $("#modalEditarProducto .idCabecera").val(resCabecera["id"]);
 
                     /*=============================================
                         CARGAMOS LA DESCRIPCION
                     =============================================*/
 
-                    $("#modalEditarProducto .descripcionProducto").val(respuesta["descripcion"]);
+                    $("#modalEditarProducto .descripcionProducto").val(resCabecera["descripcion"]);
 
                     /*=============================================
                         CARGAMOS LAS PALABRAS CLAVES
                     =============================================*/	
                     
-                    if(respuesta["palabrasClaves"] != null){
+                    if(resCabecera["palabrasClaves"] != null){
 
                         $("#modalEditarProducto .editarPalabrasClaves").html('<div class="input-group">'+
                 
                                 '<span class="input-group-addon"><i class="fa fa-key"></i></span>'+ 
 
-                                '<input type="text" class="form-control input-lg tagsInput pClavesProducto" value="'+respuesta["palabrasClaves"]+'" data-role="tagsinput">'+
+                                '<input type="text" class="form-control input-lg tagsInput pClavesProducto" value="'+resCabecera["palabrasClaves"]+'" data-role="tagsinput">'+
                         
                             '</div>'
                         
@@ -1062,8 +1060,8 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
                         CARGAMOS LA IMAGEN DE PORTADA
                     =============================================*/
 
-                    $("#modalEditarProducto .previsualizarPortada").attr("src", respuesta["portada"]);
-                    $("#modalEditarProducto .antiguaFotoPortada").val(respuesta["portada"]);
+                    $("#modalEditarProducto .previsualizarPortada").attr("src", resCabecera["portada"]);
+                    $("#modalEditarProducto .antiguaFotoPortada").val(resCabecera["portada"]);
                 
                 }
                     
@@ -1073,46 +1071,46 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
                 CARGAMOS LA IMAGEN PRINCIPAL
             =============================================*/
 
-            $("#modalEditarProducto .previsualizarPrincipal").attr("src", respuesta[0]["portada"]);
-            $("#modalEditarProducto .antiguaFotoPrincipal").val(respuesta[0]["portada"]);
+            $("#modalEditarProducto .previsualizarPrincipal").attr("src", producto[0]["portada"]);
+            $("#modalEditarProducto .antiguaFotoPrincipal").val(producto[0]["portada"]);
 
             /*===============================================
                 CARGAMOS EL PRECIO, PESO Y DIAS DE ENTREGA
             =================================================*/
 
-            $("#modalEditarProducto .precio").val(respuesta[0]["precio"]);
-            $("#modalEditarProducto .peso").val(respuesta[0]["peso"]);
-            $("#modalEditarProducto .entrega").val(respuesta[0]["entrega"]);
+            $("#modalEditarProducto .precio").val(producto[0]["precio"]);
+            $("#modalEditarProducto .peso").val(producto[0]["peso"]);
+            $("#modalEditarProducto .entrega").val(producto[0]["entrega"]);
 
             /*=============================================
                 PREGUNTAMOS SI EXITE OFERTA
             =============================================*/
 
-            if(respuesta[0]["oferta"] != 0){
+            if(producto[0]["oferta"] != 0){
 
                 $("#modalEditarProducto .selActivarOferta").val("oferta");
                 $("#modalEditarProducto .datosOferta").show();
                 $("#modalEditarProducto .valorOferta").prop("required",true);
-                $("#modalEditarProducto .precioOferta").val(respuesta[0]["precioOferta"]);
-                $("#modalEditarProducto .descuentoOferta").val(respuesta[0]["descuentoOferta"]);
+                $("#modalEditarProducto .precioOferta").val(producto[0]["precioOferta"]);
+                $("#modalEditarProducto .descuentoOferta").val(producto[0]["descuentoOferta"]);
 
-                if(respuesta[0]["precioOferta"] != 0){
+                if(producto[0]["precioOferta"] != 0){
 
                     $("#modalEditarProducto .precioOferta").prop("readonly",true);
                     $("#modalEditarProducto .descuentoOferta").prop("readonly",false);
 
                 }
 
-                if(respuesta[0]["descuentoOferta"] != 0){
+                if(producto[0]["descuentoOferta"] != 0){
 
                     $("#modalEditarProducto .descuentoOferta").prop("readonly",true);
                     $("#modalEditarProducto .precioOferta").prop("readonly",false);
 
                 }
     
-                $("#modalEditarProducto .previsualizarOferta").attr("src", respuesta[0]["imgOferta"]);
-                $("#modalEditarProducto .antiguaFotoOferta").val(respuesta[0]["imgOferta"]);
-                $("#modalEditarProducto .finOferta").val(respuesta[0]["finOferta"]);						
+                $("#modalEditarProducto .previsualizarOferta").attr("src", producto[0]["imgOferta"]);
+                $("#modalEditarProducto .antiguaFotoOferta").val(producto[0]["imgOferta"]);
+                $("#modalEditarProducto .finOferta").val(producto[0]["finOferta"]);						
 
             }else{
 
@@ -1120,7 +1118,7 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
                 $("#modalEditarProducto .datosOferta").hide();
                 $("#modalEditarProducto .valorOferta").prop("required",false);
                 $("#modalEditarProducto .previsualizarOferta").attr("src", "vistas/img/default/default.png");
-                $("#modalEditarProducto .antiguaFotoOferta").val(respuesta[0]["imgOferta"]);
+                $("#modalEditarProducto .antiguaFotoOferta").val(producto[0]["imgOferta"]);
 
             }
 
@@ -1169,12 +1167,7 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
                     PREGUNTAMOS SI LOS CAMPOS OBLIGATORIOS ESTÁN LLENOS
                 ===========================================================*/
 
-                if($("#modalEditarProducto .tituloProducto").val() != "" && 
-                    $("#modalEditarProducto .seleccionarTipo").val() != "" && 
-                    $("#modalEditarProducto .seleccionarCategoria").val() != "" &&
-                    $("#modalEditarProducto .seleccionarSubCategoria").val() != "" &&
-                    $("#modalEditarProducto .descripcionProducto").val() != "" &&
-                    $("#modalEditarProducto .pClavesProducto").val() != ""){
+                if($("#modalEditarProducto .tituloProducto").val() != "" && $("#modalEditarProducto .seleccionarTipo").val() != "" && $("#modalEditarProducto .seleccionarCategoria").val() != "" && $("#modalEditarProducto .seleccionarSubCategoria").val() != "" && $("#modalEditarProducto .descripcionProducto").val() != "" && $("#modalEditarProducto .pClavesProducto").val() != ""){
 
                     /*======================================================================
                         PREGUNTAMOS SI VIENEN IMÁGENES PARA MULTIMEDIA O LINK DE YOUTUBE
@@ -1227,7 +1220,8 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
 
                                             var jsonLocalStorage = JSON.parse(localStorage.getItem("multimediaFisica"));
                                             var jsonMultimediaFisica = listaMultimedia.concat(jsonLocalStorage);
-                                            multimediaFisica = JSON.stringify(jsonMultimediaFisica);												
+                                            multimediaFisica = JSON.stringify(jsonMultimediaFisica);
+
                                         }
                                                                         
                                         multimediaVirtual = null;
@@ -1347,6 +1341,7 @@ function editarMiProducto(imagen){
     var antiguaFotoPrincipal = $("#modalEditarProducto .antiguaFotoPrincipal").val();
     var antiguaFotoOferta = $("#modalEditarProducto .antiguaFotoOferta").val();
     var idCabecera = $("#modalEditarProducto .idCabecera").val();
+
     var datosProducto = new FormData();
     datosProducto.append("id", idProducto);
     datosProducto.append("editarProducto", tituloProducto);
@@ -1401,15 +1396,18 @@ function editarMiProducto(imagen){
                     title: "El producto ha sido cambiado correctamente",
                     showConfirmButton: true,
                     confirmButtonText: "Cerrar"
-                    }).then(function(result){
+                    
+                }).then(function(result){
+                        
                     if (result.value) {
-
-                    localStorage.removeItem("multimediaFisica");
-                    localStorage.clear();
-                    window.location = "productos";
+                        localStorage.removeItem("multimediaFisica");
+                        localStorage.clear();
+                        window.location = "productos";
 
                     }
+
                 })
+                
             }
 
         }

@@ -94,7 +94,7 @@
 
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 
-					<h4 class="modal-title">Agregar Producto ...</h4>
+					<h4 class="modal-title">Agregar Producto</h4>
 
 				</div>
 
@@ -210,7 +210,8 @@
 
                                 <div class="col-xs-3">
 
-                                    <input class="form-control input-lg" type="text" value="Clases" readonly>
+                                    <!-- <input class="form-control input-lg" type="text" value="Clases" readonly> -->
+                                    <label class="form-control input-lg lbldetalles" type="text">Clases</label>
 
                                 </div>
 
@@ -228,7 +229,8 @@
 
                                 <div class="col-xs-3">
 
-                                    <input class="form-control input-lg" type="text" value="Tiempo" readonly>
+                                    <!-- <input class="form-control input-lg" type="text" value="Tiempo" readonly> -->
+                                    <label class="form-control input-lg lbldetalles" type="text">Tiempo</label>
 
                                 </div>
 
@@ -246,7 +248,8 @@
 
                                 <div class="col-xs-3">
 
-                                    <input class="form-control input-lg" type="text" value="Nivel" readonly>
+                                    <!-- <input class="form-control input-lg" type="text" value="Nivel" readonly> -->
+                                    <label class="form-control input-lg lbldetalles" type="text">Nivel</label>
 
                                 </div>
 
@@ -264,7 +267,8 @@
 
                                 <div class="col-xs-3">
 
-                                    <input class="form-control input-lg" type="text" value="Acceso" readonly>
+                                    <!-- <input class="form-control input-lg" type="text" value="Acceso" readonly> -->
+                                    <label class="form-control input-lg lbldetalles" type="text">Acceso</label>
 
                                 </div>
 
@@ -282,7 +286,8 @@
 
                                 <div class="col-xs-3">
 
-                                    <input class="form-control input-lg" type="text" value="Dispositivo" readonly>
+                                    <!-- <input class="form-control input-lg" type="text" value="Dispositivo" readonly> -->
+                                    <label class="form-control input-lg lbldetalles" type="text">Dispositivo</label>
 
                                 </div>
 
@@ -300,7 +305,8 @@
 
                                 <div class="col-xs-3">
 
-                                    <input class="form-control input-lg" type="text" value="Certificado" readonly>
+                                    <!-- <input class="form-control input-lg" type="text" value="Certificado" readonly> -->
+                                    <label class="form-control input-lg lbldetalles" type="text">Certificado</label>
 
                                 </div>
 
@@ -328,7 +334,8 @@
 
                                 <div class="col-xs-3">
 
-                                    <input class="form-control input-lg" type="text" value="Talla" readonly>
+                                    <!-- <input class="form-control input-lg" type="text" value="Talla" readonly> -->
+                                    <label class="form-control input-lg lbldetalles" type="text">Talla</label>
 
                                 </div>
 
@@ -346,7 +353,8 @@
 
 								<div class="col-xs-3">
 
-									<input class="form-control input-lg" type="text" value="Color" readonly>
+									<!-- <input class="form-control input-lg" type="text" value="Color" readonly> -->
+                                    <label class="form-control input-lg lbldetalles" type="text">Color</label>
 
 								</div>
 
@@ -364,7 +372,8 @@
 
 								<div class="col-xs-3">
 
-									<input class="form-control input-lg" type="text" value="Marca" readonly>
+									<!-- <input class="form-control input-lg" type="text" value="Marca" readonly> -->
+                                    <label class="form-control input-lg lbldetalles" type="text">Marca</label>
 
 								</div>
 
@@ -682,7 +691,7 @@
 
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-                <h4 class="modal-title">Editar Producto ...</h4>
+                <h4 class="modal-title">Editar Producto</h4>
 
             </div>
 
@@ -796,7 +805,8 @@
 
                                 <div class="col-xs-3">
 
-                                    <input class="form-control input-lg" type="text" value="Clases" readonly>
+                                    <!-- <input class="form-control input-lg" type="text" value="Clases" readonly> -->
+                                    <label class="form-control input-lg lbldetalles" type="text">Clases</label>
 
                                 </div>
 
@@ -814,7 +824,8 @@
 
                                 <div class="col-xs-3">
 
-                                    <input class="form-control input-lg" type="text" value="Tiempo" readonly>
+                                    <!-- <input class="form-control input-lg" type="text" value="Tiempo" readonly> -->
+                                    <label class="form-control input-lg lbldetalles" type="text">Tiempo</label>
 
                                 </div>
 
@@ -832,7 +843,8 @@
 
                                 <div class="col-xs-3">
 
-                                    <input class="form-control input-lg" type="text" value="Nivel" readonly>
+                                    <!-- <input class="form-control input-lg" type="text" value="Nivel" readonly> -->
+                                    <label class="form-control input-lg lbldetalles" type="text">Nivel</label>
 
                                 </div>
 
@@ -850,7 +862,8 @@
 
                                 <div class="col-xs-3">
 
-                                    <input class="form-control input-lg" type="text" value="Acceso" readonly>
+                                    <!-- <input class="form-control input-lg" type="text" value="Acceso" readonly> -->
+                                    <label class="form-control input-lg lbldetalles" type="text">Acceso</label>
 
                                 </div>
 
@@ -868,7 +881,8 @@
 
                                 <div class="col-xs-3">
 
-                                    <input class="form-control input-lg" type="text" value="Dispositivo" readonly>
+                                    <!-- <input class="form-control input-lg" type="text" value="Dispositivo" readonly> -->
+                                    <label class="form-control input-lg lbldetalles" type="text">Dispositivo</label>
 
                                 </div>
 
@@ -886,7 +900,8 @@
 
                                 <div class="col-xs-3">
 
-                                    <input class="form-control input-lg" type="text" value="Certificado" readonly>
+                                    <!-- <input class="form-control input-lg" type="text" value="Certificado" readonly> -->
+                                    <label class="form-control input-lg lbldetalles" type="text">Certificado</label>
 
                                 </div>
 
@@ -914,7 +929,8 @@
 
                                 <div class="col-xs-3">
 
-                                    <input class="form-control input-lg" type="text" value="Talla" readonly>
+                                    <!-- <input class="form-control input-lg" type="text" value="Talla" readonly> -->
+                                    <label class="form-control input-lg lbldetalles" type="text">Talla</label>
 
                                 </div>
 
@@ -932,7 +948,8 @@
 
                             <div class="col-xs-3">
 
-                                <input class="form-control input-lg" type="text" value="Color" readonly>
+                                <!-- <input class="form-control input-lg" type="text" value="Color" readonly> -->
+                                <label class="form-control input-lg lbldetalles" type="text">Color</label>
 
                             </div>
 
@@ -950,7 +967,8 @@
 
                             <div class="col-xs-3">
 
-                                <input class="form-control input-lg" type="text" value="Marca" readonly>
+                                <!-- <input class="form-control input-lg" type="text" value="Marca" readonly> -->
+                                <label class="form-control input-lg lbldetalles" type="text">Marca</label>
 
                             </div>
 
