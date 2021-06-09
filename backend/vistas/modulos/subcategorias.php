@@ -86,7 +86,7 @@
 
                     <button type="button" class="close" data-dismiss="modal">&times; </button>
 
-                    <h4 class="modal-title">Agregar Subcategoría...</h4>
+                    <h4 class="modal-title">Agregar Subcategoría</h4>
 
                 </div>
 
@@ -350,7 +350,7 @@
 
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-                    <h4 class="modal-title">Editar Subcategoría...</h4>
+                    <h4 class="modal-title">Editar Subcategoría</h4>
 
                 </div>
 

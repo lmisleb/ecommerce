@@ -227,7 +227,11 @@
 				
 				if($infoproducto["oferta"] == 0){
 
-					if($infoproducto["nuevo"] == 0){
+					$fecha = date('Y-m-d');
+					$fechaActual = strtotime('-30 day', strtotime($fecha));
+					$fechaNueva = date('Y-m-d', $fechaActual);
+
+					if($fechaNueva > $infoproducto["fecha"]){
 
 						echo '<h1 class="text-muted text-uppercase">'.$infoproducto["titulo"].'</h1>';
 
@@ -249,7 +253,11 @@
 
 				}else{
 
-					if($infoproducto["nuevo"] == 0){
+					$fecha = date('Y-m-d');
+					$fechaActual = strtotime('-30 day', strtotime($fecha));
+					$fechaNueva = date('Y-m-d', $fechaActual);
+
+					if($fechaNueva > $infoproducto["fecha"]){
 
 						echo '<h1 class="text-muted text-uppercase">'.$infoproducto["titulo"].'
 
@@ -1126,7 +1134,11 @@
 
 									<span style="color:rgba(0,0,0,0)">-</span>';
 
-									if($value["nuevo"] != 0){
+									$fecha = date('Y-m-d');
+									$fechaActual = strtotime('-30 day', strtotime($fecha));
+									$fechaNueva = date('Y-m-d', $fechaActual);
+
+									if($fechaNueva < $value["fecha"]){
 
 										echo '<span class="label label-warning fontSize">Nuevo</span> ';
 
