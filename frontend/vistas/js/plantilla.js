@@ -170,7 +170,7 @@ if($("#moduloOfertas").children().length == 0){
 }
 
 /*=============================================
-CONTADOR DE TIEMPO
+    CONTADOR DE TIEMPO
 =============================================*/
 
 var finOferta = $(".countdown");
@@ -183,17 +183,29 @@ for(var i = 0; i < finOferta.length; i++){
 	$(finOferta[i]).dsCountDown({
 
         endDate: new Date(fechaFinOferta[i]),
-
-        theme: 'red', // Set the theme 'white', 'black', 'red', 'flat', 'custom'
-
+        theme: 'red', //theme: 'white', 'black', 'red', 'flat', 'custom'
         titleDays: 'Días', 
-
         titleHours: 'Horas', 
-
         titleMinutes: 'Minutos', 
-
         titleSeconds: 'Segundos' 
 
 	});
 
 }
+
+/*=============================================
+    CONTADOR DE TIEMPO OFERTAS PRODUCTOS
+=============================================*/
+
+var finOferta2 = $(".countdown2").attr("finOferta");
+
+$(".countdown2").dsCountDown({
+
+    endDate: new Date(finOferta2),
+    theme: 'black', //theme: 'white', 'black', 'red', 'flat', 'custom'
+    titleDays: 'Días', 
+    titleHours: 'Horas', 
+    titleMinutes: 'Min', 
+    titleSeconds: 'Seg' 
+
+});
