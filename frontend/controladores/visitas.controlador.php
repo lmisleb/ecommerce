@@ -25,7 +25,6 @@ class ControladorVisitas{
 		if($consultarIpFecha == "no existe"){
 
 			$visita = 1;
-
 			$respuestaInsertarIp = ModeloVisitas::mdlGuardarNuevaIp($tabla1, $ip, $pais, $visita, $fechaActual);
 
 			if($respuestaInsertarIp == "ok"){
@@ -35,7 +34,6 @@ class ControladorVisitas{
 				if($consultarPais == "no existe pais"){
 
 					$cantidad = 1;
-
 					$ingresarPais = ModeloVisitas::mdlIngresarPais($tabla2, $pais, $codigo, $cantidad, $fechaActual);
 
 				}else{
@@ -43,7 +41,6 @@ class ControladorVisitas{
 					$solicitarCantidad = ModeloVisitas::mdlSolicitarCantidad($tabla2, $pais);
 
 					$nuevaCantidad = $solicitarCantidad["cantidad"] + 1;
-
 		 			$actualizarPais = ModeloVisitas::mdlActualizarPais($tabla2, $pais, $nuevaCantidad, $fechaActual);
 
 				}
@@ -60,7 +57,7 @@ class ControladorVisitas{
 
 	public function ctrMostrarTotalVisitas(){
 
-		$tabla = "visitasPaises";
+		$tabla = "visitaspaises";
 		$respuesta = ModeloVisitas::mdlMostrarTotalVisitas($tabla);
 		return $respuesta;
 
@@ -72,7 +69,7 @@ class ControladorVisitas{
 
 	public function ctrMostrarPaises(){
 
-		$tabla = "visitasPaises";
+		$tabla = "visitaspaises";
 		$respuesta = ModeloVisitas::mdlMostrarPaises($tabla);
 		return $respuesta;
 

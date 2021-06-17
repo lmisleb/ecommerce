@@ -1,56 +1,94 @@
-<!-- Content Wrapper. Contains page content -->
+<?php
+
+	if($_SESSION["perfil"] != "administrador"){
+
+		echo '<script>
+
+			window.location = "inicio";
+
+		</script>';
+
+		return;
+
+	}
+
+?>
+
 <div class="content-wrapper">
-
-	<!-- Content Header (Page header) -->
+  
 	<section class="content-header">
+      
+    	<h1>Gestor Ventas</h1>
 
-		<h1>Gestor Ventas</h1>
-
-		<ol class="breadcrumb">
+    	<ol class="breadcrumb">
 
 			<li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
-			
+
 			<li class="active">Gestor Ventas</li>
+      
+    	</ol>
 
-	  	</ol>
+  	</section>
 
-	</section>
 
-	<!-- Main content -->
 	<section class="content">
 
-		<!-- Default box -->
-		<div class="box">
+		<div class="box"> 
+
 			<div class="box-header with-border">
+				
+				<?php
 
-		  		<h3 class="box-title">Title</h3>
+					include "inicio/grafico-ventas.php";
 
-		  		<div class="box-tools pull-right">
-
-					<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-
-					<button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-
-		  		</div>
+				?>
 
 			</div>
 
 			<div class="box-body">
 
-		  		Start creating your amazing application!
+				<div class="box-tools">
+
+					<a href="vistas/modulos/reportes.php?reporte=compras">
+						
+						<button class="btn btn-success">Descargar reporte en Excel</button>
+
+					</a>
+
+				</div>
+
+				<br>
+				
+				<table class="table table-bordered table-striped dt-responsive tablaVentas" width="100%">
+				
+					<thead>
+						
+						<tr>
+						
+							<th style="width:10px">#</th>
+							<th>Producto</th>
+							<th>Imagen Producto</th>
+							<th>Cliente</th>
+							<th>Foto Cliente</th>
+							<th>Venta</th>
+							<th>Tipo</th>  
+							<th>Proceso de envío</th>         
+							<th>Metodo</th>
+							<th>Email</th>
+							<th>Dirección</th>
+							<th>País</th>
+							<th>Fecha</th>
+
+						</tr>
+
+					</thead> 
+
+				</table>
 
 			</div>
-			<!-- /.box-body -->
 
-			<div class="box-footer">
+		</div>
 
-		  		Footer
-
-			</div>
-			<!-- /.box-footer-->
-	  	</div>
-	  	<!-- /.box -->
 	</section>
-	<!-- /.content -->
+
 </div>
-<!-- /.content-wrapper -->

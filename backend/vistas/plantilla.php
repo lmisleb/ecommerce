@@ -133,19 +133,19 @@
 					if(isset($_GET["ruta"])){
 
 						if($_GET["ruta"]== "inicio" ||
-						$_GET["ruta"]== "comercio" ||
-						$_GET["ruta"]== "slide" ||
-						$_GET["ruta"]== "categorias" ||
-						$_GET["ruta"]== "subcategorias" ||
-						$_GET["ruta"]== "productos" ||
-						$_GET["ruta"]== "banner" ||
-						$_GET["ruta"]== "ventas" ||
-						$_GET["ruta"]== "visitas" ||
-						$_GET["ruta"]== "usuarios" ||
-						$_GET["ruta"]== "mensajes" ||
-						$_GET["ruta"]== "perfiles" ||
-						$_GET["ruta"]== "perfil" ||
-						$_GET["ruta"]== "salir"){
+						   $_GET["ruta"]== "comercio" ||
+						   $_GET["ruta"]== "slide" ||
+						   $_GET["ruta"]== "categorias" ||
+						   $_GET["ruta"]== "subcategorias" ||
+						   $_GET["ruta"]== "productos" ||
+						   $_GET["ruta"]== "banner" ||
+						   $_GET["ruta"]== "ventas" ||
+						   $_GET["ruta"]== "visitas" ||
+						   $_GET["ruta"]== "usuarios" ||
+						   $_GET["ruta"]== "mensajes" ||
+						   $_GET["ruta"]== "perfiles" ||
+						   $_GET["ruta"]== "perfil" ||
+						   $_GET["ruta"]== "salir"){
 
 							include "modulos/".$_GET["ruta"].".php";
 
