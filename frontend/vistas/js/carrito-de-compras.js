@@ -992,8 +992,8 @@ $(".btnPagar").click(function(){
         processData: false,
         success:function(respuesta){
 
-            console.log(respuesta);
-            //window.location = respuesta;
+            //console.log(respuesta);
+            window.location = respuesta;
 
         }
 
@@ -1134,6 +1134,7 @@ function pagarConPayu(){
 /*=============================================
 AGREGAR PRODUCTOS GRATIS
 =============================================*/
+
 $(".agregarGratis").click(function(){
 
     var idUsuario = $(this).attr("idUsuario");

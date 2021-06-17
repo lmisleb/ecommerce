@@ -317,9 +317,7 @@ VENTANA MODAL PARA CHECKOUT
 		
 		</div>
 
-		<div class="modal-footer">
-		
-		</div>
+		<div class="modal-footer"></div>
 	
 	</div>
 

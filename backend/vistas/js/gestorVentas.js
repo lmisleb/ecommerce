@@ -51,7 +51,6 @@ $(".tablaVentas").DataTable({
 	PROCESO DE ENVÍO
 =============================================*/
 
-
 $(".tablaVentas tbody").on("click", ".btnEnvio", function(){
 
 	var idVenta = $(this).attr("idVenta");
