@@ -1,6 +1,6 @@
 <?php
 
-	if($_SESSION["perfil"] != "administrador"){
+	if($_SESSION["perfil"] != "superadministrador" && $_SESSION["perfil"] != "administrador"){
 
 		echo '<script>
 
@@ -39,7 +39,7 @@
 				
 				<?php
 
-					include "inicio/grafico-ventas.php";
+					//include "inicio/grafico-ventas.php";
 
 				?>
 
