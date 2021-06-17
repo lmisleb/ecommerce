@@ -5,7 +5,7 @@ require_once "conexion.php";
 class ModeloVentas{
 
 	/*=============================================
-	MOSTRAR VENTAS
+		MOSTRAR VENTAS
 	=============================================*/	
 
 	static public function mdlMostrarVentas($tabla){

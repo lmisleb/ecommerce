@@ -2,25 +2,25 @@
 CARGAR LA TABLA DINÁMICA DE VENTAS
 =============================================*/
 
-// $.ajax({
+$.ajax({
 
-// 	url:"ajax/tablaVentas.ajax.php",
-// 	success:function(respuesta){
+	url:"ajax/tablaVentas.ajax.php",
+	success:function(respuesta){
 		
-// 		console.log("respuesta", respuesta);
+		//console.log("respuesta", respuesta);
 
-// 	}
+	}
 
-// })
+})
 
 $(".tablaVentas").DataTable({
-	 "ajax": "ajax/tablaVentas.ajax.php",
-	 "deferRender": true,
-	 "retrieve": true,
-	 "processing": true,
-	 "language": {
+	"ajax": "ajax/tablaVentas.ajax.php",
+	"deferRender": true,
+	"retrieve": true,
+	"processing": true,
+	"language": {
 
-	 	"sProcessing":     "Procesando...",
+		"sProcessing":     "Procesando...",
 		"sLengthMenu":     "Mostrar _MENU_ registros",
 		"sZeroRecords":    "No se encontraron resultados",
 		"sEmptyTable":     "Ningún dato disponible en esta tabla",
@@ -39,43 +39,40 @@ $(".tablaVentas").DataTable({
 			"sPrevious": "Anterior"
 		},
 		"oAria": {
-				"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-				"sSortDescending": ": Activar para ordenar la columna de manera descendente"
+			"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+			"sSortDescending": ": Activar para ordenar la columna de manera descendente"
 		}
 
 	 }
 
-
 });
 
 /*=============================================
-PROCESO DE ENVÍO
+	PROCESO DE ENVÍO
 =============================================*/
 
 
 $(".tablaVentas tbody").on("click", ".btnEnvio", function(){
 
-
 	var idVenta = $(this).attr("idVenta");
 	var etapa = $(this).attr("etapa");
-
 	var datos = new FormData();
  	datos.append("idVenta", idVenta);
   	datos.append("etapa", etapa);
 
   		$.ajax({
 
-  		 url:"ajax/ventas.ajax.php",
-  		 method: "POST",
-	  	data: datos,
-	  	cache: false,
-      	contentType: false,
-      	processData: false,
-      	success: function(respuesta){ 
-      	    
-      	  console.log("respuesta", respuesta);
+			url:"ajax/ventas.ajax.php",
+			method: "POST",
+			data: datos,
+			cache: false,
+			contentType: false,
+			processData: false,
+			success: function(respuesta){ 
+				
+				//console.log("respuesta", respuesta);
 
-      	} 	 
+			} 	 
 
   	});
 
@@ -95,6 +92,5 @@ $(".tablaVentas tbody").on("click", ".btnEnvio", function(){
   		$(this).html('Producto entregado');
 	
   	}
-  	
 
 })

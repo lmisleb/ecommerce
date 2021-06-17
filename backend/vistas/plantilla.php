@@ -83,7 +83,7 @@
 		<script src="vistas/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 		<script src="vistas/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 		<!-- ChartJS -->
-		<script src="vistas/bower_components/Chart.js/Chart.js"></script>
+		<script src="vistas/bower_components/chart.js/Chart.js"></script>
 		<!-- Sweet Alert -->
 		<!-- <script src="vistas/plugins/sweetalert.min.js"></script> -->
 		<!-- SweetAlert 2 https://sweetalert2.github.io/-->
@@ -177,6 +177,7 @@
 		<script src="vistas/js/gestorSubCategorias.js"></script>
 		<script src="vistas/js/gestorProductos.js"></script>
 		<script src="vistas/js/gestorBanner.js"></script>
+		<script src="vistas/js/gestorVentas.js"></script>
 
 	</body>
 

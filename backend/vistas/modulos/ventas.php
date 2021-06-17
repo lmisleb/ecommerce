@@ -39,7 +39,7 @@
 				
 				<?php
 
-					//include "inicio/grafico-ventas.php";
+					include "inicio/grafico-ventas.php";
 
 				?>
 

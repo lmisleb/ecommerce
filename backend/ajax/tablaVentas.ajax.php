@@ -2,17 +2,15 @@
 
 require_once "../controladores/ventas.controlador.php";
 require_once "../modelos/ventas.modelo.php";
-
 require_once "../controladores/productos.controlador.php";
 require_once "../modelos/productos.modelo.php";
-
 require_once "../controladores/usuarios.controlador.php";
 require_once "../modelos/usuarios.modelo.php";
 
 class TablaVentas{
 
   /*=============================================
-  MOSTRAR LA TABLA DE VENTAS
+  	MOSTRAR LA TABLA DE VENTAS
   =============================================*/
 
   public function mostrarTabla(){	
@@ -21,128 +19,121 @@ class TablaVentas{
 
   	$datosJson = '{
 		 
-	 "data": [ ';
+		"data": [ ';
 
-	for($i = 0; $i < count($ventas); $i++){
+			for($i = 0; $i < count($ventas); $i++){
 
-		/*=============================================
-		TRAER PRODUCTO
-		=============================================*/
+				/*=============================================
+					TRAER PRODUCTO
+				=============================================*/
 
-		$item = "id";
-		$valor = $ventas[$i]["id_producto"];
+				$item = "id";
+				$valor = $ventas[$i]["id_producto"];
+				$traerProducto = ControladorProductos::ctrMostrarProductos($item, $valor);
+				$producto = $traerProducto[0]["titulo"];
+				$imgProducto = "<img class='img-thumbnail' src='".$traerProducto[0]["portada"]."' width='100px'>";
+				$tipo = $traerProducto[0]["tipo"];
 
-		$traerProducto = ControladorProductos::ctrMostrarProductos($item, $valor);
+				/*=============================================
+					TRAER CLIENTE
+				=============================================*/
 
-		$producto = $traerProducto[0]["titulo"];
+				$item2 = "id";
+				$valor2 = $ventas[$i]["id_usuario"];
+				$traerCliente = ControladorUsuarios::ctrMostrarUsuarios($item2, $valor2);
+				$cliente = $traerCliente["nombre"];
 
-		$imgProducto = "<img class='img-thumbnail' src='".$traerProducto[0]["portada"]."' width='100px'>";
+				/*=============================================
+					TRAER FOTO CLIENTE
+				=============================================*/
 
-		$tipo = $traerProducto[0]["tipo"];
+				if($traerCliente["foto"] != ""){
 
+					$imgCliente = "<img class='img-circle' src='".$traerCliente["foto"]."' width='70px'>";
 
-		/*=============================================
-		TRAER CLIENTE
-		=============================================*/
+				}else{
 
-		$item2 = "id";
-		$valor2 = $ventas[$i]["id_usuario"];
+					$imgCliente = "<img class='img-circle' src='vistas/img/usuarios/default/anonymous.png' width='70px'>";
+				}
 
-		$traerCliente = ControladorUsuarios::ctrMostrarUsuarios($item2, $valor2);
+				/*=============================================
+					TRAER EMAIL CLIENTE
+				=============================================*/
 
-		$cliente = $traerCliente["nombre"];
+				if($ventas[$i]["email"] == ""){
 
-		/*=============================================
-		TRAER FOTO CLIENTE
-		=============================================*/
+					$email = $traerCliente["email"];
 
-		if($traerCliente["foto"] != ""){
+				}else{
 
-			$imgCliente = "<img class='img-circle' src='".$traerCliente["foto"]."' width='70px'>";
+					$email = $ventas[$i]["email"];
+				}
 
-		}else{
+				/*=============================================
+					TRAER PROCESO DE ENVÍO
+				=============================================*/
 
-			$imgCliente = "<img class='img-circle' src='vistas/img/usuarios/default/anonymous.png' width='70px'>";
-		}
+				if($ventas[$i]["envio"] == 0 && $tipo == "virtual"){
 
-		/*=============================================
-		TRAER EMAIL CLIENTE
-		=============================================*/
+					$envio = "<button class='btn btn-info btn-xs'>Entrega inmediata</button>";
+				
+				}else if($ventas[$i]["envio"] == 0 && $tipo == "fisico"){
 
-		if($ventas[$i]["email"] == ""){
+					$envio ="<button class='btn btn-danger btn-xs btnEnvio' idVenta='".$ventas[$i]["id"]."' etapa='1'>Despachando el producto</button>";
 
-			$email = $traerCliente["email"];
+				}else if($ventas[$i]["envio"] == 1 && $tipo == "fisico"){
 
-		}else{
+					$envio = "<button class='btn btn-warning btn-xs btnEnvio' idVenta='".$ventas[$i]["id"]."' etapa='2'>Enviando el producto</button>";
 
-			$email = $ventas[$i]["email"];
-		}
+				}else{
 
-		/*=============================================
-		TRAER PROCESO DE ENVÍO
-		=============================================*/
+					$envio = "<button class='btn btn-success btn-xs'>Producto entregado</button>";
 
-		if($ventas[$i]["envio"] == 0 && $tipo == "virtual"){
+				}
 
-			$envio = "<button class='btn btn-info btn-xs'>Entrega inmediata</button>";
-		
-		}else if($ventas[$i]["envio"] == 0 && $tipo == "fisico"){
+				/*=============================================
+					LOGOS PAYPAL Y PAYU
+				=============================================*/
 
-			$envio ="<button class='btn btn-danger btn-xs btnEnvio' idVenta='".$ventas[$i]["id"]."' etapa='1'>Despachando el producto</button>";
+				if($ventas[$i]["metodo"] == "paypal"){
 
-		}else if($ventas[$i]["envio"] == 1 && $tipo == "fisico"){
+					$metodo = "<img class='img-responsive' src='vistas/img/plantilla/paypal.jpg' width='300px'>";
+				
+				}else if($ventas[$i]["metodo"] == "payu"){
 
-			$envio = "<button class='btn btn-warning btn-xs btnEnvio' idVenta='".$ventas[$i]["id"]."' etapa='2'>Enviando el producto</button>";
+					$metodo = "<img class='img-responsive' src='vistas/img/plantilla/payu.jpg' width='300px'>";
+				
+				}else{
 
-		}else{
+					$metodo = "GRATIS";
 
-			$envio = "<button class='btn btn-success btn-xs'>Producto entregado</button>";
+				}
 
-		}
+				/*=============================================
+					DEVOLVER DATOS JSON
+				=============================================*/
 
-		/*=============================================
-		LOGOS PAYPAL Y PAYU
-		=============================================*/
+				$datosJson.= '[
+					"'.($i+1).'",
+					"'.$producto.'",
+					"'.$imgProducto.'",
+					"'.$cliente.'",
+					"'.$imgCliente.'",
+					"$ '.number_format($ventas[$i]["pago"],2).'",
+					"'.$tipo.'",
+					"'.$envio.'",
+					"'.$metodo.'",	
+					"'.$email.'",
+					"'.$ventas[$i]["direccion"].'",
+					"'.$ventas[$i]["pais"].'",
+					"'.$ventas[$i]["fecha"].'"	
+				],';
 
-		if($ventas[$i]["metodo"] == "paypal"){
+			}
 
-			$metodo = "<img class='img-responsive' src='vistas/img/plantilla/paypal.jpg' width='300px'>";
-		
-		}else if($ventas[$i]["metodo"] == "payu"){
+			$datosJson = substr($datosJson, 0, -1);
 
-			$metodo = "<img class='img-responsive' src='vistas/img/plantilla/payu.jpg' width='300px'>";
-		
-		}else{
-
-			$metodo = "GRATIS";
-
-		}
-
-
-		/*=============================================
-		DEVOLVER DATOS JSON
-		=============================================*/
-		$datosJson	 .= '[
-			      		"'.($i+1).'",
-			      		"'.$producto.'",
-			      		"'.$imgProducto.'",
-			      		"'.$cliente.'",
-			      		"'.$imgCliente.'",
-			      		"$ '.number_format($ventas[$i]["pago"],2).'",
-			      		"'.$tipo.'",
-			      		"'.$envio.'",
-			      		"'.$metodo.'",	
-			      		"'.$email.'",
-			      		"'.$ventas[$i]["direccion"].'",
-			      		"'.$ventas[$i]["pais"].'",
-			      		"'.$ventas[$i]["fecha"].'"	
-			      		],';
-
-	} 
-
-	$datosJson = substr($datosJson, 0, -1);
-
-	$datosJson.=  ']
+		$datosJson.=  ']
 		  
 	}'; 
   	
@@ -153,8 +144,9 @@ class TablaVentas{
 }
 
 /*=============================================
-ACTIVAR TABLA DE VENTAS
-=============================================*/ 
+	ACTIVAR TABLA DE VENTAS
+=============================================*/
+
 $activar = new TablaVentas();
 $activar -> mostrarTabla(); 
 
