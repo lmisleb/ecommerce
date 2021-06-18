@@ -2,8 +2,8 @@
 
 class ControladorReportes{
 
-	/*=============================================
-	DESCARGAR REPORTE EN EXCEL
+	/*===========================================
+		DESCARGAR REPORTE EN EXCEL
 	=============================================*/
 
 	public function ctrDescargarReporte(){
@@ -11,11 +11,10 @@ class ControladorReportes{
 		if(isset($_GET["reporte"])){
 
 			$tabla = $_GET["reporte"];
-
 			$reporte = ModeloReportes::mdlDescargarReporte($tabla);
 
-			/*=============================================
-			CREAMOS EL ARCHIVO DE EXCEL
+			/*===========================================
+				CREAMOS EL ARCHIVO DE EXCEL
 			=============================================*/
 
 			$nombre = $_GET["reporte"].'.xls';
@@ -30,208 +29,207 @@ class ControladorReportes{
 			header('Content-Disposition:; filename="'.$nombre.'"');
 			header("Content-Transfer-Encoding: binary");
 
-			/*=============================================
-			REPORTE DE COMPRAS Y VENTAS
+			/*===========================================
+				REPORTE DE COMPRAS Y VENTAS
 			=============================================*/
 
 			if($_GET["reporte"] == "compras"){	
 
-				echo utf8_decode("
+				echo utf8_decode("<table border='0'> 
 
-					<table border='0'> 
-
-						<tr> 
+					<tr> 
 						
-							<td style='font-weight:bold; border:1px solid #eee;'>PRODUCTO</td>
-							<td style='font-weight:bold; border:1px solid #eee;'>CLIENTE</td>
-							<td style='font-weight:bold; border:1px solid #eee;'>VENTA</td>
-							<td style='font-weight:bold; border:1px solid #eee;'>TIPO</td>
-							<td style='font-weight:bold; border:1px solid #eee;'>PROCESO DE ENVÍO</td>
-							<td style='font-weight:bold; border:1px solid #eee;'>MÉTODO</td>
-							<td style='font-weight:bold; border:1px solid #eee;'>EMAIL</td>		
-							<td style='font-weight:bold; border:1px solid #eee;'>DIRECCIÓN</td>		
-							<td style='font-weight:bold; border:1px solid #eee;'>PAÍS</td	
-							<td style='font-weight:bold; border:1px solid #eee;'>FECHA</td>		
+						<td style='font-weight:bold; border:1px solid #eee;'>PRODUCTO</td>
+						<td style='font-weight:bold; border:1px solid #eee;'>CLIENTE</td>
+						<td style='font-weight:bold; border:1px solid #eee;'>VENTA</td>
+						<td style='font-weight:bold; border:1px solid #eee;'>TIPO</td>
+						<td style='font-weight:bold; border:1px solid #eee;'>PROCESO DE ENVÍO</td>
+						<td style='font-weight:bold; border:1px solid #eee;'>MÉTODO</td>
+						<td style='font-weight:bold; border:1px solid #eee;'>EMAIL</td>		
+						<td style='font-weight:bold; border:1px solid #eee;'>DIRECCIÓN</td>		
+						<td style='font-weight:bold; border:1px solid #eee;'>PAÍS</td>
+						<td style='font-weight:bold; border:1px solid #eee;'>FECHA</td>		
 
-						</tr>");
+					</tr>");
 
-				foreach ($reporte as $key => $value) {
+					foreach ($reporte as $key => $value) {
 
-					/*=============================================
-					TRAER PRODUCTO
-					=============================================*/
-					$item = "id";
-					$valor = $value["id_producto"];
+						/*===========================================
+							TRAER PRODUCTO
+						=============================================*/
 
-					$traerProducto = ControladorProductos::ctrMostrarProductos($item, $valor);
+						$item = "id";
+						$valor = $value["id_producto"];
+						$traerProducto = ControladorProductos::ctrMostrarProductos($item, $valor);
 
-					/*=============================================
-					TRAER CLIENTE
-					=============================================*/
+						/*===========================================
+							TRAER CLIENTE
+						=============================================*/
 
-					$item2 = "id";
-					$valor2 = $value["id_usuario"];
+						$item2 = "id";
+						$valor2 = $value["id_usuario"];
+						$traerCliente = ControladorUsuarios::ctrMostrarUsuarios($item2, $valor2);
 
-					$traerCliente = ControladorUsuarios::ctrMostrarUsuarios($item2, $valor2);
+						echo utf8_decode("<tr>
 
-					 echo utf8_decode("
-
-					 	<tr>
 							<td style='border:1px solid #eee;'>".$traerProducto[0]["titulo"]."</td>
 							<td style='border:1px solid #eee;'>".$traerCliente["nombre"]."</td>
 							<td style='border:1px solid #eee;'>$ ".number_format($value["pago"],2)."</td>
-							<td style='border:1px solid #eee;'>".$traerProducto[0]["tipo"]."</td>
+							<td style='border:1px solid #eee;'>".$traerProducto[0]["tipo"]."</td>								
 							<td style='border:1px solid #eee;'>
 
-					 ");
+						");
 
-				 	/*=============================================
-					TRAER PROCESO DE ENVÍO
-					=============================================*/
+						/*===========================================
+							TRAER PROCESO DE ENVÍO
+						=============================================*/
 
-					if($value["envio"] == 0 && $traerProducto[0]["tipo"] == "virtual"){
+						if($value["envio"] == 0 && $traerProducto[0]["tipo"] == "virtual"){
 
-						$envio = "Entrega inmediata";
-					
-					}else if($value["envio"] == 0 && $traerProducto[0]["tipo"] == "fisico"){
+							$envio = "Entrega inmediata";
+							
+						}else if($value["envio"] == 0 && $traerProducto[0]["tipo"] == "fisico"){
 
-						$envio ="Despachando el producto";
+							$envio ="Despachando el producto";
 
-					}else if($value["envio"] == 1 && $traerProducto[0]["tipo"] == "fisico"){
+						}else if($value["envio"] == 1 && $traerProducto[0]["tipo"] == "fisico"){
 
-						$envio = "Enviando el producto";
+							$envio = "Enviando el producto";
 
-					}else{
+						}else{
 
-						$envio = "Producto entregado";
+							$envio = "Producto entregado";
+
+						}
+
+						echo utf8_decode($envio."</td>
+
+							<td style='border:1px solid #eee;'>".$value["metodo"]."</td>
+							<td style='border:1px solid #eee;'>
+
+						");
+
+						/*===========================================
+							TRAER EMAIL CLIENTE
+						=============================================*/
+
+						if($value["email"] == ""){
+
+							$email = $traerCliente["email"];
+
+						}else{
+
+							$email = $value["email"];
+							
+						}
+
+						echo utf8_decode($email."</td>
+
+							<td style='border:1px solid #eee;'>".$value["direccion"]."</td>
+							<td style='border:1px solid #eee;'>".$value["pais"]."</td>
+							<td style='border:1px solid #eee;'>".$value["fecha"]."</td>
+
+						</tr>"); 		
 
 					}
 
-					 echo utf8_decode($envio."</td>
-									<td style='border:1px solid #eee;'>".$value["metodo"]."</td>
-									<td style='border:1px solid #eee;'>
-					 ");
-
-				  /*=============================================
-					TRAER EMAIL CLIENTE
-					=============================================*/
-
-					if($value["email"] == ""){
-
-						$email = $traerCliente["email"];
-
-					}else{
-
-						$email = $value["email"];
-					
-					}
-
-					echo utf8_decode($email."</td>
-			 					  	 <td style='border:1px solid #eee;'>".$value["direccion"]."</td>
-			 					  	 <td style='border:1px solid #eee;'>".$value["pais"]."</td>
-			 					  	 <td style='border:1px solid #eee;'>".$value["fecha"]."</td>
-			 					  	 </tr>"); 		
-
-				}
-
-
-				echo utf8_decode("</table>
-
-					");
+				echo utf8_decode("</table>");
 
 			}
 
-			/*=============================================
-			REPORTE DE VISITAS
+			/*===========================================
+				REPORTE DE VISITAS
 			=============================================*/
 
 			if($_GET["reporte"] == "visitaspersonas"){	
 
 				echo utf8_decode("<table border='0'> 
 
-						<tr> 
-						<td style='font-weight:bold; border:1px solid #eee;'>IP</td> 
+					<tr> 
+						<td style='font-weight:bold; border:1px solid #eee;'>IP</td>
 						<td style='font-weight:bold; border:1px solid #eee;'>PAÍS</td>
 						<td style='font-weight:bold; border:1px solid #eee;'>VISITAS</td>
-						<td style='font-weight:bold; border:1px solid #eee;'>FECHA</td>	
-						</tr>");
+						<td style='font-weight:bold; border:1px solid #eee;'>FECHA</td>
 
-				foreach ($reporte as $key => $value) {
+					</tr>");
 
-					 echo utf8_decode("<tr>
-				 			
-				 						<td style='border:1px solid #eee;'>".$value["ip"]."</td>
-				 						<td style='border:1px solid #eee;'>".$value["pais"]."</td>
-				 						<td style='border:1px solid #eee;'>".$value["visitas"]."</td>
-				 						<td style='border:1px solid #eee;'>".$value["fecha"]."</td>
-			 					  	 
-			 					  	 </tr>"); 		
-							
-				}
+					foreach ($reporte as $key => $value) {
+
+						echo utf8_decode("<tr>
+
+							<td style='border:1px solid #eee;'>".$value["ip"]."</td>
+							<td style='border:1px solid #eee;'>".$value["pais"]."</td>
+							<td style='border:1px solid #eee;'>".$value["visitas"]."</td>
+							<td style='border:1px solid #eee;'>".$value["fecha"]."</td>
+										
+						</tr>"); 		
+								
+					}
 	
 				echo "</table>";
 
 			}
 
-			/*=============================================
-			REPORTE DE USUARIOS
+			/*===========================================
+				REPORTE DE USUARIOS
 			=============================================*/
 
 			if($_GET["reporte"] == "usuarios"){	
 
 				echo utf8_decode("<table border='0'> 
 
-						<tr> 
-						<td style='font-weight:bold; border:1px solid #eee;'>NOMBRE</td> 
+					<tr>
+
+						<td style='font-weight:bold; border:1px solid #eee;'>NOMBRE</td>
 						<td style='font-weight:bold; border:1px solid #eee;'>EMAIL</td>
 						<td style='font-weight:bold; border:1px solid #eee;'>MODO</td>
 						<td style='font-weight:bold; border:1px solid #eee;'>ESTADO</td>
 						<td style='font-weight:bold; border:1px solid #eee;'>FECHA</td>	
-						</tr>");
 
-				foreach ($reporte as $key => $value) {
+					</tr>");
 
-					 echo utf8_decode("<tr>
-				 			
-				 						<td style='border:1px solid #eee;'>".$value["nombre"]."</td>
-				 						<td style='border:1px solid #eee;'>".$value["email"]."</td>
-				 						<td style='border:1px solid #eee;'>".$value["modo"]."</td>
-				 						<td style='border:1px solid #eee;'>");
+					foreach ($reporte as $key => $value) {
 
-					 /*=============================================
-  					REVISAR ESTADO
-  					=============================================*/
+						echo utf8_decode("<tr>
+								
+							<td style='border:1px solid #eee;'>".$value["nombre"]."</td>
+							<td style='border:1px solid #eee;'>".$value["email"]."</td>
+							<td style='border:1px solid #eee;'>".$value["modo"]."</td>
+							<td style='border:1px solid #eee;'>");
 
-		  			if($value["modo"] == "directo"){
+							/*===========================================
+								REVISAR ESTADO
+							=============================================*/
 
-			  			if( $value["verificacion"] == 1){
-			  				
-		  					$estado = "Desactivado";			  			
+							if($value["modo"] == "directo"){
 
-			  			}else{
-			  				
-			  				$estado = "Activado";
-			  			
-			  			}		  			
+								if( $value["verificacion"] == 1){
+									
+									$estado = "Desactivado";			  			
 
-			  		}else{
+								}else{
+									
+									$estado = "Activado";
+								
+								}		  			
 
-			  			$estado = "Activado";
+							}else{
 
-			  		}
+								$estado = "Activado";
 
-				 	echo utf8_decode($estado."</td>
-				 					<td style='border:1px solid #eee;'>".$value["fecha"]."</td>
-			 					  	 
-			 					  </tr>"); 		
+							}
 
-				}
+						echo utf8_decode($estado."</td>
 
+							<td style='border:1px solid #eee;'>".$value["fecha"]."</td>
+										
+						</tr>"); 		
 
-			echo "</table>";
+					}
+
+				echo "</table>";
 
 			}
-
 
 		}
 

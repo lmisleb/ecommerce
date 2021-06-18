@@ -2,8 +2,8 @@
 
 class ControladorVisitas{
 
-	/*=============================================
-	MOSTRAR TOTAL VISITAS
+	/*===========================================
+		MOSTRAR TOTAL VISITAS
 	=============================================*/
 
 	public function ctrMostrarTotalVisitas(){
@@ -14,8 +14,8 @@ class ControladorVisitas{
 
 	}
 
-	/*=============================================
-	MOSTRAR PAISES DE VISITAS
+	/*===========================================
+		MOSTRAR PAISES DE VISITAS
 	=============================================*/
 	
 	static public function ctrMostrarPaises($orden){
@@ -23,7 +23,18 @@ class ControladorVisitas{
 		$tabla = "visitaspaises";
 		$respuesta = ModeloVisitas::mdlMostrarPaises($tabla, $orden);
 		return $respuesta;
+
 	}
 
+	/*=============================================
+		MOSTRAR VISITAS
+	=============================================*/
+	
+	static public function ctrMostrarVisitas(){
+
+		$tabla = "visitaspersonas";
+		$respuesta = ModeloVisitas::mdlMostrarVisitas($tabla);
+		return $respuesta;
+	}
 
 }

@@ -5,8 +5,8 @@ require_once "../modelos/visitas.modelo.php";
 
 class TablaVisitas{
 
- 	/*=============================================
-  	MOSTRAR LA TABLA DE VISITAS
+ 	/*===========================================
+  		MOSTRAR LA TABLA DE VISITAS
   	=============================================*/ 
 
  	public function mostrarTabla(){
@@ -15,27 +15,27 @@ class TablaVisitas{
 
  		$datosJson = '{
 		 
-	 	"data": [ ';
+			"data": [ ';
 
-	 	for($i = 0; $i < count($visitas); $i++){
+	 			for($i = 0; $i < count($visitas); $i++){
 
-		/*=============================================
-		DEVOLVER DATOS JSON
-		=============================================*/
+					/*===========================================
+						DEVOLVER DATOS JSON
+					=============================================*/
 
-		$datosJson	 .= '[
-			      "'.($i+1).'",
-			      "'.$visitas[$i]["ip"].'",
-			      "'.$visitas[$i]["pais"].'",
-			      "'.$visitas[$i]["visitas"].'",
-			      "'.$visitas[$i]["fecha"].'"    
-			    ],';
+					$datosJson.= '[
+						"'.($i+1).'",
+						"'.$visitas[$i]["ip"].'",
+						"'.$visitas[$i]["pais"].'",
+						"'.$visitas[$i]["visitas"].'",
+						"'.$visitas[$i]["fecha"].'"    
+					],';
 
-		}
+				}
 
-	 	$datosJson = substr($datosJson, 0, -1);
+	 			$datosJson = substr($datosJson, 0, -1);
 
-		$datosJson.=  ']
+			$datosJson.=  ']
 		  
 		}'; 
 
@@ -43,11 +43,11 @@ class TablaVisitas{
 
  	}
 
-
 }
 
-/*=============================================
-ACTIVAR TABLA DE VISITAS
-=============================================*/ 
-$activar = new TablaVisitas();
-$activar -> mostrarTabla();
+/*===========================================
+	ACTIVAR TABLA DE VISITAS
+=============================================*/
+
+	$activar = new TablaVisitas();
+	$activar -> mostrarTabla();

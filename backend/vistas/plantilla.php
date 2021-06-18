@@ -178,6 +178,8 @@
 		<script src="vistas/js/gestorProductos.js"></script>
 		<script src="vistas/js/gestorBanner.js"></script>
 		<script src="vistas/js/gestorVentas.js"></script>
+		<script src="vistas/js/gestorVisitas.js"></script>
+		<script src="vistas/js/gestorUsuarios.js"></script>
 
 	</body>
 

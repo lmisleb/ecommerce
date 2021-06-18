@@ -5,32 +5,31 @@ require_once "../modelos/usuarios.modelo.php";
 
 class AjaxUsuarios{
 
-  /*=============================================
-  ACTIVAR USUARIOS
-  =============================================*/	
+	/*=============================================
+		ACTIVAR USUARIOS
+  	=============================================*/	
 
-  public $activarUsuario;
-  public $activarId;
+  	public $activarUsuario;
+  	public $activarId;
 
-  public function ajaxActivarUsuario(){
+  	public function ajaxActivarUsuario(){
 
-  	$respuesta = ModeloUsuarios::mdlActualizarUsuario("usuarios", "verificacion", $this->activarUsuario, "id", $this->activarId);
+		$respuesta = ModeloUsuarios::mdlActualizarUsuario("usuarios", "verificacion", $this->activarUsuario, "id", $this->activarId);
+		echo $respuesta;
 
-  	echo $respuesta;
-
-  }
+  	}
 
 }
 
 /*=============================================
-ACTIVAR CATEGORIA
+	METODO ACTIVAR USUARIOS
 =============================================*/
 
 if(isset($_POST["activarUsuario"])){
 
 	$activarUsuario = new AjaxUsuarios();
-	$activarUsuario -> activarUsuario = $_POST["activarUsuario"];
-	$activarUsuario -> activarId = $_POST["activarId"];
-	$activarUsuario -> ajaxActivarUsuario();
+  	$activarUsuario -> activarUsuario = $_POST["activarUsuario"];
+  	$activarUsuario -> activarId = $_POST["activarId"];
+  	$activarUsuario -> ajaxActivarUsuario();
 
 }

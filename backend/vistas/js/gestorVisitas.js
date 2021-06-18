@@ -3,22 +3,18 @@ CARGAR LA TABLA DINÁMICA DE VISITAS
 =============================================*/
 
 // $.ajax({
-
 // 	url:"ajax/tablaVisitas.ajax.php",
 // 	success:function(respuesta){
-		
 // 		console.log("respuesta", respuesta);
-
 // 	}
-
 // })
 
 $(".tablaVisitas").DataTable({
-	 "ajax": "ajax/tablaVisitas.ajax.php",
-	 "deferRender": true,
-	 "retrieve": true,
-	 "processing": true,
-	 "language": {
+	"ajax": "ajax/tablaVisitas.ajax.php",
+	"deferRender": true,
+	"retrieve": true,
+	"processing": true,
+	"language": {
 
 	 	"sProcessing":     "Procesando...",
 		"sLengthMenu":     "Mostrar _MENU_ registros",
@@ -39,10 +35,10 @@ $(".tablaVisitas").DataTable({
 			"sPrevious": "Anterior"
 		},
 		"oAria": {
-				"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-				"sSortDescending": ": Activar para ordenar la columna de manera descendente"
+			"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+			"sSortDescending": ": Activar para ordenar la columna de manera descendente"
 		}
 
-	 }
+	}
 
 });

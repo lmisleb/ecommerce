@@ -1,56 +1,69 @@
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+    
+    <section class="content-header">
+      
+        <h1>Gestor Visitas</h1>
+ 
+        <ol class="breadcrumb">
 
-	<!-- Content Header (Page header) -->
-	<section class="content-header">
+            <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
 
-		<h1>Gestor Visitas</h1>
+            <li class="active">Gestor Visitas</li>
+      
+        </ol>
 
-		<ol class="breadcrumb">
+    </section>
 
-			<li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
-			
-			<li class="active">Gestor Visitas</li>
+    <section class="content">
 
-	  	</ol>
+        <div class="box">  
 
-	</section>
+            <div class="box-header with-border">
 
-	<!-- Main content -->
-	<section class="content">
+                <?php
 
-		<!-- Default box -->
-		<div class="box">
-			<div class="box-header with-border">
+                    include "inicio/grafico-visitas.php";
 
-		  		<h3 class="box-title">Title</h3>
+                ?>
 
-		  		<div class="box-tools pull-right">
+            </div>
 
-					<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+            <div class="box-body">
 
-					<button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                <div class="box-tools">
 
-		  		</div>
+                    <a href="vistas/modulos/reportes.php?reporte=visitaspersonas">
 
-			</div>
+                        <button class="btn btn-success" style="margin-top:5px">Descargar reporte en Excel</button>
 
-			<div class="box-body">
+                    </a>
 
-		  		Start creating your amazing application!
+                </div>
 
-			</div>
-			<!-- /.box-body -->
+                <br>
+            
+                <table class="table table-bordered table-striped dt-responsive tablaVisitas" width="100%">
 
-			<div class="box-footer">
+                    <thead>
+                
+                        <tr>
+                
+                            <th style="width:10px">#</th>
+                            <th>IP Pública</th>
+                            <th>País</th>
+                            <th>Visitas</th>
+                            <th>Fecha</th>
 
-		  		Footer
+                        </tr>
 
-			</div>
-			<!-- /.box-footer-->
-	  	</div>
-	  	<!-- /.box -->
-	</section>
-	<!-- /.content -->
+                    </thead>
+
+                </table> 
+
+            </div>
+            
+        </div>
+
+    </section>
+
 </div>
-<!-- /.content-wrapper -->

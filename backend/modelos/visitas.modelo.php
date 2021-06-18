@@ -5,7 +5,7 @@ require_once "conexion.php";
 class ModeloVisitas{
 
 	/*=============================================
-	MOSTRAR EL TOTAL DE Visitas
+		MOSTRAR EL TOTAL DE VISITAS
 	=============================================*/	
 
 	static public function mdlMostrarTotalVisitas($tabla){
@@ -19,7 +19,7 @@ class ModeloVisitas{
 	}
 
 	/*=============================================
-	MOSTRAR PAISES DE VISITAS
+		MOSTRAR PAISES DE VISITAS
 	=============================================*/
 	
 	static public function mdlMostrarPaises($tabla, $orden){
@@ -31,4 +31,18 @@ class ModeloVisitas{
 	
 	}
 
+	/*=============================================
+		MOSTRAR VISITAS
+	=============================================*/	
+
+	static public function mdlMostrarVisitas($tabla){
+
+		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY id DESC");
+		$stmt -> execute();
+		return $stmt -> fetchAll();
+		$stmt -> close();
+		$stmt = null;
+
+	}
+	
 }

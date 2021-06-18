@@ -1,56 +1,64 @@
-<!-- Content Wrapper. Contains page content -->
+
 <div class="content-wrapper">
+    
+    <section class="content-header">
+      
+        <h1>Gestor Usuarios</h1>
+ 
+        <ol class="breadcrumb">
 
-	<!-- Content Header (Page header) -->
-	<section class="content-header">
+            <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
 
-		<h1>Gestor Usuarios</h1>
+            <li class="active">Gestor usuarios</li>
+      
+        </ol>
 
-		<ol class="breadcrumb">
+    </section>
 
-			<li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
-			
-			<li class="active">Gestor Usuarios</li>
+    <section class="content">
 
-	  	</ol>
+        <div class="box">  
 
-	</section>
+            <div class="box-header with-border"></div>
 
-	<!-- Main content -->
-	<section class="content">
+            <div class="box-body">
 
-		<!-- Default box -->
-		<div class="box">
-			<div class="box-header with-border">
+                <div class="box-tools">
 
-		  		<h3 class="box-title">Title</h3>
+                    <a href="vistas/modulos/reportes.php?reporte=usuarios">
 
-		  		<div class="box-tools pull-right">
+                        <button class="btn btn-success" style="margin-top:5px">Descargar reporte en Excel</button>
 
-					<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                    </a>
 
-					<button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                </div>
 
-		  		</div>
+                <br>
+         
+                <table class="table table-bordered table-striped dt-responsive tablaUsuarios" width="100%">
 
-			</div>
+                    <thead>
+            
+                        <tr>
+              
+                            <th style="width:10px">#</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Modo</th>
+                            <th>Foto</th>
+                            <th>Estado</th>
+                            <th>Fecha</th>
 
-			<div class="box-body">
+                        </tr>
 
-		  		Start creating your amazing application!
+                    </thead>
 
-			</div>
-			<!-- /.box-body -->
+                </table>
 
-			<div class="box-footer">
+            </div>
+        
+        </div>
 
-		  		Footer
+    </section>
 
-			</div>
-			<!-- /.box-footer-->
-	  	</div>
-	  	<!-- /.box -->
-	</section>
-	<!-- /.content -->
 </div>
-<!-- /.content-wrapper -->
