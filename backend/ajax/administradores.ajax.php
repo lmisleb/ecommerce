@@ -5,8 +5,8 @@ require_once "../modelos/administradores.modelo.php";
 
 class AjaxAdministradores{
 
-	/*=============================================
-	ACTIVAR PERFIL
+	/*===========================================
+		ACTIVAR PERFIL
 	=============================================*/	
 
 	public $activarPerfil;
@@ -15,21 +15,17 @@ class AjaxAdministradores{
 	public function ajaxActivarPerfil(){
 
 		$tabla = "administradores";
-
 		$item1 = "estado";
 		$valor1 = $this->activarPerfil;
-
 		$item2 = "id";
 		$valor2 = $this->activarId;
-
 		$respuesta = ModeloAdministradores::mdlActualizarPerfil($tabla, $item1, $valor1, $item2, $valor2);
-
 		echo $respuesta;
 
 	}
 
-	/*=============================================
-	EDITAR PERFIL
+	/*===========================================
+		EDITAR PERFIL
 	=============================================*/	
 
 	public $idPerfil;
@@ -38,19 +34,15 @@ class AjaxAdministradores{
 
 		$item = "id";
 		$valor = $this->idPerfil;
-
 		$respuesta = ControladorAdministradores::ctrMostrarAdministradores($item, $valor);
-
 		echo json_encode($respuesta);
 
 	}
 
-
-
 }
 
-/*=============================================
-ACTIVAR PERFIL
+/*===========================================
+	ACTIVAR PERFIL
 =============================================*/	
 
 if(isset($_POST["activarPerfil"])){
@@ -62,9 +54,10 @@ if(isset($_POST["activarPerfil"])){
 
 }
 
-/*=============================================
-EDITAR PERFIL
+/*===========================================
+	EDITAR PERFIL
 =============================================*/
+
 if(isset($_POST["idPerfil"])){
 
 	$editar = new AjaxAdministradores();

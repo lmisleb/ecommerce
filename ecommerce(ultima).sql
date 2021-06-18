@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 17-06-2021 a las 06:31:15
+-- Servidor: localhost
+-- Tiempo de generación: 18-06-2021 a las 07:20:01
 -- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.11
+-- Versión de PHP: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,6 +34,7 @@ CREATE TABLE `administradores` (
   `foto` text COLLATE utf8_spanish_ci NOT NULL,
   `password` text COLLATE utf8_spanish_ci NOT NULL,
   `perfil` text COLLATE utf8_spanish_ci NOT NULL,
+  `estado` int(11) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -41,9 +42,10 @@ CREATE TABLE `administradores` (
 -- Volcado de datos para la tabla `administradores`
 --
 
-INSERT INTO `administradores` (`id`, `nombre`, `email`, `foto`, `password`, `perfil`, `fecha`) VALUES
-(1, 'Lenin Misle', 'admin@tiendavirtual.com', '', '1234', 'superadministrador', '2021-06-17 06:01:10'),
-(2, 'Editor de la Tienda', 'editor@tiendavirtual.com', '', '1234', 'editor', '2021-03-30 01:45:21');
+INSERT INTO `administradores` (`id`, `nombre`, `email`, `foto`, `password`, `perfil`, `estado`, `fecha`) VALUES
+(1, 'Lenin Misle', 'admin@tiendavirtual.com', 'vistas/img/perfiles/lenin-misle.png', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'administrador', 1, '2021-06-18 03:51:53'),
+(2, 'Editor de la Tienda', 'editor@tiendavirtual.com', '', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'editor', 0, '2021-06-18 04:45:03'),
+(4, 'Janeth Mason', 'janeth@gmail.com', 'vistas/img/perfiles/216.jpg', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'administrador', 1, '2021-06-18 05:07:38');
 
 -- --------------------------------------------------------
 
@@ -277,8 +279,8 @@ INSERT INTO `compras` (`id`, `id_usuario`, `id_producto`, `envio`, `metodo`, `em
 (79, 60, 464, 0, 'payu', 'sb-mzqj53590057@personal.example.com', 'Free Trade Zone, Santiago, Santiago, 8150215', 'CL', 0, '', 70, '2021-03-31 22:41:41'),
 (80, 61, 495, 0, 'payu', 'sb-mzqj53590057@personal.example.com', 'La Florida Vivero Villaroel. Caracas', 'VE', 0, '', 87.12, '2021-03-31 22:42:28'),
 (81, 48, 500, 0, 'paypal', 'sb-mzqj53590057@personal.example.com', 'Chacao Edificio La Paz, Caracas', 'VE', 0, '', 92.5, '2021-03-31 22:28:10'),
-(82, 87, 450, 0, 'gratis', 'mantonio@gmail.com', '', '', 1, 'Mini Componte - 36 - Rojo', 0, '2021-06-17 07:39:39'),
-(83, 87, 466, 0, 'paypal', 'sb-mzqj53590057@personal.example.com', 'Free Trade Zone, Santiago, Santiago, 8150215', 'CL', 1, 'Tennis Azul - 36 - Rojo', 25, '2021-06-17 07:53:23');
+(82, 87, 450, 1, 'gratis', 'mantonio@gmail.com', '', '', 1, 'Mini Componte - 36 - Rojo', 0, '2021-06-17 18:13:58'),
+(83, 87, 466, 2, 'paypal', 'sb-mzqj53590057@personal.example.com', 'Free Trade Zone, Santiago, Santiago, 8150215', 'CL', 1, 'Tennis Azul - 36 - Rojo', 25, '2021-06-17 18:14:13');
 
 -- --------------------------------------------------------
 
@@ -994,9 +996,9 @@ INSERT INTO `usuarios` (`id`, `nombre`, `password`, `email`, `modo`, `foto`, `ve
 (61, 'BATICHICA', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'batichica@gmail.com', 'directo', 'vistas/img/usuarios/61/278.jpg', 0, '0d1e3b54e2c4ba9f05dcd8d8fc42ebe8', '2021-04-11 00:57:29'),
 (62, 'DART VADER', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'vader@gmail.com', 'directo', 'vistas/img/usuarios/62/183.jpg', 0, '12bf1ec108173abe9585cc4f95d9e1e7', '2021-04-11 00:32:33'),
 (66, 'LARA CROFT', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'lara@gmail.com', 'directo', 'vistas/img/usuarios/66/478.jpg', 0, '157f433f6585b30a0d16df22cfe24f33', '2021-04-05 04:09:43'),
-(72, 'OLIVIA WILDE', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'olivia@gmail.com', 'directo', 'vistas/img/usuarios/72/965.jpg', 0, '69603870efaa488f19a762aa45b6e24d', '2021-04-05 02:06:00'),
-(84, 'TYRANDE', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'tayrande@gmail.com', 'directo', 'vistas/img/usuarios/84/681.png', 0, 'acae4bc5fdd1676f37917a6527b374a7', '2021-04-11 01:19:31'),
-(86, 'SARAH KERRIGAN', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'sarah@gmail.com', 'directo', 'vistas/img/usuarios/86/448.jpg', 0, '246084d5b85c4f86e84b641f86bd7175', '2021-04-11 00:43:24'),
+(72, 'OLIVIA WILDE', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'olivia@gmail.com', 'directo', 'vistas/img/usuarios/72/965.jpg', 0, '69603870efaa488f19a762aa45b6e24d', '2021-06-17 20:44:56'),
+(84, 'TYRANDE', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'tayrande@gmail.com', 'directo', 'vistas/img/usuarios/84/681.png', 0, 'acae4bc5fdd1676f37917a6527b374a7', '2021-06-17 20:37:57'),
+(86, 'SARAH KERRIGAN', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'sarah@gmail.com', 'directo', 'vistas/img/usuarios/86/448.jpg', 0, '246084d5b85c4f86e84b641f86bd7175', '2021-06-17 20:40:40'),
 (87, 'MARCO ANTONIO', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'mantonio@gmail.com', 'directo', '', 0, 'f7ba17ad24756dba51bc20356b7590a5', '2021-06-17 07:38:55');
 
 -- --------------------------------------------------------
@@ -1090,7 +1092,7 @@ INSERT INTO `visitaspersonas` (`id`, `ip`, `pais`, `visitas`, `fecha`) VALUES
 (210, '200.28.111.71', 'Chile', 1, '07-05-2021'),
 (211, '200.28.111.71', 'Chile', 1, '09-05-2021'),
 (212, '200.28.111.71', 'Chile', 1, '15-05-2021'),
-(213, '200.28.111.71', 'Desconocido', 1, '16-05-2021'),
+(213, '200.28.111.71', 'Chile', 1, '16-05-2021'),
 (214, '200.28.111.71', 'Chile', 1, '17-05-2021'),
 (215, '200.28.111.71', 'Chile', 1, '20-05-2021'),
 (216, '200.28.111.71', 'Chile', 1, '26-05-2021'),
@@ -1204,7 +1206,7 @@ ALTER TABLE `visitaspersonas`
 -- AUTO_INCREMENT de la tabla `administradores`
 --
 ALTER TABLE `administradores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `banner`

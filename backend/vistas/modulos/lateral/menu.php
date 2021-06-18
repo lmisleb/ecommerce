@@ -42,7 +42,7 @@ MENU
 
     <li><a href="usuarios"><i class="fa fa-users"></i> <span>Gestor Usuarios</span></a></li>
 
-    <li><a href="mensajes"><i class="fa fa-envelope"></i> <span>Gestor Mensajes</span></a></li>
+    <!-- <li><a href="mensajes"><i class="fa fa-envelope"></i> <span>Gestor Mensajes</span></a></li> -->
 
     <li><a href="perfiles"><i class="fa fa-key"></i> <span>Gestor Perfiles</span></a></li>
 

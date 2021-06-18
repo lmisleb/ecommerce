@@ -30,7 +30,7 @@ class TablaUsuarios{
 
 					}else{
 
-						$foto = "<img class='img-circle' src='vistas/img/usuarios/default/anonymous.png' width='60px'>";
+						$foto = "<img class='img-circle' src='vistas/img/default/anonymous.png' width='60px'>";
 					}
 
 					/*===========================================

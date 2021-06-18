@@ -4,8 +4,8 @@ require_once "../modelos/notificaciones.modelo.php";
 
 Class AjaxNotificaciones{
 
-	/*=============================================
-	ACTUALIZAR NOTIFICACIONES
+	/*===========================================
+		ACTUALIZAR NOTIFICACIONES
 	=============================================*/
 	
 	public $item;
@@ -14,14 +14,10 @@ Class AjaxNotificaciones{
 
 		$item = $this->item;
 		$valor = 0;
-
 		$respuesta = ModeloNotificaciones::mdlActualizarNotificaciones("notificaciones", $item, $valor);
-
 		echo $respuesta;
 
-	}		
-
-
+	}
 
 }
 
