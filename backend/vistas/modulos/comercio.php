@@ -1,16 +1,30 @@
+<?php
+
+	if($_SESSION["perfil"] != "administrador"){
+
+		echo '<script>
+
+			window.location = "inicio";
+
+		</script>';
+
+		return;
+
+	}
+
+?>
+
 <div class="content-wrapper">
 
     <section class="content-header">
 
-        <h1>
-            Gestor comercio
-        </h1>
+        <h1>Gestor Comercio</h1>
 
         <ol class="breadcrumb">
         
             <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
             
-            <li class="active">Gestor comercio</li>
+            <li class="active">Gestor Comercio</li>
         
         </ol>
 
@@ -22,26 +36,26 @@
 
             <div class="col-md-6 col-xs-12">
                 
-                <!--=====================================
-                BLOQUE 1
+                <!--==================================
+                    BLOQUE 1
                 ======================================-->
                 
                 <?php
 
-                    /*=============================================
-                    ADMINISTRACIÓN DE LOGOTIPO E ICONO
+                    /*===========================================
+                        ADMINISTRACIÓN DE LOGOTIPO E ICONO
                     =============================================*/
 
                     include "comercio/logotipo.php";
 
-                    /*=====================================
-                    ADMINISTRAR COLORES
+                    /*====================================
+                        ADMINISTRAR COLORES
                     ======================================*/
             
                     include "comercio/colores.php";
 
-                    /*=====================================
-                    ADMINISTRAR REDES SOCIALES
+                    /*====================================
+                        ADMINISTRAR REDES SOCIALES
                     ======================================*/
             
                     include "comercio/redSocial.php";
@@ -53,20 +67,20 @@
 
             <div class="col-md-6 col-xs-12">
                 
-                <!--=====================================
-                BLOQUE 2
+                <!--==================================
+                    BLOQUE 2
                 ======================================-->
 
                 <?php
                 
-                    /*=====================================
-                    ADMINISTRAR CÓDIGOS
+                    /*====================================
+                        ADMINISTRAR CÓDIGOS
                     ======================================*/
         
                     include "comercio/codigos.php";
 
-                    /*=====================================
-                    ADMINISTRAR COMERCIO
+                    /*====================================
+                        ADMINISTRAR COMERCIO
                     ======================================*/
             
                     include "comercio/informacion.php";

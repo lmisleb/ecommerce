@@ -1,30 +1,23 @@
-/*===================================================================
-	COMPROBAR ERRORES AL CARGAR LA TABLA DINÁMICA DE SUBCATEGORÍAS
-====================================================================*/
-
-$.ajax({
-
-    url: "ajax/tablaSubCategorias.ajax.php",
-    success: function(respuesta) {
-
-        //console.log("respuesta", respuesta);
-
-    }
-
-})
-
-/*================================================
+/*===============================================
 	CARGAR LA TABLA DINÁMICA DE SUBCATEGORÍAS
 =================================================*/
 
-var tablaSubCategorias = $('.tablaSubCategorias').DataTable({
+// $.ajax({
+
+//     url: "ajax/tablaSubCategorias.ajax.php",
+//     success: function(respuesta) {
+//         console.log("respuesta", respuesta);
+//     }
+
+// })
+
+$('.tablaSubCategorias').DataTable({
 
     "ajax": "ajax/tablaSubCategorias.ajax.php",
     "deferRender": true,
     "retrieve": true,
     "processing": true,
     "language": {
-
         "sProcessing": "Procesando...",
         "sLengthMenu": "Mostrar _MENU_ registros",
         "sZeroRecords": "No se encontraron resultados",
@@ -52,7 +45,7 @@ var tablaSubCategorias = $('.tablaSubCategorias').DataTable({
 
 });
 
-/*=============================================
+/*===========================================
 	ACTIVAR SUBCATEGORÍA
 =============================================*/
 
@@ -73,9 +66,7 @@ $('.tablaSubCategorias tbody').on("click", ".btnActivar", function() {
         contentType: false,
         processData: false,
         success: function(respuesta) {
-
             //console.log("respuesta", respuesta);
-
         }
 
     })
@@ -98,7 +89,7 @@ $('.tablaSubCategorias tbody').on("click", ".btnActivar", function() {
 
 })
 
-/*=============================================
+/*===========================================
 	REVISAR SI LA SUBCATEGORÍA YA EXISTE
 =============================================*/
 
@@ -132,7 +123,7 @@ $(".validarSubCategoria").change(function() {
     })
 })
 
-/*=============================================
+/*===========================================
 	RUTA SUBCATEGORÍA
 =============================================*/
 
@@ -158,7 +149,7 @@ $(".tituloSubCategoria").change(function() {
 
 })
 
-/*=============================================
+/*============================================
 	SUBIENDO LA FOTO DE PORTADA
 =============================================*/
 
@@ -207,7 +198,7 @@ $(".fotoPortada").change(function() {
     }
 })
 
-/*============================================
+/*===========================================
 	ACTIVAR OFERTA
 =============================================*/
 
@@ -234,7 +225,7 @@ $(".selActivarOferta").change(function() {
 
 })
 
-/*=============================================
+/*===========================================
 	VALOR OFERTA
 =============================================*/
 
@@ -258,7 +249,7 @@ $(".valorOferta").change(function() {
 
 })
 
-/*=============================================
+/*===========================================
 	SUBIENDO LA FOTO DE LA OFERTA
 =============================================*/
 
@@ -307,7 +298,7 @@ $(".fotoOferta").change(function() {
     }
 })
 
-/*=============================================
+/*===========================================
 	EDITAR SUBCATEGORÍA
 =============================================*/
 
@@ -334,7 +325,7 @@ $(".tablaSubCategorias tbody").on("click", ".btnEditarSubCategoria", function() 
             $("#modalEditarSubCategoria .tituloSubCategoria").val(respuesta[0]["subcategoria"]);
             $("#modalEditarSubCategoria .rutaSubCategoria").val(respuesta[0]["ruta"]);
 
-            /*=============================================
+            /*===========================================
             	EDITAR NOMBRE SUBCATEGORÍA Y RUTA
             =============================================*/
 
@@ -344,7 +335,7 @@ $(".tablaSubCategorias tbody").on("click", ".btnEditarSubCategoria", function() 
 
             })
 
-            /*=============================================
+            /*===========================================
             	TRAEMOS LA CATEGORIA
             =============================================*/
 
@@ -377,7 +368,7 @@ $(".tablaSubCategorias tbody").on("click", ".btnEditarSubCategoria", function() 
 
             }
 
-            /*=============================================
+            /*===========================================
             	TRAEMOS DATOS DE CABECERA
             =============================================*/
 
@@ -397,19 +388,19 @@ $(".tablaSubCategorias tbody").on("click", ".btnEditarSubCategoria", function() 
 
                     //console.log("respuesta", respuesta);
 
-                    /*=============================================
+                    /*===========================================
                     	CARGAMOS EL ID DE LA CABECERA
                     =============================================*/
 
                     $("#modalEditarSubCategoria .editarIdCabecera").val(respuesta["id"]);
 
-                    /*=============================================
+                    /*===========================================
                     	CARGAMOS LA DESCRIPCION
                     =============================================*/
 
                     $("#modalEditarSubCategoria .descripcionSubCategoria").val(respuesta["descripcion"]);
 
-                    /*=============================================
+                    /*===========================================
                     	CARGAMOS LAS PALABRAS CLAVES
                     =============================================*/
 
@@ -418,7 +409,6 @@ $(".tablaSubCategorias tbody").on("click", ".btnEditarSubCategoria", function() 
                         $(".editarPalabrasClaves").html('<div class="input-group">' +
 
                             '<span class="input-group-addon"><i class="fa fa-key"></i></span>' +
-
                             '<input type="text" class="form-control input-lg tagsInput pClavesSubCategoria" value="' + respuesta["palabrasClaves"] + '" data-role="tagsinput" name="pClavesSubCategoria">' +
 
                             '</div>');
@@ -436,7 +426,6 @@ $(".tablaSubCategorias tbody").on("click", ".btnEditarSubCategoria", function() 
                         $(".editarPalabrasClaves").html('<div class="input-group">' +
 
                             '<span class="input-group-addon"><i class="fa fa-key"></i></span>' +
-
                             '<input type="text" class="form-control input-lg tagsInput pClavesSubCategoria" value="" data-role="tagsinput" name="pClavesSubCategoria">' +
 
                             '</div>');
@@ -451,7 +440,7 @@ $(".tablaSubCategorias tbody").on("click", ".btnEditarSubCategoria", function() 
 
                     }
 
-                    /*=============================================
+                    /*===========================================
                     	CARGAMOS LA IMAGEN DE PORTADA
                     =============================================*/
 
@@ -462,7 +451,7 @@ $(".tablaSubCategorias tbody").on("click", ".btnEditarSubCategoria", function() 
 
             });
 
-            /*=============================================
+            /*===========================================
             	PREGUNTAMOS SI EXITE OFERTA
             =============================================*/
 
@@ -502,7 +491,7 @@ $(".tablaSubCategorias tbody").on("click", ".btnEditarSubCategoria", function() 
 
             }
 
-            /*=============================================
+            /*===========================================
             	CREAR NUEVA OFERTA AL EDITAR
             =============================================*/
 
@@ -538,7 +527,7 @@ $(".tablaSubCategorias tbody").on("click", ".btnEditarSubCategoria", function() 
 
 })
 
-/*=============================================
+/*===========================================
 	ELIMINAR SUBCATEGORÍA
 =============================================*/
 
@@ -563,9 +552,7 @@ $(".tablaSubCategorias").on("click", ".btnEliminarSubCategoria", function() {
     }).then(function(result) {
 
         if (result.value) {
-
             window.location = "index.php?ruta=subcategorias&idSubCategoria=" + idSubCategoria + "&imgOferta=" + imgOferta + "&rutaCabecera=" + rutaCabecera + "&imgPortada=" + imgPortada;
-
         }
 
     })

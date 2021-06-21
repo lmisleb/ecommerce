@@ -32,8 +32,8 @@ $('.datepicker').datepicker({
 	startDate: '0d'
 });
 
-/*=============================================
-CORRECCIÓN BOTONERAS OCULTAS BACKEND	
+/*===========================================
+	CORRECCIÓN BOTONERAS OCULTAS BACKEND	
 =============================================*/
 
 if(window.matchMedia("(max-width:767px)").matches){
@@ -45,8 +45,8 @@ if(window.matchMedia("(max-width:767px)").matches){
 	$("body").addClass('sidebar-collapse');
 }
 
-/*=============================================
-ACTIVAR SIDEBAR
+/*===========================================
+	ACTIVAR SIDEBAR
 =============================================*/
 
 $(document).on("click", ".sidebar-menu li", function(){
@@ -58,13 +58,11 @@ $(document).on("click", ".sidebar-menu li", function(){
 if(localStorage.getItem("botonera") == null){
 
 	$(".sidebar-menu li").removeClass("active");
-
 	$(".sidebar-menu li a[href='inicio']").parent().addClass("active")
 	
 }else{
 
 	$(".sidebar-menu li").removeClass("active");
-
 	$("a[href='"+localStorage.getItem("botonera")+"']").parent().addClass("active")
 	
 }

@@ -54,7 +54,7 @@
 						if($usuarios[$i]["modo"] != "directo"){
 
 							echo '<li>
-								<img src="'.$usuarios[$i]["foto"].'" alt="User Image" style="width:70%">
+								<img src="'.$usuarios[$i]["foto"].'" alt="User Image" style="width:100px">
 								<a class="users-list-name" href="">'.$usuarios[$i]["nombre"].'</a>
 								<span class="users-list-date">'.$new_date.'</span>
 							</li>';
@@ -62,7 +62,7 @@
 						}else{
 
 							echo '<li>
-								<img src="'.$url.$usuarios[$i]["foto"].'" alt="User Image" style="width:70%">
+								<img src="'.$url.$usuarios[$i]["foto"].'" alt="User Image" style="width:100px">
 								<a class="users-list-name" href="">'.$usuarios[$i]["nombre"].'</a>
 								<span class="users-list-date">'.$new_date.'</span>
 							</li>';
@@ -72,7 +72,7 @@
 					}else{
 
 						echo '<li>
-							<img src="vistas/img/usuarios/default/anonymous.png" alt="User Image" style="width:80%">
+							<img src="vistas/img/default/anonymous.jpg" alt="User Image" style="width:100px">
 							<a class="users-list-name" href="#">'.$usuarios[$i]["nombre"].'</a>
 							<span class="users-list-date">'.$new_date.'</span>
 						</li>';

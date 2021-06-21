@@ -1,5 +1,5 @@
-<!--=====================================
-USUARIOS
+<!--==================================
+	USUARIOS
 ======================================-->	
 
 <!-- user-menu -->
@@ -8,9 +8,27 @@ USUARIOS
 	<!-- dropdown-toggle -->
 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	
-		<img src="vistas/dist/img/lenin-misle.jpg" class="user-image" alt="Lenin Misle">
+		<!-- <img src="vistas/dist/img/lenin-misle.jpg" class="user-image" alt="Lenin Misle"> -->
 		
-		<span class="hidden-xs">Administrador</span>
+		<!-- <span class="hidden-xs">Administrador</span> -->
+
+		<?php
+
+			if($_SESSION["foto"] == ""){
+
+				echo '<img src="vistas/img/default/anonymous.jpg" class="user-image" alt="User Image">';
+
+			}else{
+
+				echo '<img src="'.$_SESSION["foto"].'" class="user-image" alt="'.$_SESSION["nombre"].'">';
+
+			}
+
+		?>
+		
+		<!-- <span class="hidden-xs"><?php echo $_SESSION["nombre"]; ?> &nbsp; (&nbsp;<?php echo ucfirst($_SESSION["perfil"]); ?>&nbsp;)</span> -->
+
+		<span class="hidden-xs"><?php echo ucfirst($_SESSION["perfil"]); ?></span>
 	
 	</a>
 	<!-- dropdown-toggle -->
@@ -19,20 +37,36 @@ USUARIOS
 	<ul class="dropdown-menu">
 
 		<li class="user-header">
-		
-			<img src="vistas/dist/img/lenin-misle.jpg" class="img-circle" alt="Lenin Misle">
 
-			<p>
-			Lenin Misle
-			</p>
+			<br>
 		
+			<!-- <img src="vistas/dist/img/lenin-misle.jpg" class="img-circle" alt="Lenin Misle"> -->
+
+			<!-- <p>Lenin Misle</p> -->
+
+			<?php
+
+				if($_SESSION["foto"] == ""){
+
+					echo '<img src="vistas/img/default/anonymous.jpg" class="img-circle" alt="User Image">';
+
+				}else{
+
+					echo '<img src="'.$_SESSION["foto"].'" class="img-circle" alt="'.$_SESSION["nombre"].'">';
+
+				}
+
+			?>
+
+			<h4 style="color:white"><p><?php echo $_SESSION["nombre"]; ?></p></h4>
+
 		</li>
 
 		<li class="user-footer">
 		
 			<div class="pull-left">
 				
-				<a href="perfil" class="btn btn-default btn-flat">Perfil</a>
+				<!-- <a href="perfil" class="btn btn-default btn-flat">Perfil</a> -->
 			
 			</div>
 			

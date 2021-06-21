@@ -1,14 +1,14 @@
-/*=============================================
-SUBIR LOGOTIPO
+/*===========================================
+	SUBIR LOGOTIPO
 =============================================*/
 
 $("#subirLogo").change(function(){
 
 	var imagenLogo = this.files[0];
 
-	/*=============================================
-  	VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
-  	=============================================*/
+	/*====================================================
+	  	VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
+  	======================================================*/
 
   	if(imagenLogo["type"] != "image/jpeg" && imagenLogo["type"] != "image/png"){
 
@@ -21,8 +21,8 @@ $("#subirLogo").change(function(){
 				confirmButtonText: "¡Cerrar!"
 			});
 
-  	/*=============================================
-  	VALIDAMOS EL TAMAÑO DE LA IMAGEN
+  	/*===========================================
+  		VALIDAMOS EL TAMAÑO DE LA IMAGEN
   	=============================================*/
 
   	}else if(imagenLogo["size"] > 2000000){
@@ -36,8 +36,8 @@ $("#subirLogo").change(function(){
 				confirmButtonText: "¡Cerrar!"
 			});
 
-  	/*=============================================
-  	PREVISUALIZAMOS LA IMAGEN
+  	/*===========================================
+  		PREVISUALIZAMOS LA IMAGEN
   	=============================================*/
 
   	}else{
@@ -48,15 +48,14 @@ $("#subirLogo").change(function(){
   		$(datosImagen).on("load", function(event){
 
   			var rutaImagen = event.target.result;
-
   			$(".previsualizarLogo").attr("src", rutaImagen);
 
   		})
 
   	}
 
-  	/*=============================================
-  	GUARDAR EL LOGOTIPO
+  	/*===========================================
+  		GUARDAR EL LOGOTIPO
   	=============================================*/
 
   	$("#guardarLogo").click(function(){
@@ -95,17 +94,17 @@ $("#subirLogo").change(function(){
 
 })
 
-/*=============================================
-SUBIR ICONO
+/*===========================================
+	SUBIR ICONO
 =============================================*/
 
 $("#subirIcono").change(function(){
 
 	var imagenIcono = this.files[0];
 	
-	/*=============================================
-  	VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
-  	=============================================*/
+	/*====================================================
+  		VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
+  	======================================================*/
 
   	if(imagenIcono["type"] != "image/jpeg" && imagenIcono["type"] != "image/png"){
 
@@ -118,8 +117,8 @@ $("#subirIcono").change(function(){
 				confirmButtonText: "¡Cerrar!"
 			});
 
-  	/*=============================================
-  	VALIDAMOS EL TAMAÑO DE LA IMAGEN
+  	/*===========================================
+  		VALIDAMOS EL TAMAÑO DE LA IMAGEN
   	=============================================*/
 
   	}else if(imagenIcono["size"] > 2000000){
@@ -133,8 +132,8 @@ $("#subirIcono").change(function(){
 				confirmButtonText: "¡Cerrar!"
 			});
 
-	/*=============================================
-  	PREVISUALIZAMOS LA IMAGEN
+	/*===========================================
+  		PREVISUALIZAMOS LA IMAGEN
   	=============================================*/
 
   	}else{
@@ -145,15 +144,14 @@ $("#subirIcono").change(function(){
   		$(datosImagen).on("load", function(event){
 
   			var rutaImagen = event.target.result;
-
   			$(".previsualizarIcono").attr("src", rutaImagen);
 
   		})
 
   	}
 
-  	/*=============================================
-  	GUARDAR EL ICONO
+  	/*===========================================
+  		GUARDAR EL ICONO
   	=============================================*/
 
   	$("#guardarIcono").click(function(){
@@ -190,8 +188,8 @@ $("#subirIcono").change(function(){
 
 })
 
-/*=============================================
-CAMBIAR COLOR
+/*===========================================
+	CAMBIAR COLOR
 =============================================*/
 
 $(".cambioColor").change(function(){
@@ -238,8 +236,8 @@ $(".cambioColor").change(function(){
 
 })
 
-/*=============================================
-CAMBIAR COLOR REDES SOCIALES
+/*===========================================
+	CAMBIAR COLOR REDES SOCIALES
 =============================================*/
 
 var checkBox = $(".seleccionarRed");
@@ -276,9 +274,10 @@ $("input[name='colorRedSocial']").on("ifChecked", function(){
 
 })
 
-/*=============================================
-CAMBIAR URL REDES SOCIALES
+/*===========================================
+	CAMBIAR URL REDES SOCIALES
 =============================================*/
+
 $(".cambiarUrlRed").change(function(){
 
 	var cambiarUrlRed = $(".cambiarUrlRed");
@@ -293,32 +292,31 @@ $(".cambiarUrlRed").change(function(){
 
 })
 
-/*=============================================
-QUITAR RED SOCIAL
+/*===========================================
+	QUITAR RED SOCIAL
 =============================================*/
+
 $(".seleccionarRed").on("ifUnchecked",function(){
 
 	$(this).attr("validarRed","");
-
 	crearDatosJsonRedes();
 
 })
 
 
-/*=============================================
-AGREGAR RED SOCIAL
+/*===========================================
+	AGREGAR RED SOCIAL
 =============================================*/
 
 $(".seleccionarRed").on("ifChecked",function(){
 
 	$(this).attr("validarRed", $(this).attr("red"));
-
 	crearDatosJsonRedes();
 
 })
 
-/*=============================================
-CREAR DATOS JSON PARA ALMACENAR EN BD
+/*===========================================
+	CREAR DATOS JSON PARA ALMACENAR EN BD
 =============================================*/
 
 
@@ -335,7 +333,6 @@ function crearDatosJsonRedes(){
 								"url": $(checkBox[i]).attr("ruta"),
 								"activo": 1})
 
-
 		}else{
 
 			redesSociales.push({"red": $(checkBox[i]).attr("red"),
@@ -351,8 +348,8 @@ function crearDatosJsonRedes(){
 
 }
 
-/*=============================================
-GUARDAR REDES SOCIALES
+/*===========================================
+	GUARDAR REDES SOCIALES
 =============================================*/
 
 $("#guardarRedesSociales").click(function(){
@@ -388,8 +385,8 @@ $("#guardarRedesSociales").click(function(){
 
 })
 
-/*=============================================
-CAMBIAR CÓDIGOS
+/*===========================================
+	CAMBIAR CÓDIGOS
 =============================================*/
 
 $(".cambioScript").change(function(){
@@ -434,11 +431,12 @@ $(".cambioScript").change(function(){
 
 })
 
-/*=============================================
-SELECCIONAR PAIS
+/*===========================================
+	SELECCIONAR PAIS
 =============================================*/
 
 $.ajax({
+
 	url:"vistas/js/countries.json",
 	type: "GET",
 	cache: false,
@@ -469,8 +467,8 @@ $.ajax({
 
 })
 
-/*=============================================
-CAMBIAR INFORMACIÓN
+/*===========================================
+	CAMBIAR INFORMACIÓN
 =============================================*/
 
 var impuesto = $("#impuesto").val();
@@ -485,8 +483,8 @@ var merchantIdPayu = $("#merchantIdPayu").val();
 var accountIdPayu = $("#accountIdPayu").val();
 var apiKeyPayu = $("#apiKeyPayu").val();
 
-/*=============================================
-CAMBIAR MODO PAYPAL
+/*===========================================
+	CAMBIAR MODO PAYPAL
 =============================================*/
 
 $("input[name='modoPaypal']").on("ifChecked",function(){
@@ -502,8 +500,8 @@ $("input[name='modoPaypal']").on("ifChecked",function(){
 
 })
 
-/*=============================================
-CAMBIAR MODO PAYU
+/*===========================================
+	CAMBIAR MODO PAYU
 =============================================*/
 
 $("input[name='modoPayu']").on("ifChecked",function(){
@@ -519,8 +517,8 @@ $("input[name='modoPayu']").on("ifChecked",function(){
 
 })
 
-/*=============================================
-GUARDAR LA INFORMACION
+/*===========================================
+	GUARDAR LA INFORMACION
 =============================================*/
 
 $(".cambioInformacion").change(function(){
@@ -547,8 +545,8 @@ $(".cambioInformacion").change(function(){
 
 })
 
-/*=============================================
-// FUNCIÓN PARA CAMBIAR LA INFORMACIÓN
+/*===========================================
+	FUNCIÓN PARA CAMBIAR LA INFORMACIÓN
 =============================================*/
 
 function cambiarInformacion(modoPaypal, modoPayu){

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 18-06-2021 a las 07:20:01
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 21-06-2021 a las 10:45:29
 -- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.9
+-- Versión de PHP: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,8 +43,8 @@ CREATE TABLE `administradores` (
 --
 
 INSERT INTO `administradores` (`id`, `nombre`, `email`, `foto`, `password`, `perfil`, `estado`, `fecha`) VALUES
-(1, 'Lenin Misle', 'admin@tiendavirtual.com', 'vistas/img/perfiles/lenin-misle.png', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'administrador', 1, '2021-06-18 03:51:53'),
-(2, 'Editor de la Tienda', 'editor@tiendavirtual.com', '', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'editor', 0, '2021-06-18 04:45:03'),
+(1, 'Lenin Misle', 'admin@tiendavirtual.com', 'vistas/img/perfiles/lenin-misle.png', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'administrador', 1, '2021-06-21 00:24:23'),
+(2, 'Editor de la Tienda', 'editor@tiendavirtual.com', 'vistas/img/default/anonymous.jpg', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'editor', 1, '2021-06-21 07:25:16'),
 (4, 'Janeth Mason', 'janeth@gmail.com', 'vistas/img/perfiles/216.jpg', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'administrador', 1, '2021-06-18 05:07:38');
 
 -- --------------------------------------------------------
@@ -962,7 +962,7 @@ INSERT INTO `subcategorias` (`id`, `subcategoria`, `id_categoria`, `ruta`, `esta
 (16, 'Computadoras', 4, 'computadoras', 1, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', '2021-05-28 01:17:43'),
 (17, 'Auriculares', 4, 'auriculares', 1, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', '2021-05-28 01:17:43'),
 (18, 'Desarrollo Web', 5, 'desarrollo-web', 1, 0, 1, 9.99, 0, 'vistas/img/ofertas/desarrollo-web.png', '2021-07-01 23:59:59', '2021-06-12 20:55:00'),
-(19, 'Aplicaciones Móviles', 5, 'aplicaciones-moviles', 1, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', '2021-05-28 01:17:43'),
+(19, 'Aplicaciones Móviles', 5, 'aplicaciones-moviles', 1, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', '2021-06-21 01:08:12'),
 (20, 'Diseño Gráfico', 5, 'diseno-grafico', 1, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', '2021-05-28 01:17:43'),
 (21, 'Marketing Digital', 5, 'marketing-digital', 1, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', '2021-05-28 01:17:43'),
 (22, 'Películas de Acción', 6, 'peliculas-de-accion', 1, 0, 0, 0, 0, 'vistas/img/default/default.png', '0000-00-00 00:00:00', '2021-05-28 01:17:43'),
@@ -998,8 +998,8 @@ INSERT INTO `usuarios` (`id`, `nombre`, `password`, `email`, `modo`, `foto`, `ve
 (66, 'LARA CROFT', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'lara@gmail.com', 'directo', 'vistas/img/usuarios/66/478.jpg', 0, '157f433f6585b30a0d16df22cfe24f33', '2021-04-05 04:09:43'),
 (72, 'OLIVIA WILDE', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'olivia@gmail.com', 'directo', 'vistas/img/usuarios/72/965.jpg', 0, '69603870efaa488f19a762aa45b6e24d', '2021-06-17 20:44:56'),
 (84, 'TYRANDE', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'tayrande@gmail.com', 'directo', 'vistas/img/usuarios/84/681.png', 0, 'acae4bc5fdd1676f37917a6527b374a7', '2021-06-17 20:37:57'),
-(86, 'SARAH KERRIGAN', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'sarah@gmail.com', 'directo', 'vistas/img/usuarios/86/448.jpg', 0, '246084d5b85c4f86e84b641f86bd7175', '2021-06-17 20:40:40'),
-(87, 'MARCO ANTONIO', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'mantonio@gmail.com', 'directo', '', 0, 'f7ba17ad24756dba51bc20356b7590a5', '2021-06-17 07:38:55');
+(86, 'SARAH', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'sarah@gmail.com', 'directo', 'vistas/img/usuarios/86/448.jpg', 0, '246084d5b85c4f86e84b641f86bd7175', '2021-06-21 07:43:52'),
+(87, 'MARCO', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'mantonio@gmail.com', 'directo', '', 0, 'f7ba17ad24756dba51bc20356b7590a5', '2021-06-21 07:43:25');
 
 -- --------------------------------------------------------
 
@@ -1020,7 +1020,7 @@ CREATE TABLE `visitaspaises` (
 --
 
 INSERT INTO `visitaspaises` (`id`, `pais`, `codigo`, `cantidad`, `fecha`) VALUES
-(35, 'Chile', 'CL', 37, '16-06-2021'),
+(35, 'Chile', 'CL', 38, '20-06-2021'),
 (36, 'Japan', 'JP', 4, '31-03-2021'),
 (37, 'United States', 'US', 6, '31-03-2021'),
 (38, 'China', 'CN', 1, '26-03-2021'),
@@ -1102,7 +1102,8 @@ INSERT INTO `visitaspersonas` (`id`, `ip`, `pais`, `visitas`, `fecha`) VALUES
 (220, '200.28.111.71', 'Chile', 1, '15-06-2021'),
 (221, '200.28.111.71', 'Chile', 1, '17-06-2021'),
 (222, '200.28.111.82', 'Chile', 1, '17-06-2021'),
-(223, '200.28.111.82', 'Chile', 1, '16-06-2021');
+(223, '200.28.111.82', 'Chile', 1, '16-06-2021'),
+(224, '200.28.111.82', 'Chile', 1, '20-06-2021');
 
 --
 -- Índices para tablas volcadas
@@ -1206,7 +1207,7 @@ ALTER TABLE `visitaspersonas`
 -- AUTO_INCREMENT de la tabla `administradores`
 --
 ALTER TABLE `administradores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `banner`
@@ -1290,7 +1291,7 @@ ALTER TABLE `visitaspaises`
 -- AUTO_INCREMENT de la tabla `visitaspersonas`
 --
 ALTER TABLE `visitaspersonas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=224;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=225;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,17 +1,13 @@
-/*=============================================
+/*===========================================
     CARGAR LA TABLA DINÁMICA DE PRODUCTOS
 =============================================*/
 
-$.ajax({
-
-    url:"ajax/tablaProductos.ajax.php",
-    success:function(respuesta){
-        
-        //console.log("respuesta", respuesta);
-
-    }
-
-})
+// $.ajax({
+//     url:"ajax/tablaProductos.ajax.php",
+//     success:function(respuesta){
+//         //console.log("respuesta", respuesta);
+//     }
+// })
 
 $('.tablaProductos').DataTable({
 
@@ -20,27 +16,26 @@ $('.tablaProductos').DataTable({
     "retrieve": true,
     "processing": true,
     "language": {
-
-        "sProcessing":     "Procesando...",
-        "sLengthMenu":     "Mostrar _MENU_ registros",
-        "sZeroRecords":    "No se encontraron resultados",
-        "sEmptyTable":     "No hay datos disponible en esta tabla ...",
-        "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
-        "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0",
-        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-        "sInfoPostFix":    "",
-        "sSearch":         "Buscar:",
-        "sUrl":            "",
-        "sInfoThousands":  ",",
+        "sProcessing": "Procesando...",
+        "sLengthMenu": "Mostrar _MENU_ registros",
+        "sZeroRecords": "No se encontraron resultados",
+        "sEmptyTable":  "No hay datos disponible en esta tabla ...",
+        "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
+        "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0",
+        "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix": "",
+        "sSearch": "Buscar:",
+        "sUrl": "",
+        "sInfoThousands": ",",
         "sLoadingRecords": "Cargando...",
         "oPaginate": {
-        "sFirst":    "Primero",
-        "sLast":     "Último",
-        "sNext":     "Siguiente",
-        "sPrevious": "Anterior"
+            "sFirst": "Primero",
+            "sLast": "Último",
+            "sNext": "Siguiente",
+            "sPrevious": "Anterior"
         },
         "oAria": {
-            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
             "sSortDescending": ": Activar para ordenar la columna de manera descendente"
         }
 
@@ -48,7 +43,7 @@ $('.tablaProductos').DataTable({
 
 });
 
-/*=============================================
+/*===========================================
     ACTIVAR PRODUCTO
 =============================================*/
 
@@ -69,9 +64,7 @@ $('.tablaProductos tbody').on("click", ".btnActivar", function(){
         contentType: false,
         processData: false,
         success: function(respuesta){    
-            
             //console.log("respuesta", respuesta);
-
         }
 
     })
@@ -128,7 +121,7 @@ $(".validarProducto").change(function(){
 
 })
 
-/*=============================================
+/*===========================================
     RUTA PRODUCTO
 =============================================*/
 
@@ -152,7 +145,7 @@ $(".tituloProducto").change(function(){
 
 })
 
-/*=============================================
+/*===========================================
     AGREGAR MULTIMEDIA
 =============================================*/
 
@@ -179,7 +172,7 @@ $(".seleccionarTipo").change(function(){
     }
 })
 
-/*=============================================
+/*===========================================
     AGREGAR MULTIMEDIA CON DROPZONE
 =============================================*/
 
@@ -216,7 +209,7 @@ $(".multimediaFisica").dropzone({
 
 })
 
-/*=============================================
+/*===========================================
     SELECCIONAR CATEGORÍA
 =============================================*/
 
@@ -260,7 +253,7 @@ $(".seleccionarCategoria").change(function(){
 
 })
 
-/*=============================================
+/*===========================================
     SUBIENDO LA FOTO DE PORTADA
 =============================================*/
 
@@ -312,7 +305,7 @@ $(".fotoPortada").change(function(){
 
 })
 
-/*=============================================
+/*===========================================
     SUBIENDO LA FOTO PRINCIPAL
 =============================================*/
 
@@ -364,7 +357,7 @@ $(".fotoPrincipal").change(function(){
 
 })
 
-/*=============================================
+/*===========================================
     ACTIVAR OFERTA
 =============================================*/
 
@@ -391,7 +384,7 @@ $(".selActivarOferta").change(function(){
 
 })
 
-/*=============================================
+/*===========================================
     VALOR OFERTA
 =============================================*/
 
@@ -434,7 +427,7 @@ $("#modalAgregarProducto .valorOferta").change(function(){
 
 })
 
-/*=============================================
+/*===========================================
     CAMBIAR EL PRECIO
 =============================================*/
 
@@ -445,7 +438,7 @@ $(".precio").change(function(){
 
 })
 
-/*=============================================
+/*===========================================
     SUBIENDO LA FOTO DE LA OFERTA
 =============================================*/
 
@@ -497,7 +490,7 @@ $(".fotoOferta").change(function(){
 
 })
 
-/*=============================================
+/*===========================================
     GUARDAR EL PRODUCTO
 =============================================*/
 
@@ -722,7 +715,7 @@ function agregarMiProducto(imagen){
 
 }
 
-/*=============================================
+/*===========================================
     EDITAR PRODUCTO
 =============================================*/
 
@@ -751,13 +744,13 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
             $("#modalEditarProducto .tituloProducto").val(producto[0]["titulo"]);
             $("#modalEditarProducto .rutaProducto").val(producto[0]["ruta"]);
 
-            /*=============================================
+            /*===========================================
                 TRAER EL TIPO DE PRODUCTO
             =============================================*/
 
             $("#modalEditarProducto .seleccionarTipo").val(producto[0]["tipo"]);
 
-            /*=============================================
+            /*===========================================
                 CUANDO EL PRODUCTO ES VIRTUAL
             =============================================*/
 
@@ -778,7 +771,7 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
                 $("#modalEditarProducto .detalleDispositivo").val(detalles.Dispositivo);
                 $("#modalEditarProducto .detalleCertificado").val(detalles.Certificado);
 
-                /*=============================================
+                /*===========================================
                     CUANDO EL PRODUCTO ES FÍSICO
                 =============================================*/
             
@@ -903,7 +896,7 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
 
             }
 
-            /*=============================================
+            /*===========================================
                 LLENAR EL SELECT DE LA SUBCATEGORIA
             =============================================*/
 
@@ -992,7 +985,7 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
 
             }
 
-            /*=============================================
+            /*===========================================
                 TRAEMOS DATOS DE CABECERA
             =============================================*/
 
@@ -1010,19 +1003,19 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
                 dataType: "json",
                 success: function(resCabecera){
 
-                    /*=============================================
+                    /*===========================================
                         CARGAMOS EL ID DE LA CABECERA
                     =============================================*/
 
                     $("#modalEditarProducto .idCabecera").val(resCabecera["id"]);
 
-                    /*=============================================
+                    /*===========================================
                         CARGAMOS LA DESCRIPCION
                     =============================================*/
 
                     $("#modalEditarProducto .descripcionProducto").val(resCabecera["descripcion"]);
 
-                    /*=============================================
+                    /*===========================================
                         CARGAMOS LAS PALABRAS CLAVES
                     =============================================*/	
                     
@@ -1056,7 +1049,7 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
 
                     }
 
-                    /*=============================================
+                    /*===========================================
                         CARGAMOS LA IMAGEN DE PORTADA
                     =============================================*/
 
@@ -1067,7 +1060,7 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
                     
             });
 
-            /*============================================
+            /*===========================================
                 CARGAMOS LA IMAGEN PRINCIPAL
             =============================================*/
 
@@ -1082,7 +1075,7 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
             $("#modalEditarProducto .peso").val(producto[0]["peso"]);
             $("#modalEditarProducto .entrega").val(producto[0]["entrega"]);
 
-            /*=============================================
+            /*===========================================
                 PREGUNTAMOS SI EXITE OFERTA
             =============================================*/
 
@@ -1122,7 +1115,7 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
 
             }
 
-            /*=============================================
+            /*===========================================
                 CREAR NUEVA OFERTA AL EDITAR
             =============================================*/
 
@@ -1154,7 +1147,7 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
 
             })
 
-            /*=============================================
+            /*===========================================
                 GUARDAR CAMBIOS DEL PRODUCTO
             =============================================*/	
 
@@ -1416,7 +1409,7 @@ function editarMiProducto(imagen){
     
 }
 
-/*=============================================
+/*===========================================
     ELIMINAR PRODUCTO
 =============================================*/
 
@@ -1442,9 +1435,7 @@ $('.tablaProductos tbody').on("click", ".btnEliminarProducto", function(){
     }).then(function(result){
 
         if(result.value){
-
             window.location = "index.php?ruta=productos&idProducto="+idProducto+"&imgOferta="+imgOferta+"&rutaCabecera="+rutaCabecera+"&imgPortada="+imgPortada+"&imgPrincipal="+imgPrincipal;
-
         }
 
     })

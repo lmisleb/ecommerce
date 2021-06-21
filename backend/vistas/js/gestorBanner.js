@@ -2,16 +2,14 @@
 CARGAR LA TABLA DINÁMICA DE BANNER
 =============================================*/
 
-$.ajax({
+// $.ajax({
 	
-	url:"ajax/tablaBanner.ajax.php",
-	success:function(respuesta){
-		
-		//console.log("respuesta", respuesta);
+// 	url:"ajax/tablaBanner.ajax.php",
+// 	success:function(respuesta){
+// 		//console.log("respuesta", respuesta);
+// 	}
 
-	}
-
-})
+// })
 
 $(".tablaBanner").DataTable({
 	"ajax": "ajax/tablaBanner.ajax.php",
@@ -47,7 +45,7 @@ $(".tablaBanner").DataTable({
 
 });
 
-/*=============================================
+/*===========================================
 	ACTIVAR BANNER
 =============================================*/
 
@@ -68,9 +66,7 @@ $(".tablaBanner tbody").on("click", ".btnActivar", function(){
       	contentType: false,
       	processData: false,
       	success: function(respuesta){ 
-      	    
       	   //console.log("respuesta", respuesta);
-
       	} 	 
 
   	});
@@ -93,7 +89,7 @@ $(".tablaBanner tbody").on("click", ".btnActivar", function(){
 
 })
 
-/*=============================================
+/*===========================================
 	SUBIENDO LA FOTO DE BANNER
 =============================================*/
 
@@ -147,7 +143,7 @@ $(".fotoBanner").change(function(){
 
 })
 
-/*=============================================
+/*===========================================
 	SELECCIONAR RUTA DE BANNER
 =============================================*/
 
@@ -249,7 +245,7 @@ $(document).on("change", ".seleccionarRutaBanner, .seleccionarTipoBanner", funct
 
 })
 
-/*=============================================
+/*===========================================
 	EDITAR BANNER
 =============================================*/
 
@@ -272,21 +268,21 @@ $(".tablaBanner tbody").on("click", ".btnEditarBanner", function(){
 			
 			$("#modalEditarBanner .idBanner").val(respuesta["id"]);
 
-			/*=============================================
+			/*===========================================
 				CARGAMOS LA IMAGEN DE BANNER
 			=============================================*/
 
 			$("#modalEditarBanner .previsualizarBanner").attr("src", respuesta["img"]);
 			$("#modalEditarBanner .antiguaFotoBanner").val(respuesta["img"]);
 
-			/*=============================================
+			/*===========================================
 				CARGAMOS EL TIPO DE BANNER
 			=============================================*/
 
 			$("#modalEditarBanner .seleccionarTipoBanner").val(respuesta["tipo"]);
 			$("#modalEditarBanner .optionEditarTipoBanner").html(respuesta["tipo"]);
 
-			/*=============================================
+			/*===========================================
 				CARGAMOS LA RUTA DEL BANNER
 			=============================================*/
 
@@ -296,6 +292,7 @@ $(".tablaBanner tbody").on("click", ".btnEditarBanner", function(){
 				$("#modalEditarBanner .seleccionarRutaBanner").html(
 
 					'<option class="optionEditarRutaBanner"></option>'
+
 				);
 
 				$("#modalEditarBanner .optionEditarRutaBanner").val(respuesta["ruta"]);
@@ -339,7 +336,7 @@ $(".tablaBanner tbody").on("click", ".btnEditarBanner", function(){
 
 })
 
-/*=============================================
+/*===========================================
 	ELIMINAR BANNER
 =============================================*/
 

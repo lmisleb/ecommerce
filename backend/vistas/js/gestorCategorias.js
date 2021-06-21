@@ -1,19 +1,18 @@
-/*=============================================
+/*===========================================
 	CARGAR LA TABLA DINÁMICA DE CATEGORÍAS
 =============================================*/
 
-$.ajax({
+// $.ajax({
 
-	url:"ajax/tablaCategorias.ajax.php",
-	success:function(respuesta){
+// 	url:"ajax/tablaCategorias.ajax.php",
+// 	success:function(respuesta){
+// 		//console.log("respuesta", respuesta);
+// 	}
 
-		//console.log("respuesta", respuesta);
-
-	}
-
-})
+// })
 
 $(".tablaCategorias").DataTable({
+    
     "ajax": "ajax/tablaCategorias.ajax.php",
     "deferRender": true,
     "retrieve": true,
@@ -42,9 +41,10 @@ $(".tablaCategorias").DataTable({
             "sSortDescending": ": Activar para ordenar la columna de manera descendente"
         }
     }
+    
 });
 
-/*=============================================
+/*===========================================
 	ACTIVAR CATEGORÍA
 =============================================*/
 
@@ -65,9 +65,7 @@ $(".tablaCategorias tbody").on("click", ".btnActivar", function() {
         contentType: false,
         processData: false,
         success: function(respuesta) {
-
             //console.log("respuesta", respuesta);
-
         }
 
     });
@@ -90,7 +88,7 @@ $(".tablaCategorias tbody").on("click", ".btnActivar", function() {
 
 })
 
-/*=============================================
+/*===========================================
 	VALIDAR SI LA CATEGORÍA YA EXISTE
 =============================================*/
 
@@ -118,6 +116,7 @@ $(".validarCategoria").change(function() {
 
                 $(".validarCategoria").parent().after('<div class="alert alert-warning">Esta categoría ya existe en la base de datos ...</div>')
                 $(".validarCategoria").val("");
+                
             }
 
         }
@@ -126,7 +125,7 @@ $(".validarCategoria").change(function() {
 });
 
 
-/*=============================================
+/*===========================================
 	RUTA CATEGORÍA
 =============================================*/
 
@@ -154,7 +153,7 @@ $(".tituloCategoria").change(function() {
 
 })
 
-/*=============================================
+/*===========================================
 	SUBIENDO LA FOTO DE PORTADA
 =============================================*/
 
@@ -162,7 +161,7 @@ $(".fotoPortada").change(function() {
 
     var imagen = this.files[0];
 
-    /*=======================================================
+    /*======================================================
   		VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
   	========================================================*/
 
@@ -207,7 +206,7 @@ $(".fotoPortada").change(function() {
 
 })
 
-/*=============================================
+/*===========================================
 	ACTIVAR OFERTA
 =============================================*/
 
@@ -235,7 +234,7 @@ $(".selActivarOferta").change(function() {
 
 })
 
-/*=============================================
+/*===========================================
 	VALOR OFERTA
 =============================================*/
 
@@ -259,7 +258,7 @@ $(".valorOferta").change(function() {
 
 })
 
-/*=============================================
+/*===========================================
 	SUBIENDO LA FOTO DE OFERTA
 =============================================*/
 
@@ -267,7 +266,7 @@ $(".fotoOferta").change(function() {
 
     var imagen = this.files[0];
 
-    /*=====================================================
+    /*====================================================
   		VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
   	======================================================*/
 
@@ -312,7 +311,7 @@ $(".fotoOferta").change(function() {
 
 })
 
-/*=============================================
+/*===========================================
 	EDITAR CATEGORÍA
 =============================================*/
 
@@ -339,7 +338,7 @@ $(".tablaCategorias tbody").on("click", ".btnEditarCategoria", function() {
             $("#modalEditarCategoria .tituloCategoria").val(respuesta["categoria"]);
             $("#modalEditarCategoria .rutaCategoria").val(respuesta["ruta"]);
 
-            /*=============================================
+            /*===========================================
             	EDITAR NOMBRE, CATEGORÍA Y RUTA
             =============================================*/
 
@@ -349,7 +348,7 @@ $(".tablaCategorias tbody").on("click", ".btnEditarCategoria", function() {
 
             })
 
-            /*=============================================
+            /*===========================================
             	TRAEMOS DATOS DE CABECERA
             =============================================*/
 
@@ -371,13 +370,13 @@ $(".tablaCategorias tbody").on("click", ".btnEditarCategoria", function() {
 
                     $("#modalEditarCategoria .editarIdCabecera").val(respuesta["id"]);
 
-                    /*=============================================
+                    /*===========================================
                     	CARGAMOS LA DESCRIPCION
                     =============================================*/
 
                     $("#modalEditarCategoria .descripcionCategoria").val(respuesta["descripcion"]);
 
-                    /*=============================================
+                    /*===========================================
                     	CARGAMOS LAS PALABRAS CLAVES
                     =============================================*/
 
@@ -386,11 +385,8 @@ $(".tablaCategorias tbody").on("click", ".btnEditarCategoria", function() {
                         $(".editarPalabrasClaves").html(
 
                             '<div class="input-group">' +
-
                             '<span class="input-group-addon"><i class="fa fa-key"></i></span>' +
-
                             '<input type="text" class="form-control input-lg pClavesCategoria tagsInput" data-role="tagsinput" value="' + respuesta["palabrasClaves"] + '" name="pClavesCategoria" required>' +
-
                             '</div>'
 
                         );
@@ -408,11 +404,8 @@ $(".tablaCategorias tbody").on("click", ".btnEditarCategoria", function() {
                         $(".editarPalabrasClaves").html(
 
                             '<div class="input-group">' +
-
                             '<span class="input-group-addon"><i class="fa fa-key"></i></span>' +
-
                             '<input type="text" class="form-control input-lg pClavesCategoria tagsInput" data-role="tagsinput" value="" placeholder="Ingresar palabras claves" name="pClavesCategoria" required>' +
-
                             '</div>'
 
                         );
@@ -428,7 +421,7 @@ $(".tablaCategorias tbody").on("click", ".btnEditarCategoria", function() {
 
                     }
 
-                    /*=============================================
+                    /*===========================================
                     	CARGAMOS LA IMAGEN DE PORTADA
                     =============================================*/
 
@@ -439,7 +432,7 @@ $(".tablaCategorias tbody").on("click", ".btnEditarCategoria", function() {
 
             })
 
-            /*=============================================
+            /*===========================================
             	PREGUNTAMOS SI EXITE OFERTA
             =============================================*/
 
@@ -479,7 +472,7 @@ $(".tablaCategorias tbody").on("click", ".btnEditarCategoria", function() {
 
             }
 
-            /*=============================================
+            /*===========================================
             	CREAR NUEVA OFERTA AL EDITAR
             =============================================*/
 
@@ -515,7 +508,7 @@ $(".tablaCategorias tbody").on("click", ".btnEditarCategoria", function() {
 
 })
 
-/*=============================================
+/*===========================================
 	ELIMINAR CATEGORIA
 =============================================*/
 

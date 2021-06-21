@@ -1,6 +1,16 @@
-<!--=====================================
+<!--==================================
 NOTIFICACIONES
 ======================================-->
+
+<?php
+
+	if($_SESSION["perfil"] != "administrador"){
+
+		return;
+
+	}
+
+?>
 
 <!-- notifications-menu -->
 <li class="dropdown notifications-menu">

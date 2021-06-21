@@ -45,6 +45,7 @@ class ControladorAdministradores{
 						echo '<script>
 						
 							swal({
+
 								title: "Mensaje",
 								text: "Este usuario no está activado",
 								type: "warning",
@@ -52,6 +53,7 @@ class ControladorAdministradores{
 								confirmButtonColor: "#DD6B55",
 								confirmButtonText: "Cerrar",
 								closeConfirm: false
+								
 							},
 
 							function(isConfirm){
@@ -75,13 +77,14 @@ class ControladorAdministradores{
 					echo '<script> 
 
 						swal({
+
 							title: "¡ERROR!",
 							text: "¡Error al ingresar vuelva a intentarlo!",
 							type:"error",
 							confirmButtonText: "Cerrar",
 							closeOnConfirm: false
-						},
 
+						},
 						function(isConfirm){
 
 							if(isConfirm){
@@ -110,6 +113,7 @@ class ControladorAdministradores{
 		$tabla = "administradores";
 		$respuesta = ModeloAdministradores::MdlMostrarAdministradores($tabla, $item, $valor);
 		return $respuesta;
+
 	}
 
 	/*===========================================
@@ -126,7 +130,7 @@ class ControladorAdministradores{
 					VALIDAR IMAGEN
 				=============================================*/
 
-				$ruta = "";
+				$ruta = "vistas/img/default/anonymous.jpg";
 
 				if(isset($_FILES["nuevaFoto"]["tmp_name"]) && !empty($_FILES["nuevaFoto"]["tmp_name"])){
 
@@ -258,7 +262,7 @@ class ControladorAdministradores{
 						PRIMERO PREGUNTAMOS SI EXISTE OTRA IMAGEN EN LA BD
 					=========================================================*/
 
-					if(!empty($_POST["fotoActual"])){
+					if($_POST["fotoActual"] != "vistas/img/default/anonymous.jpg"){
 
 						unlink($_POST["fotoActual"]);
 
@@ -304,8 +308,6 @@ class ControladorAdministradores{
 
 				}
 
-				$tabla = "administradores";
-
 				if($_POST["editarPassword"] != ""){
 
 					if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarPassword"])){
@@ -347,7 +349,8 @@ class ControladorAdministradores{
 							   "password" => $encriptar,
 							   "perfil" => $_POST["editarPerfil"],
 							   "foto" => $ruta);
-
+							   
+				$tabla = "administradores";
 				$respuesta = ModeloAdministradores::mdlEditarPerfil($tabla, $datos);
 
 				if($respuesta == "ok"){
@@ -355,14 +358,18 @@ class ControladorAdministradores{
 					echo'<script>
 
 						swal({
+
 							type: "success",
 							title: "El perfil ha sido editado correctamente",
 							showConfirmButton: true,
 							confirmButtonText: "Cerrar"
+
 						}).then(function(result) {
+
 							if (result.value) {
 								window.location = "perfiles";
 							}
+
 						})
 
 					</script>';
@@ -374,14 +381,18 @@ class ControladorAdministradores{
 				echo'<script>
 
 					swal({
+
 						type: "error",
 						title: "¡El nombre no puede ir vacío o llevar caracteres especiales!",
 						showConfirmButton: true,
 						confirmButtonText: "Cerrar"
+
 					}).then(function(result) {
+
 						if (result.value) {
 							window.location = "perfiles";
 						}
+
 					})
 
 			  	</script>';
@@ -400,15 +411,15 @@ class ControladorAdministradores{
 
 		if(isset($_GET["idPerfil"])){
 
-			$tabla ="administradores";
 			$datos = $_GET["idPerfil"];
 
-			if($_GET["fotoPerfil"] != ""){
+			if($_GET["fotoPerfil"] != "" && $_GET["fotoPerfil"] != "vistas/img/default/anonymous.png"){
 
-				unlink($_GET["fotoPerfil"]);
-			
+				unlink($_GET["fotoPerfil"]);		
+
 			}
-
+			
+			$tabla ="administradores";
 			$respuesta = ModeloAdministradores::mdlEliminarPerfil($tabla, $datos);
 
 			if($respuesta == "ok"){
@@ -416,15 +427,19 @@ class ControladorAdministradores{
 				echo'<script>
 
 					swal({
+
 						type: "success",
 					  	title: "El perfil ha sido borrado correctamente",
 					  	showConfirmButton: true,
 					  	confirmButtonText: "Cerrar",
 					  	closeOnConfirm: false
+
 					}).then(function(result) {
+
 						if (result.value) {
 							window.location = "perfiles";
 						}
+
 					})
 
 				</script>';

@@ -19,9 +19,7 @@ $(".tablaPerfiles").on("click", ".btnActivar", function(){
 	  	contentType: false,
 	  	processData: false,
 	  	success: function(respuesta){
-
 			//console.log("respuesta", respuesta);
-			
 	  	}
 
 	});
@@ -157,9 +155,7 @@ $(".tablaPerfiles").on("click", ".btnEliminarPerfil", function(){
 	}).then(function(result){
 
 		if(result.value){
-
 			window.location = "index.php?ruta=perfiles&idPerfil="+idPerfil+"&fotoPerfil="+fotoPerfil;
-
 		}
 
 	});
