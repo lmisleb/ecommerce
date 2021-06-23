@@ -1,4 +1,3 @@
-
 <div class="content-wrapper">
     
     <section class="content-header">
@@ -9,7 +8,7 @@
 
             <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
 
-            <li class="active">Gestor usuarios</li>
+            <li class="active">Gestor Usuarios</li>
       
         </ol>
 

@@ -25,8 +25,8 @@ class ControladorAdministradores{
 
 						$_SESSION["validarSesionBackend"] = "ok";
 						$_SESSION["id"] = $respuesta["id"];
-						$_SESSION["nombre"] = $respuesta["nombre"];
-						$_SESSION["foto"] = $respuesta["foto"];
+						$_SESSION["nombre1"] = $respuesta["nombre"];
+						$_SESSION["foto1"] = $respuesta["foto"];
 						$_SESSION["email"] = $respuesta["email"];
 						$_SESSION["password"] = $respuesta["password"];
 						$_SESSION["perfil"] = $respuesta["perfil"];

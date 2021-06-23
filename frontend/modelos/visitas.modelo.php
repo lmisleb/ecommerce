@@ -4,8 +4,8 @@ require_once "conexion.php";
 
 class ModeloVisitas{
 
-	/*=========================
-	CONSULTAR IP Y FECHA
+	/*========================
+		CONSULTAR IP Y FECHA
 	==========================*/
 
     static public function mdlconsultarIpFecha($tabla, $ip, $fechaActual){
@@ -31,8 +31,8 @@ class ModeloVisitas{
 
     }
 	
-	/*=========================
-	GUARDAR IP NUEVA
+	/*========================
+		GUARDAR IP NUEVA
 	==========================*/
 
     static public function mdlGuardarNuevaIp($tabla, $ip, $pais, $visitas, $fechaActual){
@@ -57,8 +57,8 @@ class ModeloVisitas{
         
     }
 
-	/*=========================
-	CONSULTAR PAIS
+	/*========================
+		CONSULTAR PAIS
 	==========================*/
 
     static public function mdlconsultarPais($tabla, $pais){
@@ -82,8 +82,8 @@ class ModeloVisitas{
         $stmt = null;
     }
 
-	/*=========================
-	INGRESAR PAIS
+	/*========================
+		INGRESAR PAIS
 	==========================*/
 
     static public function mdlIngresarPais($tabla, $pais, $codigo, $cantidad, $fechaActual){
@@ -110,7 +110,7 @@ class ModeloVisitas{
     }
 
 	/*===========================================
-	SOLICITAR CANTIDAD
+		SOLICITAR CANTIDAD
 	=============================================*/
 
 	static public function mdlSolicitarCantidad($tabla, $pais){
@@ -125,7 +125,7 @@ class ModeloVisitas{
 	}
 
 	/*===========================================
-	ACTUALIZAR CANTIDAD AL PAIS
+		ACTUALIZAR CANTIDAD AL PAIS
 	=============================================*/
 
     static public function mdlActualizarPais($tabla, $pais, $nuevaCantidad, $fechaActual){
@@ -150,8 +150,8 @@ class ModeloVisitas{
 
     }
 
-	/*=============================================
-	MOSTRAR EL TOTAL DE VISITAS
+	/*===========================================
+		MOSTRAR EL TOTAL DE VISITAS
 	=============================================*/	
 
 	static public function mdlMostrarTotalVisitas($tabla){
@@ -165,8 +165,8 @@ class ModeloVisitas{
 	}
 
 	/*=============================================
-	MOSTRAR LOS PRIMEROS 6 PAISES DE VISITAS
-	=============================================*/
+		MOSTRAR LOS PRIMEROS 6 PAISES DE VISITAS
+	===============================================*/
 	
 	static public function mdlMostrarPaises($tabla){
 		

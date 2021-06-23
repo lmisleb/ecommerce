@@ -910,7 +910,7 @@
 
 										if($usuario["foto"] == ""){
 
-											echo '<img class="img-circle pull-right" src="'.$servidor.'vistas/img/usuarios/default/anonymous.png" width="20%">';	
+											echo '<img class="img-circle pull-right" src="'.$servidor.'vistas/img/default/anonymous.jpg" width="20%">';
 
 										}else{
 

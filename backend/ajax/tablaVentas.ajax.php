@@ -6,6 +6,7 @@ require_once "../controladores/productos.controlador.php";
 require_once "../modelos/productos.modelo.php";
 require_once "../controladores/usuarios.controlador.php";
 require_once "../modelos/usuarios.modelo.php";
+require_once "../modelos/rutas.php";
 
 class TablaVentas{
 
@@ -14,6 +15,8 @@ class TablaVentas{
   	=============================================*/
 
   	public function mostrarTabla(){	
+
+		$url = Ruta::ctrRuta();
 
 		$ventas = ControladorVentas::ctrMostrarVentas();
 
@@ -49,11 +52,17 @@ class TablaVentas{
 
 					if($traerCliente["foto"] != ""){
 
-						$imgCliente = "<img class='img-circle' src='".$traerCliente["foto"]."' width='70px'>";
+						if($traerCliente["modo"] == "directo" ){
 
-					}else{
+							//$foto = "<img class='img-circle' src='".$url.$usuarios[$i]["foto"]."' width='60px'>";
+							$imgCliente = "<img class='img-circle' src='".$url.$traerCliente["foto"]."' width='70px'>";
 
-						$imgCliente = "<img class='img-circle' src='vistas/img/usuarios/default/anonymous.png' width='70px'>";
+						}else{
+
+							$imgCliente = "<img class='img-circle' src='".$traerCliente["foto"]."' width='70px'>";
+
+						}
+
 					}
 
 					/*===========================================
@@ -75,7 +84,7 @@ class TablaVentas{
 
 					if($ventas[$i]["envio"] == 0 && $tipo == "virtual"){
 
-						$envio = "<button class='btn btn-info btn-xs'>Entrega inmediata</button>";
+						$envio = "<button class='btn btn-info btn-xs' disabled>Entrega inmediata</button>";
 					
 					}else if($ventas[$i]["envio"] == 0 && $tipo == "fisico"){
 

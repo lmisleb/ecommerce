@@ -10,7 +10,7 @@
 
 	//$ip = "200.28.111.71"; // Chile
 
-	$ip = "200.28.111.82"; // Chile
+	//$ip = "200.28.111.82"; // Chile
 
 	//$ip = "249.170.168.184"; // Desconocido
 
@@ -19,6 +19,10 @@
 	//$ip = "141.46.61.241"; // Alemania
 
 	//$ip = "32.196.55.160"; // Estados Unidos
+
+	//$ip = "163.172.160.190"; // Francia
+
+	$ip = "186.26.32.0"; // Venezuela
 
 	//http://www.geoplugin.net/
 

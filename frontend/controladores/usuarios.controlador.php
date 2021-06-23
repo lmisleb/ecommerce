@@ -2,8 +2,8 @@
 
 class ControladorUsuarios{
 
-	/*=============================================
-	REGISTRO DE USUARIO
+	/*===========================================
+		REGISTRO DE USUARIO
 	=============================================*/
 
 	public function ctrRegistroUsuario(){
@@ -20,7 +20,7 @@ class ControladorUsuarios{
 				$datos = array("nombre"=> strtoupper($_POST["regUsuario"]),
 							   "password"=> $encriptar,
 							   "email"=> $_POST["regEmail"],
-							   "foto"=>"",
+							   "foto"=>"vistas/img/default/anonymous.jpg",
 							   "modo"=> "directo",
 							   "verificacion"=> 1,
 							   "emailEncriptado"=>$encriptarEmail);
@@ -30,8 +30,16 @@ class ControladorUsuarios{
 
 				if($respuesta == "ok"){
 
-					/*=============================================
-					VERIFICACIÓN CORREO ELECTRÓNICO
+					/*===============================================
+						NOTIFICACIONES NUEVOS USUARIOS
+					=================================================*/
+
+					$consultaNotificaciones = ControladorNotificaciones::ctrMostrarNotificaciones();
+					$nuevoUsuario = $consultaNotificaciones["nuevosUsuarios"] + 1;
+					ModeloNotificaciones::mdlActualizarNotificaciones("notificaciones", "nuevosUsuarios", $nuevoUsuario);
+
+					/*===========================================
+						VERIFICACIÓN CORREO ELECTRÓNICO
 					=============================================*/
 
 					date_default_timezone_set("America/Santiago");
@@ -83,24 +91,28 @@ class ControladorUsuarios{
 
 					$envio = $mail->Send();
 
-					var_dump($envio);
+					//var_dump($envio);
 
 					if(!$envio){
 
 						echo '<script> 
 
 							swal({
-								  title: "¡ERROR!",
-								  text: "¡Ha ocurrido un problema enviando verificación de correo electrónico a '.$_POST["regEmail"].$mail->ErrorInfo.'!",
-								  type:"error",
-								  confirmButtonText: "Cerrar",
-								  closeOnConfirm: false
-								},
 
-								function(isConfirm){
-									if(isConfirm){
-										history.back();
-									}
+								title: "¡ERROR!",
+								text: "¡Ha ocurrido un problema enviando verificación de correo electrónico a '.$_POST["regEmail"].$mail->ErrorInfo.'!",
+								type:"error",
+								confirmButtonText: "Cerrar",
+								closeOnConfirm: false
+
+							},
+
+							function(isConfirm){
+
+								if(isConfirm){
+									history.back();
+								}
+
 							});
 
 						</script>';
@@ -110,17 +122,21 @@ class ControladorUsuarios{
 						echo '<script> 
 
 							swal({
-								  title: "¡OK!",
-								  text: "¡Por favor revise la bandeja de entrada o la carpeta SPAM de su correo electrónico '.$_POST["regEmail"].' para activar su cuenta!",
-								  type:"success",
-								  confirmButtonText: "Cerrar",
-								  closeOnConfirm: false
-								},
 
-								function(isConfirm){
-									if(isConfirm){
-										history.back();
-									}
+								title: "¡OK!",
+								text: "¡Por favor revise la bandeja de entrada o la carpeta SPAM de su correo electrónico '.$_POST["regEmail"].' para activar su cuenta!",
+								type:"success",
+								confirmButtonText: "Cerrar",
+								closeOnConfirm: false
+
+							},
+
+							function(isConfirm){
+
+								if(isConfirm){
+									history.back();
+								}
+
 							});
 
 						</script>';
@@ -133,20 +149,23 @@ class ControladorUsuarios{
 
 				echo '<script> 
 
-						swal({
-							  title: "¡ERROR!",
-							  text: "¡Error al registrar el usuario, no se permiten caracteres especiales!",
-							  type:"error",
-							  confirmButtonText: "Cerrar",
-							  closeOnConfirm: false
-							},
+					swal({
 
-							function(isConfirm){
+						title: "¡ERROR!",
+						text: "¡Error al registrar el usuario, no se permiten caracteres especiales!",
+						type:"error",
+						confirmButtonText: "Cerrar",
+						closeOnConfirm: false
 
-								if(isConfirm){
-									history.back();
-								}
-						});
+					},
+
+					function(isConfirm){
+
+						if(isConfirm){
+							history.back();
+						}
+
+					});
 
 				</script>';
 
@@ -156,8 +175,8 @@ class ControladorUsuarios{
 
 	}
 
-	/*=============================================
-	MOSTRAR USUARIO
+	/*===========================================
+		MOSTRAR USUARIO
 	=============================================*/
 
 	static public function ctrMostrarUsuario($item, $valor){
@@ -168,8 +187,8 @@ class ControladorUsuarios{
 
 	}
 
-	/*=============================================
-	ACTUALIZAR USUARIO
+	/*===========================================
+		ACTUALIZAR USUARIO
 	=============================================*/
 
 	static public function ctrActualizarUsuario($id, $item, $valor){
@@ -180,8 +199,8 @@ class ControladorUsuarios{
 
 	}
 
-	/*=============================================
-	INGRESO DE USUARIO
+	/*===========================================
+		INGRESO DE USUARIO
 	=============================================*/
 
 	public function ctrIngresoUsuario(){
@@ -204,20 +223,24 @@ class ControladorUsuarios{
 						echo'<script>
 
 							swal({
-								  title: "¡NO HA VERIFICADO SU CORREO ELECTRÓNICO!",
-								  text: "¡Por favor revise la bandeja de entrada o la carpeta de SPAM de su correo para verififcar la dirección de correo electrónico '.$respuesta["email"].'!",
-								  type: "error",
-								  confirmButtonText: "Cerrar",
-								  closeOnConfirm: false
+
+								title: "¡NO HA VERIFICADO SU CORREO ELECTRÓNICO!",
+								text: "¡Por favor revise la bandeja de entrada o la carpeta de SPAM de su correo para verififcar la dirección de correo electrónico '.$respuesta["email"].'!",
+								type: "error",
+								confirmButtonText: "Cerrar",
+								closeOnConfirm: false
+
 							},
 
 							function(isConfirm){
+
 								if (isConfirm) {	   
 									history.back();
-								} 
+								}
+
 							});
 
-							</script>';
+						</script>';
 
 					}else{
 
@@ -241,21 +264,25 @@ class ControladorUsuarios{
 
 					echo'<script>
 
-							swal({
-								  title: "¡ERROR AL INGRESAR!",
-								  text: "¡Por favor revise que el email exista o la contraseña coincida con la registrada!",
-								  type: "error",
-								  confirmButtonText: "Cerrar",
-								  closeOnConfirm: false
-							},
+						swal({
 
-							function(isConfirm){
-								if (isConfirm) {	   
-									window.location = localStorage.getItem("rutaActual");
-								} 
-							});
+							title: "¡ERROR AL INGRESAR!",
+							text: "¡Por favor revise que el email exista o la contraseña coincida con la registrada!",
+							type: "error",
+							confirmButtonText: "Cerrar",
+							closeOnConfirm: false
+							
+						},
 
-							</script>';
+						function(isConfirm){
+							
+							if (isConfirm) {
+								window.location = localStorage.getItem("rutaActual");
+							}
+
+						});
+
+					</script>';
 
 				}
 
@@ -263,19 +290,23 @@ class ControladorUsuarios{
 
 				echo '<script> 
 
-						swal({
-							  title: "¡ERROR!",
-							  text: "¡Error al ingresar al sistema, no se permiten caracteres especiales!",
-							  type:"error",
-							  confirmButtonText: "Cerrar",
-							  closeOnConfirm: false
-							},
+					swal({
 
-							function(isConfirm){
-								if(isConfirm){
-									history.back();
-								}
-						});
+						title: "¡ERROR!",
+						text: "¡Error al ingresar al sistema, no se permiten caracteres especiales!",
+						type:"error",
+						confirmButtonText: "Cerrar",
+						closeOnConfirm: false
+
+					},
+
+					function(isConfirm){
+
+						if(isConfirm){
+							history.back();
+						}
+
+					});
 
 				</script>';
 
@@ -285,8 +316,8 @@ class ControladorUsuarios{
 
 	}
 
-	/*=============================================
-	OLVIDO DE CONTRASEÑA
+	/*===========================================
+		OLVIDO DE CONTRASEÑA
 	=============================================*/
 
 	public function ctrOlvidoPassword(){
@@ -295,8 +326,8 @@ class ControladorUsuarios{
 
 			if(preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["passEmail"])){
 
-				/*=============================================
-				GENERAR CONTRASEÑA ALEATORIA
+				/*===========================================
+					GENERAR CONTRASEÑA ALEATORIA
 				=============================================*/
 
 				function generarPassword($longitud){
@@ -329,8 +360,8 @@ class ControladorUsuarios{
 
 					if($respuesta2  == "ok"){
 
-						/*=============================================
-						CAMBIO DE CONTRASEÑA
+						/*===========================================
+							CAMBIO DE CONTRASEÑA
 						=============================================*/
 
 						date_default_timezone_set("America/Bogota");
@@ -387,18 +418,21 @@ class ControladorUsuarios{
 							echo '<script> 
 
 								swal({
-									  title: "¡ERROR!",
-									  text: "¡Ha ocurrido un problema enviando cambio de contraseña a '.$_POST["passEmail"].$mail->ErrorInfo.'!",
-									  type:"error",
-									  confirmButtonText: "Cerrar",
-									  closeOnConfirm: false
-									},
 
-									function(isConfirm){
+									title: "¡ERROR!",
+									text: "¡Ha ocurrido un problema enviando cambio de contraseña a '.$_POST["passEmail"].$mail->ErrorInfo.'!",
+									type:"error",
+									confirmButtonText: "Cerrar",
+									closeOnConfirm: false
 
-										if(isConfirm){
-											history.back();
-										}
+								},
+
+								function(isConfirm){
+
+									if(isConfirm){
+										history.back();
+									}
+
 								});
 
 							</script>';
@@ -408,18 +442,21 @@ class ControladorUsuarios{
 							echo '<script> 
 
 								swal({
-									  title: "¡OK!",
-									  text: "¡Por favor revise la bandeja de entrada o la carpeta de SPAM de su correo electrónico '.$_POST["passEmail"].' para su cambio de contraseña!",
-									  type:"success",
-									  confirmButtonText: "Cerrar",
-									  closeOnConfirm: false
-									},
 
-									function(isConfirm){
+									title: "¡OK!",
+									text: "¡Por favor revise la bandeja de entrada o la carpeta de SPAM de su correo electrónico '.$_POST["passEmail"].' para su cambio de contraseña!",
+									type:"success",
+									confirmButtonText: "Cerrar",
+									closeOnConfirm: false
 
-										if(isConfirm){
-											history.back();
-										}
+								},
+
+								function(isConfirm){
+
+									if(isConfirm){
+										history.back();
+									}
+
 								});
 
 							</script>';
@@ -433,21 +470,24 @@ class ControladorUsuarios{
 					echo '<script> 
 
 						swal({
-							  title: "¡ERROR!",
-							  text: "¡El correo electrónico no existe en el sistema!",
-							  type:"error",
-							  confirmButtonText: "Cerrar",
-							  closeOnConfirm: false
-							},
 
-							function(isConfirm){
-								if(isConfirm){
-									history.back();
-								}
+							title: "¡ERROR!",
+							text: "¡El correo electrónico no existe en el sistema!",
+							type:"error",
+							confirmButtonText: "Cerrar",
+							closeOnConfirm: false}
+
+						},
+
+						function(isConfirm){
+
+							if(isConfirm){
+								history.back();
+							}
+
 						});
 
 					</script>';
-
 
 				}
 
@@ -477,8 +517,8 @@ class ControladorUsuarios{
 
 	}
 
-	/*=============================================
-	VERIFICAR REGISTRO CON REDES SOCIALES
+	/*===========================================
+		VERIFICAR REGISTRO CON REDES SOCIALES
 	=============================================*/
 
 	// static public function ctrVerificacionRedesSociales($datos){
@@ -521,8 +561,8 @@ class ControladorUsuarios{
 	// }
 	
 
-	/*=============================================
-	REGISTRO CON REDES SOCIALES
+	/*===========================================
+		REGISTRO CON REDES SOCIALES
 	=============================================*/
 
 	static public function ctrRegistroRedesSociales($datos){
@@ -540,17 +580,21 @@ class ControladorUsuarios{
 				echo '<script> 
 
 					swal({
-							title: "¡ERROR!",
-							text: "¡El correo electrónico '.$datos["email"].', ya está registrado en el sistema con un método diferente a Google!",
-							type:"error",
-							confirmButtonText: "Cerrar",
-							closeOnConfirm: false
-						},
 
-						function(isConfirm){
-							if(isConfirm){
-								history.back();
-							}
+						title: "¡ERROR!",
+						text: "¡El correo electrónico '.$datos["email"].', ya está registrado en el sistema con un método diferente a Google!",
+						type:"error",
+						confirmButtonText: "Cerrar",
+						closeOnConfirm: false
+
+					},
+
+					function(isConfirm){
+
+						if(isConfirm){
+							history.back();
+						}
+
 					});
 
 				</script>';
@@ -565,6 +609,14 @@ class ControladorUsuarios{
 
 			$respuesta1 = ModeloUsuarios::mdlRegistroUsuario($tabla, $datos);
 
+			/*===============================================
+				NOTIFICACION NUEVOS USUARIOS
+			=================================================*/
+
+			$consultaNotificaciones = ControladorNotificaciones::ctrMostrarNotificaciones();
+			$nuevoUsuario = $consultaNotificaciones["nuevosUsuarios"] + 1;
+			ModeloNotificaciones::mdlActualizarNotificaciones("notificaciones", "nuevosUsuarios", $nuevoUsuario);
+
 		}
 
 		if($emailRepetido || $respuesta1 == "ok"){
@@ -574,7 +626,6 @@ class ControladorUsuarios{
 			if($respuesta2["modo"] == "facebook"){
 
 				session_start();
-
 				$_SESSION["validarSesion"] = "ok";
 				$_SESSION["id"] = $respuesta2["id"];
 				$_SESSION["nombre"] = $respuesta2["nombre"];
@@ -582,7 +633,6 @@ class ControladorUsuarios{
 				$_SESSION["email"] = $respuesta2["email"];
 				$_SESSION["password"] = $respuesta2["password"];
 				$_SESSION["modo"] = $respuesta2["modo"];
-
 				echo "ok";
 
 			}else if($respuesta2["modo"] == "google"){
@@ -594,7 +644,6 @@ class ControladorUsuarios{
 				$_SESSION["email"] = $respuesta2["email"];
 				$_SESSION["password"] = $respuesta2["password"];
 				$_SESSION["modo"] = $respuesta2["modo"];
-
 				echo "<span style='color:white'>ok</span>";
 
 			}
@@ -602,34 +651,36 @@ class ControladorUsuarios{
 			else{
 
 				echo "";
+
 			}
 
 		}
+
 	}
 
-	/*=============================================
-	ACTUALIZAR PERFIL
+	/*===========================================
+		ACTUALIZAR PERFIL
 	=============================================*/
 
 	public function ctrActualizarPerfil(){
 
 		if(isset($_POST["editarNombre"])){
 
-			/*=============================================
-			VALIDAR IMAGEN
+			/*===========================================
+				VALIDAR IMAGEN
 			=============================================*/
 
 			$ruta = $_POST["fotoUsuario"];
 
 			if(isset($_FILES["datosImagen"]["tmp_name"]) && !empty($_FILES["datosImagen"]["tmp_name"])){
 
-				/*================================================
-				PRIMERO PREGUNTAMOS SI EXISTE OTRA IMAGEN EN LA BD
-				==================================================*/
+				/*=======================================================
+					PRIMERO PREGUNTAMOS SI EXISTE OTRA IMAGEN EN LA BD
+				=========================================================*/
 
 				$directorio = "vistas/img/usuarios/".$_POST["idUsuario"];
 
-				if(!empty($_POST["fotoUsuario"])){
+				if($_POST["fotoUsuario"] != "vistas/img/default/anonymous.jpg"){
 
 					unlink($_POST["fotoUsuario"]);
 				
@@ -639,31 +690,26 @@ class ControladorUsuarios{
 
 				}
 
-				/*=============================================
-				GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+				/*===========================================
+					GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 				=============================================*/
 
 				list($ancho, $alto) = getimagesize($_FILES["datosImagen"]["tmp_name"]);
-
 				$nuevoAncho = 500;
 				$nuevoAlto = 500;
 				$aleatorio = mt_rand(100, 999);
-
+				
 				if($_FILES["datosImagen"]["type"] == "image/jpeg"){
 
 					$ruta = "vistas/img/usuarios/".$_POST["idUsuario"]."/".$aleatorio.".jpg";
 
-					/*=============================================
-					MOFICAMOS TAMAÑO DE LA FOTO
+					/*===========================================
+						MOFICAMOS TAMAÑO DE LA FOTO
 					=============================================*/
 
-
 					$origen = imagecreatefromjpeg($_FILES["datosImagen"]["tmp_name"]);
-
 					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
 					imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
 					imagejpeg($destino, $ruta);
 
 				}
@@ -672,20 +718,15 @@ class ControladorUsuarios{
 
 					$ruta = "vistas/img/usuarios/".$_POST["idUsuario"]."/".$aleatorio.".png";
 
-					/*=============================================
-					MOFICAMOS TAMAÑO DE LA FOTO
+					/*===========================================
+						MOFICAMOS TAMAÑO DE LA FOTO
 					=============================================*/
 
 					$origen = imagecreatefrompng($_FILES["datosImagen"]["tmp_name"]);
-
 					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
 					imagealphablending($destino, FALSE);
-    			
 					imagesavealpha($destino, TRUE);
-
 					imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
 					imagepng($destino, $ruta);
 
 				}
@@ -724,17 +765,21 @@ class ControladorUsuarios{
 				echo '<script> 
 
 					swal({
-							title: "¡OK!",
-							text: "¡Su cuenta ha sido actualizada correctamente!",
-							type:"success",
-							confirmButtonText: "Cerrar",
-							closeOnConfirm: false
-						},
 
-						function(isConfirm){
-							if(isConfirm){
-								history.back();
-							}
+						title: "¡OK!",
+						text: "¡Su cuenta ha sido actualizada correctamente!",
+						type:"success",
+						confirmButtonText: "Cerrar",
+						closeOnConfirm: false
+						
+					},
+
+					function(isConfirm){
+
+						if(isConfirm){
+							history.back();
+						}
+
 					});
 
 				</script>';
@@ -745,8 +790,8 @@ class ControladorUsuarios{
 
 	}
 
-	/*=============================================
-	MOSTRAR COMPRAS
+	/*===========================================
+		MOSTRAR COMPRAS
 	=============================================*/
 
 	static public function ctrMostrarCompras($item, $valor){
@@ -757,8 +802,8 @@ class ControladorUsuarios{
 
 	}
 
-	/*=============================================
-	MOSTRAR COMENTARIOS EN PERFIL
+	/*===========================================
+		MOSTRAR COMENTARIOS EN PERFIL
 	=============================================*/
 
 	static public function ctrMostrarComentariosPerfil($datos){
@@ -769,8 +814,8 @@ class ControladorUsuarios{
 
 	}
 
-	/*=============================================
-	ACTUALIZAR COMENTARIOS
+	/*===========================================
+		ACTUALIZAR COMENTARIOS
 	=============================================*/
 
 	public function ctrActualizarComentario(){
@@ -794,17 +839,21 @@ class ControladorUsuarios{
 						echo'<script>
 
 							swal({
+
 								title: "¡GRACIAS POR COMPARTIR SU OPINIÓN!",
 								text: "¡Su calificación y comentario ha sido guardado!",
 								type: "success",
 								confirmButtonText: "Cerrar",
 								closeOnConfirm: false
+
 							},
 
 							function(isConfirm){
+
 								if (isConfirm) {	   
 									history.back();
-								} 
+								}
+
 							});
 
 						</script>';
@@ -816,17 +865,21 @@ class ControladorUsuarios{
 					echo'<script>
 
 						swal({
+
 							title: "¡ERROR AL ENVIAR SU CALIFICACIÓN!",
 							text: "¡El comentario no puede estar vacío!",
 							type: "error",
 							confirmButtonText: "Cerrar",
 							closeOnConfirm: false
+
 						},
 
 						function(isConfirm){
+
 							if (isConfirm) {	   
 								history.back();
-							} 
+							}
+
 						});
 
 					</script>';
@@ -838,17 +891,21 @@ class ControladorUsuarios{
 				echo'<script>
 
 					swal({
+
 						title: "¡ERROR AL ENVIAR SU CALIFICACIÓN!",
 						text: "¡El comentario no puede llevar caracteres especiales!",
 						type: "error",
 						confirmButtonText: "Cerrar",
 						closeOnConfirm: false
+
 					},
 
 					function(isConfirm){
+
 						if (isConfirm) {	   
 							history.back();
-						} 
+						}
+
 					});
 
 				</script>';
@@ -859,50 +916,44 @@ class ControladorUsuarios{
 
 	}
 
-	/*=============================================
-	AGREGAR A LISTA DE DESEOS
+	/*===========================================
+		AGREGAR A LISTA DE DESEOS
 	=============================================*/
 
 	static public function ctrValidarDeseo($datos){
 
 		$tabla = "deseos";
-
 		$respuesta = ModeloUsuarios::mdlValidarDeseo($tabla, $datos);
-
 		return $respuesta;
 
 	}
 
-	/*=============================================
-	MOSTRAR LISTA DE DESEOS
+	/*===========================================
+		MOSTRAR LISTA DE DESEOS
 	=============================================*/
 
 	static public function ctrMostrarDeseos($item){
 
 		$tabla = "deseos";
-
 		$respuesta = ModeloUsuarios::mdlMostrarDeseos($tabla, $item);
-
 		return $respuesta;
 
 	}
 
-	/*=============================================
-	QUITAR PRODUCTO DE LISTA DE DESEOS
+	/*===========================================
+		QUITAR PRODUCTO DE LISTA DE DESEOS
 	=============================================*/
 	
 	static public function ctrQuitarDeseo($datos){
 
 		$tabla = "deseos";
-
 		$respuesta = ModeloUsuarios::mdlQuitarDeseo($tabla, $datos);
-
 		return $respuesta;
 
 	}
 
-	/*=============================================
-	ELIMINAR USUARIO
+	/*===========================================
+		ELIMINAR USUARIO
 	=============================================*/
 
 	public function ctrEliminarUsuario(){
@@ -922,12 +973,9 @@ class ControladorUsuarios{
 
 			}
 
-			$respuesta = ModeloUsuarios::mdlEliminarUsuario($tabla1, $id);
-			
+			$respuesta = ModeloUsuarios::mdlEliminarUsuario($tabla1, $id);	
 			ModeloUsuarios::mdlEliminarComentarios($tabla2, $id);
-
 			ModeloUsuarios::mdlEliminarCompras($tabla3, $id);
-
 			ModeloUsuarios::mdlEliminarListaDeseos($tabla4, $id);
 
 			if($respuesta == "ok"){
@@ -937,17 +985,21 @@ class ControladorUsuarios{
 		    	echo'<script>
 
 					swal({
+
 						title: "¡SU CUENTA HA SIDO BORRADA!",
 						text: "¡Debe registrarse nuevamente si desea ingresar!",
 						type: "success",
 						confirmButtonText: "Cerrar",
 						closeOnConfirm: false
+
 					},
 
 					function(isConfirm){
+
 						if (isConfirm) {	   
 							window.location = "'.$url.'salir";
-						} 
+						}
+
 					});
 
 				</script>';
@@ -958,8 +1010,8 @@ class ControladorUsuarios{
 
 	}
 
-	/*=============================================
-	FORMULARIO CONTACTENOS
+	/*===========================================
+		FORMULARIO CONTACTENOS
 	=============================================*/
 
 	public function ctrFormularioContactenos(){
@@ -970,28 +1022,19 @@ class ControladorUsuarios{
 			preg_match('/^[,\\.\\a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["mensajeContactenos"]) &&
 			preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["emailContactenos"])){
 
-				/*=============================================
-				ENVÍO CORREO ELECTRÓNICO
+				/*===========================================
+					ENVÍO CORREO ELECTRÓNICO
 				=============================================*/
 
 				date_default_timezone_set("America/Santiago");
-
 				$url = Ruta::ctrRuta();	
-
 				$mail = new PHPMailer;
-
 				$mail->CharSet = 'UTF-8';
-
 				$mail->isMail();
-
 				$mail->setFrom('cursos@tutorialesatualcance.com', 'Tutoriales a tu Alcance');
-
 				$mail->addReplyTo('cursos@tutorialesatualcance.com', 'Tutoriales a tu Alcance');
-
 				$mail->Subject = "Ha recibido una consulta";
-
 				$mail->addAddress("contacto@tiendaenlinea.com"); // Direccion de la empresa
-
 				$mail->msgHTML('
 
 					<div style="width:100%; background:#eee; position:relative; font-family:sans-serif; padding-bottom:40px">
@@ -1029,18 +1072,21 @@ class ControladorUsuarios{
 					echo '<script> 
 
 						swal({
-								title: "¡ERROR!",
-								text: "¡Ha ocurrido un problema enviando el mensaje!",
-								type:"error",
-								confirmButtonText: "Cerrar",
-								closeOnConfirm: false
-							},
 
-							function(isConfirm){
+							title: "¡ERROR!",
+							text: "¡Ha ocurrido un problema enviando el mensaje!",
+							type:"error",
+							confirmButtonText: "Cerrar",
+							closeOnConfirm: false
 
-								if(isConfirm){
-									history.back();
-								}
+						},
+
+						function(isConfirm){
+
+							if(isConfirm){
+								history.back();
+							}
+
 						});
 
 					</script>';
@@ -1050,17 +1096,21 @@ class ControladorUsuarios{
 					echo '<script> 
 
 						swal({
+
 							title: "¡OK!",
 							text: "¡Su mensaje ha sido enviado, muy pronto le responderemos!",
 							type: "success",
 							confirmButtonText: "Cerrar",
 							closeOnConfirm: false
+
 						},
 
 						function(isConfirm){
+
 							if (isConfirm) {	  
 								history.back();
 							}
+
 						});
 
 					</script>';
@@ -1072,17 +1122,21 @@ class ControladorUsuarios{
 				echo'<script>
 
 					swal({
-						  title: "¡ERROR!",
-						  text: "¡Problemas al enviar el mensaje, revise que no tenga caracteres especiales!",
-						  type: "error",
-						  confirmButtonText: "Cerrar",
-						  closeOnConfirm: false
+
+						title: "¡ERROR!",
+						text: "¡Problemas al enviar el mensaje, revise que no tenga caracteres especiales!",
+						type: "error",
+						confirmButtonText: "Cerrar",
+						closeOnConfirm: false
+
 					},
 
 					function(isConfirm){
-							if (isConfirm) {	   
-								window.location =  history.back();
-							}
+
+						if (isConfirm) {	   
+							window.location =  history.back();
+						}
+						
 					});
 
 				</script>';

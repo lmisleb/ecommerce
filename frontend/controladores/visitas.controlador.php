@@ -4,9 +4,9 @@ class ControladorVisitas{
 
 	static public function ctrEnviarIp($ip, $pais, $codigo){
 
-		/*=====================================================================================================================
-		CONSULTAR IP Y FECHA, GUARDAR UNA IP NUEVA, VERIFICAR EL PAIS, GUARDAR UN PAIS NUEVO, ACTUALIZAR LA CANTIDAD DE VISITAS
-		=======================================================================================================================*/
+		/*============================================================================================================================
+			CONSULTAR IP Y FECHA, GUARDAR UNA IP NUEVA, VERIFICAR EL PAIS, GUARDAR UN PAIS NUEVO, ACTUALIZAR LA CANTIDAD DE VISITAS
+		==============================================================================================================================*/
 
 		date_default_timezone_set('America/Santiago');
 		$fechaActual = date('d-m-Y');
@@ -29,6 +29,14 @@ class ControladorVisitas{
 
 			if($respuestaInsertarIp == "ok"){
 
+				/*===============================================
+					NOTIFICACION NUEVAS VISITAS
+				=================================================*/
+
+				$consultaNotificaciones = ControladorNotificaciones::ctrMostrarNotificaciones();
+				$nuevaVisita = $consultaNotificaciones["nuevasVisitas"] + 1;
+				ModeloNotificaciones::mdlActualizarNotificaciones("notificaciones", "nuevasVisitas", $nuevaVisita);
+
 				$consultarPais = ModeloVisitas::mdlconsultarPais($tabla2, $pais);
 
 				if($consultarPais == "no existe pais"){
@@ -39,7 +47,6 @@ class ControladorVisitas{
 				}else{
 
 					$solicitarCantidad = ModeloVisitas::mdlSolicitarCantidad($tabla2, $pais);
-
 					$nuevaCantidad = $solicitarCantidad["cantidad"] + 1;
 		 			$actualizarPais = ModeloVisitas::mdlActualizarPais($tabla2, $pais, $nuevaCantidad, $fechaActual);
 
@@ -51,8 +58,8 @@ class ControladorVisitas{
 				
 	}
 
-	/*=============================================
-	MOSTRAR EL TOTAL DE VISITAS
+	/*============================================
+		MOSTRAR EL TOTAL DE VISITAS
 	==============================================*/	
 
 	public function ctrMostrarTotalVisitas(){
@@ -63,9 +70,9 @@ class ControladorVisitas{
 
 	}
 
-	/*=======================================================
-	MOSTRAR EL TOTAL DE LOS PRIMEROS 6 PAISES CON MÁS VISITAS
-	=========================================================*/	
+	/*==============================================================
+		MOSTRAR EL TOTAL DE LOS PRIMEROS 6 PAISES CON MÁS VISITAS
+	================================================================*/	
 
 	public function ctrMostrarPaises(){
 

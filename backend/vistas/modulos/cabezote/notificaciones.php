@@ -1,7 +1,3 @@
-<!--==================================
-NOTIFICACIONES
-======================================-->
-
 <?php
 
 	if($_SESSION["perfil"] != "administrador"){
@@ -10,7 +6,14 @@ NOTIFICACIONES
 
 	}
 
+	$notificaciones = ControladorNotificaciones::ctrMostrarNotificaciones();
+	$totalNotificaciones = $notificaciones["nuevosUsuarios"] + $notificaciones["nuevasVentas"] + $notificaciones["nuevasVisitas"];
+	
 ?>
+	
+<!--==================================
+	NOTIFICACIONES
+======================================-->
 
 <!-- notifications-menu -->
 <li class="dropdown notifications-menu">
@@ -19,8 +22,22 @@ NOTIFICACIONES
 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 		
 		<i class="fa fa-bell-o"></i>
+
+		<?php
+
+			if($totalNotificaciones > 0){
+
+				echo '<span class="label label-danger">'.$totalNotificaciones.'</span>';
+
+			}else{
+
+				echo '<span class="label label-warning"></span>';
+
+			}
+
+		?>
 		
-		<span class="label label-warning">10</span>
+		<!-- <span class="label label-warning"><?php echo $totalNotificaciones; ?></span> -->
 	
 	</a>
 	<!-- dropdown-toggle -->
@@ -28,7 +45,7 @@ NOTIFICACIONES
 	<!--dropdown-menu -->
 	<ul class="dropdown-menu">
 
-		<li class="header">Tu tienes 3 notificaciones</li>
+		<li class="header">Tu tienes <?php echo $totalNotificaciones; ?> notificaciones</li>
 
 		<li>
 			<!-- menu -->
@@ -37,9 +54,9 @@ NOTIFICACIONES
 				<!-- usuarios -->
 				<li>
 				
-					<a href="usuarios">
+					<a href="" class="actualizarNotificaciones" item="nuevosUsuarios">
 					
-						<i class="fa fa-users text-aqua"></i> 5 nuevos usuarios registrados hoy
+						<i class="fa fa-users text-aqua"></i> <?php echo $notificaciones["nuevosUsuarios"] ?> nuevos usuarios registrados
 					
 					</a>
 
@@ -48,9 +65,9 @@ NOTIFICACIONES
 				<!-- ventas -->
 				<li>
 				
-					<a href="ventas">
+					<a href="" class="actualizarNotificaciones" item="nuevasVentas">
 					
-						<i class="fa fa-shopping-cart text-aqua"></i> 3 nuevas ventas hoy
+						<i class="fa fa-shopping-cart text-aqua"></i> <?php echo $notificaciones["nuevasVentas"] ?> nuevas ventas
 					
 					</a>
 
@@ -59,9 +76,9 @@ NOTIFICACIONES
 				<!-- visitas -->
 				<li>
 				
-					<a href="visitas">
+					<a href="" class="actualizarNotificaciones" item="nuevasVisitas">
 					
-						<i class="fa fa-map-marker text-aqua"></i> 55 nuevas visitas hoy
+						<i class="fa fa-map-marker text-aqua"></i> <?php echo $notificaciones["nuevasVisitas"] ?> nuevas visitas
 					
 					</a>
 

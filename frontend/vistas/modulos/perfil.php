@@ -572,7 +572,7 @@
 
 										}else{
 
-											echo '<img src="'.$servidor.'vistas/img/usuarios/default/anonymous.png" class="img-thumbnail">';
+											echo '<img src="'.$servidor.'vistas/img/default/anonymous.jpg">';
 
 										}
 							

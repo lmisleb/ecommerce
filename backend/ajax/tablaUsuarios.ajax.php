@@ -2,6 +2,7 @@
 
 require_once "../controladores/usuarios.controlador.php";
 require_once "../modelos/usuarios.modelo.php";
+require_once "../modelos/rutas.php";
 
 class TablaUsuarios{
 
@@ -10,6 +11,8 @@ class TablaUsuarios{
   	=============================================*/ 
 
 	public function mostrarTabla(){	
+
+		$url = Ruta::ctrRuta();
 
 		$item = null;
  		$valor = null;
@@ -24,13 +27,18 @@ class TablaUsuarios{
 						TRAER FOTO USUARIO
 					=============================================*/
 
-					if($usuarios[$i]["foto"] != "" ){
+					if($usuarios[$i]["foto"] != ""){
 
-						$foto = "<img class='img-circle' src='".$usuarios[$i]["foto"]."' width='60px'>";
+						if($usuarios[$i]["modo"] == "directo" ){
 
-					}else{
+							$foto = "<img class='img-circle' src='".$url.$usuarios[$i]["foto"]."' width='60px'>";
 
-						$foto = "<img class='img-circle' src='vistas/img/default/anonymous.png' width='60px'>";
+						}else{
+
+							$foto = "<img class='img-circle' src='".$usuarios[$i]["foto"]."' width='60px'>";
+
+						}
+
 					}
 
 					/*===========================================

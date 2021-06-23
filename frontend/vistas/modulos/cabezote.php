@@ -3,8 +3,8 @@
 	$servidor = Ruta::ctrRutaServidor();
 	$url = Ruta::ctrRuta();
 
-	/*=============================================
-	INICIO DE SESIÓN USUARIO
+	/*===========================================
+		INICIO DE SESIÓN USUARIO
 	=============================================*/
 
 	if(isset($_SESSION["validarSesion"])){
@@ -21,15 +21,15 @@
 
 	}
 
-	/*=============================================
-	API DE GOOGLE
+	/*===========================================
+		API DE GOOGLE
 	=============================================*/
 
 	// https://console.developers.google.com/apis
 	// https://github.com/google/google-api-php-client
 
-	/*=============================================
-	CREAR EL OBJETO DE LA API GOOGLE
+	/*===========================================
+		CREAR EL OBJETO DE LA API GOOGLE
 	=============================================*/
 
 	$cliente = new Google_Client();
@@ -37,29 +37,27 @@
 	$cliente->setAccessType("offline");
 	$cliente->setScopes(['profile','email']);
 
-	/*=============================================
-	RUTA PARA EL LOGIN DE GOOGLE
+	/*===========================================
+		RUTA PARA EL LOGIN DE GOOGLE
 	=============================================*/
 
 	$rutaGoogle = $cliente->createAuthUrl();
 
-	/*=============================================
-	RECIBIMOS LA VARIABLE GET DE GOOGLE LLAMADA CODE
-	=============================================*/
+	/*=====================================================
+		RECIBIMOS LA VARIABLE GET DE GOOGLE LLAMADA CODE
+	=======================================================*/
 
 	if(isset($_GET["code"])){
 
 		$token = $cliente->authenticate($_GET["code"]);
-
 		$_SESSION['id_token_google'] = $token;
-
 		$cliente->setAccessToken($token);
 
 	}
 
-	/*================================================
-	RECIBIMOS LOS DATOS CIFRADOS DE GOOGLE EN UN ARRAY
-	================================================*/
+	/*=======================================================
+		RECIBIMOS LOS DATOS CIFRADOS DE GOOGLE EN UN ARRAY
+	=========================================================*/
 
 	if($cliente->getAccessToken()){
 
@@ -90,7 +88,7 @@
 ?>
 
 <!--=====================================
-TOP
+	TOP
 ======================================-->
 
 <div class="container-fluid barraSuperior" id="top">
@@ -100,7 +98,7 @@ TOP
 		<div class="row">
 	
 			<!--=====================================
-			SOCIAL
+				SOCIAL
 			======================================-->
 
 			<div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 social">
@@ -133,7 +131,7 @@ TOP
 			</div>
 
 			<!--=====================================
-			REGISTRO
+				REGISTRO
 			======================================-->
 
 			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 registro">
@@ -160,7 +158,7 @@ TOP
 
 										echo '<li>
 
-											<img class="img-circle" src="'.$servidor.'vistas/img/usuarios/default/anonymous.png" width="10%">
+											<img class="img-circle" src="'.$servidor.'vistas/img/default/anonymous.jpg" width="10%">
 
 										</li>';
 
@@ -224,7 +222,7 @@ TOP
 </div>
 
 <!--=====================================
-HEADER
+	HEADER
 ======================================-->
 
 <header class="container-fluid">
@@ -234,7 +232,7 @@ HEADER
 		<div class="row" id="cabezote">
 
 			<!--=====================================
-			LOGOTIPO
+				LOGOTIPO
 			======================================-->
 			
 			<div class="col-lg-3 col-md-3 col-sm-2 col-xs-12" id="logotipo">
@@ -248,13 +246,13 @@ HEADER
 			</div>
 
 			<!--=====================================
-			BLOQUE CATEGORÍAS Y BUSCADOR
+				BLOQUE CATEGORÍAS Y BUSCADOR
 			======================================-->
 
 			<div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
 					
 				<!--=====================================
-				BOTÓN CATEGORÍAS
+					BOTÓN CATEGORÍAS
 				======================================-->
 
 				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 backColor" id="btnCategorias">
@@ -272,7 +270,7 @@ HEADER
 				</div>
 
 				<!--=====================================
-				BUSCADOR
+					BUSCADOR
 				======================================-->
 				
 				<div class="input-group col-lg-8 col-md-8 col-sm-8 col-xs-12" id="buscador">
@@ -298,7 +296,7 @@ HEADER
 			</div>
 
 			<!--=====================================
-			CARRITO DE COMPRAS
+				CARRITO DE COMPRAS
 			======================================-->
 
 			<div class="col-lg-3 col-md-3 col-sm-2 col-xs-12" id="carrito">
@@ -367,7 +365,7 @@ HEADER
 </header>
 
 <!--=====================================
-VENTANA MODAL PARA EL REGISTRO
+	VENTANA MODAL PARA EL REGISTRO
 ======================================-->
 
 <div class="modal fade modalFormulario" id="modalRegistro" role="dialog">
@@ -381,35 +379,30 @@ VENTANA MODAL PARA EL REGISTRO
            <button type="button" class="close" data-dismiss="modal">&times;</button>
         	
 			<!--=====================================
-			REGISTRO FACEBOOK
+				REGISTRO FACEBOOK
 			======================================-->
 
 			<div class="col-sm-6 col-xs-12 facebook">
 				
-				<p>
-				  <i class="fa fa-facebook"></i>
-					Registro con Facebook
-				</p>
+				<p><i class="fa fa-facebook"></i>Registro con Facebook</p>
 
 			</div>
 
 			<!--=====================================
-			REGISTRO GOOGLE
+				REGISTRO GOOGLE
 			======================================-->
+
 			<a href="<?php echo $rutaGoogle; ?>">
 
 				<div class="col-sm-6 col-xs-12 google">
 					
-					<p>
-					  <i class="fa fa-google"></i>
-						Registro con Google
-					</p>
+					<p><i class="fa fa-google"></i>Registro con Google</p>
 
 				</div>
 			</a>
 
 			<!--=====================================
-			REGISTRO DIRECTO
+				REGISTRO DIRECTO
 			======================================-->
 
 			<form method="post" onsubmit="return registroUsuario()" autocomplete="off">
@@ -464,9 +457,9 @@ VENTANA MODAL PARA EL REGISTRO
 
 				</div>
 
-				<!--=================================================================
-				https://www.iubenda.com/ CONDICIONES DE USO Y POLÍTICAS DE PRIVACIDAD
-				==================================================================-->
+				<!--=========================================================================
+					https://www.iubenda.com/ CONDICIONES DE USO Y POLÍTICAS DE PRIVACIDAD
+				===========================================================================-->
 
 				<div class="checkBox">
 					
@@ -512,7 +505,7 @@ VENTANA MODAL PARA EL REGISTRO
 </div>
 
 <!--=====================================
-VENTANA MODAL PARA EL INGRESO
+	VENTANA MODAL PARA EL INGRESO
 ======================================-->
 
 <div class="modal fade modalFormulario" id="modalIngreso" role="dialog">
@@ -526,36 +519,31 @@ VENTANA MODAL PARA EL INGRESO
            <button type="button" class="close" data-dismiss="modal">&times;</button>
         	
 			<!--=====================================
-			INGRESO FACEBOOK
+				INGRESO FACEBOOK
 			======================================-->
 
 			<div class="col-sm-6 col-xs-12 facebook">
 				
-				<p>
-				  <i class="fa fa-facebook"></i>
-					Ingreso con Facebook
-				</p>
+				<p><i class="fa fa-facebook"></i>Ingreso con Facebook</p>
 
 			</div>
 
 			<!--=====================================
-			INGRESO GOOGLE
+				INGRESO GOOGLE
 			======================================-->
+			
 			<a href="<?php echo $rutaGoogle; ?>">
 			
 				<div class="col-sm-6 col-xs-12 google">
 					
-					<p>
-					  <i class="fa fa-google"></i>
-						Ingreso con Google
-					</p>
+					<p><i class="fa fa-google"></i>Ingreso con Google</p>
 
 				</div>
 
 			</a>
 
 			<!--=====================================
-			INGRESO DIRECTO
+				INGRESO DIRECTO
 			======================================-->
 
 			<form method="post" autocomplete="off">
@@ -625,9 +613,9 @@ VENTANA MODAL PARA EL INGRESO
 
 </div>
 
-<!--=====================================
-VENTANA MODAL PARA OLVIDO DE CONTRASEÑA
-======================================-->
+<!--============================================
+	VENTANA MODAL PARA OLVIDO DE CONTRASEÑA
+==============================================-->
 
 <div class="modal fade modalFormulario" id="modalPassword" role="dialog">
 
@@ -640,7 +628,7 @@ VENTANA MODAL PARA OLVIDO DE CONTRASEÑA
            <button type="button" class="close" data-dismiss="modal">&times;</button>
         	
 			<!--=====================================
-			OLVIDO CONTRASEÑA
+				OLVIDO CONTRASEÑA
 			======================================-->
 
 			<form method="post">

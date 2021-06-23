@@ -2,8 +2,8 @@
 
 class ControladorCarrito{
 
-	/*=============================================
-	MOSTRAR TARIFAS
+	/*===========================================
+		MOSTRAR TARIFAS
 	=============================================*/
 
 	public function ctrMostrarTarifas(){
@@ -14,8 +14,8 @@ class ControladorCarrito{
 
 	}	
 
-	/*=============================================
-	NUEVAS COMPRAS
+	/*===========================================
+		NUEVAS COMPRAS
 	=============================================*/
 
 	static public function ctrNuevasCompras($datos){
@@ -28,15 +28,23 @@ class ControladorCarrito{
 			$tabla = "comentarios";
 			ModeloUsuarios::mdlIngresoComentarios($tabla, $datos);
 
+			/*===============================================
+				NOTIFICACION NUEVAS VENTAS
+			=================================================*/
+
+			$consultaNotificaciones = ControladorNotificaciones::ctrMostrarNotificaciones();
+			$nuevaVenta = $consultaNotificaciones["nuevasVentas"] + 1;
+			ModeloNotificaciones::mdlActualizarNotificaciones("notificaciones", "nuevasVentas", $nuevaVenta);
+
 		}
 
 		return $respuesta;
 
 	}
 
-	/*=================================
-	VERIFICAR PRODUCTO GRATIS ADQUIRIDO
-	===================================*/
+	/*========================================
+		VERIFICAR PRODUCTO GRATIS ADQUIRIDO
+	==========================================*/
 
 	static public function ctrVerificarProducto($datos){
 

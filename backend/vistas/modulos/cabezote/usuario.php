@@ -14,19 +14,19 @@
 
 		<?php
 
-			if($_SESSION["foto"] == ""){
+			if($_SESSION["foto1"] == ""){
 
 				echo '<img src="vistas/img/default/anonymous.jpg" class="user-image" alt="User Image">';
 
 			}else{
 
-				echo '<img src="'.$_SESSION["foto"].'" class="user-image" alt="'.$_SESSION["nombre"].'">';
+				echo '<img src="'.$_SESSION["foto1"].'" class="user-image" alt="'.$_SESSION["nombre1"].'">';
 
 			}
 
 		?>
 		
-		<!-- <span class="hidden-xs"><?php echo $_SESSION["nombre"]; ?> &nbsp; (&nbsp;<?php echo ucfirst($_SESSION["perfil"]); ?>&nbsp;)</span> -->
+		<!-- <span class="hidden-xs"><?php echo $_SESSION["nombre1"]; ?> &nbsp; (&nbsp;<?php echo ucfirst($_SESSION["perfil"]); ?>&nbsp;)</span> -->
 
 		<span class="hidden-xs"><?php echo ucfirst($_SESSION["perfil"]); ?></span>
 	
@@ -46,19 +46,19 @@
 
 			<?php
 
-				if($_SESSION["foto"] == ""){
+				if($_SESSION["foto1"] == ""){
 
 					echo '<img src="vistas/img/default/anonymous.jpg" class="img-circle" alt="User Image">';
 
 				}else{
 
-					echo '<img src="'.$_SESSION["foto"].'" class="img-circle" alt="'.$_SESSION["nombre"].'">';
+					echo '<img src="'.$_SESSION["foto1"].'" class="img-circle" alt="'.$_SESSION["nombre1"].'">';
 
 				}
 
 			?>
 
-			<h4 style="color:white"><p><?php echo $_SESSION["nombre"]; ?></p></h4>
+			<h4 style="color:white"><p><?php echo $_SESSION["nombre1"]; ?></p></h4>
 
 		</li>
 

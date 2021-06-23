@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-06-2021 a las 10:45:29
+-- Tiempo de generación: 23-06-2021 a las 08:13:14
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -206,7 +206,8 @@ INSERT INTO `comentarios` (`id`, `id_usuario`, `id_producto`, `calificacion`, `c
 (60, 72, 428, 0, '', '2021-03-17 03:23:58'),
 (61, 72, 467, 0, '', '2021-03-17 03:59:02'),
 (62, 87, 450, 0, '', '2021-06-17 07:39:39'),
-(63, 87, 466, 0, '', '2021-06-17 07:53:23');
+(63, 87, 466, 0, '', '2021-06-17 07:53:23'),
+(64, 87, 500, 0, '', '2021-06-23 04:58:58');
 
 -- --------------------------------------------------------
 
@@ -280,7 +281,8 @@ INSERT INTO `compras` (`id`, `id_usuario`, `id_producto`, `envio`, `metodo`, `em
 (80, 61, 495, 0, 'payu', 'sb-mzqj53590057@personal.example.com', 'La Florida Vivero Villaroel. Caracas', 'VE', 0, '', 87.12, '2021-03-31 22:42:28'),
 (81, 48, 500, 0, 'paypal', 'sb-mzqj53590057@personal.example.com', 'Chacao Edificio La Paz, Caracas', 'VE', 0, '', 92.5, '2021-03-31 22:28:10'),
 (82, 87, 450, 1, 'gratis', 'mantonio@gmail.com', '', '', 1, 'Mini Componte - 36 - Rojo', 0, '2021-06-17 18:13:58'),
-(83, 87, 466, 2, 'paypal', 'sb-mzqj53590057@personal.example.com', 'Free Trade Zone, Santiago, Santiago, 8150215', 'CL', 1, 'Tennis Azul - 36 - Rojo', 25, '2021-06-17 18:14:13');
+(83, 87, 466, 2, 'paypal', 'sb-mzqj53590057@personal.example.com', 'Free Trade Zone, Santiago, Santiago, 8150215', 'CL', 1, 'Tennis Azul - 36 - Rojo', 25, '2021-06-17 18:14:13'),
+(84, 87, 500, 0, 'paypal', 'sb-mzqj53590057@personal.example.com', 'Free Trade Zone, Santiago, Santiago, 8150215', 'CL', 1, 'Curso de Bootstrap', 9.99, '2021-06-23 04:58:58');
 
 -- --------------------------------------------------------
 
@@ -302,6 +304,26 @@ CREATE TABLE `deseos` (
 INSERT INTO `deseos` (`id`, `id_usuario`, `id_producto`, `fecha`) VALUES
 (38, 60, 449, '2020-10-12 21:36:08'),
 (39, 60, 496, '2020-10-12 21:36:24');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `notificaciones`
+--
+
+CREATE TABLE `notificaciones` (
+  `id` int(11) NOT NULL,
+  `nuevosUsuarios` int(11) NOT NULL,
+  `nuevasVentas` int(11) NOT NULL,
+  `nuevasVisitas` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `notificaciones`
+--
+
+INSERT INTO `notificaciones` (`id`, `nuevosUsuarios`, `nuevasVentas`, `nuevasVisitas`) VALUES
+(1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -883,7 +905,7 @@ INSERT INTO `productos` (`id`, `id_categoria`, `id_subcategoria`, `tipo`, `ruta`
 (497, 5, 18, 'virtual', 'aprende-javascript-desde-cero-55', 1, 'Aprende Javascript desde Cero', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate minus, consectetur beatae fugit odio iure repudiandae quia distinctio, id ducimus molestiae. Obcaecati, unde. Illo molestiae dolorum, saepe nisi enim iusto.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto maxime quas modi, eveniet fugiat. Alias voluptatem cum consectetur nobis quod, excepturi recusandae, itaque facere minima officiis autem illum, perferendis provident! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto maxime quas modi, eveniet fugiat. Alias voluptatem cum consectetur nobis quod, excepturi recusandae, itaque facere minima officiis autem illum, perferendis provident!', 'N4aY6yX-MaM', '{\"Clases\":\"121 Clases\",\"Tiempo\":\"24 horas de estudio\",\"Nivel\":\"Nivel Básico\", \"Acceso\":\"Acceso de por vida\",\"Dispositivo\":\"Acceso en dispositivos móviles y TV\",\"Certificado\":\"Certificado de finalización\"}', 100, 'vistas/img/productos/cursos/curso02.jpg', 25, 383, 0, 0, 0, 1, 1, 9.99, 90, 'vistas/img/ofertas/desarrollo-web.png', '2021-07-01 23:59:59', 0, 0, 0, '2021-06-12 20:55:00'),
 (498, 5, 18, 'virtual', 'curso-de-jquery-55', 1, 'Curso de jQuery', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate minus, consectetur beatae fugit odio iure repudiandae quia distinctio, id ducimus molestiae. Obcaecati, unde. Illo molestiae dolorum, saepe nisi enim iusto.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto maxime quas modi, eveniet fugiat. Alias voluptatem cum consectetur nobis quod, excepturi recusandae, itaque facere minima officiis autem illum, perferendis provident! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto maxime quas modi, eveniet fugiat. Alias voluptatem cum consectetur nobis quod, excepturi recusandae, itaque facere minima officiis autem illum, perferendis provident!', 'N4aY6yX-MaM', '{\"Clases\":\"121 Clases\",\"Tiempo\":\"24 horas de estudio\",\"Nivel\":\"Nivel Básico\", \"Acceso\":\"Acceso de por vida\",\"Dispositivo\":\"Acceso en dispositivos móviles y TV\",\"Certificado\":\"Certificado de finalización\"}', 100, 'vistas/img/productos/cursos/curso03.jpg', 29, 383, 0, 0, 0, 1, 1, 9.99, 90, 'vistas/img/ofertas/desarrollo-web.png', '2021-07-01 23:59:59', 0, 0, 0, '2021-06-12 20:55:00'),
 (499, 5, 18, 'virtual', 'curso-de-canvas-y-javascript-55', 1, 'Curso de canvas y Javascript', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate minus, consectetur beatae fugit odio iure repudiandae quia distinctio, id ducimus molestiae. Obcaecati, unde. Illo molestiae dolorum, saepe nisi enim iusto.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto maxime quas modi, eveniet fugiat. Alias voluptatem cum consectetur nobis quod, excepturi recusandae, itaque facere minima officiis autem illum, perferendis provident! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto maxime quas modi, eveniet fugiat. Alias voluptatem cum consectetur nobis quod, excepturi recusandae, itaque facere minima officiis autem illum, perferendis provident!', 'N4aY6yX-MaM', '{\"Clases\":\"121 Clases\",\"Tiempo\":\"24 horas de estudio\",\"Nivel\":\"Nivel Básico\", \"Acceso\":\"Acceso de por vida\",\"Dispositivo\":\"Acceso en dispositivos móviles y TV\",\"Certificado\":\"Certificado de finalización\"}', 100, 'vistas/img/productos/cursos/curso04.jpg', 30, 381, 0, 0, 0, 1, 1, 9.99, 90, 'vistas/img/ofertas/desarrollo-web.png', '2021-07-01 23:59:59', 0, 0, 0, '2021-06-12 20:55:00'),
-(500, 5, 18, 'virtual', 'curso-de-bootstrap-57', 1, 'Curso de Bootstrap', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate minus, consectetur beatae fugit odio iure repudiandae quia distinctio, id ducimus molestiae. Obcaecati, unde. Illo molestiae dolorum, saepe nisi enim iusto.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto maxime quas modi, eveniet fugiat. Alias voluptatem cum consectetur nobis quod, excepturi recusandae, itaque facere minima officiis autem illum, perferendis provident! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto maxime quas modi, eveniet fugiat. Alias voluptatem cum consectetur nobis quod, excepturi recusandae, itaque facere minima officiis autem illum, perferendis provident!', 'N4aY6yX-MaM', '{\"Clases\":\"121 Clases\",\"Tiempo\":\"24 horas de estudio\",\"Nivel\":\"Nivel Básico\", \"Acceso\":\"Acceso de por vida\",\"Dispositivo\":\"Acceso en dispositivos móviles y TV\",\"Certificado\":\"Certificado de finalización\"}', 100, 'vistas/img/productos/cursos/curso05.jpg', 29, 382, 0, 0, 0, 1, 1, 9.99, 90, 'vistas/img/ofertas/desarrollo-web.png', '2021-07-01 23:59:59', 0, 0, 0, '2021-06-12 20:55:00');
+(500, 5, 18, 'virtual', 'curso-de-bootstrap-57', 1, 'Curso de Bootstrap', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate minus, consectetur beatae fugit odio iure repudiandae quia distinctio, id ducimus molestiae. Obcaecati, unde. Illo molestiae dolorum, saepe nisi enim iusto.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto maxime quas modi, eveniet fugiat. Alias voluptatem cum consectetur nobis quod, excepturi recusandae, itaque facere minima officiis autem illum, perferendis provident! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto maxime quas modi, eveniet fugiat. Alias voluptatem cum consectetur nobis quod, excepturi recusandae, itaque facere minima officiis autem illum, perferendis provident!', 'N4aY6yX-MaM', '{\"Clases\":\"121 Clases\",\"Tiempo\":\"24 horas de estudio\",\"Nivel\":\"Nivel Básico\", \"Acceso\":\"Acceso de por vida\",\"Dispositivo\":\"Acceso en dispositivos móviles y TV\",\"Certificado\":\"Certificado de finalización\"}', 100, 'vistas/img/productos/cursos/curso05.jpg', 30, 383, 0, 0, 0, 1, 1, 9.99, 90, 'vistas/img/ofertas/desarrollo-web.png', '2021-07-01 23:59:59', 0, 0, 0, '2021-06-23 04:58:58');
 
 -- --------------------------------------------------------
 
@@ -998,8 +1020,10 @@ INSERT INTO `usuarios` (`id`, `nombre`, `password`, `email`, `modo`, `foto`, `ve
 (66, 'LARA CROFT', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'lara@gmail.com', 'directo', 'vistas/img/usuarios/66/478.jpg', 0, '157f433f6585b30a0d16df22cfe24f33', '2021-04-05 04:09:43'),
 (72, 'OLIVIA WILDE', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'olivia@gmail.com', 'directo', 'vistas/img/usuarios/72/965.jpg', 0, '69603870efaa488f19a762aa45b6e24d', '2021-06-17 20:44:56'),
 (84, 'TYRANDE', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'tayrande@gmail.com', 'directo', 'vistas/img/usuarios/84/681.png', 0, 'acae4bc5fdd1676f37917a6527b374a7', '2021-06-17 20:37:57'),
-(86, 'SARAH', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'sarah@gmail.com', 'directo', 'vistas/img/usuarios/86/448.jpg', 0, '246084d5b85c4f86e84b641f86bd7175', '2021-06-21 07:43:52'),
-(87, 'MARCO', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'mantonio@gmail.com', 'directo', '', 0, 'f7ba17ad24756dba51bc20356b7590a5', '2021-06-21 07:43:25');
+(86, 'SARAH KERRIGAN', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'sarah@gmail.com', 'directo', 'vistas/img/usuarios/86/448.jpg', 0, '246084d5b85c4f86e84b641f86bd7175', '2021-06-22 22:46:46'),
+(87, 'MARCO ANTONIO', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'mantonio@gmail.com', 'directo', 'vistas/img/usuarios/87/160.jpg', 0, 'f7ba17ad24756dba51bc20356b7590a5', '2021-06-23 02:19:34'),
+(94, 'CORY CHASE', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'cory@gmail.com', 'directo', 'vistas/img/usuarios/94/826.jpg', 0, 'f2134c8239e1b55e3f1c32eba5af3fcd', '2021-06-23 01:04:22'),
+(95, 'SYREN', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'syren@gmail.com', 'directo', 'vistas/img/usuarios/95/290.jpg', 0, '1b198b74f56e4f019fe73cd2b6a383a3', '2021-06-23 04:40:48');
 
 -- --------------------------------------------------------
 
@@ -1020,13 +1044,15 @@ CREATE TABLE `visitaspaises` (
 --
 
 INSERT INTO `visitaspaises` (`id`, `pais`, `codigo`, `cantidad`, `fecha`) VALUES
-(35, 'Chile', 'CL', 38, '20-06-2021'),
+(35, 'Chile', 'CL', 40, '23-06-2021'),
 (36, 'Japan', 'JP', 4, '31-03-2021'),
-(37, 'United States', 'US', 6, '31-03-2021'),
+(37, 'United States', 'US', 7, '23-06-2021'),
 (38, 'China', 'CN', 1, '26-03-2021'),
 (39, 'Russia', 'RU', 4, '31-03-2021'),
-(40, 'Germany', 'DE', 1, '26-03-2021'),
-(45, 'Desconocido', NULL, 3, '16-05-2021');
+(40, 'Germany', 'DE', 2, '23-06-2021'),
+(45, 'Desconocido', NULL, 3, '16-05-2021'),
+(46, 'France', 'FR', 1, '23-06-2021'),
+(47, 'Venezuela', 'VE', 1, '23-06-2021');
 
 -- --------------------------------------------------------
 
@@ -1103,7 +1129,13 @@ INSERT INTO `visitaspersonas` (`id`, `ip`, `pais`, `visitas`, `fecha`) VALUES
 (221, '200.28.111.71', 'Chile', 1, '17-06-2021'),
 (222, '200.28.111.82', 'Chile', 1, '17-06-2021'),
 (223, '200.28.111.82', 'Chile', 1, '16-06-2021'),
-(224, '200.28.111.82', 'Chile', 1, '20-06-2021');
+(224, '200.28.111.82', 'Chile', 1, '20-06-2021'),
+(225, '200.28.111.82', 'Chile', 1, '22-06-2021'),
+(226, '200.28.111.82', 'Chile', 1, '23-06-2021'),
+(227, '32.196.55.160', 'United States', 1, '23-06-2021'),
+(228, '141.46.61.241', 'Germany', 1, '23-06-2021'),
+(229, '163.172.160.190', 'France', 1, '23-06-2021'),
+(230, '186.26.32.0', 'Venezuela', 1, '23-06-2021');
 
 --
 -- Índices para tablas volcadas
@@ -1155,6 +1187,12 @@ ALTER TABLE `compras`
 -- Indices de la tabla `deseos`
 --
 ALTER TABLE `deseos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `notificaciones`
+--
+ALTER TABLE `notificaciones`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1231,7 +1269,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT de la tabla `comercio`
@@ -1243,13 +1281,19 @@ ALTER TABLE `comercio`
 -- AUTO_INCREMENT de la tabla `compras`
 --
 ALTER TABLE `compras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT de la tabla `deseos`
 --
 ALTER TABLE `deseos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
+-- AUTO_INCREMENT de la tabla `notificaciones`
+--
+ALTER TABLE `notificaciones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `plantilla`
@@ -1279,19 +1323,19 @@ ALTER TABLE `subcategorias`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT de la tabla `visitaspaises`
 --
 ALTER TABLE `visitaspaises`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `visitaspersonas`
 --
 ALTER TABLE `visitaspersonas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=225;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=231;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -185,6 +185,7 @@
 		<script src="vistas/js/gestorVisitas.js"></script>
 		<script src="vistas/js/gestorUsuarios.js"></script>
 		<script src="vistas/js/gestorAdministradores.js"></script>
+		<script src="vistas/js/gestorNotificaciones.js"></script>
 
 	</body>
 
